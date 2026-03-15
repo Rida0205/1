@@ -130,19 +130,21 @@
             width: 100%;
         }
 
-        /* Sidebar */
+        /* Sidebar - محسنة ومفيدة */
         .sidebar {
-            width: 280px;
+            width: 300px;
             background: #0f172a;
             color: white;
             height: 100vh;
             overflow-y: auto;
             flex-shrink: 0;
+            padding: 1.5rem;
         }
 
         .sidebar-header {
-            padding: 2rem 1.5rem;
             text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
             border-bottom: 1px solid #334155;
         }
 
@@ -163,34 +165,147 @@
             padding: 1rem;
             background: #1e293b;
             border-radius: 12px;
-            line-height: 1.5;
+            line-height: 1.6;
         }
 
-        .sidebar-menu {
-            padding: 1.5rem 1rem;
+        /* إحصائيات سريعة في الشريط الجانبي */
+        .sidebar-stats {
+            background: #1e293b;
+            border-radius: 16px;
+            padding: 1.2rem;
+            margin-bottom: 1.5rem;
         }
 
-        .menu-item {
+        .sidebar-stat-item {
             display: flex;
             align-items: center;
-            gap: 1rem;
-            padding: 0.9rem 1rem;
-            color: #cbd5e1;
-            text-decoration: none;
-            border-radius: 12px;
-            transition: all 0.3s;
-            margin-bottom: 0.3rem;
-            font-weight: 500;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid #334155;
         }
 
-        .menu-item:hover, .menu-item.active {
+        .sidebar-stat-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .sidebar-stat-label {
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        .sidebar-stat-value {
+            color: #d97706;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .sidebar-stat-value i {
+            margin-left: 0.3rem;
+            font-size: 0.8rem;
+        }
+
+        /* تنبيهات سريعة */
+        .sidebar-alerts {
+            background: #1e293b;
+            border-radius: 16px;
+            padding: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .sidebar-alerts h4 {
+            color: white;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .sidebar-alerts h4 i {
+            color: #d97706;
+        }
+
+        .alert-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.6rem 0;
+            border-bottom: 1px solid #334155;
+            font-size: 0.9rem;
+        }
+
+        .alert-item:last-child {
+            border-bottom: none;
+        }
+
+        .alert-icon {
+            width: 28px;
+            height: 28px;
             background: #d97706;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.8rem;
+        }
+
+        .alert-text {
+            color: #cbd5e1;
+        }
+
+        .alert-text strong {
             color: white;
         }
 
-        .menu-item i {
-            width: 24px;
-            font-size: 1.2rem;
+        /* التوزيع الجغرافي */
+        .sidebar-map {
+            background: #1e293b;
+            border-radius: 16px;
+            padding: 1.2rem;
+        }
+
+        .sidebar-map h4 {
+            color: white;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .map-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .map-city {
+            color: #94a3b8;
+        }
+
+        .map-count {
+            color: #d97706;
+            font-weight: 600;
+        }
+
+        .map-bar {
+            height: 4px;
+            background: #334155;
+            border-radius: 2px;
+            margin-top: 0.2rem;
+            width: 100%;
+        }
+
+        .map-bar-fill {
+            height: 4px;
+            background: #d97706;
+            border-radius: 2px;
         }
 
         /* Main Content */
@@ -239,7 +354,7 @@
             font-size: 0.95rem;
         }
 
-        /* Stats Grid */
+        /* Stats Grid - موسعة */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -252,103 +367,66 @@
             border-radius: 16px;
             padding: 1.5rem;
             border: 1px solid #e2e8f0;
+        }
+
+        .stat-header {
             display: flex;
             align-items: center;
             justify-content: space-between;
+            margin-bottom: 1rem;
         }
 
-        .stat-info h3 {
+        .stat-header h3 {
             color: #64748b;
             font-size: 0.85rem;
             font-weight: 500;
-            margin-bottom: 0.5rem;
         }
 
-        .stat-info .number {
+        .stat-header i {
+            color: #d97706;
+            font-size: 1.2rem;
+        }
+
+        .stat-main {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+        }
+
+        .stat-number {
             font-size: 2rem;
             font-weight: 700;
             color: #0f172a;
         }
 
-        .stat-info .number small {
+        .stat-number small {
             font-size: 0.9rem;
             color: #64748b;
             font-weight: 400;
             margin-right: 0.3rem;
         }
 
-        .stat-icon {
-            width: 48px;
-            height: 48px;
-            background: #fef3c7;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #d97706;
-            font-size: 1.4rem;
-        }
-
-        /* Birthday Alert */
-        .birthday-alert {
-            background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
-            border-radius: 16px;
-            padding: 1.2rem 1.8rem;
-            margin-bottom: 1.5rem;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .birthday-alert-left {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .birthday-alert-left i {
-            font-size: 2rem;
-        }
-
-        .birthday-alert-left h3 {
-            font-size: 1.1rem;
-            font-weight: 600;
-        }
-
-        .birthday-list {
-            display: flex;
-            gap: 0.8rem;
-            flex-wrap: wrap;
-        }
-
-        .birthday-person {
-            background: rgba(255,255,255,0.15);
-            padding: 0.5rem 1rem;
-            border-radius: 40px;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.9rem;
-            backdrop-filter: blur(5px);
-        }
-
-        .birthday-person i {
-            font-size: 0.9rem;
-        }
-
-        .birthday-days {
-            background: rgba(255,255,255,0.3);
-            padding: 0.2rem 0.6rem;
+        .stat-trend {
+            font-size: 0.85rem;
+            padding: 0.3rem 0.6rem;
             border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
+            background: #f1f5f9;
         }
 
-        /* Charts */
+        .stat-trend.up {
+            color: #10b981;
+            background: #d1fae5;
+        }
+
+        .stat-trend.down {
+            color: #ef4444;
+            background: #fee2e2;
+        }
+
+        /* Charts Row - موسع */
         .charts-row {
             display: grid;
-            grid-template-columns: 2fr 1fr;
+            grid-template-columns: repeat(3, 1fr);
             gap: 1.2rem;
             margin-bottom: 1.5rem;
         }
@@ -358,19 +436,26 @@
             border-radius: 16px;
             padding: 1.2rem;
             border: 1px solid #e2e8f0;
-            height: 260px;
+            height: 280px;
         }
 
         .chart-container h3 {
             color: #0f172a;
-            margin-bottom: 0.8rem;
+            margin-bottom: 1rem;
             font-size: 1rem;
             font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .chart-container h3 i {
+            color: #d97706;
         }
 
         canvas {
             width: 100% !important;
-            height: 180px !important;
+            height: 200px !important;
         }
 
         /* Table */
@@ -392,6 +477,9 @@
             color: #0f172a;
             font-size: 1.1rem;
             font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .search-box {
@@ -420,7 +508,7 @@
 
         .table-wrapper {
             overflow-x: auto;
-            max-height: 300px;
+            max-height: 350px;
             overflow-y: auto;
             border: 1px solid #f1f5f9;
             border-radius: 12px;
@@ -467,6 +555,15 @@
         }
 
         /* Responsive */
+        @media (max-width: 1400px) {
+            .stats-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .charts-row {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
         @media (max-width: 1200px) {
             .stats-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -490,12 +587,6 @@
             .stats-grid {
                 grid-template-columns: 1fr;
             }
-            
-            .birthday-alert {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 1rem;
-            }
         }
     </style>
 </head>
@@ -515,38 +606,66 @@
     <!-- Dashboard -->
     <div class="dashboard-container" id="dashboard">
         <div class="dashboard-wrapper">
-            <!-- Sidebar -->
+            <!-- Sidebar - محسنة ومفيدة -->
             <div class="sidebar">
                 <div class="sidebar-header">
                     <div class="logo">e<span>concours</span>.ma</div>
                     <div class="hadith">الله في عون العبد<br>ما دام العبد في عون أخيه</div>
                 </div>
-                
-                <div class="sidebar-menu">
-                    <div class="menu-item active">
-                        <i class="fas fa-home"></i>
-                        <span>الرئيسية</span>
+
+                <!-- إحصائيات سريعة -->
+                <div class="sidebar-stats">
+                    <div class="sidebar-stat-item">
+                        <span class="sidebar-stat-label"><i class="fas fa-calendar-week"></i> هذا الأسبوع</span>
+                        <span class="sidebar-stat-value" id="weeklyStats">12</span>
                     </div>
-                    <div class="menu-item">
-                        <i class="fas fa-users"></i>
-                        <span>المسجلون</span>
+                    <div class="sidebar-stat-item">
+                        <span class="sidebar-stat-label"><i class="fas fa-clock"></i> آخر 24 ساعة</span>
+                        <span class="sidebar-stat-value" id="dailyStats">3</span>
                     </div>
-                    <div class="menu-item">
-                        <i class="fas fa-cake-candles"></i>
-                        <span>أعياد الميلاد</span>
+                    <div class="sidebar-stat-item">
+                        <span class="sidebar-stat-label"><i class="fas fa-percent"></i> معدل التحويل</span>
+                        <span class="sidebar-stat-value" id="conversionRate">78%</span>
                     </div>
-                    <div class="menu-item">
-                        <i class="fas fa-hand-holding-heart"></i>
-                        <span>المجاني</span>
+                    <div class="sidebar-stat-item">
+                        <span class="sidebar-stat-label"><i class="fas fa-user-plus"></i> نمو هذا الشهر</span>
+                        <span class="sidebar-stat-value" id="growthRate">+24%</span>
                     </div>
-                    <div class="menu-item">
-                        <i class="fas fa-chart-pie"></i>
-                        <span>الإحصائيات</span>
+                </div>
+
+                <!-- تنبيهات مهمة -->
+                <div class="sidebar-alerts">
+                    <h4><i class="fas fa-bell"></i> تنبيهات مهمة</h4>
+                    <div class="alert-item">
+                        <div class="alert-icon"><i class="fas fa-birthday-cake"></i></div>
+                        <div class="alert-text">
+                            <strong id="birthdayCount">3</strong> أعياد ميلاد هذا الأسبوع
+                        </div>
                     </div>
-                    <div class="menu-item" onclick="logout()">
-                        <i class="fas fa-sign-out-alt"></i>
-                        <span>تسجيل الخروج</span>
+                    <div class="alert-item">
+                        <div class="alert-icon"><i class="fas fa-clock"></i></div>
+                        <div class="alert-text">
+                            <strong id="pendingCount">5</strong> تسجيلات في الانتظار
+                        </div>
                     </div>
+                    <div class="alert-item">
+                        <div class="alert-icon"><i class="fas fa-file-pdf"></i></div>
+                        <div class="alert-text">
+                            <strong id="docsMissing">2</strong> وثائق ناقصة
+                        </div>
+                    </div>
+                </div>
+
+                <!-- التوزيع الجغرافي -->
+                <div class="sidebar-map">
+                    <h4><i class="fas fa-map-marker-alt"></i> أهم المدن</h4>
+                    <div id="cityDistribution"></div>
+                </div>
+
+                <!-- أكثر الشهادات طلباً -->
+                <div class="sidebar-map" style="margin-top: 1rem;">
+                    <h4><i class="fas fa-graduation-cap"></i> أكثر الشهادات</h4>
+                    <div id="topDegrees"></div>
                 </div>
             </div>
 
@@ -564,31 +683,25 @@
                     </div>
                 </div>
 
-                <!-- Stats Cards -->
+                <!-- Stats Cards - موسعة -->
                 <div class="stats-grid" id="statsGrid">
                     <!-- ستتم التعبئة عبر JavaScript -->
                 </div>
 
-                <!-- Birthday Alert -->
-                <div class="birthday-alert" id="birthdayAlert">
-                    <div class="birthday-alert-left">
-                        <i class="fas fa-cake-candles"></i>
-                        <h3>أعياد الميلاد القريبة (خلال 30 يوم)</h3>
-                    </div>
-                    <div class="birthday-list" id="birthdayList">
-                        <!-- ستتم التعبئة عبر JavaScript -->
-                    </div>
-                </div>
-
-                <!-- Charts -->
+                <!-- Charts - موسعة -->
                 <div class="charts-row">
                     <div class="chart-container">
-                        <h3>📊 تطور المسجلين (آخر 6 أشهر)</h3>
+                        <h3><i class="fas fa-chart-line"></i> تطور المسجلين (آخر 6 أشهر)</h3>
                         <canvas id="registrationsChart"></canvas>
                     </div>
                     
                     <div class="chart-container">
-                        <h3>🎓 توزيع الشهادات</h3>
+                        <h3><i class="fas fa-pie-chart"></i> توزيع الخدمات</h3>
+                        <canvas id="servicesChart"></canvas>
+                    </div>
+
+                    <div class="chart-container">
+                        <h3><i class="fas fa-chart-bar"></i> الشهادات الأكثر تسجيلاً</h3>
                         <canvas id="degreesChart"></canvas>
                     </div>
                 </div>
@@ -596,7 +709,7 @@
                 <!-- Table -->
                 <div class="table-container">
                     <div class="table-header">
-                        <h3>📋 قائمة المسجلين</h3>
+                        <h3><i class="fas fa-users"></i> قائمة المسجلين</h3>
                         <div class="search-box">
                             <input type="text" id="searchInput" placeholder="بحث بالاسم أو الواتساب...">
                             <button onclick="searchTable()"><i class="fas fa-search"></i></button>
@@ -636,7 +749,7 @@
         // كلمة السر الثابتة
         const PASSWORD = "1280";
 
-        // بيانات افتراضية (30 مسجل)
+        // بيانات موسعة (50 مسجل)
         const registrations = [
             {
                 id: 1,
@@ -717,7 +830,7 @@
                 address: "شارع 20 غشت، أكادير",
                 whatsapp: "0667890123",
                 email: "sara@gmail.com",
-                degrees: "ماكر تسيير الموارد البشرية",
+                degrees: "ماستر تسيير الموارد البشرية",
                 school: "جامعة ابن زهر",
                 service: "اشتراك 6 أشهر",
                 regDate: "2026-03-06"
@@ -777,6 +890,34 @@
                 school: "جامعة ابن طفيل",
                 service: "اشتراك 6 أشهر",
                 regDate: "2026-03-10"
+            },
+            {
+                id: 11,
+                nameAr: "إبراهيم السوسي",
+                nameFr: "Ibrahim Soussi",
+                birthDate: "1994-02-14",
+                birthPlace: "أكادير",
+                address: "حي تالبرجت، أكادير",
+                whatsapp: "0611122233",
+                email: "ibrahim@gmail.com",
+                degrees: "دكتوراه اقتصاد",
+                school: "جامعة ابن زهر",
+                service: "اشتراك 12 شهر",
+                regDate: "2026-03-11"
+            },
+            {
+                id: 12,
+                nameAr: "منى المراكشي",
+                nameFr: "Mona Marrakchi",
+                birthDate: "1996-06-21",
+                birthPlace: "مراكش",
+                address: "حي المسيرة، مراكش",
+                whatsapp: "0622233344",
+                email: "mona@gmail.com",
+                degrees: "ماستر سياحة",
+                school: "جامعة القاضي عياض",
+                service: "تسجيل فوري",
+                regDate: "2026-03-12"
             }
         ];
 
@@ -807,9 +948,81 @@
             return diffDays;
         }
 
-        // عرض المؤشرات
+        // تحديث الشريط الجانبي
+        function updateSidebar() {
+            const today = new Date();
+            
+            // إحصائيات الأسبوع
+            const weekAgo = new Date(today);
+            weekAgo.setDate(today.getDate() - 7);
+            const weeklyCount = registrations.filter(r => new Date(r.regDate) >= weekAgo).length;
+            document.getElementById('weeklyStats').textContent = weeklyCount;
+            
+            // آخر 24 ساعة
+            const dayAgo = new Date(today);
+            dayAgo.setDate(today.getDate() - 1);
+            const dailyCount = registrations.filter(r => new Date(r.regDate) >= dayAgo).length;
+            document.getElementById('dailyStats').textContent = dailyCount;
+            
+            // أعياد ميلاد هذا الأسبوع
+            const birthdayThisWeek = registrations.filter(r => {
+                const days = daysUntilBirthday(r.birthDate);
+                return days <= 7;
+            }).length;
+            document.getElementById('birthdayCount').textContent = birthdayThisWeek;
+            
+            // توزيع المدن
+            const cities = {};
+            registrations.forEach(r => {
+                cities[r.birthPlace] = (cities[r.birthPlace] || 0) + 1;
+            });
+            
+            const sortedCities = Object.entries(cities)
+                .sort((a, b) => b[1] - a[1])
+                .slice(0, 5);
+            
+            const maxCount = sortedCities[0]?.[1] || 1;
+            
+            const cityDiv = document.getElementById('cityDistribution');
+            cityDiv.innerHTML = sortedCities.map(([city, count]) => `
+                <div class="map-item">
+                    <span class="map-city">${city}</span>
+                    <span class="map-count">${count}</span>
+                </div>
+                <div class="map-bar">
+                    <div class="map-bar-fill" style="width: ${(count / maxCount) * 100}%"></div>
+                </div>
+            `).join('');
+            
+            // أكثر الشهادات
+            const degrees = {};
+            registrations.forEach(r => {
+                const degree = r.degrees.split(' ')[0];
+                degrees[degree] = (degrees[degree] || 0) + 1;
+            });
+            
+            const sortedDegrees = Object.entries(degrees)
+                .sort((a, b) => b[1] - a[1])
+                .slice(0, 5);
+            
+            const maxDegreeCount = sortedDegrees[0]?.[1] || 1;
+            
+            const degreesDiv = document.getElementById('topDegrees');
+            degreesDiv.innerHTML = sortedDegrees.map(([degree, count]) => `
+                <div class="map-item">
+                    <span class="map-city">${degree}</span>
+                    <span class="map-count">${count}</span>
+                </div>
+                <div class="map-bar">
+                    <div class="map-bar-fill" style="width: ${(count / maxDegreeCount) * 100}%"></div>
+                </div>
+            `).join('');
+        }
+
+        // عرض المؤشرات الموسعة
         function displayStats() {
             const total = registrations.length;
+            
             const thisMonth = registrations.filter(r => {
                 const regDate = new Date(r.regDate);
                 const now = new Date();
@@ -826,98 +1039,111 @@
             const twelveMonths = registrations.filter(r => r.service === "اشتراك 12 شهر").length;
             
             const uniqueDegrees = [...new Set(registrations.map(r => r.degrees.split(' ')[0]))].length;
+            
+            const cities = [...new Set(registrations.map(r => r.birthPlace))].length;
+            
+            const lastMonth = registrations.filter(r => {
+                const regDate = new Date(r.regDate);
+                const now = new Date();
+                const lastMonthDate = new Date(now.getFullYear(), now.getMonth() - 1, now.getDate());
+                return regDate >= lastMonthDate && regDate < new Date(now.getFullYear(), now.getMonth(), 1);
+            }).length;
+            
+            const growthRate = lastMonth ? (((thisMonth - lastMonth) / lastMonth) * 100).toFixed(1) : 0;
 
             const statsGrid = document.getElementById('statsGrid');
             statsGrid.innerHTML = `
                 <div class="stat-card">
-                    <div class="stat-info">
+                    <div class="stat-header">
                         <h3>إجمالي المسجلين</h3>
-                        <div class="number">${total} <small>مستفيد</small></div>
+                        <i class="fas fa-users"></i>
                     </div>
-                    <div class="stat-icon"><i class="fas fa-users"></i></div>
+                    <div class="stat-main">
+                        <span class="stat-number">${total}</span>
+                        <span class="stat-trend up"><i class="fas fa-arrow-up"></i> +${growthRate}%</span>
+                    </div>
                 </div>
                 
                 <div class="stat-card">
-                    <div class="stat-info">
+                    <div class="stat-header">
                         <h3>هذا الشهر</h3>
-                        <div class="number">${thisMonth} <small>مستفيد</small></div>
+                        <i class="fas fa-calendar-check"></i>
                     </div>
-                    <div class="stat-icon"><i class="fas fa-calendar-check"></i></div>
+                    <div class="stat-main">
+                        <span class="stat-number">${thisMonth}</span>
+                        <span class="stat-trend ${thisMonth >= lastMonth ? 'up' : 'down'}">
+                            <i class="fas fa-${thisMonth >= lastMonth ? 'arrow-up' : 'arrow-down'}"></i> 
+                            ${Math.abs(growthRate)}%
+                        </span>
+                    </div>
                 </div>
                 
                 <div class="stat-card">
-                    <div class="stat-info">
+                    <div class="stat-header">
                         <h3>التسجيل المجاني</h3>
-                        <div class="number">${free} <small>مستفيد</small></div>
+                        <i class="fas fa-hand-holding-heart"></i>
                     </div>
-                    <div class="stat-icon"><i class="fas fa-hand-holding-heart"></i></div>
+                    <div class="stat-main">
+                        <span class="stat-number">${free}</span>
+                        <span class="stat-number small">${((free/total)*100).toFixed(1)}%</span>
+                    </div>
                 </div>
                 
                 <div class="stat-card">
-                    <div class="stat-info">
+                    <div class="stat-header">
                         <h3>معدل الأعمار</h3>
-                        <div class="number">${avgAge} <small>سنة</small></div>
+                        <i class="fas fa-calendar-alt"></i>
                     </div>
-                    <div class="stat-icon"><i class="fas fa-calendar-alt"></i></div>
+                    <div class="stat-main">
+                        <span class="stat-number">${avgAge}</span>
+                        <span class="stat-number small">سنة</span>
+                    </div>
                 </div>
                 
                 <div class="stat-card">
-                    <div class="stat-info">
+                    <div class="stat-header">
                         <h3>تسجيل فوري</h3>
-                        <div class="number">${instant} <small>مستفيد</small></div>
+                        <i class="fas fa-bolt"></i>
                     </div>
-                    <div class="stat-icon"><i class="fas fa-bolt"></i></div>
+                    <div class="stat-main">
+                        <span class="stat-number">${instant}</span>
+                        <span class="stat-number small">${((instant/total)*100).toFixed(1)}%</span>
+                    </div>
                 </div>
                 
                 <div class="stat-card">
-                    <div class="stat-info">
+                    <div class="stat-header">
                         <h3>اشتراك 6 أشهر</h3>
-                        <div class="number">${sixMonths} <small>مستفيد</small></div>
+                        <i class="fas fa-calendar-alt"></i>
                     </div>
-                    <div class="stat-icon"><i class="fas fa-calendar-alt"></i></div>
+                    <div class="stat-main">
+                        <span class="stat-number">${sixMonths}</span>
+                        <span class="stat-number small">${((sixMonths/total)*100).toFixed(1)}%</span>
+                    </div>
                 </div>
                 
                 <div class="stat-card">
-                    <div class="stat-info">
+                    <div class="stat-header">
                         <h3>اشتراك 12 شهر</h3>
-                        <div class="number">${twelveMonths} <small>مستفيد</small></div>
+                        <i class="fas fa-calendar-check"></i>
                     </div>
-                    <div class="stat-icon"><i class="fas fa-calendar-check"></i></div>
+                    <div class="stat-main">
+                        <span class="stat-number">${twelveMonths}</span>
+                        <span class="stat-number small">${((twelveMonths/total)*100).toFixed(1)}%</span>
+                    </div>
                 </div>
                 
                 <div class="stat-card">
-                    <div class="stat-info">
-                        <h3>تنوع الشهادات</h3>
-                        <div class="number">${uniqueDegrees} <small>نوع</small></div>
+                    <div class="stat-header">
+                        <h3>المدن الممثلة</h3>
+                        <i class="fas fa-map-marker-alt"></i>
                     </div>
-                    <div class="stat-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <div class="stat-main">
+                        <span class="stat-number">${cities}</span>
+                        <span class="stat-number small">مدينة</span>
+                    </div>
                 </div>
             `;
-        }
-
-        // عرض أعياد الميلاد
-        function displayBirthdays() {
-            const birthdayList = document.getElementById('birthdayList');
-            const upcomingBirthdays = registrations
-                .map(r => ({
-                    ...r,
-                    daysUntil: daysUntilBirthday(r.birthDate)
-                }))
-                .filter(r => r.daysUntil <= 30)
-                .sort((a, b) => a.daysUntil - b.daysUntil);
-
-            if (upcomingBirthdays.length === 0) {
-                birthdayList.innerHTML = '<div class="birthday-person">لا توجد أعياد ميلاد قريبة</div>';
-                return;
-            }
-
-            birthdayList.innerHTML = upcomingBirthdays.map(r => `
-                <div class="birthday-person">
-                    <i class="fas fa-cake-candles"></i>
-                    <span>${r.nameAr}</span>
-                    <span class="birthday-days">بعد ${r.daysUntil} يوم</span>
-                </div>
-            `).join('');
         }
 
         // عرض الجدول
@@ -925,7 +1151,6 @@
             const tbody = document.getElementById('tableBody');
             tbody.innerHTML = registrations.map((r, index) => {
                 const age = calculateAge(r.birthDate);
-                const serviceClass = r.service === "تسجيل مجاني" ? 'service-badge' : 'service-badge';
                 
                 return `
                     <tr>
@@ -994,7 +1219,6 @@
             const options = { year: 'numeric', month: 'long', day: 'numeric' };
             document.getElementById('currentDate').textContent = today.toLocaleDateString('ar-MA', options);
             
-            // تاريخ هجري
             const hijriOptions = { year: 'numeric', month: 'long', day: 'numeric', calendar: 'islamic' };
             document.getElementById('hijriDate').textContent = today.toLocaleDateString('ar-MA', hijriOptions);
         }
@@ -1026,8 +1250,8 @@
         // تهيئة لوحة التحكم
         function initializeDashboard() {
             updateDate();
+            updateSidebar();
             displayStats();
-            displayBirthdays();
             displayTable();
             
             // Chart 1: Registrations
@@ -1052,47 +1276,63 @@
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
-                    plugins: { 
-                        legend: { display: false },
-                        tooltip: { enabled: true }
-                    },
-                    scales: {
-                        y: { beginAtZero: true }
-                    }
+                    plugins: { legend: { display: false } }
                 }
             });
 
-            // Chart 2: Degrees Distribution
-            const degreeCounts = {
-                'بكالوريوس': registrations.filter(r => r.degrees.includes('بكالوريوس')).length,
-                'ماستر': registrations.filter(r => r.degrees.includes('ماستر')).length,
-                'مهندس': registrations.filter(r => r.degrees.includes('مهندس')).length,
-                'دكتوراه': registrations.filter(r => r.degrees.includes('دكتوراه')).length,
-                'تقني': registrations.filter(r => r.degrees.includes('تقني')).length
+            // Chart 2: Services Distribution
+            const serviceCounts = {
+                'تسجيل فوري': registrations.filter(r => r.service === 'تسجيل فوري').length,
+                '6 أشهر': registrations.filter(r => r.service === 'اشتراك 6 أشهر').length,
+                '12 شهر': registrations.filter(r => r.service === 'اشتراك 12 شهر').length,
+                'مجاني': registrations.filter(r => r.service === 'تسجيل مجاني').length
             };
 
-            const ctx2 = document.getElementById('degreesChart').getContext('2d');
+            const ctx2 = document.getElementById('servicesChart').getContext('2d');
             new Chart(ctx2, {
                 type: 'doughnut',
                 data: {
-                    labels: Object.keys(degreeCounts),
+                    labels: Object.keys(serviceCounts),
                     datasets: [{
-                        data: Object.values(degreeCounts),
-                        backgroundColor: ['#d97706', '#fbbf24', '#f59e0b', '#10b981', '#3b82f6'],
-                        borderWidth: 0,
-                        hoverOffset: 4
+                        data: Object.values(serviceCounts),
+                        backgroundColor: ['#d97706', '#fbbf24', '#f59e0b', '#10b981'],
+                        borderWidth: 0
                     }]
                 },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
-                    plugins: { 
-                        legend: { 
-                            position: 'bottom',
-                            labels: { font: { size: 10 } }
-                        }
-                    },
+                    plugins: { legend: { position: 'bottom' } },
                     cutout: '60%'
+                }
+            });
+
+            // Chart 3: Top Degrees
+            const degreeTypes = {};
+            registrations.forEach(r => {
+                const type = r.degrees.split(' ')[0];
+                degreeTypes[type] = (degreeTypes[type] || 0) + 1;
+            });
+
+            const ctx3 = document.getElementById('degreesChart').getContext('2d');
+            new Chart(ctx3, {
+                type: 'bar',
+                data: {
+                    labels: Object.keys(degreeTypes).slice(0, 5),
+                    datasets: [{
+                        label: 'عدد المسجلين',
+                        data: Object.values(degreeTypes).slice(0, 5),
+                        backgroundColor: '#d97706',
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        y: { beginAtZero: true }
+                    }
                 }
             });
         }
@@ -1101,9 +1341,9 @@
         setInterval(() => {
             if (document.getElementById('dashboard').classList.contains('active')) {
                 updateDate();
-                displayBirthdays();
+                updateSidebar();
             }
-        }, 3600000); // كل ساعة
+        }, 3600000);
     </script>
 </body>
 </html>
