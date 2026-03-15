@@ -103,7 +103,7 @@
         /* Header */
         .main-header {
             background: white;
-            padding: 0.8rem 1rem;
+            padding: 0.8rem 2rem;
             border-bottom: 1px solid #e2e8f0;
             display: flex;
             justify-content: space-between;
@@ -114,46 +114,68 @@
             left: 0;
             right: 0;
             z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
 
-        .header-logo .logo {
+        .header-logo {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .logo {
             font-size: 1.5rem;
             font-weight: 700;
             color: #0f172a;
         }
 
-        .header-logo .logo span {
+        .logo span {
             color: #d97706;
         }
 
-        .admin-welcome {
+        .admin-badge {
             background: #fef3c7;
-            padding: 0.4rem 0.8rem;
+            padding: 0.4rem 1rem;
             border-radius: 40px;
             color: #d97706;
             font-weight: 600;
-            display: inline-block;
-            margin-right: 1rem;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        .date-display {
+        .header-info {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .date-badge {
             background: #f1f5f9;
-            padding: 0.4rem 0.8rem;
+            padding: 0.4rem 1rem;
             border-radius: 40px;
             color: #475569;
-            display: inline-block;
-            font-size: 0.8rem;
-            margin-left: 1rem;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .logout-btn {
             background: none;
             border: 1px solid #e2e8f0;
-            padding: 0.4rem 0.8rem;
+            padding: 0.4rem 1rem;
             border-radius: 8px;
             color: #64748b;
             cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .logout-btn:hover {
+            background: #ef4444;
+            color: white;
+            border-color: #ef4444;
         }
 
         /* Main Content */
@@ -161,54 +183,78 @@
             margin-top: 70px;
             height: calc(100vh - 70px);
             overflow-y: auto;
-            padding: 1rem;
+            padding: 1.5rem;
         }
 
-        /* KPI Cards */
+        /* KPI Cards - محسنة */
         .kpi-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 0.8rem;
-            margin-bottom: 1rem;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
         }
 
         .kpi-card {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            border-radius: 16px;
-            padding: 1rem;
-            color: white;
+            background: white;
+            border-radius: 20px;
+            padding: 1.2rem;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s;
+        }
+
+        .kpi-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px -5px rgba(217, 119, 6, 0.2);
+            border-color: #d97706;
         }
 
         .kpi-header {
             display: flex;
             align-items: center;
-            gap: 0.8rem;
-            margin-bottom: 0.5rem;
+            justify-content: space-between;
+            margin-bottom: 1rem;
         }
 
         .kpi-icon {
-            width: 40px;
-            height: 40px;
-            background: rgba(217, 119, 6, 0.2);
-            border-radius: 12px;
+            width: 48px;
+            height: 48px;
+            background: #fef3c7;
+            border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: #d97706;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
         }
 
         .kpi-value {
-            font-size: 1.5rem;
+            font-size: 2rem;
             font-weight: 700;
+            color: #0f172a;
+            line-height: 1;
         }
 
-        /* Stats Grid */
+        .kpi-label {
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-top: 0.3rem;
+        }
+
+        .kpi-trend {
+            font-size: 0.8rem;
+            color: #10b981;
+            background: #d1fae5;
+            padding: 0.2rem 0.5rem;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        /* Stats Grid - محسنة */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 0.8rem;
-            margin-bottom: 1rem;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
         }
 
         .stat-card {
@@ -218,19 +264,34 @@
             border: 1px solid #e2e8f0;
         }
 
-        .stat-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 0.5rem;
+        .stat-title {
             color: #64748b;
             font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-title i {
+            color: #d97706;
+        }
+
+        .stat-main {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
         }
 
         .stat-number {
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             font-weight: 700;
             color: #0f172a;
+        }
+
+        .stat-sub {
+            color: #94a3b8;
+            font-size: 0.8rem;
         }
 
         /* Filter Section */
@@ -238,21 +299,47 @@
             background: white;
             border-radius: 16px;
             padding: 1rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid #e2e8f0;
+        }
+
+        .filter-title {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
             margin-bottom: 1rem;
+            color: #0f172a;
+            font-weight: 600;
+        }
+
+        .filter-title i {
+            color: #d97706;
         }
 
         .filter-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 0.8rem;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+        }
+
+        .filter-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        .filter-item label {
+            color: #64748b;
+            font-size: 0.75rem;
+            font-weight: 500;
         }
 
         .filter-item select, .filter-item input {
-            width: 100%;
-            padding: 0.5rem;
+            padding: 0.6rem;
             border: 1px solid #e2e8f0;
             border-radius: 8px;
             font-family: 'Cairo', sans-serif;
+            background: white;
         }
 
         .filter-actions {
@@ -262,15 +349,61 @@
         }
 
         .filter-actions button {
-            padding: 0.5rem 1rem;
+            padding: 0.6rem 1.2rem;
             border: none;
             border-radius: 8px;
             cursor: pointer;
+            font-weight: 500;
         }
 
-        .apply-filter {
+        .btn-primary {
             background: #d97706;
             color: white;
+        }
+
+        .btn-secondary {
+            background: #f1f5f9;
+            color: #64748b;
+        }
+
+        /* Birthday Alert */
+        .birthday-alert {
+            background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+            border-radius: 16px;
+            padding: 1rem 1.5rem;
+            margin-bottom: 1.5rem;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .birthday-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .birthday-info i {
+            font-size: 1.5rem;
+        }
+
+        .birthday-list {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .birthday-item {
+            background: rgba(255,255,255,0.2);
+            padding: 0.4rem 1rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         /* Table */
@@ -278,50 +411,107 @@
             background: white;
             border-radius: 16px;
             padding: 1rem;
+            border: 1px solid #e2e8f0;
+        }
+
+        .table-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .table-header h3 {
+            color: #0f172a;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .table-header h3 i {
+            color: #d97706;
+        }
+
+        .results-count {
+            color: #64748b;
+            font-size: 0.85rem;
         }
 
         .table-wrapper {
             overflow-x: auto;
+            max-height: 350px;
+            overflow-y: auto;
+            border: 1px solid #f1f5f9;
+            border-radius: 12px;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            min-width: 800px;
+            min-width: 900px;
             font-size: 0.85rem;
         }
 
         th {
             text-align: right;
-            padding: 0.8rem 0.5rem;
+            padding: 0.8rem;
             color: #64748b;
             font-weight: 600;
             font-size: 0.75rem;
             border-bottom: 2px solid #e2e8f0;
             background: #f8fafc;
+            position: sticky;
+            top: 0;
         }
 
         td {
-            padding: 0.7rem 0.5rem;
+            padding: 0.8rem;
             border-bottom: 1px solid #f1f5f9;
+            color: #334155;
         }
 
-        .service-badge {
-            background: #fef3c7;
-            color: #d97706;
-            padding: 0.2rem 0.5rem;
+        tr:hover {
+            background: #f8fafc;
+        }
+
+        .badge {
+            padding: 0.2rem 0.6rem;
             border-radius: 20px;
             font-size: 0.7rem;
+            font-weight: 600;
             display: inline-block;
         }
 
-        .details-btn {
+        .badge-success {
+            background: #d1fae5;
+            color: #10b981;
+        }
+
+        .badge-warning {
+            background: #fef3c7;
+            color: #d97706;
+        }
+
+        .badge-info {
+            background: #dbeafe;
+            color: #3b82f6;
+        }
+
+        .btn-details {
             background: none;
             border: 1px solid #e2e8f0;
-            padding: 0.3rem 0.6rem;
+            padding: 0.3rem 0.8rem;
             border-radius: 6px;
-            cursor: pointer;
             color: #64748b;
+            cursor: pointer;
+            font-size: 0.75rem;
+        }
+
+        .btn-details:hover {
+            background: #d97706;
+            color: white;
+            border-color: #d97706;
         }
 
         /* Modal */
@@ -346,11 +536,11 @@
         .modal-content {
             background: white;
             border-radius: 24px;
-            width: 100%;
-            max-width: 500px;
+            width: 90%;
+            max-width: 600px;
             max-height: 80vh;
             overflow-y: auto;
-            padding: 1.5rem;
+            padding: 2rem;
             position: relative;
         }
 
@@ -365,20 +555,37 @@
             color: #64748b;
         }
 
+        .modal-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #f1f5f9;
+        }
+
+        .modal-header h2 {
+            color: #0f172a;
+            font-size: 1.5rem;
+        }
+
+        .modal-header p {
+            color: #64748b;
+        }
+
         .info-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
+            gap: 1.2rem;
         }
 
         .info-item {
             border-bottom: 1px solid #f1f5f9;
-            padding-bottom: 0.4rem;
+            padding-bottom: 0.5rem;
         }
 
         .info-label {
             color: #64748b;
-            font-size: 0.7rem;
+            font-size: 0.75rem;
+            margin-bottom: 0.2rem;
         }
 
         .info-value {
@@ -386,7 +593,15 @@
             font-weight: 600;
         }
 
-        /* Responsive */
+        @media (max-width: 1024px) {
+            .kpi-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
         @media (max-width: 768px) {
             .kpi-grid, .stats-grid {
                 grid-template-columns: 1fr;
@@ -410,7 +625,7 @@
             <div class="logo">e<span>concours</span>.ma</div>
             <div class="hadith">"الله في عون العبد ما دام العبد في عون أخيه"</div>
             <h2>لوحة التحكم</h2>
-            <input type="password" id="passwordInput" placeholder="أدخل الرمز" maxlength="4">
+            <input type="password" id="passwordInput" placeholder="••••" maxlength="4">
             <button onclick="checkPassword()">دخول</button>
             <div class="error-message" id="errorMessage">رمز الدخول غير صحيح</div>
         </div>
@@ -419,47 +634,84 @@
     <!-- Dashboard -->
     <div class="dashboard-container" id="dashboard">
         <div class="main-header">
-            <div>
-                <span class="logo">e<span>concours</span>.ma</span>
-                <span class="admin-welcome" id="adminWelcome"></span>
+            <div class="header-logo">
+                <div class="logo">e<span>concours</span>.ma</div>
+                <div class="admin-badge" id="adminBadge">
+                    <i class="fas fa-user-circle"></i>
+                    <span id="adminName">...</span>
+                </div>
             </div>
-            <div>
-                <span class="date-display" id="currentDate"></span>
-                <button class="logout-btn" onclick="logout()">خروج</button>
+            <div class="header-info">
+                <div class="date-badge" id="dateDisplay">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span id="currentDate"></span>
+                </div>
+                <button class="logout-btn" onclick="logout()">تسجيل الخروج</button>
             </div>
         </div>
 
         <div class="main-content">
+            <!-- KPI Cards -->
             <div class="kpi-grid" id="kpiGrid"></div>
+
+            <!-- Stats Grid -->
             <div class="stats-grid" id="statsGrid"></div>
 
-            <!-- Filter -->
+            <!-- Birthday Alert -->
+            <div class="birthday-alert" id="birthdayAlert">
+                <div class="birthday-info">
+                    <i class="fas fa-cake-candles"></i>
+                    <span>أعياد الميلاد القريبة</span>
+                </div>
+                <div class="birthday-list" id="birthdayList"></div>
+            </div>
+
+            <!-- Filter Section -->
             <div class="filter-section">
+                <div class="filter-title">
+                    <i class="fas fa-filter"></i>
+                    <span>فلترة البيانات</span>
+                </div>
                 <div class="filter-grid">
                     <div class="filter-item">
+                        <label>الخدمة</label>
                         <select id="filterService">
-                            <option value="all">الكل</option>
+                            <option value="all">جميع الخدمات</option>
                             <option value="تسجيل فوري">تسجيل فوري</option>
-                            <option value="اشتراك 6 أشهر">6 أشهر</option>
-                            <option value="اشتراك 12 شهر">12 شهر</option>
-                            <option value="تسجيل مجاني">مجاني</option>
+                            <option value="اشتراك 6 أشهر">اشتراك 6 أشهر</option>
+                            <option value="اشتراك 12 شهر">اشتراك 12 شهر</option>
+                            <option value="تسجيل مجاني">تسجيل مجاني</option>
                         </select>
                     </div>
                     <div class="filter-item">
-                        <select id="filterCity"><option value="all">كل المدن</option></select>
+                        <label>المدينة</label>
+                        <select id="filterCity">
+                            <option value="all">جميع المدن</option>
+                        </select>
                     </div>
                     <div class="filter-item">
-                        <input type="text" id="filterName" placeholder="بحث بالاسم">
+                        <label>الشهادة</label>
+                        <select id="filterDegree">
+                            <option value="all">جميع الشهادات</option>
+                        </select>
+                    </div>
+                    <div class="filter-item">
+                        <label>بحث بالاسم</label>
+                        <input type="text" id="filterName" placeholder="أدخل الاسم...">
                     </div>
                     <div class="filter-actions">
-                        <button class="apply-filter" onclick="applyFilters()">تطبيق</button>
-                        <button onclick="resetFilters()">إعادة</button>
+                        <button class="btn-primary" onclick="applyFilters()">تطبيق</button>
+                        <button class="btn-secondary" onclick="resetFilters()">إعادة</button>
                     </div>
                 </div>
             </div>
 
             <!-- Table -->
             <div class="table-container">
+                <div class="table-header">
+                    <h3><i class="fas fa-users"></i> قائمة المسجلين</h3>
+                    <span class="results-count" id="resultsCount"></span>
+                </div>
                 <div class="table-wrapper">
                     <table id="registrationsTable">
                         <thead>
@@ -472,7 +724,7 @@
                                 <th>الخدمة</th>
                                 <th>تاريخ التسجيل</th>
                                 <th>الواتساب</th>
-                                <th></th>
+                                <th>الإجراءات</th>
                             </tr>
                         </thead>
                         <tbody id="tableBody"></tbody>
@@ -496,19 +748,37 @@
 
     <script>
         // المديرين
-        const admins = {"1280": "رضا السايح", "1997": "أيمن ممدوح"};
+        const admins = {
+            "1280": "رضا السايح",
+            "1997": "أيمن ممدوح"
+        };
+
         let currentAdmin = "";
         let registrations = [];
         let currentData = [];
 
-        // تحميل البيانات من JSON
-        fetch('data.json')
-            .then(response => response.json())
-            .then(data => {
-                registrations = data;
+        // تحميل البيانات
+        async function loadData() {
+            try {
+                const response = await fetch('data.json');
+                registrations = await response.json();
                 currentData = [...registrations];
-            })
-            .catch(error => console.error('خطأ في تحميل البيانات:', error));
+                if (document.getElementById('dashboard').classList.contains('active')) {
+                    updateDashboard();
+                }
+            } catch (error) {
+                console.error('خطأ في تحميل البيانات:', error);
+            }
+        }
+
+        // تحديث لوحة التحكم
+        function updateDashboard() {
+            displayKPIs();
+            displayStats();
+            displayBirthdays();
+            initFilters();
+            displayTable(currentData);
+        }
 
         // حساب العمر
         function calculateAge(birthDate) {
@@ -520,103 +790,230 @@
             return age;
         }
 
-        // عرض المؤشرات
+        // حساب الأيام حتى عيد الميلاد
+        function daysUntilBirthday(birthDate) {
+            const today = new Date();
+            const birth = new Date(birthDate);
+            const nextBirthday = new Date(today.getFullYear(), birth.getMonth(), birth.getDate());
+            if (today > nextBirthday) nextBirthday.setFullYear(today.getFullYear() + 1);
+            return Math.ceil((nextBirthday - today) / (1000 * 60 * 60 * 24));
+        }
+
+        // عرض مؤشرات KPI
         function displayKPIs() {
             if (!registrations.length) return;
+            
             const total = registrations.length;
-            const thisMonth = registrations.filter(r => new Date(r.regDate).getMonth() === new Date().getMonth()).length;
+            const thisMonth = registrations.filter(r => {
+                const regDate = new Date(r.regDate);
+                const now = new Date();
+                return regDate.getMonth() === now.getMonth() && regDate.getFullYear() === now.getFullYear();
+            }).length;
+            
+            const free = registrations.filter(r => r.service === "تسجيل مجاني").length;
             const cities = [...new Set(registrations.map(r => r.city))].length;
-            const paid = registrations.filter(r => r.service !== "تسجيل مجاني").length;
+            
+            const lastMonth = registrations.filter(r => {
+                const regDate = new Date(r.regDate);
+                const now = new Date();
+                const lastMonth = new Date(now.getFullYear(), now.getMonth() - 1, 1);
+                return regDate >= lastMonth && regDate < new Date(now.getFullYear(), now.getMonth(), 1);
+            }).length;
+            
+            const growth = lastMonth ? (((thisMonth - lastMonth) / lastMonth) * 100).toFixed(1) : 0;
 
             document.getElementById('kpiGrid').innerHTML = `
                 <div class="kpi-card">
-                    <div class="kpi-header"><div class="kpi-icon"><i class="fas fa-users"></i></div><div class="kpi-value">${total}</div></div>
-                    <div>إجمالي المسجلين</div>
+                    <div class="kpi-header">
+                        <div class="kpi-icon"><i class="fas fa-users"></i></div>
+                        <div class="kpi-value">${total}</div>
+                    </div>
+                    <div class="kpi-label">إجمالي المسجلين</div>
+                    <span class="kpi-trend"><i class="fas fa-arrow-up"></i> ${growth}%</span>
                 </div>
                 <div class="kpi-card">
-                    <div class="kpi-header"><div class="kpi-icon"><i class="fas fa-calendar"></i></div><div class="kpi-value">${thisMonth}</div></div>
-                    <div>هذا الشهر</div>
+                    <div class="kpi-header">
+                        <div class="kpi-icon"><i class="fas fa-calendar-check"></i></div>
+                        <div class="kpi-value">${thisMonth}</div>
+                    </div>
+                    <div class="kpi-label">هذا الشهر</div>
                 </div>
                 <div class="kpi-card">
-                    <div class="kpi-header"><div class="kpi-icon"><i class="fas fa-city"></i></div><div class="kpi-value">${cities}</div></div>
-                    <div>مدينة</div>
+                    <div class="kpi-header">
+                        <div class="kpi-icon"><i class="fas fa-hand-holding-heart"></i></div>
+                        <div class="kpi-value">${free}</div>
+                    </div>
+                    <div class="kpi-label">تسجيل مجاني</div>
+                    <span class="kpi-trend">${((free/total)*100).toFixed(1)}%</span>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-header">
+                        <div class="kpi-icon"><i class="fas fa-city"></i></div>
+                        <div class="kpi-value">${cities}</div>
+                    </div>
+                    <div class="kpi-label">مدن مختلفة</div>
                 </div>
             `;
         }
 
+        // عرض المؤشرات الإضافية
         function displayStats() {
             if (!registrations.length) return;
+            
             const ages = registrations.map(r => calculateAge(r.birthDate));
             const avgAge = (ages.reduce((a, b) => a + b, 0) / ages.length).toFixed(1);
+            const minAge = Math.min(...ages);
+            const maxAge = Math.max(...ages);
             
+            const services = {
+                'فوري': registrations.filter(r => r.service === 'تسجيل فوري').length,
+                '6 أشهر': registrations.filter(r => r.service === 'اشتراك 6 أشهر').length,
+                '12 شهر': registrations.filter(r => r.service === 'اشتراك 12 شهر').length,
+                'مجاني': registrations.filter(r => r.service === 'تسجيل مجاني').length
+            };
+
             document.getElementById('statsGrid').innerHTML = `
-                <div class="stat-card"><div class="stat-header">معدل الأعمار</div><div class="stat-number">${avgAge}</div></div>
-                <div class="stat-card"><div class="stat-header">أصغر مسجل</div><div class="stat-number">${Math.min(...ages)}</div></div>
-                <div class="stat-card"><div class="stat-header">أكبر مسجل</div><div class="stat-number">${Math.max(...ages)}</div></div>
-                <div class="stat-card"><div class="stat-header">مدن</div><div class="stat-number">${[...new Set(registrations.map(r => r.city))].length}</div></div>
+                <div class="stat-card">
+                    <div class="stat-title"><i class="fas fa-calendar-alt"></i> معدل الأعمار</div>
+                    <div class="stat-main">
+                        <span class="stat-number">${avgAge}</span>
+                        <span class="stat-sub">سنة</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-title"><i class="fas fa-child"></i> أصغر مسجل</div>
+                    <div class="stat-main">
+                        <span class="stat-number">${minAge}</span>
+                        <span class="stat-sub">سنة</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-title"><i class="fas fa-user-tie"></i> أكبر مسجل</div>
+                    <div class="stat-main">
+                        <span class="stat-number">${maxAge}</span>
+                        <span class="stat-sub">سنة</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-title"><i class="fas fa-chart-pie"></i> الاشتراكات</div>
+                    <div class="stat-main">
+                        <span class="stat-number">${services['فوري']+services['6 أشهر']+services['12 شهر']}</span>
+                        <span class="stat-sub">مدفوع</span>
+                    </div>
+                </div>
             `;
         }
 
-        // تهيئة خيارات المدن
-        function initCityFilter() {
+        // عرض أعياد الميلاد
+        function displayBirthdays() {
+            const upcoming = registrations
+                .map(r => ({...r, days: daysUntilBirthday(r.birthDate)}))
+                .filter(r => r.days <= 30)
+                .sort((a, b) => a.days - b.days)
+                .slice(0, 5);
+
+            const list = document.getElementById('birthdayList');
+            
+            if (upcoming.length === 0) {
+                list.innerHTML = '<div class="birthday-item">لا توجد أعياد قريبة</div>';
+                return;
+            }
+
+            list.innerHTML = upcoming.map(r => `
+                <div class="birthday-item">
+                    <i class="fas fa-cake-candles"></i>
+                    <span>${r.nameAr}</span>
+                    <span style="background:rgba(255,255,255,0.3); padding:0.1rem 0.4rem; border-radius:20px; font-size:0.7rem;">${r.days} يوم</span>
+                </div>
+            `).join('');
+        }
+
+        // تهيئة خيارات الفلتر
+        function initFilters() {
             const cities = [...new Set(registrations.map(r => r.city))].sort();
-            const select = document.getElementById('filterCity');
-            cities.forEach(city => select.innerHTML += `<option value="${city}">${city}</option>`);
+            const degrees = [...new Set(registrations.map(r => r.degrees.split(' ')[0]))].sort();
+            
+            const citySelect = document.getElementById('filterCity');
+            const degreeSelect = document.getElementById('filterDegree');
+            
+            citySelect.innerHTML = '<option value="all">جميع المدن</option>';
+            degreeSelect.innerHTML = '<option value="all">جميع الشهادات</option>';
+            
+            cities.forEach(city => {
+                citySelect.innerHTML += `<option value="${city}">${city}</option>`;
+            });
+            
+            degrees.forEach(degree => {
+                degreeSelect.innerHTML += `<option value="${degree}">${degree}</option>`;
+            });
         }
 
         // عرض الجدول
         function displayTable(data) {
             const tbody = document.getElementById('tableBody');
-            tbody.innerHTML = data.map((r, i) => `
-                <tr>
-                    <td>${i+1}</td>
-                    <td>${r.nameAr}</td>
-                    <td>${r.nameFr}</td>
-                    <td>${r.birthDate}</td>
-                    <td>${r.city}</td>
-                    <td><span class="service-badge">${r.service}</span></td>
-                    <td>${r.regDate}</td>
-                    <td>${r.whatsapp}</td>
-                    <td><button class="details-btn" onclick='showDetails(${JSON.stringify(r).replace(/'/g, "\\'")})'>عرض</button></td>
-                </tr>
-            `).join('');
+            document.getElementById('resultsCount').textContent = `عرض ${data.length} من ${registrations.length} سجل`;
+            
+            tbody.innerHTML = data.map((r, i) => {
+                const serviceClass = r.service === 'تسجيل مجاني' ? 'badge-success' : 'badge-warning';
+                return `
+                    <tr>
+                        <td>${i+1}</td>
+                        <td><strong>${r.nameAr}</strong></td>
+                        <td>${r.nameFr}</td>
+                        <td>${r.birthDate}</td>
+                        <td>${r.city}</td>
+                        <td><span class="badge ${serviceClass}">${r.service}</span></td>
+                        <td>${r.regDate}</td>
+                        <td>${r.whatsapp}</td>
+                        <td><button class="btn-details" onclick='showDetails(${JSON.stringify(r).replace(/'/g, "\\'")})'><i class="fas fa-eye"></i> عرض</button></td>
+                    </tr>
+                `;
+            }).join('');
         }
 
-        // الفلترة
+        // تطبيق الفلاتر
         function applyFilters() {
             const service = document.getElementById('filterService').value;
             const city = document.getElementById('filterCity').value;
+            const degree = document.getElementById('filterDegree').value;
             const name = document.getElementById('filterName').value.toLowerCase();
 
-            currentData = registrations.filter(r => 
-                (service === 'all' || r.service === service) &&
-                (city === 'all' || r.city === city) &&
-                (name === '' || r.nameAr.includes(name) || r.nameFr.toLowerCase().includes(name))
-            );
+            currentData = registrations.filter(r => {
+                if (service !== 'all' && r.service !== service) return false;
+                if (city !== 'all' && r.city !== city) return false;
+                if (degree !== 'all' && !r.degrees.includes(degree)) return false;
+                if (name && !r.nameAr.includes(name) && !r.nameFr.toLowerCase().includes(name)) return false;
+                return true;
+            });
+
             displayTable(currentData);
         }
 
         function resetFilters() {
             document.getElementById('filterService').value = 'all';
             document.getElementById('filterCity').value = 'all';
+            document.getElementById('filterDegree').value = 'all';
             document.getElementById('filterName').value = '';
             currentData = [...registrations];
             displayTable(currentData);
         }
 
-        // التفاصيل
+        // عرض التفاصيل
         function showDetails(p) {
             document.getElementById('modalName').textContent = p.nameAr;
             document.getElementById('modalNameFr').textContent = p.nameFr;
+            
             document.getElementById('modalContent').innerHTML = `
                 <div class="info-item"><div class="info-label">رقم البطاقة</div><div class="info-value">${p.cin}</div></div>
                 <div class="info-item"><div class="info-label">مكان الإزدياد</div><div class="info-value">${p.birthPlace}</div></div>
                 <div class="info-item"><div class="info-label">العنوان</div><div class="info-value">${p.address}</div></div>
-                <div class="info-item"><div class="info-label">البريد</div><div class="info-value">${p.email}</div></div>
+                <div class="info-item"><div class="info-label">البريد الإلكتروني</div><div class="info-value">${p.email}</div></div>
                 <div class="info-item"><div class="info-label">الشهادة</div><div class="info-value">${p.degrees}</div></div>
                 <div class="info-item"><div class="info-label">المدرسة</div><div class="info-value">${p.school}</div></div>
-                <div class="info-item"><div class="info-label">العمر</div><div class="info-value">${calculateAge(p.birthDate)}</div></div>
+                <div class="info-item"><div class="info-label">العمر</div><div class="info-value">${calculateAge(p.birthDate)} سنة</div></div>
+                <div class="info-item"><div class="info-label">الخدمة</div><div class="info-value">${p.service}</div></div>
             `;
+            
             document.getElementById('detailsModal').classList.add('active');
         }
 
@@ -624,22 +1021,25 @@
             document.getElementById('detailsModal').classList.remove('active');
         }
 
-        // الدخول
+        // تحديث التاريخ
+        function updateDate() {
+            const today = new Date();
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('currentDate').textContent = today.toLocaleDateString('ar-MA', options);
+        }
+
+        // التحقق من كلمة السر
         function checkPassword() {
             const code = document.getElementById('passwordInput').value;
+            
             if (admins[code]) {
                 currentAdmin = admins[code];
-                document.getElementById('adminWelcome').textContent = currentAdmin;
+                document.getElementById('adminName').textContent = currentAdmin;
                 document.getElementById('loginPage').style.display = 'none';
                 document.getElementById('dashboard').classList.add('active');
-                
-                // انتظر تحميل البيانات
-                setTimeout(() => {
-                    displayKPIs();
-                    displayStats();
-                    initCityFilter();
-                    displayTable(registrations);
-                }, 500);
+                loadData();
+                updateDate();
+                setInterval(updateDate, 60000);
             } else {
                 document.getElementById('errorMessage').style.display = 'block';
             }
@@ -648,13 +1048,14 @@
         function logout() {
             document.getElementById('loginPage').style.display = 'flex';
             document.getElementById('dashboard').classList.remove('active');
+            document.getElementById('passwordInput').value = '';
+            document.getElementById('errorMessage').style.display = 'none';
         }
 
-        // تحديث التاريخ
-        setInterval(() => {
-            const today = new Date();
-            document.getElementById('currentDate').textContent = today.toLocaleDateString('ar-MA');
-        }, 1000);
+        // الاستماع لضغط Enter
+        document.getElementById('passwordInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') checkPassword();
+        });
     </script>
 </body>
 </html>
