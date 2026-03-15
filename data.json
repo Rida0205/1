@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "nameAr": "أحمد بن محمد",
+    "nameFr": "Ahmed Ben Mohamed",
+    "birthDate": "1995-03-20",
+    "birthPlace": "الدار البيضاء",
+    "address": "شارع محمد الخامس، الدار البيضاء",
+    "cin": "BE123456",
+    "whatsapp": "0612345678",
+    "email": "ahmed@gmail.com",
+    "degrees": "بكالوريوس إدارة أعمال",
+    "school": "جامعة الحسن الثاني",
+    "service": "اشتراك 12 شهر",
+    "regDate": "2026-03-01",
+    "city": "الدار البيضاء"
+  },
+  {
+    "id": 2,
+    "nameAr": "فاطمة الزهراء",
+    "nameFr": "Fatima Zahra",
+    "birthDate": "1998-05-15",
+    "birthPlace": "الرباط",
+    "address": "حي أكدال، الرباط",
+    "cin": "LJ789012",
+    "whatsapp": "0623456789",
+    "email": "fatima@gmail.com",
+    "degrees": "ماستر قانون",
+    "school": "جامعة محمد الخامس",
+    "service": "اشتراك 6 أشهر",
+    "regDate": "2026-03-02",
+    "city": "الرباط"
+  }
+]
