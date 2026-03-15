@@ -25,7 +25,7 @@
             transition: background-color 0.3s, color 0.3s;
         }
 
-        /* ========== الوضع الليلي - محسن بالكامل ========== */
+        /* ========== الوضع الليلي ========== */
         body.dark-mode {
             background: #0f172a;
             color: #e2e8f0;
@@ -300,31 +300,33 @@
             display: block;
         }
 
-        /* ========== Header محسن للهاتف ========== */
+        /* ========== Header - النصوص لا تختفي أبداً ========== */
         .main-header {
             background: white;
-            padding: 0.5rem 0.8rem;
+            padding: 0.5rem 1rem;
             border-bottom: 1px solid #e2e8f0;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 60px;
+            height: auto;
+            min-height: 60px;
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             z-index: 100;
+            flex-wrap: wrap;
         }
 
         .header-logo {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            flex-shrink: 0;
+            gap: 0.8rem;
+            flex-wrap: wrap;
         }
 
         .logo {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: 700;
             color: #0f172a;
             white-space: nowrap;
@@ -336,56 +338,62 @@
 
         .admin-badge {
             background: #fef3c7;
-            padding: 0.25rem 0.6rem;
+            padding: 0.3rem 0.8rem;
             border-radius: 40px;
             color: #d97706;
             font-weight: 600;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             display: flex;
             align-items: center;
-            gap: 0.3rem;
+            gap: 0.4rem;
             white-space: nowrap;
         }
 
         .header-info {
             display: flex;
             align-items: center;
-            gap: 0.4rem;
+            gap: 0.5rem;
             flex-wrap: wrap;
             justify-content: flex-end;
         }
 
         .date-badge {
             background: #f1f5f9;
-            padding: 0.25rem 0.6rem;
+            padding: 0.3rem 0.8rem;
             border-radius: 40px;
             color: #475569;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             display: flex;
             align-items: center;
-            gap: 0.3rem;
+            gap: 0.4rem;
             white-space: nowrap;
         }
 
         .theme-toggle {
             background: #f1f5f9;
             border: none;
-            padding: 0.25rem 0.6rem;
+            padding: 0.3rem 0.8rem;
             border-radius: 40px;
             color: #475569;
             cursor: pointer;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
             white-space: nowrap;
         }
 
         .logout-btn {
             background: none;
             border: 1px solid #e2e8f0;
-            padding: 0.25rem 0.6rem;
+            padding: 0.3rem 0.8rem;
             border-radius: 8px;
             color: #64748b;
             cursor: pointer;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
             white-space: nowrap;
         }
 
@@ -767,7 +775,7 @@
             border-color: #d97706;
         }
 
-        /* ========== Modal محسن ========== */
+        /* Modal */
         .modal {
             display: none;
             position: fixed;
@@ -862,42 +870,22 @@
             word-break: break-word;
         }
 
-        /* Responsive */
+        /* ========== Responsive - النصوص لا تختفي أبداً ========== */
         @media (max-width: 768px) {
             .main-header {
-                padding: 0.4rem 0.6rem;
+                padding: 0.5rem;
+                height: auto;
+                flex-direction: column;
+                align-items: stretch;
             }
 
             .header-logo {
-                gap: 0.3rem;
-            }
-
-            .logo {
-                font-size: 1rem;
-            }
-
-            .admin-badge {
-                padding: 0.2rem 0.4rem;
-                font-size: 0.7rem;
+                justify-content: space-between;
+                margin-bottom: 0.3rem;
             }
 
             .header-info {
-                gap: 0.3rem;
-            }
-
-            .date-badge {
-                padding: 0.2rem 0.4rem;
-                font-size: 0.7rem;
-            }
-
-            .theme-toggle {
-                padding: 0.2rem 0.4rem;
-                font-size: 0.7rem;
-            }
-
-            .logout-btn {
-                padding: 0.2rem 0.4rem;
-                font-size: 0.7rem;
+                justify-content: space-between;
             }
 
             .kpi-grid {
@@ -957,40 +945,48 @@
         }
 
         @media (max-width: 480px) {
+            .main-header {
+                padding: 0.4rem;
+            }
+
+            .header-logo {
+                gap: 0.3rem;
+            }
+
+            .logo {
+                font-size: 1rem;
+            }
+
+            .admin-badge {
+                font-size: 0.75rem;
+                padding: 0.2rem 0.5rem;
+            }
+
+            .header-info {
+                gap: 0.3rem;
+            }
+
+            .date-badge {
+                font-size: 0.75rem;
+                padding: 0.2rem 0.5rem;
+            }
+
+            .theme-toggle {
+                font-size: 0.75rem;
+                padding: 0.2rem 0.5rem;
+            }
+
+            .logout-btn {
+                font-size: 0.75rem;
+                padding: 0.2rem 0.5rem;
+            }
+
             .kpi-grid {
                 grid-template-columns: 1fr;
             }
 
             .stats-grid {
                 grid-template-columns: 1fr;
-            }
-
-            .logo {
-                font-size: 0.9rem;
-            }
-
-            .admin-badge span {
-                display: none;
-            }
-
-            .date-badge span {
-                display: none;
-            }
-
-            .theme-toggle span {
-                display: none;
-            }
-
-            .logout-btn span {
-                display: none;
-            }
-
-            .admin-badge i {
-                margin: 0;
-            }
-
-            .date-badge i {
-                margin: 0;
             }
 
             .modal-content {
