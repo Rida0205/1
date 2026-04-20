@@ -3,13 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dr. Sophie Moreau - Chirurgien-Dentiste</title>
+    <title>Dr. Chaymaa Bougrine | Centre Dentaire BOUGRINE - Tiflet</title>
     
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:wght@400;600;700&amp;display=swap" rel="stylesheet">
+    
+    <!-- Flatpickr Calendar CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
     <style>
         * {
@@ -145,7 +148,7 @@
 
         .hero-title {
             font-family: 'Playfair Display', serif;
-            font-size: 52px;
+            font-size: 48px;
             font-weight: 700;
             line-height: 1.2;
             color: #0f172a;
@@ -205,6 +208,8 @@
             gap: 8px;
             box-shadow: 0 4px 12px rgba(14, 165, 233, 0.25);
             transition: all 0.2s;
+            border: none;
+            cursor: pointer;
         }
 
         .btn-primary:hover {
@@ -244,19 +249,13 @@
             overflow: hidden;
         }
 
-        .image-main img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
         .image-placeholder {
             width: 100%;
             height: 100%;
             display: flex;
             align-items: flex-end;
             justify-content: center;
-            background: url('https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80') center/cover;
+            background: url('https://images.unsplash.com/photo-1629909613654-28e377c37b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80') center/cover;
         }
 
         .image-badge {
@@ -316,17 +315,18 @@
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: 24px;
             padding: 40px 0;
         }
 
         .service-card {
             background: white;
-            padding: 32px;
+            padding: 24px;
             border-radius: 24px;
             border: 1px solid #f1f5f9;
             transition: all 0.3s;
+            text-align: center;
         }
 
         .service-card:hover {
@@ -344,19 +344,19 @@
             justify-content: center;
             color: #0ea5e9;
             font-size: 28px;
-            margin-bottom: 24px;
+            margin: 0 auto 24px;
         }
 
         .service-card h3 {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 600;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
             color: #0f172a;
         }
 
         .service-card p {
             color: #64748b;
-            font-size: 15px;
+            font-size: 14px;
         }
 
         /* About Section */
@@ -394,33 +394,32 @@
             font-size: 16px;
         }
 
-        .diplomas {
-            display: flex;
-            gap: 20px;
-            margin-top: 32px;
-        }
-
-        .diploma-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .diploma-item i {
-            color: #0ea5e9;
-            font-size: 20px;
-        }
-
-        /* Hours Section */
-        .hours {
-            background: linear-gradient(135deg, #0f172a, #1e293b);
-            border-radius: 40px;
-            padding: 48px;
-            margin: 40px 0;
-            color: white;
+        /* Map & Hours Section */
+        .info-section {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 40px;
+            padding: 40px 0;
+        }
+
+        .map-container {
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            height: 400px;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .hours {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            border-radius: 24px;
+            padding: 48px;
+            color: white;
         }
 
         .hours-content h3 {
@@ -451,80 +450,27 @@
             font-weight: 600;
         }
 
-        .emergency {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 24px;
+        /* RDV Section avec Calendrier */
+        .rdv-section {
+            background: #f8fafc;
+            border-radius: 40px;
+            padding: 60px;
+            margin: 60px 0;
             text-align: center;
         }
 
-        .emergency i {
-            font-size: 40px;
-            color: #f87171;
-            margin-bottom: 16px;
+        .calendar-wrapper {
+            max-width: 500px;
+            margin: 40px auto;
         }
 
-        .emergency h4 {
-            font-size: 20px;
-            margin-bottom: 12px;
+        #calendar {
+            width: 100%;
+            padding: 20px 0;
         }
 
-        .emergency .phone {
-            font-size: 28px;
-            font-weight: 700;
-            color: white;
-            text-decoration: none;
-        }
-
-        /* Testimonials */
-        .testimonials {
-            padding: 60px 0;
-        }
-
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-        }
-
-        .testimonial-card {
-            background: white;
-            padding: 32px;
-            border-radius: 24px;
-            border: 1px solid #f1f5f9;
-        }
-
-        .testimonial-stars {
-            color: #eab308;
-            margin-bottom: 20px;
-        }
-
-        .testimonial-text {
-            color: #334155;
-            font-size: 15px;
-            margin-bottom: 24px;
-            font-style: italic;
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .author-avatar {
-            width: 48px;
-            height: 48px;
-            background: #e2e8f0;
-            border-radius: 50%;
-        }
-
-        .author-info h4 {
-            font-weight: 600;
-            color: #0f172a;
-        }
-
-        .author-info p {
+        .rdv-note {
+            margin-top: 20px;
             color: #64748b;
             font-size: 14px;
         }
@@ -540,7 +486,7 @@
 
         .footer-grid {
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
+            grid-template-columns: 2fr 1fr 1fr;
             gap: 40px;
             margin-bottom: 40px;
         }
@@ -602,66 +548,6 @@
             color: #64748b;
         }
 
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .hero {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            
-            .hero-description {
-                max-width: 100%;
-            }
-            
-            .hero-features {
-                align-items: center;
-            }
-            
-            .hero-buttons {
-                justify-content: center;
-            }
-            
-            .services-grid,
-            .testimonials-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .about,
-            .footer-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .image-badge {
-                left: 20px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .header {
-                flex-direction: column;
-                gap: 20px;
-            }
-            
-            .nav {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            
-            .services-grid,
-            .testimonials-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .hours {
-                grid-template-columns: 1fr;
-                padding: 32px;
-            }
-            
-            .hero-title {
-                font-size: 36px;
-            }
-        }
-
         /* WhatsApp Float Button */
         .whatsapp-float {
             position: fixed;
@@ -686,6 +572,64 @@
             transform: scale(1.1);
             box-shadow: 0 12px 30px rgba(37, 211, 102, 0.4);
         }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .hero-description {
+                max-width: 100%;
+            }
+            
+            .hero-features {
+                align-items: center;
+            }
+            
+            .hero-buttons {
+                justify-content: center;
+            }
+            
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .about,
+            .footer-grid,
+            .info-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .image-badge {
+                left: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-title {
+                font-size: 36px;
+            }
+            
+            .rdv-section {
+                padding: 30px 20px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -697,13 +641,13 @@
                     <i class="fas fa-tooth"></i>
                 </div>
                 <div class="logo-text">
-                    <h1>Dr. Sophie Moreau</h1>
-                    <span>CHIRURGIEN-DENTISTE</span>
+                    <h1>Dr. Chaymaa Bougrine</h1>
+                    <span>CENTRE DENTAIRE BOUGRINE</span>
                 </div>
             </div>
             <div class="header-contact">
-                <a href="tel:+33123456789"><i class="fas fa-phone-alt"></i> 01 23 45 67 89</a>
-                <a href="#" class="btn-rdv"><i class="far fa-calendar-alt"></i> Prendre RDV</a>
+                <a href="tel:+212530366919"><i class="fas fa-phone-alt"></i> 05 30 36 69 19</a>
+                <a href="#" class="btn-rdv" onclick="scrollToCalendar()"><i class="far fa-calendar-alt"></i> Prendre RDV</a>
             </div>
         </header>
 
@@ -720,22 +664,22 @@
         <!-- Hero Section -->
         <section class="hero">
             <div class="hero-content">
-                <span class="hero-badge"><i class="fas fa-star"></i> Plus de 15 ans d'expérience</span>
+                <span class="hero-badge"><i class="fas fa-map-pin"></i> Tiflet, Maroc</span>
                 <h1 class="hero-title">
-                    Votre sourire est <br>
-                    <i>notre priorité</i>
+                    Votre sourire <br>
+                    <i>notre passion</i>
                 </h1>
                 <p class="hero-description">
-                    Des soins dentaires d'excellence dans un cadre apaisant et moderne au cœur de Paris.
+                    Des soins dentaires d'excellence dans un cadre moderne et apaisant au cœur de Tiflet.
                 </p>
                 <div class="hero-features">
                     <div class="feature-item">
                         <div class="feature-icon"><i class="fas fa-check"></i></div>
-                        <span>Technologies de pointe (Caméra 3D, Radio panoramique)</span>
+                        <span>Soins dentaires · Prothèse · Orthodontie · Chirurgie</span>
                     </div>
                     <div class="feature-item">
                         <div class="feature-icon"><i class="fas fa-check"></i></div>
-                        <span>Prise en charge immédiate des urgences dentaires</span>
+                        <span>Implantologie · Blanchiment · Radiologie</span>
                     </div>
                     <div class="feature-item">
                         <div class="feature-icon"><i class="fas fa-check"></i></div>
@@ -743,8 +687,8 @@
                     </div>
                 </div>
                 <div class="hero-buttons">
-                    <a href="#" class="btn-primary"><i class="far fa-calendar-check"></i> RDV en ligne</a>
-                    <a href="#" class="btn-secondary"><i class="fas fa-phone-alt"></i> Appeler</a>
+                    <a href="#" class="btn-primary" onclick="scrollToCalendar()"><i class="far fa-calendar-check"></i> RDV en ligne</a>
+                    <a href="tel:+212530366919" class="btn-secondary"><i class="fas fa-phone-alt"></i> Appeler</a>
                 </div>
             </div>
             <div class="hero-image">
@@ -757,7 +701,7 @@
                     </div>
                     <div class="badge-text">
                         <h4>Cabinet certifié</h4>
-                        <p>Normes ISO 9001</p>
+                        <p>Qualité & Confiance</p>
                     </div>
                 </div>
             </div>
@@ -772,33 +716,43 @@
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-icon"><i class="fas fa-teeth"></i></div>
-                    <h3>Soins conservateurs</h3>
-                    <p>Traitement des caries, dévitalisation, reconstitution coronaire avec des matériaux biocompatibles.</p>
+                    <h3>Soins dentaires</h3>
+                    <p>Traitement des caries, dévitalisation, reconstitution coronaire.</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon"><i class="fas fa-smile"></i></div>
-                    <h3>Esthétique dentaire</h3>
-                    <p>Facettes céramiques, blanchiment professionnel, sourire Hollywood sur mesure.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-bone"></i></div>
-                    <h3>Implantologie</h3>
-                    <p>Remplacement des dents manquantes par des implants de dernière génération.</p>
+                    <h3>Prothèse dentaire</h3>
+                    <p>Couronnes, bridges, prothèses amovibles et fixes.</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon"><i class="fas fa-teeth-open"></i></div>
                     <h3>Orthodontie</h3>
-                    <p>Aligneurs invisibles (Invisalign) pour adultes et adolescents.</p>
+                    <p>Alignement dentaire pour adultes et adolescents.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-bone"></i></div>
+                    <h3>Implantologie</h3>
+                    <p>Remplacement des dents manquantes par des implants.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-syringe"></i></div>
+                    <h3>Chirurgie</h3>
+                    <p>Extractions, chirurgie buccale, greffes osseuses.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-star"></i></div>
+                    <h3>Blanchiment</h3>
+                    <p>Blanchiment professionnel pour un sourire éclatant.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-x-ray"></i></div>
+                    <h3>Radiologie</h3>
+                    <p>Radio panoramique et 3D pour un diagnostic précis.</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon"><i class="fas fa-child"></i></div>
                     <h3>Pédodontie</h3>
-                    <p>Soins adaptés aux enfants dans une ambiance ludique et rassurante.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-gem"></i></div>
-                    <h3>Parodontologie</h3>
-                    <p>Traitement des maladies des gencives et assainissement parodontal.</p>
+                    <p>Soins adaptés aux enfants dans une ambiance rassurante.</p>
                 </div>
             </div>
         </section>
@@ -807,10 +761,9 @@
         <section class="about">
             <div class="about-image"></div>
             <div class="about-content">
-                <h2>Dr. Sophie Moreau, <span class="highlight">Chirurgien-Dentiste</span></h2>
-                <p>Diplômée de la Faculté de Chirurgie Dentaire de l'Université Paris Cité, le Dr. Moreau exerce depuis plus de 15 ans avec une philosophie centrée sur le patient.</p>
-                <p>Passionnée par les nouvelles technologies, elle se forme continuellement aux techniques les plus récentes pour garantir des soins indolores, précis et durables.</p>
-                <p>Son approche : <strong>"Soigner avec empathie, restaurer avec art, préserver avec science."</strong></p>
+                <h2>Dr. Chaymaa Bougrine, <span class="highlight">Chirurgien-Dentiste</span></h2>
+                <p>Le Centre Dentaire BOUGRINE vous accueille à Tiflet dans un cadre moderne et chaleureux. Le Dr. Chaymaa Bougrine et son équipe mettent tout en œuvre pour vous offrir des soins de qualité, personnalisés et adaptés à vos besoins.</p>
+                <p>Notre approche : <strong>"Soigner avec empathie, restaurer avec art, préserver avec science."</strong></p>
                 <div class="diplomas">
                     <div class="diploma-item">
                         <i class="fas fa-graduation-cap"></i>
@@ -818,99 +771,58 @@
                     </div>
                     <div class="diploma-item">
                         <i class="fas fa-certificate"></i>
-                        <span>CES Prothèses &amp; Esthétique</span>
-                    </div>
-                    <div class="diploma-item">
-                        <i class="fas fa-award"></i>
-                        <span>Invisalign Provider</span>
+                        <span>Implantologie & Esthétique</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Hours & Emergency -->
-        <section class="hours">
-            <div class="hours-content">
-                <h3>Horaires d'ouverture</h3>
-                <p>Le cabinet vous accueille du lundi au samedi.</p>
-                <div class="schedule">
-                    <div class="schedule-item">
-                        <span>Lundi - Mercredi</span>
-                        <span>09h00 - 19h00</span>
+        <!-- Map & Hours Section -->
+        <section class="info-section">
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3306.471103630471!2d-6.3603234!3d33.8913368!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda714b3b9c7b5b1%3A0x1e1f1e7a5d5c5b5b!2sTiflet!5e0!3m2!1sfr!2sma!4v1620000000000!5m2!1sfr!2sma" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <div class="hours">
+                <div class="hours-content">
+                    <h3>Horaires d'ouverture</h3>
+                    <p>Le cabinet vous accueille du lundi au samedi.</p>
+                    <div class="schedule">
+                        <div class="schedule-item"><span>Lundi</span> <span>09h00 – 18h00</span></div>
+                        <div class="schedule-item"><span>Mardi</span> <span>09h00 – 18h00</span></div>
+                        <div class="schedule-item"><span>Mercredi</span> <span>09h00 – 18h00</span></div>
+                        <div class="schedule-item"><span>Jeudi</span> <span>09h00 – 18h00</span></div>
+                        <div class="schedule-item"><span>Vendredi</span> <span>09h00 – 18h00</span></div>
+                        <div class="schedule-item"><span>Samedi</span> <span>09h00 – 13h00</span></div>
+                        <div class="schedule-item"><span>Dimanche</span> <span>Fermé</span></div>
                     </div>
-                    <div class="schedule-item">
-                        <span>Jeudi</span>
-                        <span>10h00 - 20h00</span>
-                    </div>
-                    <div class="schedule-item">
-                        <span>Vendredi</span>
-                        <span>09h00 - 17h00</span>
-                    </div>
-                    <div class="schedule-item">
-                        <span>Samedi</span>
-                        <span>09h00 - 13h00</span>
-                    </div>
-                    <div class="schedule-item">
-                        <span>Dimanche</span>
-                        <span>Fermé</span>
+                    <div style="margin-top: 32px; display: flex; gap: 16px;">
+                        <a href="https://maps.app.goo.gl/TJ4eZFBm2o4SRwrV9" target="_blank" class="btn-secondary" style="background: transparent; color: white; border-color: #475569;">
+                            <i class="fas fa-map-marker-alt"></i> Itinéraire
+                        </a>
+                        <a href="tel:+212530366919" class="btn-primary" style="padding: 12px 24px;">
+                            <i class="fas fa-phone-alt"></i> Urgence
+                        </a>
                     </div>
                 </div>
             </div>
-            <div class="emergency">
-                <i class="fas fa-ambulance"></i>
-                <h4>Urgence dentaire ?</h4>
-                <p>Nous réservons des créneaux quotidiens pour les urgences. Appelez-nous immédiatement.</p>
-                <a href="tel:+33123456789" class="phone">01 23 45 67 89</a>
-            </div>
         </section>
 
-        <!-- Testimonials -->
-        <section class="testimonials">
+        <!-- RDV Section avec Calendrier -->
+        <section class="rdv-section" id="rdv">
             <div class="section-title">
-                <h2>Ce que disent nos patients</h2>
-                <p>Votre satisfaction est notre plus belle récompense</p>
+                <h2>Prendre un rendez-vous</h2>
+                <p>Sélectionnez une date et confirmez votre rendez-vous via WhatsApp</p>
             </div>
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="testimonial-stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    <p class="testimonial-text">"Un cabinet magnifique et une équipe aux petits soins. Le Dr. Moreau est très douce et explique parfaitement chaque étape du soin. Je recommande les yeux fermés."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar"></div>
-                        <div class="author-info">
-                            <h4>Isabelle R.</h4>
-                            <p>Patiente depuis 2018</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    <p class="testimonial-text">"Grâce aux aligneurs Invisalign, mon sourire a complètement changé en quelques mois. Résultat bluffant et aucun inconfort. Un grand merci à toute l'équipe !"</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar"></div>
-                        <div class="author-info">
-                            <h4>Thomas M.</h4>
-                            <p>Patient depuis 2022</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    <p class="testimonial-text">"J'avais très peur du dentiste. L'équipe a su me mettre en confiance et le soin s'est déroulé sans aucune douleur. Je n'ai plus peur de venir !"</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar"></div>
-                        <div class="author-info">
-                            <h4>Sarah L.</h4>
-                            <p>Patiente depuis 2021</p>
-                        </div>
-                    </div>
-                </div>
+            <div class="calendar-wrapper">
+                <input type="text" id="calendar" placeholder="Choisir une date">
             </div>
+            <button class="btn-primary" id="confirmRdvBtn" style="margin-top: 20px;">
+                <i class="fab fa-whatsapp"></i> Confirmer le rendez-vous sur WhatsApp
+            </button>
+            <p class="rdv-note">
+                <i class="fas fa-info-circle"></i> 
+                Vous serez redirigé vers WhatsApp pour finaliser votre demande de rendez-vous.
+            </p>
         </section>
     </div>
 
@@ -924,37 +836,27 @@
                             <i class="fas fa-tooth"></i>
                         </div>
                         <div class="logo-text">
-                            <h1 style="color: white;">Dr. Sophie Moreau</h1>
-                            <span style="color: #94a3b8;">CHIRURGIEN-DENTISTE</span>
+                            <h1 style="color: white;">Dr. Chaymaa Bougrine</h1>
+                            <span style="color: #94a3b8;">CENTRE DENTAIRE BOUGRINE</span>
                         </div>
                     </div>
-                    <p>123 Avenue des Champs-Élysées<br>75008 Paris, France</p>
-                    <p><i class="fas fa-phone-alt"></i> 01 23 45 67 89<br>
-                    <i class="fas fa-envelope"></i> contact@dr-moreau.fr</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Tiflet, Maroc</p>
+                    <p><i class="fas fa-phone-alt"></i> 05 30 36 69 19<br>
+                    <i class="fab fa-whatsapp"></i> 06 63 64 06 04<br>
+                    <i class="fas fa-envelope"></i> contact@centredentairebougrine.ma</p>
                     <div class="footer-social">
+                        <a href="https://www.instagram.com/dr.chaymaabougrine" target="_blank"><i class="fab fa-instagram"></i></a>
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
                 <div class="footer-links">
                     <h4>Soins</h4>
                     <ul>
                         <li><a href="#">Consultation</a></li>
-                        <li><a href="#">Détartrage</a></li>
-                        <li><a href="#">Soins caries</a></li>
-                        <li><a href="#">Dévitalisation</a></li>
-                        <li><a href="#">Extraction</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4>Esthétique</h4>
-                    <ul>
-                        <li><a href="#">Blanchiment</a></li>
-                        <li><a href="#">Facettes</a></li>
-                        <li><a href="#">Invisalign</a></li>
-                        <li><a href="#">Implants</a></li>
-                        <li><a href="#">Couronnes</a></li>
+                        <li><a href="#">Soins dentaires</a></li>
+                        <li><a href="#">Prothèse</a></li>
+                        <li><a href="#">Orthodontie</a></li>
+                        <li><a href="#">Implantologie</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
@@ -963,25 +865,67 @@
                         <li><a href="#">À propos</a></li>
                         <li><a href="#">Tarifs</a></li>
                         <li><a href="#">Mentions légales</a></li>
-                        <li><a href="#">CGV</a></li>
                         <li><a href="#">Contact</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>© 2024 Dr. Sophie Moreau - Chirurgien-Dentiste. Tous droits réservés.</p>
+                <p>© 2024 Centre Dentaire BOUGRINE - Dr. Chaymaa Bougrine. Tous droits réservés.</p>
             </div>
         </div>
     </footer>
 
     <!-- WhatsApp Float Button -->
-    <a href="https://wa.me/33123456789" class="whatsapp-float" target="_blank">
+    <a href="https://wa.me/212663646064" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- Simple JavaScript for interactions -->
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/fr.js"></script>
     <script>
-        // Smooth scroll for anchor links
+        // Initialisation du calendrier Flatpickr
+        const calendar = flatpickr("#calendar", {
+            locale: "fr",
+            dateFormat: "d/m/Y",
+            minDate: "today",
+            disable: [
+                function(date) {
+                    // Désactiver les dimanches (0 = dimanche)
+                    return date.getDay() === 0;
+                }
+            ],
+            onChange: function(selectedDates, dateStr, instance) {
+                // Stocker la date sélectionnée
+                window.selectedDate = dateStr;
+            }
+        });
+
+        // Fonction pour faire défiler jusqu'au calendrier
+        function scrollToCalendar() {
+            document.getElementById('rdv').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Gestion du clic sur le bouton de confirmation
+        document.getElementById('confirmRdvBtn').addEventListener('click', function() {
+            const selectedDate = window.selectedDate;
+            
+            if (!selectedDate) {
+                alert('Veuillez sélectionner une date pour votre rendez-vous.');
+                return;
+            }
+
+            // Numéro WhatsApp (format international sans + ni espaces)
+            const phoneNumber = '212663646064';
+            
+            // Message pré-rempli
+            const message = `Bonjour Dr. Chaymaa Bougrine,%0A%0AJe souhaiterais prendre un rendez-vous pour le ${selectedDate}.%0A%0APouvez-vous me confirmer la disponibilité ?%0A%0AMerci d'avance.`;
+            
+            // Ouvrir WhatsApp
+            window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+        });
+
+        // Smooth scroll pour les ancres
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1014,12 +958,7 @@
             }
         });
 
-        // Add 'loaded' class to body for animations
-        window.addEventListener('load', function() {
-            document.body.classList.add('loaded');
-        });
-
-        console.log('Site du Dr. Sophie Moreau - Prêt à vous recevoir ! 🦷');
+        console.log('Centre Dentaire BOUGRINE - Dr. Chaymaa Bougrine | Tiflet, Maroc 🦷');
     </script>
 </body>
 </html>
