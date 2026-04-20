@@ -1,1408 +1,1025 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>لوحة القيادة - econcours.ma</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- الفافيكون -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg fill='%23d97706' height='200px' width='200px' version='1.1' id='Capa_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 474.565 474.565'%3E%3Cg%3E%3Cpath d='M255.204,102.3c-0.606-11.321-12.176-9.395-23.465-9.395C240.078,95.126,247.967,98.216,255.204,102.3z'%3E%3C/path%3E%3Cpath d='M134.524,73.928c-43.825,0-63.997,55.471-28.963,83.37c11.943-31.89,35.718-54.788,66.886-63.826 C163.921,81.685,150.146,73.928,134.524,73.928z'%3E%3C/path%3E%3Cpath d='M43.987,148.617c1.786,5.731,4.1,11.229,6.849,16.438L36.44,179.459c-3.866,3.866-3.866,10.141,0,14.015l25.375,25.383 c1.848,1.848,4.38,2.888,7.019,2.888c2.61,0,5.125-1.04,7.005-2.888l14.38-14.404c2.158,1.142,4.55,1.842,6.785,2.827 c0-0.164-0.016-0.334-0.016-0.498c0-11.771,1.352-22.875,3.759-33.302c-17.362-11.174-28.947-30.57-28.947-52.715 c0-34.592,28.139-62.739,62.723-62.739c23.418,0,43.637,13.037,54.43,32.084c11.523-1.429,22.347-1.429,35.376,1.033 c-1.676-5.07-3.648-10.032-6.118-14.683l14.396-14.411c1.878-1.856,2.918-4.38,2.918-7.004c0-2.625-1.04-5.148-2.918-7.004 l-25.361-25.367c-1.94-1.941-4.472-2.904-7.003-2.904c-2.532,0-5.063,0.963-6.989,2.904l-14.442,14.411 c-5.217-2.764-10.699-5.078-16.444-6.825V9.9c0-5.466-4.411-9.9-9.893-9.9h-35.888c-5.451,0-9.909,4.434-9.909,9.9v20.359 c-5.73,1.747-11.213,4.061-16.446,6.825L75.839,22.689c-1.942-1.941-4.473-2.904-7.005-2.904c-2.531,0-5.077,0.963-7.003,2.896 L36.44,48.048c-1.848,1.864-2.888,4.379-2.888,7.012c0,2.632,1.04,5.148,2.888,7.004l14.396,14.403 c-2.75,5.218-5.063,10.708-6.817,16.438H23.675c-5.482,0-9.909,4.441-9.909,9.915v35.889c0,5.458,4.427,9.908,9.909,9.908H43.987z'%3E%3C/path%3E%3Cpath d='M354.871,340.654c15.872-8.705,26.773-25.367,26.773-44.703c0-28.217-22.967-51.168-51.184-51.168 c-9.923,0-19.118,2.966-26.975,7.873c-4.705,18.728-12.113,36.642-21.803,52.202C309.152,310.022,334.357,322.531,354.871,340.654z'%3E%3C/path%3E%3Cpath d='M460.782,276.588c0-5.909-4.799-10.693-10.685-10.693H428.14c-1.896-6.189-4.411-12.121-7.393-17.75l15.544-15.544 c2.02-2.004,3.137-4.721,3.137-7.555c0-2.835-1.118-5.553-3.137-7.563l-27.363-27.371c-2.08-2.09-4.829-3.138-7.561-3.138 c-2.734,0-5.467,1.048-7.547,3.138l-15.576,15.552c-5.623-2.982-11.539-5.481-17.751-7.369v-21.958 c0-5.901-4.768-10.685-10.669-10.685H311.11c-2.594,0-4.877,1.04-6.739,2.578c3.26,11.895,5.046,24.793,5.046,38.552 c0,8.735-0.682,17.604-1.956,26.423c7.205-2.656,14.876-4.324,22.999-4.324c36.99,0,67.086,30.089,67.086,67.07 c0,23.637-12.345,44.353-30.872,56.303c13.48,14.784,24.195,32.324,31.168,51.976c1.148,0.396,2.344,0.684,3.54,0.684 c2.733,0,5.467-1.04,7.563-3.13l27.379-27.371c2.004-2.004,3.106-4.721,3.106-7.555s-1.102-5.551-3.106-7.563l-15.576-15.552 c2.982-5.621,5.497-11.555,7.393-17.75h21.957c2.826,0,5.575-1.118,7.563-3.138c2.004-1.996,3.138-4.72,3.138-7.555 L460.782,276.588z'%3E%3C/path%3E%3Cpath d='M376.038,413.906c-16.602-48.848-60.471-82.445-111.113-87.018c-16.958,17.958-37.954,29.351-61.731,29.351 c-23.759,0-44.771-11.392-61.713-29.351c-50.672,4.573-94.543,38.17-111.145,87.026l-9.177,27.013 c-2.625,7.773-1.368,16.338,3.416,23.007c4.783,6.671,12.486,10.631,20.685,10.631h315.853c8.215,0,15.918-3.96,20.702-10.631 c4.767-6.669,6.041-15.234,3.4-23.007L376.038,413.906z'%3E%3C/path%3E%3Cpath d='M120.842,206.782c0,60.589,36.883,125.603,82.352,125.603c45.487,0,82.368-65.014,82.368-125.603 C285.563,81.188,120.842,80.939,120.842,206.782z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Sophie Moreau - Chirurgien-Dentiste</title>
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:wght@400;600;700&amp;display=swap" rel="stylesheet">
+
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Cairo', sans-serif;
         }
 
         body {
-            background: #f0f2f5;
-            height: 100vh;
-            overflow: hidden;
-            transition: background-color 0.3s, color 0.3s;
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #1e293b;
+            line-height: 1.5;
         }
 
-        /* ========== الوضع الليلي ========== */
-        body.dark-mode {
-            background: #0f172a;
-            color: #e2e8f0;
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
         }
 
-        body.dark-mode .login-box {
-            background: #1e293b;
-            border: 1px solid #334155;
-        }
-
-        body.dark-mode .login-box .logo {
-            color: #f1f5f9;
-        }
-
-        body.dark-mode .login-box .logo span {
-            color: #fbbf24;
-        }
-
-        body.dark-mode .login-box .hadith {
-            background: #2d3a4f;
-            color: #fbbf24;
-        }
-
-        body.dark-mode .login-box input {
-            background: #0f172a;
-            border-color: #334155;
-            color: #e2e8f0;
-        }
-
-        body.dark-mode .main-header {
-            background: #1e293b;
-            border-bottom-color: #334155;
-        }
-
-        body.dark-mode .logo {
-            color: #f1f5f9;
-        }
-
-        body.dark-mode .logo span {
-            color: #fbbf24;
-        }
-
-        body.dark-mode .admin-badge {
-            background: #2d3a4f;
-            color: #fbbf24;
-        }
-
-        body.dark-mode .date-badge {
-            background: #2d3a4f;
-            color: #94a3b8;
-        }
-
-        body.dark-mode .kpi-card,
-        body.dark-mode .stat-card,
-        body.dark-mode .filter-section,
-        body.dark-mode .table-container {
-            background: #1e293b;
-            border-color: #334155;
-        }
-
-        body.dark-mode .kpi-value,
-        body.dark-mode .stat-number,
-        body.dark-mode .filter-title,
-        body.dark-mode .table-header h3 {
-            color: #f1f5f9;
-        }
-
-        body.dark-mode .kpi-label,
-        body.dark-mode .stat-title,
-        body.dark-mode .results-count {
-            color: #94a3b8;
-        }
-
-        body.dark-mode .kpi-icon {
-            background: #2d3a4f;
-            color: #fbbf24;
-        }
-
-        body.dark-mode .filter-item select,
-        body.dark-mode .filter-item input {
-            background: #0f172a;
-            border-color: #334155;
-            color: #e2e8f0;
-        }
-
-        body.dark-mode .btn-secondary {
-            background: #334155;
-            color: #e2e8f0;
-        }
-
-        body.dark-mode th {
-            background: #0f172a;
-            color: #94a3b8;
-            border-bottom-color: #334155;
-        }
-
-        body.dark-mode td {
-            color: #cbd5e1;
-            border-bottom-color: #334155;
-        }
-
-        body.dark-mode .badge-warning {
-            background: #854d0e;
-            color: #fcd34d;
-        }
-
-        body.dark-mode .badge-success {
-            background: #065f46;
-            color: #6ee7b7;
-        }
-
-        body.dark-mode .badge-info {
-            background: #1e3a8a;
-            color: #93c5fd;
-        }
-
-        body.dark-mode .btn-details {
-            border-color: #475569;
-            color: #94a3b8;
-        }
-
-        body.dark-mode .btn-details:hover {
-            background: #fbbf24;
-            color: #0f172a;
-        }
-
-        body.dark-mode .modal-content {
-            background: #1e293b;
-            border: 1px solid #334155;
-        }
-
-        body.dark-mode .modal-header {
-            border-bottom-color: #334155;
-        }
-
-        body.dark-mode .modal-header h2,
-        body.dark-mode .modal-header p {
-            color: #f1f5f9;
-        }
-
-        body.dark-mode .info-item {
-            border-bottom-color: #334155;
-        }
-
-        body.dark-mode .info-label {
-            color: #94a3b8;
-        }
-
-        body.dark-mode .info-value {
-            color: #f1f5f9;
-        }
-
-        /* ========== أزرار التطبيق السفلية ========== */
-        .app-bottom-bar {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: white;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            padding: 0.5rem 1rem;
-            border-top: 1px solid #e2e8f0;
-            z-index: 1000;
-            height: 65px;
-        }
-
-        body.dark-mode .app-bottom-bar {
-            background: #1e293b;
-            border-top-color: #334155;
-        }
-
-        .bottom-btn {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 0.2rem;
-            background: none;
-            border: none;
-            color: #64748b;
-            font-size: 0.7rem;
-            cursor: pointer;
-            padding: 0.3rem 0.8rem;
-            border-radius: 8px;
-            transition: all 0.2s;
-        }
-
-        .bottom-btn i {
-            font-size: 1.3rem;
-            color: #d97706;
-        }
-
-        .bottom-btn span {
-            font-size: 0.65rem;
-        }
-
-        body.dark-mode .bottom-btn {
-            color: #94a3b8;
-        }
-
-        body.dark-mode .bottom-btn i {
-            color: #fbbf24;
-        }
-
-        .bottom-btn:hover {
-            background: #f1f5f9;
-        }
-
-        body.dark-mode .bottom-btn:hover {
-            background: #334155;
-        }
-
-        /* Login Page */
-        .login-container {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #0b1120 0%, #1a2634 100%);
-            padding: 1rem;
-        }
-
-        .login-box {
-            background: white;
-            border-radius: 30px;
-            padding: 2rem 1.5rem;
-            width: 100%;
-            max-width: 380px;
-            text-align: center;
-        }
-
-        .login-box .logo {
-            font-size: 2.2rem;
-            font-weight: 700;
-            color: #0f172a;
-        }
-
-        .login-box .logo span {
-            color: #d97706;
-        }
-
-        .login-box .hadith {
-            color: #d97706;
-            font-size: 0.9rem;
-            margin: 1rem 0;
-            padding: 0.8rem;
-            background: #fef3c7;
-            border-radius: 15px;
-        }
-
-        .login-box h2 {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            color: #334155;
-        }
-
-        .login-box input {
-            width: 100%;
-            padding: 0.8rem;
-            margin-bottom: 1rem;
-            border: 2px solid #e2e8f0;
-            border-radius: 12px;
-            font-size: 1.1rem;
-            text-align: center;
-            letter-spacing: 4px;
-        }
-
-        .login-box button {
-            width: 100%;
-            padding: 0.8rem;
-            background: #d97706;
-            color: white;
-            border: none;
-            border-radius: 12px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-        }
-
-        .error-message {
-            color: #ef4444;
-            margin-top: 1rem;
-            display: none;
-        }
-
-        /* Dashboard */
-        .dashboard-container {
-            display: none;
-            height: 100vh;
-            overflow: hidden;
-        }
-
-        .dashboard-container.active {
-            display: block;
-        }
-
-        /* ========== Header مختصر ========== */
-        .main-header {
-            background: white;
-            padding: 0.5rem 1rem;
-            border-bottom: 1px solid #e2e8f0;
+        /* Header */
+        .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 60px;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 100;
-        }
-
-        .header-logo {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
+            padding: 20px 0;
+            border-bottom: 1px solid #e2e8f0;
         }
 
         .logo {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: #0f172a;
-            white-space: nowrap;
-        }
-
-        .logo span {
-            color: #d97706;
-        }
-
-        .admin-badge {
-            background: #fef3c7;
-            padding: 0.3rem 0.8rem;
-            border-radius: 40px;
-            color: #d97706;
-            font-weight: 600;
-            font-size: 0.85rem;
             display: flex;
             align-items: center;
-            gap: 0.4rem;
-            white-space: nowrap;
+            gap: 12px;
         }
 
-        .header-info {
-            display: flex;
-            align-items: center;
-        }
-
-        .date-badge {
-            background: #f1f5f9;
-            padding: 0.3rem 0.8rem;
-            border-radius: 40px;
-            color: #475569;
-            font-size: 0.85rem;
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-            white-space: nowrap;
-        }
-
-        /* Main Content - مع مساحة للأسفل */
-        .main-content {
-            margin-top: 60px;
-            margin-bottom: 65px;
-            height: calc(100vh - 60px - 65px);
-            overflow-y: auto;
-            padding: 1rem;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        /* KPI Cards */
-        .kpi-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .kpi-card {
-            background: white;
-            border-radius: 16px;
-            padding: 1.2rem;
-            border: 1px solid #e2e8f0;
-            transition: all 0.3s;
-        }
-
-        .kpi-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px -5px rgba(217, 119, 6, 0.2);
-            border-color: #d97706;
-        }
-
-        .kpi-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 0.8rem;
-        }
-
-        .kpi-icon {
-            width: 40px;
-            height: 40px;
-            background: #fef3c7;
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #0ea5e9, #3b82f6);
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #d97706;
-            font-size: 1.2rem;
-        }
-
-        .kpi-value {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #0f172a;
-        }
-
-        .kpi-label {
-            color: #64748b;
-            font-size: 0.85rem;
-        }
-
-        /* Stats Grid */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .stat-card {
-            background: white;
-            border-radius: 14px;
-            padding: 1rem;
-            border: 1px solid #e2e8f0;
-        }
-
-        .stat-title {
-            color: #64748b;
-            font-size: 0.8rem;
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-            margin-bottom: 0.4rem;
-        }
-
-        .stat-title i {
-            color: #d97706;
-        }
-
-        .stat-main {
-            display: flex;
-            align-items: baseline;
-            justify-content: space-between;
-        }
-
-        .stat-number {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #0f172a;
-        }
-
-        .stat-name {
-            font-size: 0.8rem;
-            color: #64748b;
-            max-width: 120px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-
-        /* Birthday Alert */
-        .birthday-alert {
-            background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
-            border-radius: 16px;
-            padding: 1rem 1.2rem;
-            margin-bottom: 1.5rem;
             color: white;
+            font-size: 24px;
         }
 
-        .birthday-header {
+        .logo-text h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: #0f172a;
+        }
+
+        .logo-text span {
+            font-size: 14px;
+            color: #64748b;
+            letter-spacing: 2px;
+        }
+
+        .header-contact {
             display: flex;
             align-items: center;
-            gap: 0.8rem;
-            margin-bottom: 1rem;
+            gap: 24px;
         }
 
-        .birthday-header i {
-            font-size: 1.3rem;
+        .header-contact a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #1e293b;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
         }
 
-        .birthday-header span {
-            font-size: 1.1rem;
+        .header-contact a:hover {
+            color: #0ea5e9;
+        }
+
+        .btn-rdv {
+            background: linear-gradient(135deg, #0ea5e9, #3b82f6);
+            color: white !important;
+            padding: 12px 24px;
+            border-radius: 50px;
             font-weight: 600;
+            box-shadow: 0 4px 12px rgba(14, 165, 233, 0.25);
         }
 
-        .birthday-list {
+        .btn-rdv:hover {
+            box-shadow: 0 6px 16px rgba(14, 165, 233, 0.35);
+            transform: translateY(-1px);
+        }
+
+        /* Navigation */
+        .nav {
+            display: flex;
+            gap: 32px;
+            padding: 16px 0;
+        }
+
+        .nav a {
+            color: #475569;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav a:hover {
+            color: #0ea5e9;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            padding: 60px 0;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: #e0f2fe;
+            color: #0369a1;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 52px;
+            font-weight: 700;
+            line-height: 1.2;
+            color: #0f172a;
+            margin-bottom: 20px;
+        }
+
+        .hero-title i {
+            color: #0ea5e9;
+            font-style: italic;
+        }
+
+        .hero-description {
+            font-size: 18px;
+            color: #475569;
+            margin-bottom: 32px;
+            max-width: 500px;
+        }
+
+        .hero-features {
             display: flex;
             flex-direction: column;
-            gap: 0.5rem;
+            gap: 16px;
+            margin-bottom: 32px;
         }
 
-        .birthday-item {
-            background: rgba(255,255,255,0.15);
-            padding: 0.6rem 1rem;
-            border-radius: 40px;
-            font-size: 0.9rem;
+        .feature-item {
             display: flex;
             align-items: center;
-            gap: 0.8rem;
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255,255,255,0.2);
+            gap: 12px;
         }
 
-        .birthday-item i {
-            font-size: 1rem;
-        }
-
-        .birthday-days {
-            background: rgba(255,255,255,0.3);
-            padding: 0.2rem 0.6rem;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            margin-right: auto;
-        }
-
-        /* Filter Section */
-        .filter-section {
-            background: white;
-            border-radius: 16px;
-            padding: 1.2rem;
-            margin-bottom: 1.5rem;
-            border: 1px solid #e2e8f0;
-        }
-
-        .filter-title {
+        .feature-icon {
+            width: 36px;
+            height: 36px;
+            background: #f0f9ff;
+            border-radius: 50%;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-            font-size: 1rem;
-            font-weight: 600;
-            color: #0f172a;
+            justify-content: center;
+            color: #0ea5e9;
         }
 
-        .filter-title i {
-            color: #d97706;
-        }
-
-        .filter-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 1rem;
-        }
-
-        .filter-item select, .filter-item input {
-            width: 100%;
-            padding: 0.7rem;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            font-family: 'Cairo', sans-serif;
-            font-size: 0.9rem;
-        }
-
-        .filter-actions {
+        .hero-buttons {
             display: flex;
-            gap: 1rem;
-            align-items: flex-end;
-        }
-
-        .filter-actions button {
-            padding: 0.7rem 1.5rem;
-            border: none;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            cursor: pointer;
-            font-weight: 500;
+            gap: 16px;
         }
 
         .btn-primary {
-            background: #d97706;
+            background: linear-gradient(135deg, #0ea5e9, #3b82f6);
             color: white;
+            padding: 16px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 12px rgba(14, 165, 233, 0.25);
+            transition: all 0.2s;
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 6px 20px rgba(14, 165, 233, 0.35);
+            transform: translateY(-2px);
         }
 
         .btn-secondary {
-            background: #f1f5f9;
-            color: #64748b;
-        }
-
-        /* Table */
-        .table-container {
             background: white;
-            border-radius: 16px;
-            padding: 1.2rem;
-            border: 1px solid #e2e8f0;
-            margin-bottom: 1rem;
-        }
-
-        .table-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-
-        .table-header h3 {
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: #0f172a;
-        }
-
-        .table-header h3 i {
-            color: #d97706;
-        }
-
-        .results-count {
-            color: #64748b;
-            font-size: 0.9rem;
-        }
-
-        .table-wrapper {
-            overflow-x: auto;
-            max-height: 350px;
-            overflow-y: auto;
-            border: 1px solid #f1f5f9;
-            border-radius: 10px;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            min-width: 900px;
-            font-size: 0.9rem;
-        }
-
-        th {
-            text-align: right;
-            padding: 0.8rem;
-            color: #64748b;
+            color: #1e293b;
+            padding: 16px 32px;
+            border-radius: 50px;
             font-weight: 600;
-            font-size: 0.8rem;
-            border-bottom: 2px solid #e2e8f0;
-            background: #f8fafc;
-            position: sticky;
-            top: 0;
-        }
-
-        td {
-            padding: 0.8rem;
-            border-bottom: 1px solid #f1f5f9;
-            color: #334155;
-        }
-
-        .badge {
-            padding: 0.2rem 0.6rem;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            display: inline-block;
-        }
-
-        .badge-success {
-            background: #d1fae5;
-            color: #10b981;
-        }
-
-        .badge-warning {
-            background: #fef3c7;
-            color: #d97706;
-        }
-
-        .badge-info {
-            background: #dbeafe;
-            color: #3b82f6;
-        }
-
-        .btn-details {
-            background: none;
-            border: 1px solid #e2e8f0;
-            padding: 0.3rem 0.7rem;
-            border-radius: 6px;
-            color: #64748b;
-            cursor: pointer;
-            font-size: 0.75rem;
-        }
-
-        .btn-details:hover {
-            background: #d97706;
-            color: white;
-            border-color: #d97706;
-        }
-
-        /* Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0,0,0,0.5);
-            z-index: 2000;
+            text-decoration: none;
+            display: inline-flex;
             align-items: center;
-            justify-content: center;
-            padding: 1rem;
+            gap: 8px;
+            border: 1px solid #e2e8f0;
+            transition: all 0.2s;
         }
 
-        .modal.active {
-            display: flex;
+        .btn-secondary:hover {
+            border-color: #0ea5e9;
+            color: #0ea5e9;
         }
 
-        .modal-content {
-            background: white;
-            border-radius: 20px;
-            width: 95%;
-            max-width: 550px;
-            max-height: 85vh;
-            overflow-y: auto;
-            padding: 1.8rem;
+        .hero-image {
             position: relative;
         }
 
-        .modal-close {
+        .image-main {
+            width: 100%;
+            height: 500px;
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            border-radius: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .image-main img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .image-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            background: url('https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80') center/cover;
+        }
+
+        .image-badge {
             position: absolute;
-            top: 1rem;
-            left: 1rem;
-            background: none;
-            border: none;
-            font-size: 1.3rem;
-            cursor: pointer;
-            color: #64748b;
-            width: 30px;
-            height: 30px;
+            bottom: 30px;
+            left: -20px;
+            background: white;
+            padding: 16px 24px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .badge-icon {
+            width: 48px;
+            height: 48px;
+            background: #fef3c7;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 50%;
+            color: #eab308;
+            font-size: 20px;
         }
 
-        .modal-close:hover {
-            background: #fee2e2;
-            color: #ef4444;
-        }
-
-        .modal-header {
-            text-align: center;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 2px solid #f1f5f9;
-        }
-
-        .modal-header h2 {
-            font-size: 1.4rem;
-            color: #0f172a;
-            margin-bottom: 0.3rem;
-        }
-
-        .modal-header p {
-            font-size: 1rem;
+        .badge-text h4 {
+            font-size: 14px;
             color: #64748b;
-        }
-
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.2rem;
-        }
-
-        .info-item {
-            border-bottom: 1px solid #f1f5f9;
-            padding-bottom: 0.6rem;
-        }
-
-        .info-label {
-            color: #64748b;
-            font-size: 0.8rem;
-            margin-bottom: 0.2rem;
             font-weight: 500;
         }
 
-        .info-value {
+        .badge-text p {
+            font-size: 18px;
+            font-weight: 700;
             color: #0f172a;
+        }
+
+        /* Services Section */
+        .section-title {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .section-title h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 40px;
+            color: #0f172a;
+            margin-bottom: 12px;
+        }
+
+        .section-title p {
+            color: #64748b;
+            font-size: 18px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            padding: 40px 0;
+        }
+
+        .service-card {
+            background: white;
+            padding: 32px;
+            border-radius: 24px;
+            border: 1px solid #f1f5f9;
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+            border-color: #e2e8f0;
+        }
+
+        .service-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0ea5e9;
+            font-size: 28px;
+            margin-bottom: 24px;
+        }
+
+        .service-card h3 {
+            font-size: 20px;
             font-weight: 600;
-            font-size: 1rem;
-            word-break: break-word;
+            margin-bottom: 12px;
+            color: #0f172a;
+        }
+
+        .service-card p {
+            color: #64748b;
+            font-size: 15px;
+        }
+
+        /* About Section */
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            padding: 60px 0;
+        }
+
+        .about-image {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            border-radius: 40px;
+            height: 500px;
+            background-image: url('https://images.unsplash.com/photo-1581595220892-b0739db3ba8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .about-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            color: #0f172a;
+            margin-bottom: 20px;
+        }
+
+        .about-content .highlight {
+            color: #0ea5e9;
+        }
+
+        .about-content p {
+            color: #475569;
+            margin-bottom: 24px;
+            font-size: 16px;
+        }
+
+        .diplomas {
+            display: flex;
+            gap: 20px;
+            margin-top: 32px;
+        }
+
+        .diploma-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .diploma-item i {
+            color: #0ea5e9;
+            font-size: 20px;
+        }
+
+        /* Hours Section */
+        .hours {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            border-radius: 40px;
+            padding: 48px;
+            margin: 40px 0;
+            color: white;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .hours-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            margin-bottom: 16px;
+        }
+
+        .hours-content p {
+            color: #94a3b8;
+            margin-bottom: 32px;
+        }
+
+        .schedule {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .schedule-item {
+            display: flex;
+            justify-content: space-between;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #334155;
+        }
+
+        .schedule-item span:first-child {
+            font-weight: 600;
+        }
+
+        .emergency {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 24px;
+            text-align: center;
+        }
+
+        .emergency i {
+            font-size: 40px;
+            color: #f87171;
+            margin-bottom: 16px;
+        }
+
+        .emergency h4 {
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+
+        .emergency .phone {
+            font-size: 28px;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 60px 0;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 32px;
+            border-radius: 24px;
+            border: 1px solid #f1f5f9;
+        }
+
+        .testimonial-stars {
+            color: #eab308;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-text {
+            color: #334155;
+            font-size: 15px;
+            margin-bottom: 24px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .author-avatar {
+            width: 48px;
+            height: 48px;
+            background: #e2e8f0;
+            border-radius: 50%;
+        }
+
+        .author-info h4 {
+            font-weight: 600;
+            color: #0f172a;
+        }
+
+        .author-info p {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        /* Footer */
+        .footer {
+            background: #0f172a;
+            color: white;
+            padding: 60px 0 30px;
+            margin-top: 40px;
+            border-radius: 40px 40px 0 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-info p {
+            color: #94a3b8;
+            margin: 20px 0;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 16px;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            background: #1e293b;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+
+        .footer-social a:hover {
+            background: #0ea5e9;
+        }
+
+        .footer-links h4 {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #1e293b;
+            color: #64748b;
         }
 
         /* Responsive */
-        @media (max-width: 768px) {
-            .kpi-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 0.5rem;
+        @media (max-width: 1024px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
             }
-
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 0.5rem;
+            
+            .hero-description {
+                max-width: 100%;
             }
-
-            .filter-grid {
+            
+            .hero-features {
+                align-items: center;
+            }
+            
+            .hero-buttons {
+                justify-content: center;
+            }
+            
+            .services-grid,
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .about,
+            .footer-grid {
                 grid-template-columns: 1fr;
             }
-
-            .filter-actions {
-                flex-direction: column;
-            }
-
-            .filter-actions button {
-                width: 100%;
-            }
-
-            .modal-content {
-                padding: 1.2rem;
-            }
-
-            .info-grid {
-                grid-template-columns: 1fr;
+            
+            .image-badge {
+                left: 20px;
             }
         }
 
-        @media (max-width: 480px) {
-            .kpi-grid {
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .services-grid,
+            .testimonials-grid {
                 grid-template-columns: 1fr;
             }
-
-            .stats-grid {
+            
+            .hours {
                 grid-template-columns: 1fr;
+                padding: 32px;
             }
+            
+            .hero-title {
+                font-size: 36px;
+            }
+        }
 
-            .logo {
-                font-size: 1.1rem;
-            }
+        /* WhatsApp Float Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: #25d366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 30px;
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+            text-decoration: none;
+            transition: all 0.3s;
+            z-index: 1000;
+        }
 
-            .admin-badge {
-                font-size: 0.75rem;
-                padding: 0.2rem 0.5rem;
-            }
-
-            .date-badge {
-                font-size: 0.75rem;
-                padding: 0.2rem 0.5rem;
-            }
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 30px rgba(37, 211, 102, 0.4);
         }
     </style>
 </head>
 <body>
-    <!-- Login Page -->
-    <div class="login-container" id="loginPage">
-        <div class="login-box">
-            <div class="logo">e<span>concours</span>.ma</div>
-            <div class="hadith">"الله في عون العبد ما دام العبد في عون أخيه"</div>
-            <h2>لوحة التحكم</h2>
-            <input type="password" id="passwordInput" placeholder="••••" maxlength="4">
-            <button onclick="checkPassword()">دخول</button>
-            <div class="error-message" id="errorMessage">رمز الدخول غير صحيح</div>
-        </div>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-tooth"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>Dr. Sophie Moreau</h1>
+                    <span>CHIRURGIEN-DENTISTE</span>
+                </div>
+            </div>
+            <div class="header-contact">
+                <a href="tel:+33123456789"><i class="fas fa-phone-alt"></i> 01 23 45 67 89</a>
+                <a href="#" class="btn-rdv"><i class="far fa-calendar-alt"></i> Prendre RDV</a>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="nav">
+            <a href="#">Accueil</a>
+            <a href="#">Soins</a>
+            <a href="#">Esthétique</a>
+            <a href="#">L'équipe</a>
+            <a href="#">Tarifs</a>
+            <a href="#">Contact</a>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <span class="hero-badge"><i class="fas fa-star"></i> Plus de 15 ans d'expérience</span>
+                <h1 class="hero-title">
+                    Votre sourire est <br>
+                    <i>notre priorité</i>
+                </h1>
+                <p class="hero-description">
+                    Des soins dentaires d'excellence dans un cadre apaisant et moderne au cœur de Paris.
+                </p>
+                <div class="hero-features">
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-check"></i></div>
+                        <span>Technologies de pointe (Caméra 3D, Radio panoramique)</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-check"></i></div>
+                        <span>Prise en charge immédiate des urgences dentaires</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-check"></i></div>
+                        <span>Facilités de paiement et tiers payant</span>
+                    </div>
+                </div>
+                <div class="hero-buttons">
+                    <a href="#" class="btn-primary"><i class="far fa-calendar-check"></i> RDV en ligne</a>
+                    <a href="#" class="btn-secondary"><i class="fas fa-phone-alt"></i> Appeler</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="image-main">
+                    <div class="image-placeholder"></div>
+                </div>
+                <div class="image-badge">
+                    <div class="badge-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="badge-text">
+                        <h4>Cabinet certifié</h4>
+                        <p>Normes ISO 9001</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section>
+            <div class="section-title">
+                <h2>Nos soins dentaires</h2>
+                <p>Des solutions personnalisées pour toute la famille</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-teeth"></i></div>
+                    <h3>Soins conservateurs</h3>
+                    <p>Traitement des caries, dévitalisation, reconstitution coronaire avec des matériaux biocompatibles.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-smile"></i></div>
+                    <h3>Esthétique dentaire</h3>
+                    <p>Facettes céramiques, blanchiment professionnel, sourire Hollywood sur mesure.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-bone"></i></div>
+                    <h3>Implantologie</h3>
+                    <p>Remplacement des dents manquantes par des implants de dernière génération.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-teeth-open"></i></div>
+                    <h3>Orthodontie</h3>
+                    <p>Aligneurs invisibles (Invisalign) pour adultes et adolescents.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-child"></i></div>
+                    <h3>Pédodontie</h3>
+                    <p>Soins adaptés aux enfants dans une ambiance ludique et rassurante.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-gem"></i></div>
+                    <h3>Parodontologie</h3>
+                    <p>Traitement des maladies des gencives et assainissement parodontal.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about">
+            <div class="about-image"></div>
+            <div class="about-content">
+                <h2>Dr. Sophie Moreau, <span class="highlight">Chirurgien-Dentiste</span></h2>
+                <p>Diplômée de la Faculté de Chirurgie Dentaire de l'Université Paris Cité, le Dr. Moreau exerce depuis plus de 15 ans avec une philosophie centrée sur le patient.</p>
+                <p>Passionnée par les nouvelles technologies, elle se forme continuellement aux techniques les plus récentes pour garantir des soins indolores, précis et durables.</p>
+                <p>Son approche : <strong>"Soigner avec empathie, restaurer avec art, préserver avec science."</strong></p>
+                <div class="diplomas">
+                    <div class="diploma-item">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>Doctorat en Chirurgie Dentaire</span>
+                    </div>
+                    <div class="diploma-item">
+                        <i class="fas fa-certificate"></i>
+                        <span>CES Prothèses &amp; Esthétique</span>
+                    </div>
+                    <div class="diploma-item">
+                        <i class="fas fa-award"></i>
+                        <span>Invisalign Provider</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hours & Emergency -->
+        <section class="hours">
+            <div class="hours-content">
+                <h3>Horaires d'ouverture</h3>
+                <p>Le cabinet vous accueille du lundi au samedi.</p>
+                <div class="schedule">
+                    <div class="schedule-item">
+                        <span>Lundi - Mercredi</span>
+                        <span>09h00 - 19h00</span>
+                    </div>
+                    <div class="schedule-item">
+                        <span>Jeudi</span>
+                        <span>10h00 - 20h00</span>
+                    </div>
+                    <div class="schedule-item">
+                        <span>Vendredi</span>
+                        <span>09h00 - 17h00</span>
+                    </div>
+                    <div class="schedule-item">
+                        <span>Samedi</span>
+                        <span>09h00 - 13h00</span>
+                    </div>
+                    <div class="schedule-item">
+                        <span>Dimanche</span>
+                        <span>Fermé</span>
+                    </div>
+                </div>
+            </div>
+            <div class="emergency">
+                <i class="fas fa-ambulance"></i>
+                <h4>Urgence dentaire ?</h4>
+                <p>Nous réservons des créneaux quotidiens pour les urgences. Appelez-nous immédiatement.</p>
+                <a href="tel:+33123456789" class="phone">01 23 45 67 89</a>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="testimonials">
+            <div class="section-title">
+                <h2>Ce que disent nos patients</h2>
+                <p>Votre satisfaction est notre plus belle récompense</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Un cabinet magnifique et une équipe aux petits soins. Le Dr. Moreau est très douce et explique parfaitement chaque étape du soin. Je recommande les yeux fermés."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar"></div>
+                        <div class="author-info">
+                            <h4>Isabelle R.</h4>
+                            <p>Patiente depuis 2018</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Grâce aux aligneurs Invisalign, mon sourire a complètement changé en quelques mois. Résultat bluffant et aucun inconfort. Un grand merci à toute l'équipe !"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar"></div>
+                        <div class="author-info">
+                            <h4>Thomas M.</h4>
+                            <p>Patient depuis 2022</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"J'avais très peur du dentiste. L'équipe a su me mettre en confiance et le soin s'est déroulé sans aucune douleur. Je n'ai plus peur de venir !"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar"></div>
+                        <div class="author-info">
+                            <h4>Sarah L.</h4>
+                            <p>Patiente depuis 2021</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 
-    <!-- Dashboard -->
-    <div class="dashboard-container" id="dashboard">
-        <!-- Header مختصر -->
-        <div class="main-header">
-            <div class="header-logo">
-                <div class="logo">e<span>concours</span>.ma</div>
-                <div class="admin-badge" id="adminBadge">
-                    <i class="fas fa-user-circle"></i>
-                    <span id="adminName">...</span>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-info">
+                    <div class="logo" style="margin-bottom: 20px;">
+                        <div class="logo-icon">
+                            <i class="fas fa-tooth"></i>
+                        </div>
+                        <div class="logo-text">
+                            <h1 style="color: white;">Dr. Sophie Moreau</h1>
+                            <span style="color: #94a3b8;">CHIRURGIEN-DENTISTE</span>
+                        </div>
+                    </div>
+                    <p>123 Avenue des Champs-Élysées<br>75008 Paris, France</p>
+                    <p><i class="fas fa-phone-alt"></i> 01 23 45 67 89<br>
+                    <i class="fas fa-envelope"></i> contact@dr-moreau.fr</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Soins</h4>
+                    <ul>
+                        <li><a href="#">Consultation</a></li>
+                        <li><a href="#">Détartrage</a></li>
+                        <li><a href="#">Soins caries</a></li>
+                        <li><a href="#">Dévitalisation</a></li>
+                        <li><a href="#">Extraction</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Esthétique</h4>
+                    <ul>
+                        <li><a href="#">Blanchiment</a></li>
+                        <li><a href="#">Facettes</a></li>
+                        <li><a href="#">Invisalign</a></li>
+                        <li><a href="#">Implants</a></li>
+                        <li><a href="#">Couronnes</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Informations</h4>
+                    <ul>
+                        <li><a href="#">À propos</a></li>
+                        <li><a href="#">Tarifs</a></li>
+                        <li><a href="#">Mentions légales</a></li>
+                        <li><a href="#">CGV</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
                 </div>
             </div>
-            <div class="header-info">
-                <div class="date-badge" id="dateDisplay">
-                    <i class="fas fa-calendar-alt"></i>
-                    <span id="currentDate"></span>
-                </div>
+            <div class="footer-bottom">
+                <p>© 2024 Dr. Sophie Moreau - Chirurgien-Dentiste. Tous droits réservés.</p>
             </div>
         </div>
+    </footer>
 
-        <!-- Main Content -->
-        <div class="main-content">
-            <!-- KPI Cards -->
-            <div class="kpi-grid" id="kpiGrid"></div>
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/33123456789" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
-            <!-- Stats Grid -->
-            <div class="stats-grid" id="statsGrid"></div>
-
-            <!-- Birthday Alert -->
-            <div class="birthday-alert" id="birthdayAlert">
-                <div class="birthday-header">
-                    <i class="fas fa-cake-candles"></i>
-                    <span>أعياد الميلاد القريبة</span>
-                </div>
-                <div class="birthday-list" id="birthdayList"></div>
-            </div>
-
-            <!-- Filter Section -->
-            <div class="filter-section">
-                <div class="filter-title">
-                    <i class="fas fa-filter"></i>
-                    <span>فلترة البيانات</span>
-                </div>
-                <div class="filter-grid">
-                    <div class="filter-item">
-                        <select id="filterService">
-                            <option value="all">جميع الخدمات</option>
-                            <option value="تسجيل فوري">تسجيل فوري</option>
-                            <option value="اشتراك 6 أشهر">اشتراك 6 أشهر</option>
-                            <option value="اشتراك 12 شهر">اشتراك 12 شهر</option>
-                            <option value="تسجيل مجاني">تسجيل مجاني</option>
-                        </select>
-                    </div>
-                    <div class="filter-item">
-                        <select id="filterCity">
-                            <option value="all">جميع المدن</option>
-                        </select>
-                    </div>
-                    <div class="filter-item">
-                        <select id="filterDegree">
-                            <option value="all">جميع الشهادات</option>
-                        </select>
-                    </div>
-                    <div class="filter-item">
-                        <input type="text" id="filterName" placeholder="بحث بالاسم...">
-                    </div>
-                    <div class="filter-actions">
-                        <button class="btn-primary" onclick="applyFilters()"><i class="fas fa-check"></i> تطبيق</button>
-                        <button class="btn-secondary" onclick="resetFilters()"><i class="fas fa-redo"></i> إعادة</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Table -->
-            <div class="table-container">
-                <div class="table-header">
-                    <h3><i class="fas fa-users"></i> قائمة المسجلين</h3>
-                    <span class="results-count" id="resultsCount"></span>
-                </div>
-                <div class="table-wrapper">
-                    <table id="registrationsTable">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>الاسم</th>
-                                <th>الفرنسية</th>
-                                <th>الميلاد</th>
-                                <th>المدينة</th>
-                                <th>الخدمة</th>
-                                <th>التسجيل</th>
-                                <th>واتساب</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody id="tableBody">
-                            <tr>
-                                <td colspan="9" style="text-align: center;">جاري تحميل البيانات...</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-
-        <!-- Bottom Bar - أزرار التطبيق -->
-        <div class="app-bottom-bar">
-            <button class="bottom-btn" onclick="toggleTheme()">
-                <i class="fas fa-moon"></i>
-                <span>ليلي</span>
-            </button>
-            <button class="bottom-btn" onclick="exportToExcel()">
-                <i class="fas fa-file-excel"></i>
-                <span>تصدير</span>
-            </button>
-            <button class="bottom-btn" onclick="scrollToTop()">
-                <i class="fas fa-arrow-up"></i>
-                <span>أعلى</span>
-            </button>
-            <button class="bottom-btn" onclick="logout()">
-                <i class="fas fa-sign-out-alt"></i>
-                <span>خروج</span>
-            </button>
-        </div>
-    </div>
-
-    <!-- Modal -->
-    <div class="modal" id="detailsModal">
-        <div class="modal-content">
-            <button class="modal-close" onclick="closeModal()">✖</button>
-            <div class="modal-header">
-                <h2 id="modalName"></h2>
-                <p id="modalNameFr"></p>
-            </div>
-            <div class="info-grid" id="modalContent"></div>
-        </div>
-    </div>
-
+    <!-- Simple JavaScript for interactions -->
     <script>
-        // منع أدوات المطور
-        document.addEventListener('contextmenu', e => e.preventDefault());
-        document.addEventListener('keydown', e => {
-            if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I') || (e.ctrlKey && e.key === 'U')) {
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                return false;
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Header background change on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 50) {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+                header.style.padding = '10px 24px';
+                header.style.borderRadius = '0 0 20px 20px';
+                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.05)';
+                header.style.position = 'sticky';
+                header.style.top = '0';
+                header.style.zIndex = '100';
+            } else {
+                header.style.background = 'transparent';
+                header.style.backdropFilter = 'none';
+                header.style.padding = '20px 0';
+                header.style.borderRadius = '0';
+                header.style.boxShadow = 'none';
+                header.style.position = 'relative';
             }
         });
 
-        let registrations = [];
-        let currentData = [];
-
-        // المديرين
-        const admins = { "1280": "رضا السايح", "1997": "أيمن ممدوح" };
-        let currentAdmin = "";
-
-        // تحميل البيانات من ملف JSON
-        async function loadData() {
-            try {
-                const response = await fetch('data.json');
-                registrations = await response.json();
-                currentData = [...registrations];
-                if (document.getElementById('dashboard').classList.contains('active')) {
-                    updateDashboard();
-                }
-            } catch (error) {
-                console.error('خطأ في تحميل البيانات:', error);
-                document.getElementById('tableBody').innerHTML = '<tr><td colspan="9" style="text-align: center; color: #ef4444;">خطأ في تحميل البيانات</td></tr>';
-            }
-        }
-
-        // تحديث لوحة التحكم
-        function updateDashboard() {
-            displayKPIs();
-            displayStats();
-            displayBirthdays();
-            initFilters();
-            displayTable(currentData);
-        }
-
-        // حساب العمر
-        function calculateAge(birthDate) {
-            const today = new Date();
-            const birth = new Date(birthDate);
-            let age = today.getFullYear() - birth.getFullYear();
-            const monthDiff = today.getMonth() - birth.getMonth();
-            if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birth.getDate())) age--;
-            return age;
-        }
-
-        // حساب الأيام حتى عيد الميلاد
-        function daysUntilBirthday(birthDate) {
-            const today = new Date();
-            const birth = new Date(birthDate);
-            const nextBirthday = new Date(today.getFullYear(), birth.getMonth(), birth.getDate());
-            if (today > nextBirthday) nextBirthday.setFullYear(today.getFullYear() + 1);
-            return Math.ceil((nextBirthday - today) / (1000 * 60 * 60 * 24));
-        }
-
-        // عرض مؤشرات KPI
-        function displayKPIs() {
-            if (!registrations.length) return;
-            
-            const total = registrations.length;
-            const thisMonth = registrations.filter(r => new Date(r.regDate).getMonth() === new Date().getMonth()).length;
-            const free = registrations.filter(r => r.service === "تسجيل مجاني").length;
-            const cities = [...new Set(registrations.map(r => r.city))].length;
-
-            document.getElementById('kpiGrid').innerHTML = `
-                <div class="kpi-card">
-                    <div class="kpi-header">
-                        <div class="kpi-icon"><i class="fas fa-users"></i></div>
-                        <div class="kpi-value">${total}</div>
-                    </div>
-                    <div class="kpi-label">إجمالي المسجلين</div>
-                </div>
-                <div class="kpi-card">
-                    <div class="kpi-header">
-                        <div class="kpi-icon"><i class="fas fa-calendar-check"></i></div>
-                        <div class="kpi-value">${thisMonth}</div>
-                    </div>
-                    <div class="kpi-label">هذا الشهر</div>
-                </div>
-                <div class="kpi-card">
-                    <div class="kpi-header">
-                        <div class="kpi-icon"><i class="fas fa-hand-holding-heart"></i></div>
-                        <div class="kpi-value">${free}</div>
-                    </div>
-                    <div class="kpi-label">تسجيل مجاني</div>
-                </div>
-                <div class="kpi-card">
-                    <div class="kpi-header">
-                        <div class="kpi-icon"><i class="fas fa-city"></i></div>
-                        <div class="kpi-value">${cities}</div>
-                    </div>
-                    <div class="kpi-label">مدن مختلفة</div>
-                </div>
-            `;
-        }
-
-        // عرض المؤشرات الإضافية
-        function displayStats() {
-            if (!registrations.length) return;
-            
-            const ages = registrations.map(r => ({ 
-                age: calculateAge(r.birthDate), 
-                name: r.nameAr 
-            }));
-            
-            const minAge = Math.min(...ages.map(a => a.age));
-            const maxAge = Math.max(...ages.map(a => a.age));
-            
-            const youngest = ages.find(a => a.age === minAge);
-            const oldest = ages.find(a => a.age === maxAge);
-            const avgAge = (ages.reduce((a, b) => a + b.age, 0) / ages.length).toFixed(1);
-            
-            const serviceCounts = {
-                'فوري': registrations.filter(r => r.service === 'تسجيل فوري').length,
-                '6 أشهر': registrations.filter(r => r.service === 'اشتراك 6 أشهر').length,
-                '12 شهر': registrations.filter(r => r.service === 'اشتراك 12 شهر').length,
-                'مجاني': registrations.filter(r => r.service === 'تسجيل مجاني').length
-            };
-            const mostService = Object.entries(serviceCounts).sort((a, b) => b[1] - a[1])[0];
-
-            document.getElementById('statsGrid').innerHTML = `
-                <div class="stat-card">
-                    <div class="stat-title"><i class="fas fa-child"></i> أصغر مسجل</div>
-                    <div class="stat-main">
-                        <span class="stat-number">${minAge}</span>
-                        <span class="stat-name">${youngest.name}</span>
-                    </div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-title"><i class="fas fa-user-tie"></i> أكبر مسجل</div>
-                    <div class="stat-main">
-                        <span class="stat-number">${maxAge}</span>
-                        <span class="stat-name">${oldest.name}</span>
-                    </div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-title"><i class="fas fa-calendar-alt"></i> معدل الأعمار</div>
-                    <div class="stat-main">
-                        <span class="stat-number">${avgAge}</span>
-                        <span class="stat-name">سنة</span>
-                    </div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-title"><i class="fas fa-chart-pie"></i> الخدمة الأكثر</div>
-                    <div class="stat-main">
-                        <span class="stat-number">${mostService[0]}</span>
-                        <span class="stat-name">${mostService[1]} مسجل</span>
-                    </div>
-                </div>
-            `;
-        }
-
-        // عرض أعياد الميلاد
-        function displayBirthdays() {
-            if (!registrations.length) return;
-            
-            const upcoming = registrations
-                .map(r => ({...r, days: daysUntilBirthday(r.birthDate)}))
-                .filter(r => r.days <= 30)
-                .sort((a, b) => a.days - b.days);
-
-            const list = document.getElementById('birthdayList');
-            
-            if (upcoming.length === 0) {
-                list.innerHTML = '<div class="birthday-item"><i class="fas fa-cake-candles"></i> لا توجد أعياد قريبة</div>';
-                return;
-            }
-
-            list.innerHTML = upcoming.map(r => `
-                <div class="birthday-item">
-                    <i class="fas fa-cake-candles"></i>
-                    <span>${r.nameAr}</span>
-                    <span class="birthday-days">بعد ${r.days} يوم</span>
-                </div>
-            `).join('');
-        }
-
-        // تهيئة خيارات الفلتر
-        function initFilters() {
-            if (!registrations.length) return;
-            
-            const cities = [...new Set(registrations.map(r => r.city))].sort();
-            const degrees = [...new Set(registrations.flatMap(r => r.degrees ? r.degrees.split(',').map(d => d.trim()) : []))].sort();
-            
-            const citySelect = document.getElementById('filterCity');
-            const degreeSelect = document.getElementById('filterDegree');
-            
-            citySelect.innerHTML = '<option value="all">جميع المدن</option>';
-            degreeSelect.innerHTML = '<option value="all">جميع الشهادات</option>';
-            
-            cities.forEach(city => {
-                citySelect.innerHTML += `<option value="${city}">${city}</option>`;
-            });
-            
-            degrees.forEach(degree => {
-                degreeSelect.innerHTML += `<option value="${degree}">${degree}</option>`;
-            });
-        }
-
-        // عرض الجدول
-        function displayTable(data) {
-            const tbody = document.getElementById('tableBody');
-            document.getElementById('resultsCount').textContent = `عرض ${data.length} من ${registrations.length}`;
-            
-            tbody.innerHTML = data.map((r, i) => {
-                let badgeClass = 'badge-warning';
-                if (r.service === 'تسجيل مجاني') badgeClass = 'badge-success';
-                else if (r.service === 'تسجيل فوري') badgeClass = 'badge-info';
-                
-                return `
-                    <tr>
-                        <td>${i+1}</td>
-                        <td>${r.nameAr}</td>
-                        <td>${r.nameFr}</td>
-                        <td>${r.birthDate}</td>
-                        <td>${r.city}</td>
-                        <td><span class="badge ${badgeClass}">${r.service}</span></td>
-                        <td>${r.regDate}</td>
-                        <td>${r.whatsapp}</td>
-                        <td><button class="btn-details" onclick='showDetails(${JSON.stringify(r).replace(/'/g, "\\'")})'><i class="fas fa-eye"></i></button></td>
-                    </tr>
-                `;
-            }).join('');
-        }
-
-        // تطبيق الفلاتر
-        function applyFilters() {
-            const service = document.getElementById('filterService').value;
-            const city = document.getElementById('filterCity').value;
-            const degree = document.getElementById('filterDegree').value;
-            const name = document.getElementById('filterName').value.toLowerCase();
-
-            currentData = registrations.filter(r => {
-                if (service !== 'all' && r.service !== service) return false;
-                if (city !== 'all' && r.city !== city) return false;
-                if (degree !== 'all') {
-                    const degrees = r.degrees ? r.degrees.split(',').map(d => d.trim()) : [];
-                    if (!degrees.includes(degree)) return false;
-                }
-                if (name && !r.nameAr.includes(name) && !r.nameFr.toLowerCase().includes(name)) return false;
-                return true;
-            });
-
-            displayTable(currentData);
-        }
-
-        function resetFilters() {
-            document.getElementById('filterService').value = 'all';
-            document.getElementById('filterCity').value = 'all';
-            document.getElementById('filterDegree').value = 'all';
-            document.getElementById('filterName').value = '';
-            currentData = [...registrations];
-            displayTable(currentData);
-        }
-
-        // تصدير إلى Excel
-        function exportToExcel() {
-            let csv = "الاسم بالعربية,الاسم بالفرنسية,تاريخ الميلاد,المدينة,الخدمة,تاريخ التسجيل,الواتساب,البريد الإلكتروني,الشهادات\n";
-            
-            currentData.forEach(r => {
-                csv += `"${r.nameAr}","${r.nameFr}","${r.birthDate}","${r.city}","${r.service}","${r.regDate}","${r.whatsapp}","${r.email}","${r.degrees}"\n`;
-            });
-            
-            const blob = new Blob(["\uFEFF" + csv], { type: 'text/csv;charset=utf-8;' });
-            const link = document.createElement('a');
-            link.href = URL.createObjectURL(blob);
-            link.download = 'المسجلين.csv';
-            link.click();
-        }
-
-        function scrollToTop() {
-            document.querySelector('.main-content').scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // عرض التفاصيل
-        function showDetails(p) {
-            document.getElementById('modalName').textContent = p.nameAr;
-            document.getElementById('modalNameFr').textContent = p.nameFr;
-            
-            const degrees = p.degrees ? p.degrees.split(',').map(d => d.trim()).join('، ') : 'غير محدد';
-            
-            document.getElementById('modalContent').innerHTML = `
-                <div class="info-item">
-                    <div class="info-label">رقم البطاقة</div>
-                    <div class="info-value">${p.cin}</div>
-                </div>
-                <div class="info-item">
-                    <div class="info-label">مكان الإزدياد</div>
-                    <div class="info-value">${p.birthPlace}</div>
-                </div>
-                <div class="info-item">
-                    <div class="info-label">العنوان</div>
-                    <div class="info-value">${p.address}</div>
-                </div>
-                <div class="info-item">
-                    <div class="info-label">البريد الإلكتروني</div>
-                    <div class="info-value">${p.email}</div>
-                </div>
-                <div class="info-item">
-                    <div class="info-label">الشهادات</div>
-                    <div class="info-value">${degrees}</div>
-                </div>
-                <div class="info-item">
-                    <div class="info-label">المدرسة/الجامعة</div>
-                    <div class="info-value">${p.school}</div>
-                </div>
-                <div class="info-item">
-                    <div class="info-label">العمر</div>
-                    <div class="info-value">${calculateAge(p.birthDate)} سنة</div>
-                </div>
-                <div class="info-item">
-                    <div class="info-label">الخدمة</div>
-                    <div class="info-value">${p.service}</div>
-                </div>
-            `;
-            
-            document.getElementById('detailsModal').classList.add('active');
-        }
-
-        function closeModal() {
-            document.getElementById('detailsModal').classList.remove('active');
-        }
-
-        function updateDate() {
-            const today = new Date();
-            // تاريخ مختصر: 15/03/26
-            const day = String(today.getDate()).padStart(2, '0');
-            const month = String(today.getMonth() + 1).padStart(2, '0');
-            const year = String(today.getFullYear()).slice(-2);
-            document.getElementById('currentDate').textContent = `${day}/${month}/${year}`;
-        }
-
-        function toggleTheme() {
-            document.body.classList.toggle('dark-mode');
-            const btn = document.querySelector('.bottom-btn:first-child i');
-            const text = document.querySelector('.bottom-btn:first-child span');
-            if (document.body.classList.contains('dark-mode')) {
-                btn.className = 'fas fa-sun';
-                text.textContent = 'نهاري';
-            } else {
-                btn.className = 'fas fa-moon';
-                text.textContent = 'ليلي';
-            }
-        }
-
-        function checkPassword() {
-            const code = document.getElementById('passwordInput').value;
-            
-            if (admins[code]) {
-                currentAdmin = admins[code];
-                document.getElementById('adminName').textContent = currentAdmin;
-                document.getElementById('loginPage').style.display = 'none';
-                document.getElementById('dashboard').classList.add('active');
-                
-                loadData();
-                updateDate();
-                
-                setInterval(updateDate, 60000);
-            } else {
-                document.getElementById('errorMessage').style.display = 'block';
-            }
-        }
-
-        function logout() {
-            document.getElementById('loginPage').style.display = 'flex';
-            document.getElementById('dashboard').classList.remove('active');
-            document.getElementById('passwordInput').value = '';
-            document.getElementById('errorMessage').style.display = 'none';
-        }
-
-        document.getElementById('passwordInput').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') checkPassword();
+        // Add 'loaded' class to body for animations
+        window.addEventListener('load', function() {
+            document.body.classList.add('loaded');
         });
+
+        console.log('Site du Dr. Sophie Moreau - Prêt à vous recevoir ! 🦷');
     </script>
 </body>
 </html>
