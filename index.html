@@ -2,107 +2,102 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>Dr. Chaymaa Bougrine | Centre Dentaire BOUGRINE</title>
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 64 64' xmlns='http://www.w3.org/2000/svg' fill='%237300ff'%3E%3Cpath d='M55.455.339H8.67C4.085.339.356 4.069.356 8.655v46.781c0 4.587 3.73 8.316 8.314 8.316h46.785c4.583 0 8.314-3.729 8.314-8.316V8.655c0-4.586-3.731-8.316-8.314-8.316zM44.667 32.394c-.397 2.565.411 5.439-.352 11.216c-.791 5.835-2.162 10.955-4.83 10.955c-3.155 0-2.732-5.823-2.364-10.561c.108-1.426.188-2.658.112-3.502c-.32-3.53-1.839-6.016-5.114-6.016c-3.256 0-4.796 2.486-5.115 6.016c-.076.845.004 2.077.112 3.502c.368 4.738.789 10.561-2.364 10.561c-2.668 0-4.039-5.119-4.83-10.955c-.764-5.777.045-8.651-.353-11.216c-.76-4.86-5.001-9.217-3.692-15.414c.727-3.437 2.62-5.054 4.493-5.734c4.321-1.572 7.11 1.457 11.747 1.457c4.638 0 7.427-3.029 11.746-1.457c1.875.679 3.767 2.296 4.493 5.734c1.311 6.197-2.932 10.554-3.691 15.414z'%3E%3C/path%3E%3C/svg%3E">
     
-    <!-- Font Awesome Icons -->
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:wght@400;600;700&amp;display=swap" rel="stylesheet">
     
-    <!-- Flatpickr Calendar CSS -->
+    <!-- Flatpickr Calendar -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #1e293b; line-height: 1.5; }
-        .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 20px; }
 
         /* Header */
-        .header { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; border-bottom: 1px solid #e2e8f0; }
+        .header { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; border-bottom: 1px solid #e2e8f0; flex-wrap: wrap; gap: 15px; }
         .logo { display: flex; align-items: center; gap: 12px; }
         .logo-icon { width: 48px; height: 48px; background: linear-gradient(135deg, #0ea5e9, #3b82f6); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; }
         .logo-text h1 { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: #0f172a; }
         .logo-text span { font-size: 14px; color: #64748b; letter-spacing: 2px; }
-        .header-contact { display: flex; align-items: center; gap: 24px; }
-        .header-contact a { display: flex; align-items: center; gap: 8px; color: #1e293b; text-decoration: none; font-weight: 500; transition: color 0.2s; }
-        .header-contact a:hover { color: #0ea5e9; }
-        .btn-rdv { background: linear-gradient(135deg, #0ea5e9, #3b82f6); color: white !important; padding: 12px 24px; border-radius: 50px; font-weight: 600; box-shadow: 0 4px 12px rgba(14, 165, 233, 0.25); }
+        .header-contact { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+        .header-contact a { display: flex; align-items: center; gap: 8px; color: #1e293b; text-decoration: none; font-weight: 500; }
+        .btn-rdv { background: linear-gradient(135deg, #0ea5e9, #3b82f6); color: white !important; padding: 12px 24px; border-radius: 50px; font-weight: 600; }
 
-        /* Hero Section */
-        .hero { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; padding: 60px 0; }
+        /* Hero */
+        .hero { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; padding: 40px 0; }
         .hero-badge { display: inline-block; background: #e0f2fe; color: #0369a1; padding: 6px 16px; border-radius: 50px; font-size: 14px; font-weight: 600; margin-bottom: 20px; }
-        .hero-title { font-family: 'Playfair Display', serif; font-size: 48px; font-weight: 700; line-height: 1.2; color: #0f172a; margin-bottom: 20px; }
-        .hero-title i { color: #0ea5e9; font-style: italic; }
-        .hero-description { font-size: 18px; color: #475569; margin-bottom: 32px; max-width: 500px; }
-        .hero-features { display: flex; flex-direction: column; gap: 16px; margin-bottom: 32px; }
-        .feature-item { display: flex; align-items: center; gap: 12px; }
+        .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(32px, 5vw, 48px); font-weight: 700; color: #0f172a; margin-bottom: 20px; }
+        .hero-title i { color: #0ea5e9; }
+        .hero-features { display: flex; flex-direction: column; gap: 12px; margin: 24px 0; }
+        .feature-item { display: flex; align-items: center; gap: 10px; }
         .feature-icon { width: 36px; height: 36px; background: #f0f9ff; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #0ea5e9; }
-        .hero-buttons { display: flex; gap: 16px; }
-        .btn-primary { background: linear-gradient(135deg, #0ea5e9, #3b82f6); color: white; padding: 16px 32px; border-radius: 50px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 12px rgba(14, 165, 233, 0.25); border: none; cursor: pointer; }
-        .btn-secondary { background: white; color: #1e293b; padding: 16px 32px; border-radius: 50px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; border: 1px solid #e2e8f0; }
+        .hero-buttons { display: flex; gap: 12px; flex-wrap: wrap; }
+        .btn-primary { background: linear-gradient(135deg, #0ea5e9, #3b82f6); color: white; padding: 14px 28px; border-radius: 50px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; border: none; cursor: pointer; }
+        .btn-secondary { background: white; color: #1e293b; padding: 14px 28px; border-radius: 50px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; border: 1px solid #e2e8f0; }
         .hero-image { position: relative; }
-        .image-main { width: 100%; height: 500px; background: linear-gradient(135deg, #f0f9ff, #e0f2fe); border-radius: 40px; overflow: hidden; }
+        .image-main { width: 100%; height: 400px; background: linear-gradient(135deg, #f0f9ff, #e0f2fe); border-radius: 40px; overflow: hidden; }
         .image-placeholder { width: 100%; height: 100%; background: url('https://images.unsplash.com/photo-1629909613654-28e377c37b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80') center/cover; }
-        .image-badge { position: absolute; bottom: 30px; left: -20px; background: white; padding: 16px 24px; border-radius: 20px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08); display: flex; align-items: center; gap: 16px; }
-        .badge-icon { width: 48px; height: 48px; background: #fef3c7; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #eab308; font-size: 20px; }
-        .badge-text h4 { font-size: 14px; color: #64748b; font-weight: 500; }
-        .badge-text p { font-size: 18px; font-weight: 700; color: #0f172a; }
+        .image-badge { position: absolute; bottom: 20px; left: -10px; background: white; padding: 12px 20px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); display: flex; align-items: center; gap: 12px; }
+        .badge-icon { width: 40px; height: 40px; background: #fef3c7; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #eab308; }
 
         /* Services */
-        .section-title { text-align: center; margin-bottom: 48px; }
-        .section-title h2 { font-family: 'Playfair Display', serif; font-size: 40px; color: #0f172a; margin-bottom: 12px; }
-        .section-title p { color: #64748b; font-size: 18px; }
-        .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; padding: 40px 0; }
-        .service-card { background: white; padding: 24px; border-radius: 24px; border: 1px solid #f1f5f9; text-align: center; }
-        .service-icon { width: 64px; height: 64px; background: linear-gradient(135deg, #f0f9ff, #e0f2fe); border-radius: 16px; display: flex; align-items: center; justify-content: center; color: #0ea5e9; font-size: 28px; margin: 0 auto 24px; }
-        .service-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 8px; color: #0f172a; }
-        .service-card p { color: #64748b; font-size: 14px; }
+        .section-title { text-align: center; margin-bottom: 40px; }
+        .section-title h2 { font-family: 'Playfair Display', serif; font-size: 36px; color: #0f172a; }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; padding: 20px 0; }
+        .service-card { background: white; padding: 24px 16px; border-radius: 24px; border: 1px solid #f1f5f9; text-align: center; }
+        .service-icon { width: 56px; height: 56px; background: linear-gradient(135deg, #f0f9ff, #e0f2fe); border-radius: 16px; display: flex; align-items: center; justify-content: center; color: #0ea5e9; font-size: 24px; margin: 0 auto 16px; }
+        .service-card h3 { font-size: 16px; font-weight: 600; color: #0f172a; }
 
-        /* About */
-        .about { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; padding: 60px 0; }
-        .about-image { background: linear-gradient(135deg, #f0f9ff, #e0f2fe); border-radius: 40px; height: 500px; background-image: url('https://images.unsplash.com/photo-1581595220892-b0739db3ba8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'); background-size: cover; }
-        .about-content h2 { font-family: 'Playfair Display', serif; font-size: 36px; color: #0f172a; margin-bottom: 20px; }
-        .about-content .highlight { color: #0ea5e9; }
-        .about-content p { color: #475569; margin-bottom: 24px; font-size: 16px; }
+        /* Instagram Feed */
+        .instagram-section { padding: 40px 0; }
+        .instagram-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+        .insta-item { position: relative; border-radius: 20px; overflow: hidden; aspect-ratio: 1/1; box-shadow: 0 10px 20px rgba(0,0,0,0.05); transition: transform 0.3s; }
+        .insta-item:hover { transform: scale(1.02); }
+        .insta-item img { width: 100%; height: 100%; object-fit: cover; }
+        .insta-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s; color: white; font-size: 24px; }
+        .insta-item:hover .insta-overlay { opacity: 1; }
 
         /* Map & Hours */
-        .info-section { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; padding: 40px 0; }
-        .map-container { border-radius: 24px; overflow: hidden; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08); height: 450px; }
-        .map-container iframe { width: 100%; height: 100%; border: 0; }
-        .hours { background: linear-gradient(135deg, #0f172a, #1e293b); border-radius: 24px; padding: 48px; color: white; }
-        .hours-content h3 { font-family: 'Playfair Display', serif; font-size: 32px; margin-bottom: 16px; }
-        .schedule { display: flex; flex-direction: column; gap: 16px; }
+        .info-section { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; padding: 40px 0; }
+        .map-container { border-radius: 24px; overflow: hidden; height: 400px; }
+        .hours { background: linear-gradient(135deg, #0f172a, #1e293b); border-radius: 24px; padding: 32px; color: white; }
+        .schedule { display: flex; flex-direction: column; gap: 16px; margin-top: 20px; }
         .schedule-item { display: flex; justify-content: space-between; padding-bottom: 12px; border-bottom: 1px solid #334155; }
-        .schedule-item span:first-child { font-weight: 600; }
 
         /* RDV */
-        .rdv-section { background: #f8fafc; border-radius: 40px; padding: 60px; margin: 60px 0; text-align: center; }
-        .calendar-wrapper { max-width: 500px; margin: 40px auto; }
-        .datetime-input { display: flex; gap: 16px; justify-content: center; }
-        .datetime-input input { padding: 16px 20px; font-size: 16px; border: 1px solid #e2e8f0; border-radius: 12px; cursor: pointer; background: white; text-align: center; font-family: 'Inter', sans-serif; }
-        #calendar { flex: 2; } #timePicker { flex: 1; }
+        .rdv-section { background: #f8fafc; border-radius: 40px; padding: 40px 24px; margin: 40px 0; text-align: center; }
+        .datetime-input { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; max-width: 500px; margin: 30px auto; }
+        .datetime-input input { padding: 16px; font-size: 16px; border: 1px solid #e2e8f0; border-radius: 12px; background: white; text-align: center; flex: 1 1 200px; }
 
         /* Footer */
-        .footer { background: #0f172a; color: white; padding: 40px 0; margin-top: 40px; border-radius: 40px 40px 0 0; text-align: center; }
-        .footer-info p { color: #94a3b8; margin: 20px 0; }
-        .footer-social { display: flex; gap: 16px; justify-content: center; }
-        .footer-social a { width: 40px; height: 40px; background: #1e293b; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; }
-        .footer-bottom { text-align: center; padding-top: 30px; color: #64748b; }
+        .footer { background: #0f172a; color: white; padding: 40px 0 20px; margin-top: 40px; border-radius: 40px 40px 0 0; }
+        .footer-content { text-align: center; max-width: 600px; margin: 0 auto; }
+        .footer-logo { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 24px; }
+        .footer-info p { color: #cbd5e1; margin: 8px 0; font-size: 16px; }
+        .footer-info i { width: 24px; color: #0ea5e9; }
+        .footer-bottom { text-align: center; padding-top: 30px; margin-top: 30px; border-top: 1px solid #334155; color: #94a3b8; font-size: 14px; }
 
-        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: #25d366; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 30px; text-decoration: none; z-index: 1000; }
+        .whatsapp-float { position: fixed; bottom: 20px; right: 20px; width: 56px; height: 56px; background: #25d366; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 28px; text-decoration: none; z-index: 1000; box-shadow: 0 4px 15px rgba(37,211,102,0.3); }
 
-        @media (max-width: 1024px) {
-            .hero, .about, .info-section { grid-template-columns: 1fr; }
-            .services-grid { grid-template-columns: repeat(2, 1fr); }
-        }
         @media (max-width: 768px) {
-            .services-grid { grid-template-columns: 1fr; }
-            .datetime-input { flex-direction: column; }
+            .container { padding: 0 16px; }
+            .header { flex-direction: column; text-align: center; }
+            .header-contact { justify-content: center; }
+            .hero { grid-template-columns: 1fr; text-align: center; }
+            .hero-features { align-items: center; }
+            .hero-buttons { justify-content: center; }
+            .image-badge { left: 10px; }
+            .info-section { grid-template-columns: 1fr; }
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
         }
     </style>
 </head>
@@ -119,11 +114,10 @@
             </div>
         </header>
 
-        <section class="hero" id="hero">
+        <section class="hero">
             <div class="hero-content">
                 <span class="hero-badge"><i class="fas fa-map-pin"></i> Tiflet, Maroc</span>
                 <h1 class="hero-title">Votre sourire <br><i>notre passion</i></h1>
-                <p class="hero-description">Des soins dentaires d'excellence dans un cadre moderne et apaisant.</p>
                 <div class="hero-features">
                     <div class="feature-item"><div class="feature-icon"><i class="fas fa-check"></i></div><span>Soins · Prothèse · Orthodontie · Chirurgie</span></div>
                     <div class="feature-item"><div class="feature-icon"><i class="fas fa-check"></i></div><span>Implantologie · Blanchiment · Radiologie</span></div>
@@ -135,15 +129,15 @@
             </div>
             <div class="hero-image">
                 <div class="image-main"><div class="image-placeholder"></div></div>
-                <div class="image-badge"><div class="badge-icon"><i class="fas fa-shield-alt"></i></div><div class="badge-text"><h4>Cabinet certifié</h4><p>Qualité & Confiance</p></div></div>
+                <div class="image-badge"><div class="badge-icon"><i class="fas fa-shield-alt"></i></div><div><h4>Cabinet certifié</h4><p style="font-weight:600;">Qualité & Confiance</p></div></div>
             </div>
         </section>
 
-        <section id="services">
+        <section>
             <div class="section-title"><h2>Nos soins dentaires</h2></div>
             <div class="services-grid">
                 <div class="service-card"><div class="service-icon"><i class="fas fa-teeth"></i></div><h3>Soins dentaires</h3></div>
-                <div class="service-card"><div class="service-icon"><i class="fas fa-smile"></i></div><h3>Prothèse dentaire</h3></div>
+                <div class="service-card"><div class="service-icon"><i class="fas fa-smile"></i></div><h3>Prothèse</h3></div>
                 <div class="service-card"><div class="service-icon"><i class="fas fa-teeth-open"></i></div><h3>Orthodontie</h3></div>
                 <div class="service-card"><div class="service-icon"><i class="fas fa-bone"></i></div><h3>Implantologie</h3></div>
                 <div class="service-card"><div class="service-icon"><i class="fas fa-syringe"></i></div><h3>Chirurgie</h3></div>
@@ -153,52 +147,59 @@
             </div>
         </section>
 
-        <section class="about" id="about">
-            <div class="about-image"></div>
-            <div class="about-content">
-                <h2>Dr. Chaymaa Bougrine, <span class="highlight">Chirurgien-Dentiste</span></h2>
-                <p>Le Centre Dentaire BOUGRINE vous accueille à Tiflet dans un cadre moderne et chaleureux.</p>
-                <p><strong>"Soigner avec empathie, restaurer avec art, préserver avec science."</strong></p>
+        <!-- Section Instagram Feed -->
+        <section class="instagram-section">
+            <div class="section-title">
+                <h2>Suivez-nous sur Instagram</h2>
+                <p style="color:#64748b; margin-top:8px;">@dr.chaymaabougrine</p>
+            </div>
+            <div class="instagram-grid" id="instagramFeed"></div>
+            <div style="text-align: center; margin-top: 24px;">
+                <a href="https://www.instagram.com/dr.chaymaabougrine" target="_blank" class="btn-secondary" style="display: inline-flex;">
+                    <i class="fab fa-instagram"></i> Voir plus sur Instagram
+                </a>
             </div>
         </section>
 
-        <section class="info-section" id="info">
+        <section class="info-section">
             <div class="map-container">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3306.471103630471!2d-6.3603234!3d33.8913368!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda0cf002d5cfc29%3A0xc7545737f40a49f6!2sCentre%20dentaire%20Bougrine!5e0!3m2!1sfr!2sma!4v1715000000000!5m2!1sfr!2sma" allowfullscreen="" loading="lazy"></iframe>
             </div>
             <div class="hours">
-                <div class="hours-content">
-                    <h3>Horaires d'ouverture</h3>
-                    <div class="schedule">
-                        <div class="schedule-item"><span>Lundi - Vendredi</span> <span>09h00 – 18h00</span></div>
-                        <div class="schedule-item"><span>Samedi</span> <span>09h00 – 13h00</span></div>
-                        <div class="schedule-item"><span>Dimanche</span> <span>Fermé</span></div>
-                    </div>
+                <h3 style="font-family: 'Playfair Display', serif; font-size: 28px;">Horaires d'ouverture</h3>
+                <div class="schedule">
+                    <div class="schedule-item"><span>Lundi - Vendredi</span> <span>09h00 – 18h00</span></div>
+                    <div class="schedule-item"><span>Samedi</span> <span>09h00 – 13h00</span></div>
+                    <div class="schedule-item"><span>Dimanche</span> <span>Fermé</span></div>
                 </div>
             </div>
         </section>
 
         <section class="rdv-section" id="rdv">
-            <div class="section-title"><h2>Prendre un rendez-vous</h2><p>Sélectionnez une date et une heure</p></div>
-            <div class="calendar-wrapper">
-                <div class="datetime-input">
-                    <input type="text" id="calendar" placeholder="📅 Choisir une date" readonly>
-                    <input type="text" id="timePicker" placeholder="🕐 Choisir l'heure" readonly>
-                </div>
+            <div class="section-title"><h2>Prendre un rendez-vous</h2></div>
+            <div class="datetime-input">
+                <input type="text" id="calendar" placeholder="📅 Choisir une date" readonly>
+                <input type="text" id="timePicker" placeholder="🕐 Choisir l'heure" readonly>
             </div>
             <button class="btn-primary" id="confirmRdvBtn"><i class="fab fa-whatsapp"></i> Confirmer sur WhatsApp</button>
-            <p class="rdv-note"><i class="fas fa-info-circle"></i> Vous serez redirigé vers WhatsApp.</p>
         </section>
     </div>
 
     <footer class="footer">
-        <div class="container">
-            <div class="footer-info">
-                <div class="logo" style="justify-content: center;"><div class="logo-icon"><i class="fas fa-tooth"></i></div><div class="logo-text"><h1 style="color:white;">Dr. Chaymaa Bougrine</h1><span>CENTRE DENTAIRE BOUGRINE</span></div></div>
-                <p><i class="fas fa-map-marker-alt"></i> Tiflet, Maroc<br><i class="fas fa-phone-alt"></i> 05 30 36 69 19<br><i class="fab fa-whatsapp"></i> 06 63 64 06 04<br><i class="fas fa-envelope"></i> centredentairebougrine@gmail.com</p>
-                <div class="footer-social"><a href="https://www.instagram.com/dr.chaymaabougrine"><i class="fab fa-instagram"></i></a></div>
+        <div class="container footer-content">
+            <div class="footer-logo">
+                <div class="logo-icon"><i class="fas fa-tooth"></i></div>
+                <div><h2 style="color:white; font-family:'Playfair Display';">Dr. Chaymaa Bougrine</h2><p style="color:#94a3b8;">CENTRE DENTAIRE BOUGRINE</p></div>
             </div>
-            <div class="footer-bottom"><p>© 2024 Centre Dentaire BOUGRINE - Dr. Chaymaa Bougrine.</p></div>
+            <div class="footer-info">
+                <p><i class="fas fa-map-marker-alt"></i> Tiflet, Maroc</p>
+                <p><i class="fas fa-phone-alt"></i> 05 30 36 69 19</p>
+                <p><i class="fab fa-whatsapp"></i> 06 63 64 06 04</p>
+                <p><i class="fas fa-envelope"></i> centredentairebougrine@gmail.com</p>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 Centre Dentaire BOUGRINE - Dr. Chaymaa Bougrine. Tous droits réservés.</p>
+            </div>
         </div>
     </footer>
 
@@ -207,37 +208,40 @@
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/fr.js"></script>
     <script>
+        // Calendar Logic
         let selectedDate = '';
-        const calendar = flatpickr("#calendar", { 
-            locale: "fr", dateFormat: "d/m/Y", minDate: "today", 
-            disable: [d => d.getDay() === 0],
-            onChange: (d, s) => { selectedDate = s; updateTimePicker(s); }
-        });
-        
+        const calendar = flatpickr("#calendar", { locale: "fr", dateFormat: "d/m/Y", minDate: "today", disable: [d => d.getDay() === 0], onChange: (d, s) => { selectedDate = s; updateTimePicker(s); } });
         let timePicker = flatpickr("#timePicker", { enableTime: true, noCalendar: true, dateFormat: "H:i", minuteIncrement: 30, locale: "fr" });
-
         function updateTimePicker(dateStr) {
             if (!dateStr) return;
             const parts = dateStr.split('/');
             const d = new Date(parts[2], parts[1]-1, parts[0]);
             const isSaturday = d.getDay() === 6;
-            
             timePicker.destroy();
-            timePicker = flatpickr("#timePicker", {
-                enableTime: true, noCalendar: true, dateFormat: "H:i", minuteIncrement: 30, locale: "fr",
-                minTime: "09:00",
-                maxTime: isSaturday ? "13:00" : "18:00"
-            });
+            timePicker = flatpickr("#timePicker", { enableTime: true, noCalendar: true, dateFormat: "H:i", minuteIncrement: 30, locale: "fr", minTime: "09:00", maxTime: isSaturday ? "13:00" : "18:00" });
         }
-
         function scrollToCalendar() { document.getElementById('rdv').scrollIntoView({ behavior: 'smooth' }); }
-
         document.getElementById('confirmRdvBtn').addEventListener('click', function() {
             const date = document.getElementById('calendar').value;
             const time = document.getElementById('timePicker').value;
             if (!date || !time) { alert('Veuillez sélectionner une date et une heure.'); return; }
             window.open(`https://wa.me/212663640604?text=Bonjour Centre Dentaire BOUGRINE,%0A%0AJe souhaite prendre rendez-vous le ${date} à ${time}.%0A%0APouvez-vous confirmer ?%0A%0AMerci.`, '_blank');
         });
+
+        // Instagram Feed (via RSS.app ou solution similaire - ici placeholder avec fallback)
+        async function loadInstagram() {
+            const feed = document.getElementById('instagramFeed');
+            // Utilisation de l'API publique RSS.app (ou solution alternative)
+            // Pour une démo, on affiche un message indiquant comment connecter le flux réel.
+            feed.innerHTML = `
+                <div class="insta-item"><img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=400" alt="Dentisterie"><div class="insta-overlay"><i class="fab fa-instagram"></i></div></div>
+                <div class="insta-item"><img src="https://images.unsplash.com/photo-1581595220892-b0739db3ba8c?w=400" alt="Clinique"><div class="insta-overlay"><i class="fab fa-instagram"></i></div></div>
+                <div class="insta-item"><img src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?w=400" alt="Sourire"><div class="insta-overlay"><i class="fab fa-instagram"></i></div></div>
+                <div class="insta-item"><img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=400" alt="Cabinet"><div class="insta-overlay"><i class="fab fa-instagram"></i></div></div>
+            `;
+            // Note: Pour un flux réel, utilisez un service comme Elfsight, LightWidget, ou l'API Facebook Graph.
+        }
+        loadInstagram();
     </script>
 </body>
 </html>
