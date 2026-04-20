@@ -41,6 +41,7 @@
             align-items: center;
             padding: 20px 0;
             border-bottom: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
         }
 
         .logo {
@@ -120,6 +121,7 @@
             text-decoration: none;
             font-weight: 500;
             transition: color 0.2s;
+            cursor: pointer;
         }
 
         .nav a:hover {
@@ -406,7 +408,7 @@
             border-radius: 24px;
             overflow: hidden;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-            height: 400px;
+            height: 450px;
         }
 
         .map-container iframe {
@@ -464,9 +466,29 @@
             margin: 40px auto;
         }
 
+        .datetime-input {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+        }
+
+        .datetime-input input {
+            padding: 16px 20px;
+            font-size: 16px;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            cursor: pointer;
+            background: white;
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+        }
+
         #calendar {
-            width: 100%;
-            padding: 20px 0;
+            flex: 2;
+        }
+
+        #timePicker {
+            flex: 1;
         }
 
         .rdv-note {
@@ -575,71 +597,31 @@
 
         /* Responsive */
         @media (max-width: 1024px) {
-            .hero {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            
-            .hero-description {
-                max-width: 100%;
-            }
-            
-            .hero-features {
-                align-items: center;
-            }
-            
-            .hero-buttons {
-                justify-content: center;
-            }
-            
-            .services-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .about,
-            .footer-grid,
-            .info-section {
-                grid-template-columns: 1fr;
-            }
-            
-            .image-badge {
-                left: 20px;
-            }
+            .hero { grid-template-columns: 1fr; text-align: center; }
+            .hero-description { max-width: 100%; }
+            .hero-features { align-items: center; }
+            .hero-buttons { justify-content: center; }
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .about, .footer-grid, .info-section { grid-template-columns: 1fr; }
+            .image-badge { left: 20px; }
         }
 
         @media (max-width: 768px) {
-            .header {
-                flex-direction: column;
-                gap: 20px;
-            }
-            
-            .nav {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .hero-title {
-                font-size: 36px;
-            }
-            
-            .rdv-section {
-                padding: 30px 20px;
-            }
+            .header { flex-direction: column; gap: 20px; }
+            .nav { flex-wrap: wrap; justify-content: center; }
+            .services-grid { grid-template-columns: 1fr; }
+            .hero-title { font-size: 36px; }
+            .rdv-section { padding: 30px 20px; }
+            .datetime-input { flex-direction: column; }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <!-- Header -->
-        <header class="header">
+        <header class="header" id="mainHeader">
             <div class="logo">
-                <div class="logo-icon">
-                    <i class="fas fa-tooth"></i>
-                </div>
+                <div class="logo-icon"><i class="fas fa-tooth"></i></div>
                 <div class="logo-text">
                     <h1>Dr. Chaymaa Bougrine</h1>
                     <span>CENTRE DENTAIRE BOUGRINE</span>
@@ -653,139 +635,68 @@
 
         <!-- Navigation -->
         <nav class="nav">
-            <a href="#">Accueil</a>
-            <a href="#">Soins</a>
-            <a href="#">Esthétique</a>
-            <a href="#">L'équipe</a>
-            <a href="#">Tarifs</a>
-            <a href="#">Contact</a>
+            <a onclick="scrollToSection('hero')">Accueil</a>
+            <a onclick="scrollToSection('services')">Soins</a>
+            <a onclick="scrollToSection('about')">L'équipe</a>
+            <a onclick="scrollToSection('rdv')">Tarifs</a>
+            <a onclick="scrollToSection('info')">Contact</a>
         </nav>
 
         <!-- Hero Section -->
-        <section class="hero">
+        <section class="hero" id="hero">
             <div class="hero-content">
                 <span class="hero-badge"><i class="fas fa-map-pin"></i> Tiflet, Maroc</span>
-                <h1 class="hero-title">
-                    Votre sourire <br>
-                    <i>notre passion</i>
-                </h1>
-                <p class="hero-description">
-                    Des soins dentaires d'excellence dans un cadre moderne et apaisant au cœur de Tiflet.
-                </p>
+                <h1 class="hero-title">Votre sourire <br><i>notre passion</i></h1>
+                <p class="hero-description">Des soins dentaires d'excellence dans un cadre moderne et apaisant au cœur de Tiflet.</p>
                 <div class="hero-features">
-                    <div class="feature-item">
-                        <div class="feature-icon"><i class="fas fa-check"></i></div>
-                        <span>Soins dentaires · Prothèse · Orthodontie · Chirurgie</span>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon"><i class="fas fa-check"></i></div>
-                        <span>Implantologie · Blanchiment · Radiologie</span>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon"><i class="fas fa-check"></i></div>
-                        <span>Facilités de paiement et tiers payant</span>
-                    </div>
+                    <div class="feature-item"><div class="feature-icon"><i class="fas fa-check"></i></div><span>Soins dentaires · Prothèse · Orthodontie · Chirurgie</span></div>
+                    <div class="feature-item"><div class="feature-icon"><i class="fas fa-check"></i></div><span>Implantologie · Blanchiment · Radiologie</span></div>
+                    <div class="feature-item"><div class="feature-icon"><i class="fas fa-check"></i></div><span>Facilités de paiement et tiers payant</span></div>
                 </div>
                 <div class="hero-buttons">
-                    <a href="#" class="btn-primary" onclick="scrollToCalendar()"><i class="far fa-calendar-check"></i> RDV en ligne</a>
+                    <a class="btn-primary" onclick="scrollToCalendar()"><i class="far fa-calendar-check"></i> RDV en ligne</a>
                     <a href="tel:+212530366919" class="btn-secondary"><i class="fas fa-phone-alt"></i> Appeler</a>
                 </div>
             </div>
             <div class="hero-image">
-                <div class="image-main">
-                    <div class="image-placeholder"></div>
-                </div>
-                <div class="image-badge">
-                    <div class="badge-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <div class="badge-text">
-                        <h4>Cabinet certifié</h4>
-                        <p>Qualité & Confiance</p>
-                    </div>
-                </div>
+                <div class="image-main"><div class="image-placeholder"></div></div>
+                <div class="image-badge"><div class="badge-icon"><i class="fas fa-shield-alt"></i></div><div class="badge-text"><h4>Cabinet certifié</h4><p>Qualité & Confiance</p></div></div>
             </div>
         </section>
 
         <!-- Services Section -->
-        <section>
-            <div class="section-title">
-                <h2>Nos soins dentaires</h2>
-                <p>Des solutions personnalisées pour toute la famille</p>
-            </div>
+        <section id="services">
+            <div class="section-title"><h2>Nos soins dentaires</h2><p>Des solutions personnalisées pour toute la famille</p></div>
             <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-teeth"></i></div>
-                    <h3>Soins dentaires</h3>
-                    <p>Traitement des caries, dévitalisation, reconstitution coronaire.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-smile"></i></div>
-                    <h3>Prothèse dentaire</h3>
-                    <p>Couronnes, bridges, prothèses amovibles et fixes.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-teeth-open"></i></div>
-                    <h3>Orthodontie</h3>
-                    <p>Alignement dentaire pour adultes et adolescents.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-bone"></i></div>
-                    <h3>Implantologie</h3>
-                    <p>Remplacement des dents manquantes par des implants.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-syringe"></i></div>
-                    <h3>Chirurgie</h3>
-                    <p>Extractions, chirurgie buccale, greffes osseuses.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-star"></i></div>
-                    <h3>Blanchiment</h3>
-                    <p>Blanchiment professionnel pour un sourire éclatant.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-x-ray"></i></div>
-                    <h3>Radiologie</h3>
-                    <p>Radio panoramique et 3D pour un diagnostic précis.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-child"></i></div>
-                    <h3>Pédodontie</h3>
-                    <p>Soins adaptés aux enfants dans une ambiance rassurante.</p>
-                </div>
+                <div class="service-card"><div class="service-icon"><i class="fas fa-teeth"></i></div><h3>Soins dentaires</h3><p>Traitement des caries, dévitalisation.</p></div>
+                <div class="service-card"><div class="service-icon"><i class="fas fa-smile"></i></div><h3>Prothèse dentaire</h3><p>Couronnes, bridges, prothèses.</p></div>
+                <div class="service-card"><div class="service-icon"><i class="fas fa-teeth-open"></i></div><h3>Orthodontie</h3><p>Alignement dentaire pour tous.</p></div>
+                <div class="service-card"><div class="service-icon"><i class="fas fa-bone"></i></div><h3>Implantologie</h3><p>Implants de dernière génération.</p></div>
+                <div class="service-card"><div class="service-icon"><i class="fas fa-syringe"></i></div><h3>Chirurgie</h3><p>Extractions, chirurgie buccale.</p></div>
+                <div class="service-card"><div class="service-icon"><i class="fas fa-star"></i></div><h3>Blanchiment</h3><p>Pour un sourire éclatant.</p></div>
+                <div class="service-card"><div class="service-icon"><i class="fas fa-x-ray"></i></div><h3>Radiologie</h3><p>Diagnostic précis et rapide.</p></div>
+                <div class="service-card"><div class="service-icon"><i class="fas fa-child"></i></div><h3>Pédodontie</h3><p>Soins adaptés aux enfants.</p></div>
             </div>
         </section>
 
         <!-- About Section -->
-        <section class="about">
+        <section class="about" id="about">
             <div class="about-image"></div>
             <div class="about-content">
                 <h2>Dr. Chaymaa Bougrine, <span class="highlight">Chirurgien-Dentiste</span></h2>
-                <p>Le Centre Dentaire BOUGRINE vous accueille à Tiflet dans un cadre moderne et chaleureux. Le Dr. Chaymaa Bougrine et son équipe mettent tout en œuvre pour vous offrir des soins de qualité, personnalisés et adaptés à vos besoins.</p>
-                <p>Notre approche : <strong>"Soigner avec empathie, restaurer avec art, préserver avec science."</strong></p>
-                <div class="diplomas">
-                    <div class="diploma-item">
-                        <i class="fas fa-graduation-cap"></i>
-                        <span>Doctorat en Chirurgie Dentaire</span>
-                    </div>
-                    <div class="diploma-item">
-                        <i class="fas fa-certificate"></i>
-                        <span>Implantologie & Esthétique</span>
-                    </div>
-                </div>
+                <p>Le Centre Dentaire BOUGRINE vous accueille à Tiflet dans un cadre moderne et chaleureux.</p>
+                <p><strong>"Soigner avec empathie, restaurer avec art, préserver avec science."</strong></p>
             </div>
         </section>
 
         <!-- Map & Hours Section -->
-        <section class="info-section">
+        <section class="info-section" id="info">
             <div class="map-container">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3306.471103630471!2d-6.3603234!3d33.8913368!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda714b3b9c7b5b1%3A0x1e1f1e7a5d5c5b5b!2sTiflet!5e0!3m2!1sfr!2sma!4v1620000000000!5m2!1sfr!2sma" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3306.471103630471!2d-6.3603234!3d33.8913368!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda0cf002d5cfc29%3A0xc7545737f40a49f6!2sCentre%20dentaire%20Bougrine!5e0!3m2!1sfr!2sma!4v1715000000000!5m2!1sfr!2sma" allowfullscreen="" loading="lazy"></iframe>
             </div>
             <div class="hours">
                 <div class="hours-content">
                     <h3>Horaires d'ouverture</h3>
-                    <p>Le cabinet vous accueille du lundi au samedi.</p>
                     <div class="schedule">
                         <div class="schedule-item"><span>Lundi</span> <span>09h00 – 18h00</span></div>
                         <div class="schedule-item"><span>Mardi</span> <span>09h00 – 18h00</span></div>
@@ -795,34 +706,21 @@
                         <div class="schedule-item"><span>Samedi</span> <span>09h00 – 13h00</span></div>
                         <div class="schedule-item"><span>Dimanche</span> <span>Fermé</span></div>
                     </div>
-                    <div style="margin-top: 32px; display: flex; gap: 16px;">
-                        <a href="https://maps.app.goo.gl/TJ4eZFBm2o4SRwrV9" target="_blank" class="btn-secondary" style="background: transparent; color: white; border-color: #475569;">
-                            <i class="fas fa-map-marker-alt"></i> Itinéraire
-                        </a>
-                        <a href="tel:+212530366919" class="btn-primary" style="padding: 12px 24px;">
-                            <i class="fas fa-phone-alt"></i> Urgence
-                        </a>
-                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- RDV Section avec Calendrier -->
+        <!-- RDV Section -->
         <section class="rdv-section" id="rdv">
-            <div class="section-title">
-                <h2>Prendre un rendez-vous</h2>
-                <p>Sélectionnez une date et confirmez votre rendez-vous via WhatsApp</p>
-            </div>
+            <div class="section-title"><h2>Prendre un rendez-vous</h2><p>Sélectionnez une date et une heure</p></div>
             <div class="calendar-wrapper">
-                <input type="text" id="calendar" placeholder="Choisir une date">
+                <div class="datetime-input">
+                    <input type="text" id="calendar" placeholder="📅 Choisir une date" readonly>
+                    <input type="text" id="timePicker" placeholder="🕐 Choisir l'heure" readonly>
+                </div>
             </div>
-            <button class="btn-primary" id="confirmRdvBtn" style="margin-top: 20px;">
-                <i class="fab fa-whatsapp"></i> Confirmer le rendez-vous sur WhatsApp
-            </button>
-            <p class="rdv-note">
-                <i class="fas fa-info-circle"></i> 
-                Vous serez redirigé vers WhatsApp pour finaliser votre demande de rendez-vous.
-            </p>
+            <button class="btn-primary" id="confirmRdvBtn"><i class="fab fa-whatsapp"></i> Confirmer sur WhatsApp</button>
+            <p class="rdv-note"><i class="fas fa-info-circle"></i> Vous serez redirigé vers WhatsApp.</p>
         </section>
     </div>
 
@@ -831,134 +729,35 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-info">
-                    <div class="logo" style="margin-bottom: 20px;">
-                        <div class="logo-icon">
-                            <i class="fas fa-tooth"></i>
-                        </div>
-                        <div class="logo-text">
-                            <h1 style="color: white;">Dr. Chaymaa Bougrine</h1>
-                            <span style="color: #94a3b8;">CENTRE DENTAIRE BOUGRINE</span>
-                        </div>
-                    </div>
+                    <div class="logo"><div class="logo-icon"><i class="fas fa-tooth"></i></div><div class="logo-text"><h1 style="color:white;">Dr. Chaymaa Bougrine</h1><span>CENTRE DENTAIRE BOUGRINE</span></div></div>
                     <p><i class="fas fa-map-marker-alt"></i> Tiflet, Maroc</p>
-                    <p><i class="fas fa-phone-alt"></i> 05 30 36 69 19<br>
-                    <i class="fab fa-whatsapp"></i> 06 63 64 06 04<br>
-                    <i class="fas fa-envelope"></i> contact@centredentairebougrine.ma</p>
-                    <div class="footer-social">
-                        <a href="https://www.instagram.com/dr.chaymaabougrine" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    </div>
+                    <p><i class="fas fa-phone-alt"></i> 05 30 36 69 19<br><i class="fab fa-whatsapp"></i> 06 63 64 06 04<br><i class="fas fa-envelope"></i> centredentairebougrine@gmail.com</p>
+                    <div class="footer-social"><a href="https://www.instagram.com/dr.chaymaabougrine"><i class="fab fa-instagram"></i></a></div>
                 </div>
-                <div class="footer-links">
-                    <h4>Soins</h4>
-                    <ul>
-                        <li><a href="#">Consultation</a></li>
-                        <li><a href="#">Soins dentaires</a></li>
-                        <li><a href="#">Prothèse</a></li>
-                        <li><a href="#">Orthodontie</a></li>
-                        <li><a href="#">Implantologie</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4>Informations</h4>
-                    <ul>
-                        <li><a href="#">À propos</a></li>
-                        <li><a href="#">Tarifs</a></li>
-                        <li><a href="#">Mentions légales</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
-                </div>
+                <div class="footer-links"><h4>Soins</h4><ul><li>Consultation</li><li>Soins dentaires</li><li>Prothèse</li><li>Orthodontie</li><li>Implantologie</li></ul></div>
+                <div class="footer-links"><h4>Informations</h4><ul><li>À propos</li><li>Tarifs</li><li>Contact</li></ul></div>
             </div>
-            <div class="footer-bottom">
-                <p>© 2024 Centre Dentaire BOUGRINE - Dr. Chaymaa Bougrine. Tous droits réservés.</p>
-            </div>
+            <div class="footer-bottom"><p>© 2024 Centre Dentaire BOUGRINE - Dr. Chaymaa Bougrine.</p></div>
         </div>
     </footer>
 
-    <!-- WhatsApp Float Button -->
-    <a href="https://wa.me/212663646064" class="whatsapp-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+    <a href="https://wa.me/212663640604" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
-    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/fr.js"></script>
     <script>
-        // Initialisation du calendrier Flatpickr
-        const calendar = flatpickr("#calendar", {
-            locale: "fr",
-            dateFormat: "d/m/Y",
-            minDate: "today",
-            disable: [
-                function(date) {
-                    // Désactiver les dimanches (0 = dimanche)
-                    return date.getDay() === 0;
-                }
-            ],
-            onChange: function(selectedDates, dateStr, instance) {
-                // Stocker la date sélectionnée
-                window.selectedDate = dateStr;
-            }
-        });
+        const calendar = flatpickr("#calendar", { locale: "fr", dateFormat: "d/m/Y", minDate: "today", disable: [d => d.getDay() === 0] });
+        const timePicker = flatpickr("#timePicker", { enableTime: true, noCalendar: true, dateFormat: "H:i", minTime: "09:00", maxTime: "18:00", minuteIncrement: 30, locale: "fr" });
+        
+        function scrollToCalendar() { document.getElementById('rdv').scrollIntoView({ behavior: 'smooth' }); }
+        function scrollToSection(id) { document.getElementById(id).scrollIntoView({ behavior: 'smooth' }); }
 
-        // Fonction pour faire défiler jusqu'au calendrier
-        function scrollToCalendar() {
-            document.getElementById('rdv').scrollIntoView({ behavior: 'smooth' });
-        }
-
-        // Gestion du clic sur le bouton de confirmation
         document.getElementById('confirmRdvBtn').addEventListener('click', function() {
-            const selectedDate = window.selectedDate;
-            
-            if (!selectedDate) {
-                alert('Veuillez sélectionner une date pour votre rendez-vous.');
-                return;
-            }
-
-            // Numéro WhatsApp (format international sans + ni espaces)
-            const phoneNumber = '212663646064';
-            
-            // Message pré-rempli
-            const message = `Bonjour Dr. Chaymaa Bougrine,%0A%0AJe souhaiterais prendre un rendez-vous pour le ${selectedDate}.%0A%0APouvez-vous me confirmer la disponibilité ?%0A%0AMerci d'avance.`;
-            
-            // Ouvrir WhatsApp
-            window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+            const date = document.getElementById('calendar').value;
+            const time = document.getElementById('timePicker').value;
+            if (!date || !time) { alert('Veuillez sélectionner une date et une heure.'); return; }
+            window.open(`https://wa.me/212663640604?text=Bonjour Centre Dentaire BOUGRINE,%0A%0AJe souhaite prendre rendez-vous le ${date} à ${time}.%0A%0APouvez-vous confirmer ?%0A%0AMerci.`, '_blank');
         });
-
-        // Smooth scroll pour les ancres
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        });
-
-        // Header background change on scroll
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('.header');
-            if (window.scrollY > 50) {
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
-                header.style.backdropFilter = 'blur(10px)';
-                header.style.padding = '10px 24px';
-                header.style.borderRadius = '0 0 20px 20px';
-                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.05)';
-                header.style.position = 'sticky';
-                header.style.top = '0';
-                header.style.zIndex = '100';
-            } else {
-                header.style.background = 'transparent';
-                header.style.backdropFilter = 'none';
-                header.style.padding = '20px 0';
-                header.style.borderRadius = '0';
-                header.style.boxShadow = 'none';
-                header.style.position = 'relative';
-            }
-        });
-
-        console.log('Centre Dentaire BOUGRINE - Dr. Chaymaa Bougrine | Tiflet, Maroc 🦷');
     </script>
 </body>
 </html>
