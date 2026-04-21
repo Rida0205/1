@@ -77,16 +77,15 @@
         .schedule { display: flex; flex-direction: column; gap: 16px; }
         .schedule-item { display: flex; justify-content: space-between; padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 15px; }
 
-        /* About Section - IMAGES EN LIGNE (PRINCIPALE À GAUCHE, 3 MINIATURES À DROITE) */
-        .about-section { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 40px; align-items: center; padding: 40px 0; }
-        .about-gallery { display: flex; gap: 16px; align-items: center; }
-        .gallery-main { flex: 2; aspect-ratio: 1/1; border-radius: 28px; overflow: hidden; box-shadow: 0 15px 25px rgba(0,0,0,0.05); }
-        .gallery-main img { width: 100%; height: 100%; object-fit: cover; }
-        .gallery-thumbs { flex: 1; display: flex; flex-direction: column; gap: 16px; }
-        .gallery-thumb { aspect-ratio: 1/1; border-radius: 20px; overflow: hidden; cursor: pointer; box-shadow: 0 8px 15px rgba(0,0,0,0.03); border: 2px solid transparent; transition: all 0.2s; }
-        .gallery-thumb:hover { transform: scale(1.02); }
-        .gallery-thumb.active { border-color: #0ea5e9; box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.2); }
-        .gallery-thumb img { width: 100%; height: 100%; object-fit: cover; }
+        /* About Section - SLIDER MODERNE SANS FLÈCHES */
+        .about-section { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; padding: 40px 0; }
+        .about-slider { position: relative; width: 100%; aspect-ratio: 1/1; border-radius: 28px; overflow: hidden; box-shadow: 0 15px 25px rgba(0,0,0,0.05); }
+        .about-slides { position: relative; width: 100%; height: 100%; }
+        .about-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 0.8s ease; background-size: cover; background-position: center; }
+        .about-slide.active { opacity: 1; }
+        .about-dots { position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; z-index: 10; padding: 8px 16px; background: rgba(0,0,0,0.2); backdrop-filter: blur(8px); border-radius: 40px; }
+        .about-dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.5); cursor: pointer; transition: all 0.3s; border: none; }
+        .about-dot.active { background: white; width: 28px; border-radius: 10px; }
         .about-content h3 { font-family: 'Playfair Display', serif; font-size: 28px; color: #0f172a; margin-bottom: 20px; }
         .about-content p { color: #475569; margin-bottom: 16px; font-size: 15px; line-height: 1.7; }
 
@@ -130,9 +129,6 @@
             .map-container { height: 320px; }
             .services-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
             .about-section { grid-template-columns: 1fr; }
-            .about-gallery { flex-direction: column; max-width: 400px; margin: 0 auto; }
-            .gallery-thumbs { flex-direction: row; }
-            .gallery-thumb { flex: 1; }
             .rdv-section { padding: 32px 16px; }
             .testimonials-grid { grid-template-columns: 1fr; }
             .hero-slider { height: 280px; }
@@ -214,17 +210,16 @@
             </div>
         </section>
 
-        <!-- SECTION ABOUT - IMAGES EN LIGNE (PRINCIPALE À GAUCHE, 3 MINIATURES À DROITE) -->
+        <!-- SECTION ABOUT - SLIDER MODERNE SANS FLÈCHES -->
         <section class="about-section">
-            <div class="about-gallery">
-                <div class="gallery-main" id="galleryMain">
-                    <img src="01.jpg" alt="Dr. Chaymaa Bougrine" id="mainImage">
+            <div class="about-slider" id="aboutSlider">
+                <div class="about-slides">
+                    <div class="about-slide active" style="background-image: url('01.jpg');"></div>
+                    <div class="about-slide" style="background-image: url('02.jpg');"></div>
+                    <div class="about-slide" style="background-image: url('03.jpg');"></div>
+                    <div class="about-slide" style="background-image: url('04.jpg');"></div>
                 </div>
-                <div class="gallery-thumbs" id="galleryThumbs">
-                    <div class="gallery-thumb active" data-src="01.jpg"><img src="01.jpg" alt="Thumb 1"></div>
-                    <div class="gallery-thumb" data-src="02.jpg"><img src="02.jpg" alt="Thumb 2"></div>
-                    <div class="gallery-thumb" data-src="03.jpg"><img src="03.jpg" alt="Thumb 3"></div>
-                </div>
+                <div class="about-dots" id="aboutDots"></div>
             </div>
             <div class="about-content">
                 <h3>Engagement & Expertise</h3>
@@ -292,18 +287,34 @@
         initSlider();
         setInterval(() => changeSlide(1), 5000);
 
-        // Galerie Interactive (images en ligne)
-        const mainImage = document.getElementById('mainImage');
-        const thumbs = document.querySelectorAll('.gallery-thumb');
+        // Slider Moderne pour About (sans flèches)
+        let currentAboutSlide = 0;
+        const aboutSlides = document.querySelectorAll('.about-slide');
+        const aboutDotsContainer = document.getElementById('aboutDots');
         
-        thumbs.forEach(thumb => {
-            thumb.addEventListener('click', function() {
-                const newSrc = this.getAttribute('data-src');
-                mainImage.src = newSrc;
-                thumbs.forEach(t => t.classList.remove('active'));
-                this.classList.add('active');
+        function initAboutSlider() {
+            aboutDotsContainer.innerHTML = '';
+            aboutSlides.forEach((_, i) => {
+                const dot = document.createElement('button');
+                dot.classList.add('about-dot');
+                if (i === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => goToAboutSlide(i));
+                aboutDotsContainer.appendChild(dot);
             });
-        });
+        }
+        
+        function goToAboutSlide(n) {
+            aboutSlides[currentAboutSlide].classList.remove('active');
+            aboutDotsContainer.children[currentAboutSlide].classList.remove('active');
+            currentAboutSlide = (n + aboutSlides.length) % aboutSlides.length;
+            aboutSlides[currentAboutSlide].classList.add('active');
+            aboutDotsContainer.children[currentAboutSlide].classList.add('active');
+        }
+        
+        function nextAboutSlide() { goToAboutSlide(currentAboutSlide + 1); }
+        
+        initAboutSlider();
+        setInterval(nextAboutSlide, 4000);
 
         // Témoignages
         const testimonials = [
