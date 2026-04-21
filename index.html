@@ -48,7 +48,7 @@
         .btn-secondary { background: white; color: #1e293b; padding: 14px 28px; border-radius: 40px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; border: 1px solid #e2e8f0; transition: all 0.2s; }
         .btn-secondary:hover { border-color: #0ea5e9; color: #0ea5e9; background: #f8fafc; }
         
-        /* Slider du Hero */
+        /* Slider du Hero - 6 IMAGES */
         .hero-slider { position: relative; width: 100%; height: 380px; border-radius: 36px; overflow: hidden; box-shadow: 0 15px 25px rgba(0,0,0,0.05); }
         .slider-container { position: relative; width: 100%; height: 100%; }
         .slider-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 0.5s ease; background-size: cover; background-position: center; }
@@ -92,25 +92,16 @@
         .about-content h3 { font-family: 'Playfair Display', serif; font-size: 28px; color: #0f172a; margin-bottom: 20px; }
         .about-content p { color: #475569; margin-bottom: 16px; font-size: 15px; line-height: 1.7; }
 
-        /* Testimonials Carousel */
-        .testimonials-section { padding: 20px 0 40px; position: relative; }
-        .testimonials-container { position: relative; overflow: hidden; padding: 10px 0; }
-        .testimonials-track { display: flex; transition: transform 0.5s ease; }
-        .testimonial-slide { flex: 0 0 calc(33.333% - 14px); margin-right: 20px; min-width: 0; }
-        .testimonial-card { background: white; padding: 24px; border-radius: 24px; border: 1px solid #f1f5f9; box-shadow: 0 8px 15px rgba(0,0,0,0.02); height: 100%; display: flex; flex-direction: column; }
+        /* Testimonials Grid - 4 COLONNES SUR DESKTOP/TABLETTE */
+        .testimonials-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; padding: 20px 0 40px; }
+        .testimonial-card { background: white; padding: 24px; border-radius: 24px; border: 1px solid #f1f5f9; box-shadow: 0 8px 15px rgba(0,0,0,0.02); transition: transform 0.2s; height: 100%; display: flex; flex-direction: column; }
+        .testimonial-card:hover { transform: translateY(-4px); box-shadow: 0 15px 25px rgba(0,0,0,0.05); }
         .testimonial-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
         .testimonial-avatar { width: 48px; height: 48px; background: linear-gradient(135deg, #0ea5e9, #3b82f6); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 18px; flex-shrink: 0; }
         .testimonial-info h4 { font-size: 16px; font-weight: 600; color: #0f172a; }
         .testimonial-info p { font-size: 13px; color: #64748b; }
         .testimonial-stars { color: #eab308; font-size: 14px; margin-bottom: 12px; }
         .testimonial-text { color: #334155; font-size: 14px; line-height: 1.6; font-style: italic; flex: 1; }
-        .carousel-arrow { position: absolute; top: 50%; transform: translateY(-50%); width: 44px; height: 44px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 8px 20px rgba(0,0,0,0.1); z-index: 10; border: 1px solid #f1f5f9; color: #1e293b; transition: all 0.2s; }
-        .carousel-arrow:hover { background: #0ea5e9; color: white; border-color: #0ea5e9; }
-        .carousel-arrow-left { left: -10px; }
-        .carousel-arrow-right { right: -10px; }
-        .carousel-dots { display: flex; justify-content: center; gap: 8px; margin-top: 24px; }
-        .carousel-dot { width: 8px; height: 8px; border-radius: 50%; background: #cbd5e1; cursor: pointer; transition: all 0.3s; border: none; }
-        .carousel-dot.active { background: #0ea5e9; width: 24px; border-radius: 10px; }
 
         /* RDV Section */
         .rdv-section { background: #f8fafc; border-radius: 40px; padding: 40px 24px; margin: 40px 0; text-align: center; box-shadow: 0 8px 15px rgba(0,0,0,0.02); border: 1px solid #f1f5f9; }
@@ -135,8 +126,14 @@
         .back-to-top.show { opacity: 1; visibility: visible; }
         .back-to-top:hover { background: #0284c7; transform: translateY(-3px); }
 
-        /* Mobile */
-        @media (max-width: 1024px) { .services-grid { grid-template-columns: repeat(4, 1fr); } }
+        /* Mobile & Tablette - Maintient 4 colonnes sur tablette, 2 sur mobile large, 1 sur petit mobile */
+        @media (max-width: 1024px) {
+            .services-grid { grid-template-columns: repeat(4, 1fr); }
+            .testimonials-grid { grid-template-columns: repeat(4, 1fr); }
+        }
+        @media (max-width: 900px) {
+            .testimonials-grid { grid-template-columns: repeat(4, 1fr); }
+        }
         @media (max-width: 768px) {
             .container { padding: 0 16px; }
             .header { flex-direction: column; text-align: center; }
@@ -146,14 +143,12 @@
             .info-section { grid-template-columns: 1fr; }
             .map-container { height: 320px; }
             .services-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+            .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
             .about-section { grid-template-columns: 1fr; }
             .about-slider { max-width: 320px; }
             .rdv-section { padding: 32px 16px; }
             .hero-slider { height: 280px; }
             .back-to-top { bottom: 20px; right: 20px; width: 44px; height: 44px; }
-            .testimonial-slide { flex: 0 0 100%; margin-right: 0; }
-            .carousel-arrow-left { left: 0; }
-            .carousel-arrow-right { right: 0; }
         }
         @media (max-width: 480px) {
             .hero-title { font-size: 28px; }
@@ -163,6 +158,7 @@
             .service-card h3 { font-size: 13px; }
             .hero-slider { height: 220px; }
             .about-slider { max-width: 280px; }
+            .testimonials-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -198,6 +194,8 @@
                     <div class="slider-slide" style="background-image: url('2.jpg');"></div>
                     <div class="slider-slide" style="background-image: url('3.jpg');"></div>
                     <div class="slider-slide" style="background-image: url('4.jpg');"></div>
+                    <div class="slider-slide" style="background-image: url('5.jpg');"></div>
+                    <div class="slider-slide" style="background-image: url('6.jpg');"></div>
                 </div>
                 <div class="slider-arrow slider-arrow-left" onclick="changeSlide(-1)"><i class="fas fa-chevron-left"></i></div>
                 <div class="slider-arrow slider-arrow-right" onclick="changeSlide(1)"><i class="fas fa-chevron-right"></i></div>
@@ -254,15 +252,10 @@
             </div>
         </section>
 
-        <!-- SECTION TÉMOIGNAGES - CAROUSEL -->
-        <section class="testimonials-section">
+        <!-- SECTION TÉMOIGNAGES - 8 AVIS EN GRID -->
+        <section>
             <div class="section-title"><h2>Ce que disent nos patients</h2><p>Avis vérifiés Google Maps</p></div>
-            <div class="testimonials-container" id="testimonialsCarousel">
-                <div class="testimonials-track" id="testimonialsTrack"></div>
-                <div class="carousel-arrow carousel-arrow-left" id="carouselPrev"><i class="fas fa-chevron-left"></i></div>
-                <div class="carousel-arrow carousel-arrow-right" id="carouselNext"><i class="fas fa-chevron-right"></i></div>
-            </div>
-            <div class="carousel-dots" id="carouselDots"></div>
+            <div class="testimonials-grid" id="testimonialsContainer"></div>
         </section>
 
         <section class="rdv-section" id="rdv">
@@ -294,7 +287,7 @@
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/fr.js"></script>
     <script>
-        // Slider du Hero (6 secondes)
+        // Slider Hero (6 images)
         let currentSlide = 0;
         const slides = document.querySelectorAll('.slider-slide');
         const dotsContainer = document.getElementById('sliderDots');
@@ -306,7 +299,7 @@
         function changeSlide(dir) { goToSlide(currentSlide+dir); }
         initSlider(); setInterval(()=>changeSlide(1), 6000);
 
-        // Slider About (6 secondes)
+        // Slider About (7 images)
         let currentAboutSlide = 0;
         const aboutSlides = document.querySelectorAll('.about-slide');
         const aboutDotsContainer = document.getElementById('aboutDots');
@@ -317,7 +310,7 @@
         function goToAboutSlide(n) { aboutSlides[currentAboutSlide].classList.remove('active'); aboutDotsContainer.children[currentAboutSlide].classList.remove('active'); currentAboutSlide = (n+aboutSlides.length)%aboutSlides.length; aboutSlides[currentAboutSlide].classList.add('active'); aboutDotsContainer.children[currentAboutSlide].classList.add('active'); }
         initAboutSlider(); setInterval(()=>goToAboutSlide(currentAboutSlide+1), 6000);
 
-        // Témoignages
+        // Témoignages (8)
         const testimonials = [
             { name: "Zineb El Omari", date: "il y a 3 semaines", stars: 5, text: "Très bonne dentiste ! Dr Chayma est douce, professionnelle et prend le temps d’expliquer les soins. Je suis très satisfaite du résultat, je recommande sans hésiter.", avatar: "Z" },
             { name: "fatima zahra kamouch", date: "il y a 5 mois", stars: 4, text: "Très satisfait de ma visite. Le centre dentaire est très propre et l’ambiance à l’accueil est agréable et conviviale. Un grand merci à la Dr Bougrine chaymaa...", avatar: "F" },
@@ -329,36 +322,12 @@
             { name: "Nada Zakarya", date: "il y a 4 mois", stars: 5, text: "Un cabinet et personnel agréables, le médecin est à l’écoute et propose des soins de qualité ❤️", avatar: "N" }
         ];
 
-        const track = document.getElementById('testimonialsTrack');
-        const dotsTrack = document.getElementById('carouselDots');
-        let currentIndex = 0;
-        let slidesPerView = window.innerWidth <= 768 ? 1 : 3;
-        let totalSlides = Math.ceil(testimonials.length / slidesPerView);
-
-        function renderCarousel() {
-            track.innerHTML = testimonials.map(t => `
-                <div class="testimonial-slide"><div class="testimonial-card">
-                    <div class="testimonial-header"><div class="testimonial-avatar">${t.avatar}</div><div class="testimonial-info"><h4>${t.name}</h4><p>${t.date}</p></div></div>
-                    <div class="testimonial-stars">${'★'.repeat(t.stars)}${'☆'.repeat(5-t.stars)}</div><p class="testimonial-text">"${t.text}"</p>
-                </div></div>`).join('');
-            updateCarousel();
-        }
-        function updateCarousel() {
-            const slideWidth = track.querySelector('.testimonial-slide')?.offsetWidth || 0;
-            const gap = window.innerWidth <= 768 ? 0 : 20;
-            track.style.transform = `translateX(-${currentIndex * (slideWidth + gap) * slidesPerView}px)`;
-            dotsTrack.innerHTML = '';
-            for(let i=0; i<totalSlides; i++) { const dot = document.createElement('button'); dot.classList.add('carousel-dot'); if(i===currentIndex) dot.classList.add('active'); dot.addEventListener('click', ()=>goToSlide(i)); dotsTrack.appendChild(dot); }
-        }
-        function goToSlide(index) { currentIndex = Math.max(0, Math.min(index, totalSlides-1)); updateCarousel(); }
-        function nextSlide() { currentIndex = (currentIndex+1)%totalSlides; updateCarousel(); }
-        function prevSlide() { currentIndex = (currentIndex-1+totalSlides)%totalSlides; updateCarousel(); }
-        
-        renderCarousel();
-        setInterval(nextSlide, 4000);
-        document.getElementById('carouselNext').addEventListener('click', nextSlide);
-        document.getElementById('carouselPrev').addEventListener('click', prevSlide);
-        window.addEventListener('resize', ()=>{ slidesPerView = window.innerWidth <= 768 ? 1 : 3; totalSlides = Math.ceil(testimonials.length / slidesPerView); renderCarousel(); });
+        document.getElementById('testimonialsContainer').innerHTML = testimonials.map(t => `
+            <div class="testimonial-card">
+                <div class="testimonial-header"><div class="testimonial-avatar">${t.avatar}</div><div class="testimonial-info"><h4>${t.name}</h4><p>${t.date}</p></div></div>
+                <div class="testimonial-stars">${'★'.repeat(t.stars)}${'☆'.repeat(5-t.stars)}</div><p class="testimonial-text">"${t.text}"</p>
+            </div>
+        `).join('');
 
         // Calendrier
         flatpickr("#rdvDate", { locale: "fr", dateFormat: "d/m/Y", minDate: "today", disable: [d=>d.getDay()===0] });
