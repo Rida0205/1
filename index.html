@@ -14,7 +14,7 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:wght@400;600;700&amp;display=swap" rel="stylesheet">
     
-    <!-- Flatpickr Calendar (pour la date seulement) -->
+    <!-- Flatpickr Calendar -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
     <style>
@@ -80,7 +80,7 @@
         .schedule { display: flex; flex-direction: column; gap: 16px; }
         .schedule-item { display: flex; justify-content: space-between; padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 15px; }
 
-        /* About Section - SLIDER MODERNE SANS FLÈCHES (7 IMAGES) */
+        /* About Section - SLIDER 7 IMAGES */
         .about-section { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 40px; align-items: center; padding: 40px 0; }
         .about-slider { position: relative; width: 100%; max-width: 380px; margin: 0 auto; aspect-ratio: 1/1; border-radius: 28px; overflow: hidden; box-shadow: 0 15px 25px rgba(0,0,0,0.05); }
         .about-slides { position: relative; width: 100%; height: 100%; }
@@ -92,18 +92,27 @@
         .about-content h3 { font-family: 'Playfair Display', serif; font-size: 28px; color: #0f172a; margin-bottom: 20px; }
         .about-content p { color: #475569; margin-bottom: 16px; font-size: 15px; line-height: 1.7; }
 
-        /* Testimonials */
-        .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; padding: 10px 0 30px; }
-        .testimonial-card { background: white; padding: 24px; border-radius: 24px; border: 1px solid #f1f5f9; box-shadow: 0 8px 15px rgba(0,0,0,0.02); transition: transform 0.2s; }
-        .testimonial-card:hover { transform: translateY(-4px); box-shadow: 0 15px 25px rgba(0,0,0,0.05); }
+        /* Testimonials Carousel */
+        .testimonials-section { padding: 20px 0 40px; position: relative; }
+        .testimonials-container { position: relative; overflow: hidden; padding: 10px 0; }
+        .testimonials-track { display: flex; transition: transform 0.5s ease; }
+        .testimonial-slide { flex: 0 0 calc(33.333% - 14px); margin-right: 20px; min-width: 0; }
+        .testimonial-card { background: white; padding: 24px; border-radius: 24px; border: 1px solid #f1f5f9; box-shadow: 0 8px 15px rgba(0,0,0,0.02); height: 100%; display: flex; flex-direction: column; }
         .testimonial-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
-        .testimonial-avatar { width: 48px; height: 48px; background: linear-gradient(135deg, #0ea5e9, #3b82f6); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 18px; }
+        .testimonial-avatar { width: 48px; height: 48px; background: linear-gradient(135deg, #0ea5e9, #3b82f6); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 18px; flex-shrink: 0; }
         .testimonial-info h4 { font-size: 16px; font-weight: 600; color: #0f172a; }
         .testimonial-info p { font-size: 13px; color: #64748b; }
         .testimonial-stars { color: #eab308; font-size: 14px; margin-bottom: 12px; }
-        .testimonial-text { color: #334155; font-size: 14px; line-height: 1.6; font-style: italic; }
+        .testimonial-text { color: #334155; font-size: 14px; line-height: 1.6; font-style: italic; flex: 1; }
+        .carousel-arrow { position: absolute; top: 50%; transform: translateY(-50%); width: 44px; height: 44px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 8px 20px rgba(0,0,0,0.1); z-index: 10; border: 1px solid #f1f5f9; color: #1e293b; transition: all 0.2s; }
+        .carousel-arrow:hover { background: #0ea5e9; color: white; border-color: #0ea5e9; }
+        .carousel-arrow-left { left: -10px; }
+        .carousel-arrow-right { right: -10px; }
+        .carousel-dots { display: flex; justify-content: center; gap: 8px; margin-top: 24px; }
+        .carousel-dot { width: 8px; height: 8px; border-radius: 50%; background: #cbd5e1; cursor: pointer; transition: all 0.3s; border: none; }
+        .carousel-dot.active { background: #0ea5e9; width: 24px; border-radius: 10px; }
 
-        /* RDV Section - CORRIGÉ AVEC SELECT */
+        /* RDV Section */
         .rdv-section { background: #f8fafc; border-radius: 40px; padding: 40px 24px; margin: 40px 0; text-align: center; box-shadow: 0 8px 15px rgba(0,0,0,0.02); border: 1px solid #f1f5f9; }
         .rdv-form { max-width: 500px; margin: 30px auto 0; }
         .form-group { margin-bottom: 20px; text-align: left; }
@@ -121,10 +130,10 @@
         .footer-info i { width: 24px; color: #0ea5e9; }
         .footer-bottom { text-align: center; padding-top: 28px; margin-top: 28px; border-top: 1px solid #334155; color: #94a3b8; font-size: 14px; }
 
-        /* Back to Top Button */
+        /* Back to Top */
         .back-to-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: #0ea5e9; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 8px 20px rgba(14, 165, 233, 0.3); opacity: 0; visibility: hidden; transition: all 0.3s; z-index: 999; border: none; font-size: 20px; }
         .back-to-top.show { opacity: 1; visibility: visible; }
-        .back-to-top:hover { background: #0284c7; transform: translateY(-3px); box-shadow: 0 12px 25px rgba(14, 165, 233, 0.4); }
+        .back-to-top:hover { background: #0284c7; transform: translateY(-3px); }
 
         /* Mobile */
         @media (max-width: 1024px) { .services-grid { grid-template-columns: repeat(4, 1fr); } }
@@ -140,9 +149,11 @@
             .about-section { grid-template-columns: 1fr; }
             .about-slider { max-width: 320px; }
             .rdv-section { padding: 32px 16px; }
-            .testimonials-grid { grid-template-columns: 1fr; }
             .hero-slider { height: 280px; }
-            .back-to-top { bottom: 20px; right: 20px; width: 44px; height: 44px; font-size: 18px; }
+            .back-to-top { bottom: 20px; right: 20px; width: 44px; height: 44px; }
+            .testimonial-slide { flex: 0 0 100%; margin-right: 0; }
+            .carousel-arrow-left { left: 0; }
+            .carousel-arrow-right { right: 0; }
         }
         @media (max-width: 480px) {
             .hero-title { font-size: 28px; }
@@ -152,8 +163,6 @@
             .service-card h3 { font-size: 13px; }
             .hero-slider { height: 220px; }
             .about-slider { max-width: 280px; }
-            .back-to-top { bottom: 16px; right: 16px; width: 40px; height: 40px; font-size: 16px; }
-            .form-group select { font-size: 15px; }
         }
     </style>
 </head>
@@ -245,16 +254,22 @@
             </div>
         </section>
 
-        <section>
+        <!-- SECTION TÉMOIGNAGES - CAROUSEL -->
+        <section class="testimonials-section">
             <div class="section-title"><h2>Ce que disent nos patients</h2><p>Avis vérifiés Google Maps</p></div>
-            <div class="testimonials-grid" id="testimonialsContainer"></div>
+            <div class="testimonials-container" id="testimonialsCarousel">
+                <div class="testimonials-track" id="testimonialsTrack"></div>
+                <div class="carousel-arrow carousel-arrow-left" id="carouselPrev"><i class="fas fa-chevron-left"></i></div>
+                <div class="carousel-arrow carousel-arrow-right" id="carouselNext"><i class="fas fa-chevron-right"></i></div>
+            </div>
+            <div class="carousel-dots" id="carouselDots"></div>
         </section>
 
         <section class="rdv-section" id="rdv">
             <div class="section-title"><h2>Prendre un rendez-vous</h2></div>
             <div class="rdv-form">
-                <div class="form-group"><label><i class="far fa-calendar-alt" style="margin-right: 8px;"></i>Date souhaitée</label><input type="text" id="rdvDate" placeholder="Choisir une date" readonly></div>
-                <div class="form-group"><label><i class="far fa-clock" style="margin-right: 8px;"></i>Heure souhaitée</label><select id="rdvTime" required><option value="" disabled selected>Choisir une heure</option></select></div>
+                <div class="form-group"><label><i class="far fa-calendar-alt"></i> Date souhaitée</label><input type="text" id="rdvDate" placeholder="Choisir une date" readonly></div>
+                <div class="form-group"><label><i class="far fa-clock"></i> Heure souhaitée</label><select id="rdvTime" required><option value="" disabled selected>Choisir une heure</option></select></div>
                 <button class="btn-primary" id="confirmRdvBtn" style="width: 100%; justify-content: center;"><i class="fab fa-whatsapp"></i> Confirmer sur WhatsApp</button>
                 <p class="rdv-note"><i class="fas fa-info-circle"></i> Les dimanches sont fermés. Le samedi jusqu'à 13h.</p>
             </div>
@@ -274,69 +289,33 @@
         </div>
     </footer>
 
-    <!-- Back to Top Button -->
     <button class="back-to-top" id="backToTop" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"><i class="fas fa-arrow-up"></i></button>
 
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/fr.js"></script>
     <script>
-        // Slider du Hero
+        // Slider du Hero (6 secondes)
         let currentSlide = 0;
         const slides = document.querySelectorAll('.slider-slide');
         const dotsContainer = document.getElementById('sliderDots');
-        
         function initSlider() {
             dotsContainer.innerHTML = '';
-            slides.forEach((_, i) => {
-                const dot = document.createElement('div');
-                dot.classList.add('slider-dot');
-                if (i === 0) dot.classList.add('active');
-                dot.addEventListener('click', () => goToSlide(i));
-                dotsContainer.appendChild(dot);
-            });
+            slides.forEach((_, i) => { const dot = document.createElement('div'); dot.classList.add('slider-dot'); if(i===0) dot.classList.add('active'); dot.addEventListener('click', ()=>goToSlide(i)); dotsContainer.appendChild(dot); });
         }
-        
-        function goToSlide(n) {
-            slides[currentSlide].classList.remove('active');
-            dotsContainer.children[currentSlide].classList.remove('active');
-            currentSlide = (n + slides.length) % slides.length;
-            slides[currentSlide].classList.add('active');
-            dotsContainer.children[currentSlide].classList.add('active');
-        }
-        
-        function changeSlide(dir) { goToSlide(currentSlide + dir); }
-        
-        initSlider();
-        setInterval(() => changeSlide(1), 5000);
+        function goToSlide(n) { slides[currentSlide].classList.remove('active'); dotsContainer.children[currentSlide].classList.remove('active'); currentSlide = (n+slides.length)%slides.length; slides[currentSlide].classList.add('active'); dotsContainer.children[currentSlide].classList.add('active'); }
+        function changeSlide(dir) { goToSlide(currentSlide+dir); }
+        initSlider(); setInterval(()=>changeSlide(1), 6000);
 
-        // Slider Moderne pour About (7 images)
+        // Slider About (6 secondes)
         let currentAboutSlide = 0;
         const aboutSlides = document.querySelectorAll('.about-slide');
         const aboutDotsContainer = document.getElementById('aboutDots');
-        
         function initAboutSlider() {
             aboutDotsContainer.innerHTML = '';
-            aboutSlides.forEach((_, i) => {
-                const dot = document.createElement('button');
-                dot.classList.add('about-dot');
-                if (i === 0) dot.classList.add('active');
-                dot.addEventListener('click', () => goToAboutSlide(i));
-                aboutDotsContainer.appendChild(dot);
-            });
+            aboutSlides.forEach((_, i) => { const dot = document.createElement('button'); dot.classList.add('about-dot'); if(i===0) dot.classList.add('active'); dot.addEventListener('click', ()=>goToAboutSlide(i)); aboutDotsContainer.appendChild(dot); });
         }
-        
-        function goToAboutSlide(n) {
-            aboutSlides[currentAboutSlide].classList.remove('active');
-            aboutDotsContainer.children[currentAboutSlide].classList.remove('active');
-            currentAboutSlide = (n + aboutSlides.length) % aboutSlides.length;
-            aboutSlides[currentAboutSlide].classList.add('active');
-            aboutDotsContainer.children[currentAboutSlide].classList.add('active');
-        }
-        
-        function nextAboutSlide() { goToAboutSlide(currentAboutSlide + 1); }
-        
-        initAboutSlider();
-        setInterval(nextAboutSlide, 4000);
+        function goToAboutSlide(n) { aboutSlides[currentAboutSlide].classList.remove('active'); aboutDotsContainer.children[currentAboutSlide].classList.remove('active'); currentAboutSlide = (n+aboutSlides.length)%aboutSlides.length; aboutSlides[currentAboutSlide].classList.add('active'); aboutDotsContainer.children[currentAboutSlide].classList.add('active'); }
+        initAboutSlider(); setInterval(()=>goToAboutSlide(currentAboutSlide+1), 6000);
 
         // Témoignages
         const testimonials = [
@@ -350,50 +329,53 @@
             { name: "Nada Zakarya", date: "il y a 4 mois", stars: 5, text: "Un cabinet et personnel agréables, le médecin est à l’écoute et propose des soins de qualité ❤️", avatar: "N" }
         ];
 
-        document.getElementById('testimonialsContainer').innerHTML = testimonials.map(t => `
-            <div class="testimonial-card">
-                <div class="testimonial-header"><div class="testimonial-avatar">${t.avatar}</div><div class="testimonial-info"><h4>${t.name}</h4><p>${t.date}</p></div></div>
-                <div class="testimonial-stars">${'★'.repeat(t.stars)}${'☆'.repeat(5-t.stars)}</div>
-                <p class="testimonial-text">"${t.text}"</p>
-            </div>
-        `).join('');
+        const track = document.getElementById('testimonialsTrack');
+        const dotsTrack = document.getElementById('carouselDots');
+        let currentIndex = 0;
+        let slidesPerView = window.innerWidth <= 768 ? 1 : 3;
+        let totalSlides = Math.ceil(testimonials.length / slidesPerView);
 
-        // Initialisation du calendrier Flatpickr (Date uniquement)
-        const calendar = flatpickr("#rdvDate", { locale: "fr", dateFormat: "d/m/Y", minDate: "today", disable: [d => d.getDay() === 0] });
-        
-        // Génération des heures (09:00 à 18:00, intervalle 30 min)
-        const timeSelect = document.getElementById('rdvTime');
-        function generateTimeOptions() {
-            timeSelect.innerHTML = '<option value="" disabled selected>Choisir une heure</option>';
-            for (let h = 9; h < 18; h++) {
-                for (let m of ['00', '30']) {
-                    if (h === 17 && m === '30') continue;
-                    const time = `${h.toString().padStart(2, '0')}:${m}`;
-                    const option = document.createElement('option');
-                    option.value = time;
-                    option.textContent = time;
-                    timeSelect.appendChild(option);
-                }
-            }
-            timeSelect.appendChild(new Option('18:00', '18:00'));
+        function renderCarousel() {
+            track.innerHTML = testimonials.map(t => `
+                <div class="testimonial-slide"><div class="testimonial-card">
+                    <div class="testimonial-header"><div class="testimonial-avatar">${t.avatar}</div><div class="testimonial-info"><h4>${t.name}</h4><p>${t.date}</p></div></div>
+                    <div class="testimonial-stars">${'★'.repeat(t.stars)}${'☆'.repeat(5-t.stars)}</div><p class="testimonial-text">"${t.text}"</p>
+                </div></div>`).join('');
+            updateCarousel();
         }
-        generateTimeOptions();
+        function updateCarousel() {
+            const slideWidth = track.querySelector('.testimonial-slide')?.offsetWidth || 0;
+            const gap = window.innerWidth <= 768 ? 0 : 20;
+            track.style.transform = `translateX(-${currentIndex * (slideWidth + gap) * slidesPerView}px)`;
+            dotsTrack.innerHTML = '';
+            for(let i=0; i<totalSlides; i++) { const dot = document.createElement('button'); dot.classList.add('carousel-dot'); if(i===currentIndex) dot.classList.add('active'); dot.addEventListener('click', ()=>goToSlide(i)); dotsTrack.appendChild(dot); }
+        }
+        function goToSlide(index) { currentIndex = Math.max(0, Math.min(index, totalSlides-1)); updateCarousel(); }
+        function nextSlide() { currentIndex = (currentIndex+1)%totalSlides; updateCarousel(); }
+        function prevSlide() { currentIndex = (currentIndex-1+totalSlides)%totalSlides; updateCarousel(); }
+        
+        renderCarousel();
+        setInterval(nextSlide, 4000);
+        document.getElementById('carouselNext').addEventListener('click', nextSlide);
+        document.getElementById('carouselPrev').addEventListener('click', prevSlide);
+        window.addEventListener('resize', ()=>{ slidesPerView = window.innerWidth <= 768 ? 1 : 3; totalSlides = Math.ceil(testimonials.length / slidesPerView); renderCarousel(); });
 
-        // RDV
-        document.getElementById('confirmRdvBtn').addEventListener('click', function() {
-            const date = document.getElementById('rdvDate').value;
-            const time = document.getElementById('rdvTime').value;
-            if (!date || !time) { alert('Veuillez sélectionner une date et une heure.'); return; }
-            const parts = date.split('/');
-            const selectedDate = new Date(parts[2], parts[1]-1, parts[0]);
-            if (selectedDate.getDay() === 0) { alert('Le cabinet est fermé le dimanche.'); return; }
-            if (selectedDate.getDay() === 6 && time > "13:00") { alert('Le samedi, les rendez-vous sont uniquement jusqu\'à 13h00.'); return; }
-            window.open(`https://wa.me/212663640604?text=Bonjour Centre Dentaire BOUGRINE,%0A%0AJe souhaite prendre rendez-vous le ${date} à ${time}.%0A%0APouvez-vous confirmer ?%0A%0AMerci.`, '_blank');
+        // Calendrier
+        flatpickr("#rdvDate", { locale: "fr", dateFormat: "d/m/Y", minDate: "today", disable: [d=>d.getDay()===0] });
+        const timeSelect = document.getElementById('rdvTime');
+        for(let h=9; h<18; h++) for(let m of ['00','30']) { if(h===17&&m==='30') continue; const t=`${h.toString().padStart(2,'0')}:${m}`; timeSelect.appendChild(new Option(t,t)); }
+        timeSelect.appendChild(new Option('18:00','18:00'));
+
+        document.getElementById('confirmRdvBtn').addEventListener('click', ()=>{
+            const d=document.getElementById('rdvDate').value, t=document.getElementById('rdvTime').value;
+            if(!d||!t) return alert('Veuillez sélectionner une date et une heure.');
+            const parts=d.split('/'), sd=new Date(parts[2],parts[1]-1,parts[0]);
+            if(sd.getDay()===0) return alert('Fermé le dimanche.');
+            if(sd.getDay()===6&&t>"13:00") return alert('Samedi jusqu\'à 13h.');
+            window.open(`https://wa.me/212663640604?text=Bonjour Centre Dentaire BOUGRINE,%0A%0AJe souhaite prendre rendez-vous le ${d} à ${t}.%0A%0APouvez-vous confirmer ?%0A%0AMerci.`, '_blank');
         });
 
-        // Back to Top
-        const backToTop = document.getElementById('backToTop');
-        window.addEventListener('scroll', () => backToTop.classList.toggle('show', window.scrollY > 300));
+        window.addEventListener('scroll', ()=>document.getElementById('backToTop').classList.toggle('show', window.scrollY>300));
     </script>
 </body>
 </html>
