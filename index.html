@@ -13,6 +13,9 @@
     
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:wght@400;600;700&amp;display=swap" rel="stylesheet">
+    
+    <!-- Flatpickr Calendar (pour la date seulement) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -100,13 +103,14 @@
         .testimonial-stars { color: #eab308; font-size: 14px; margin-bottom: 12px; }
         .testimonial-text { color: #334155; font-size: 14px; line-height: 1.6; font-style: italic; }
 
-        /* RDV Section */
+        /* RDV Section - CORRIGÉ AVEC SELECT */
         .rdv-section { background: #f8fafc; border-radius: 40px; padding: 40px 24px; margin: 40px 0; text-align: center; box-shadow: 0 8px 15px rgba(0,0,0,0.02); border: 1px solid #f1f5f9; }
         .rdv-form { max-width: 500px; margin: 30px auto 0; }
         .form-group { margin-bottom: 20px; text-align: left; }
         .form-group label { display: block; margin-bottom: 8px; font-weight: 500; color: #0f172a; font-size: 15px; }
-        .form-group input { width: 100%; padding: 16px 18px; font-size: 16px; border: 1px solid #e2e8f0; border-radius: 18px; background: white; font-family: 'Inter', sans-serif; transition: border 0.2s, box-shadow 0.2s; }
-        .form-group input:focus { outline: none; border-color: #0ea5e9; box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1); }
+        .form-group input, .form-group select { width: 100%; padding: 16px 18px; font-size: 16px; border: 1px solid #e2e8f0; border-radius: 18px; background: white; font-family: 'Inter', sans-serif; transition: border 0.2s, box-shadow 0.2s; appearance: none; -webkit-appearance: none; }
+        .form-group select { background-image: url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2716%27 height=%2716%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27%23475569%27 stroke-width=%272%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3E%3Cpolyline points=%276 9 12 15 18 9%27%3E%3C/polyline%3E%3C/svg%3E'); background-repeat: no-repeat; background-position: right 18px center; background-size: 16px; padding-right: 48px; }
+        .form-group input:focus, .form-group select:focus { outline: none; border-color: #0ea5e9; box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1); }
         .rdv-note { margin-top: 16px; font-size: 14px; color: #64748b; }
 
         /* Footer */
@@ -149,10 +153,8 @@
             .hero-slider { height: 220px; }
             .about-slider { max-width: 280px; }
             .back-to-top { bottom: 16px; right: 16px; width: 40px; height: 40px; font-size: 16px; }
+            .form-group select { font-size: 15px; }
         }
-
-        /* Correction affichage time picker sur mobile */
-        input[type="time"]::-webkit-calendar-picker-indicator { opacity: 1; }
     </style>
 </head>
 <body>
@@ -251,8 +253,8 @@
         <section class="rdv-section" id="rdv">
             <div class="section-title"><h2>Prendre un rendez-vous</h2></div>
             <div class="rdv-form">
-                <div class="form-group"><label><i class="far fa-calendar-alt" style="margin-right: 8px;"></i>Date souhaitée</label><input type="date" id="rdvDate" min="" required></div>
-                <div class="form-group"><label><i class="far fa-clock" style="margin-right: 8px;"></i>Heure souhaitée</label><input type="time" id="rdvTime" min="09:00" max="18:00" required></div>
+                <div class="form-group"><label><i class="far fa-calendar-alt" style="margin-right: 8px;"></i>Date souhaitée</label><input type="text" id="rdvDate" placeholder="Choisir une date" readonly></div>
+                <div class="form-group"><label><i class="far fa-clock" style="margin-right: 8px;"></i>Heure souhaitée</label><select id="rdvTime" required><option value="" disabled selected>Choisir une heure</option></select></div>
                 <button class="btn-primary" id="confirmRdvBtn" style="width: 100%; justify-content: center;"><i class="fab fa-whatsapp"></i> Confirmer sur WhatsApp</button>
                 <p class="rdv-note"><i class="fas fa-info-circle"></i> Les dimanches sont fermés. Le samedi jusqu'à 13h.</p>
             </div>
@@ -275,6 +277,8 @@
     <!-- Back to Top Button -->
     <button class="back-to-top" id="backToTop" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"><i class="fas fa-arrow-up"></i></button>
 
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/fr.js"></script>
     <script>
         // Slider du Hero
         let currentSlide = 0;
@@ -354,27 +358,42 @@
             </div>
         `).join('');
 
-        // Date du jour
-        document.getElementById('rdvDate').setAttribute('min', new Date().toISOString().split('T')[0]);
+        // Initialisation du calendrier Flatpickr (Date uniquement)
+        const calendar = flatpickr("#rdvDate", { locale: "fr", dateFormat: "d/m/Y", minDate: "today", disable: [d => d.getDay() === 0] });
+        
+        // Génération des heures (09:00 à 18:00, intervalle 30 min)
+        const timeSelect = document.getElementById('rdvTime');
+        function generateTimeOptions() {
+            timeSelect.innerHTML = '<option value="" disabled selected>Choisir une heure</option>';
+            for (let h = 9; h < 18; h++) {
+                for (let m of ['00', '30']) {
+                    if (h === 17 && m === '30') continue;
+                    const time = `${h.toString().padStart(2, '0')}:${m}`;
+                    const option = document.createElement('option');
+                    option.value = time;
+                    option.textContent = time;
+                    timeSelect.appendChild(option);
+                }
+            }
+            timeSelect.appendChild(new Option('18:00', '18:00'));
+        }
+        generateTimeOptions();
 
         // RDV
         document.getElementById('confirmRdvBtn').addEventListener('click', function() {
             const date = document.getElementById('rdvDate').value;
             const time = document.getElementById('rdvTime').value;
             if (!date || !time) { alert('Veuillez sélectionner une date et une heure.'); return; }
-            const selectedDate = new Date(date);
+            const parts = date.split('/');
+            const selectedDate = new Date(parts[2], parts[1]-1, parts[0]);
             if (selectedDate.getDay() === 0) { alert('Le cabinet est fermé le dimanche.'); return; }
             if (selectedDate.getDay() === 6 && time > "13:00") { alert('Le samedi, les rendez-vous sont uniquement jusqu\'à 13h00.'); return; }
-            const formattedDate = date.split('-').reverse().join('/');
-            window.open(`https://wa.me/212663640604?text=Bonjour Centre Dentaire BOUGRINE,%0A%0AJe souhaite prendre rendez-vous le ${formattedDate} à ${time}.%0A%0APouvez-vous confirmer ?%0A%0AMerci.`, '_blank');
+            window.open(`https://wa.me/212663640604?text=Bonjour Centre Dentaire BOUGRINE,%0A%0AJe souhaite prendre rendez-vous le ${date} à ${time}.%0A%0APouvez-vous confirmer ?%0A%0AMerci.`, '_blank');
         });
 
-        // Back to Top Button
+        // Back to Top
         const backToTop = document.getElementById('backToTop');
-        window.addEventListener('scroll', function() {
-            if (window.scrollY > 300) backToTop.classList.add('show');
-            else backToTop.classList.remove('show');
-        });
+        window.addEventListener('scroll', () => backToTop.classList.toggle('show', window.scrollY > 300));
     </script>
 </body>
 </html>
