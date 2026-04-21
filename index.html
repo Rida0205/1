@@ -45,8 +45,8 @@
         .btn-secondary { background: white; color: #1e293b; padding: 14px 28px; border-radius: 40px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; border: 1px solid #e2e8f0; transition: all 0.2s; }
         .btn-secondary:hover { border-color: #0ea5e9; color: #0ea5e9; background: #f8fafc; }
         
-        /* Slider */
-        .hero-slider { position: relative; width: 100%; aspect-ratio: 1/1; border-radius: 36px; overflow: hidden; box-shadow: 0 15px 25px rgba(0,0,0,0.05); }
+        /* Slider du Hero - RETOUR À LA TAILLE NORMALE */
+        .hero-slider { position: relative; width: 100%; height: 380px; border-radius: 36px; overflow: hidden; box-shadow: 0 15px 25px rgba(0,0,0,0.05); }
         .slider-container { position: relative; width: 100%; height: 100%; }
         .slider-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 0.5s ease; background-size: cover; background-position: center; }
         .slider-slide.active { opacity: 1; }
@@ -77,9 +77,9 @@
         .schedule { display: flex; flex-direction: column; gap: 16px; }
         .schedule-item { display: flex; justify-content: space-between; padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 15px; }
 
-        /* About Section - Galerie Interactive */
+        /* About Section - GALERIE AVEC 3 MINIATURES SEULEMENT */
         .about-section { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; padding: 40px 0; }
-        .about-gallery { display: flex; flex-direction: column; gap: 16px; }
+        .about-gallery { display: flex; flex-direction: column; gap: 16px; max-width: 450px; margin: 0 auto; width: 100%; }
         .gallery-main { width: 100%; aspect-ratio: 1/1; border-radius: 28px; overflow: hidden; box-shadow: 0 15px 25px rgba(0,0,0,0.05); }
         .gallery-main img { width: 100%; height: 100%; object-fit: cover; transition: opacity 0.3s; }
         .gallery-thumbs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
@@ -130,8 +130,10 @@
             .map-container { height: 320px; }
             .services-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
             .about-section { grid-template-columns: 1fr; }
+            .about-gallery { max-width: 100%; }
             .rdv-section { padding: 32px 16px; }
             .testimonials-grid { grid-template-columns: 1fr; }
+            .hero-slider { height: 280px; }
         }
         @media (max-width: 480px) {
             .hero-title { font-size: 28px; }
@@ -139,6 +141,7 @@
             .service-card { padding: 20px 8px; }
             .service-icon { width: 48px; height: 48px; font-size: 22px; }
             .service-card h3 { font-size: 13px; }
+            .hero-slider { height: 220px; }
         }
     </style>
 </head>
@@ -209,7 +212,7 @@
             </div>
         </section>
 
-        <!-- SECTION ABOUT - GALERIE INTERACTIVE -->
+        <!-- SECTION ABOUT - 3 MINIATURES SEULEMENT -->
         <section class="about-section">
             <div class="about-gallery">
                 <div class="gallery-main" id="galleryMain">
@@ -219,7 +222,6 @@
                     <div class="gallery-thumb active" data-src="01.jpg"><img src="01.jpg" alt="Thumb 1"></div>
                     <div class="gallery-thumb" data-src="02.jpg"><img src="02.jpg" alt="Thumb 2"></div>
                     <div class="gallery-thumb" data-src="03.jpg"><img src="03.jpg" alt="Thumb 3"></div>
-                    <div class="gallery-thumb" data-src="04.jpg"><img src="04.jpg" alt="Thumb 4"></div>
                 </div>
             </div>
             <div class="about-content">
@@ -288,17 +290,14 @@
         initSlider();
         setInterval(() => changeSlide(1), 5000);
 
-        // Galerie Interactive (About Section)
+        // Galerie Interactive (3 miniatures)
         const mainImage = document.getElementById('mainImage');
         const thumbs = document.querySelectorAll('.gallery-thumb');
         
         thumbs.forEach(thumb => {
             thumb.addEventListener('click', function() {
-                // Mise à jour de l'image principale
                 const newSrc = this.getAttribute('data-src');
                 mainImage.src = newSrc;
-                
-                // Mise à jour de la classe active
                 thumbs.forEach(t => t.classList.remove('active'));
                 this.classList.add('active');
             });
