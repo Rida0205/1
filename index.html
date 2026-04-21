@@ -12,126 +12,121 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:wght@400;600;700&amp;display=swap" rel="stylesheet">
     
     <!-- Flatpickr Calendar -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Outfit', sans-serif; background-color: #fafafa; color: #1e293b; line-height: 1.5; -webkit-font-smoothing: antialiased; font-weight: 300; }
+        body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #1e293b; line-height: 1.5; -webkit-font-smoothing: antialiased; }
         .container { max-width: 1280px; margin: 0 auto; padding: 0 20px; }
 
         /* Header */
-        .header { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; border-bottom: 1px solid rgba(0,0,0,0.05); flex-wrap: wrap; gap: 16px; }
+        .header { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; border-bottom: 1px solid #e2e8f0; flex-wrap: wrap; gap: 16px; }
         .logo { display: flex; align-items: center; gap: 12px; }
-        .logo-icon { width: 48px; height: 48px; background: #1a1a1a; border-radius: 0; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; }
-        .logo-text h1 { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 600; color: #1a1a1a; letter-spacing: -0.5px; }
-        .logo-text span { font-size: 11px; color: #8c8c8c; letter-spacing: 3px; font-weight: 400; }
+        .logo-icon { width: 48px; height: 48px; background: linear-gradient(135deg, #0ea5e9, #3b82f6); border-radius: 14px; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; box-shadow: 0 6px 12px rgba(14, 165, 233, 0.2); }
+        .logo-text h1 { font-family: 'Playfair Display', serif; font-size: clamp(20px, 5vw, 24px); font-weight: 700; color: #0f172a; }
+        .logo-text span { font-size: 13px; color: #64748b; letter-spacing: 2px; font-weight: 500; }
         .header-contact { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
-        .header-contact a { display: flex; align-items: center; gap: 8px; color: #1e293b; text-decoration: none; font-weight: 400; font-size: 15px; transition: color 0.2s; }
-        .header-contact a:hover { color: #b8946e; }
-        .btn-rdv { background: #1a1a1a; color: white !important; padding: 12px 28px; border-radius: 0; font-weight: 400; letter-spacing: 1px; transition: all 0.3s; border: 1px solid #1a1a1a; }
-        .btn-rdv:hover { background: transparent; color: #1a1a1a !important; }
+        .header-contact a { display: flex; align-items: center; gap: 8px; color: #1e293b; text-decoration: none; font-weight: 500; font-size: 15px; transition: color 0.2s; }
+        .header-contact a:hover { color: #0ea5e9; }
+        .btn-rdv { background: linear-gradient(135deg, #0ea5e9, #3b82f6); color: white !important; padding: 12px 24px; border-radius: 40px; font-weight: 600; box-shadow: 0 6px 14px rgba(14, 165, 233, 0.25); transition: transform 0.2s, box-shadow 0.2s; }
+        .btn-rdv:hover { transform: translateY(-2px); box-shadow: 0 10px 18px rgba(14, 165, 233, 0.3); }
 
         /* Hero */
         .hero { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; padding: 40px 0; }
-        .hero-badge { display: inline-block; color: #b8946e; padding: 0; font-size: 13px; font-weight: 500; margin-bottom: 20px; letter-spacing: 2px; text-transform: uppercase; }
-        .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(36px, 6vw, 56px); font-weight: 600; color: #1a1a1a; margin-bottom: 20px; line-height: 1.1; letter-spacing: -1px; }
-        .hero-title i { color: #b8946e; font-style: italic; }
+        .hero-badge { display: inline-block; background: #e0f2fe; color: #0369a1; padding: 6px 16px; border-radius: 40px; font-size: 13px; font-weight: 600; margin-bottom: 20px; }
+        .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(32px, 6vw, 48px); font-weight: 700; color: #0f172a; margin-bottom: 20px; line-height: 1.2; }
+        .hero-title i { color: #0ea5e9; }
         .hero-features { display: flex; flex-direction: column; gap: 14px; margin: 24px 0; }
-        .feature-item { display: flex; align-items: center; gap: 12px; font-size: 15px; font-weight: 300; }
-        .feature-icon { width: 36px; height: 36px; background: #f4f2ee; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #b8946e; font-size: 16px; }
+        .feature-item { display: flex; align-items: center; gap: 12px; font-size: 15px; }
+        .feature-icon { width: 36px; height: 36px; background: #f0f9ff; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #0ea5e9; font-size: 16px; }
         .hero-buttons { display: flex; gap: 14px; flex-wrap: wrap; }
-        .btn-primary { background: #1a1a1a; color: white; padding: 16px 36px; border-radius: 0; font-weight: 400; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; border: none; cursor: pointer; transition: all 0.3s; letter-spacing: 1px; border: 1px solid #1a1a1a; }
-        .btn-primary:hover { background: transparent; color: #1a1a1a; }
-        .btn-secondary { background: transparent; color: #1a1a1a; padding: 16px 36px; border-radius: 0; font-weight: 400; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; border: 1px solid #d0d0d0; transition: all 0.3s; }
-        .btn-secondary:hover { border-color: #1a1a1a; }
+        .btn-primary { background: linear-gradient(135deg, #0ea5e9, #3b82f6); color: white; padding: 14px 28px; border-radius: 40px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; border: none; cursor: pointer; box-shadow: 0 6px 14px rgba(14, 165, 233, 0.2); transition: all 0.2s; }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(14, 165, 233, 0.3); }
+        .btn-secondary { background: white; color: #1e293b; padding: 14px 28px; border-radius: 40px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; border: 1px solid #e2e8f0; transition: all 0.2s; }
+        .btn-secondary:hover { border-color: #0ea5e9; color: #0ea5e9; background: #f8fafc; }
         
         /* Slider du Hero - 6 IMAGES */
-        .hero-slider { position: relative; width: 100%; height: 420px; overflow: hidden; box-shadow: 0 25px 40px -10px rgba(0,0,0,0.05); }
+        .hero-slider { position: relative; width: 100%; height: 380px; border-radius: 36px; overflow: hidden; box-shadow: 0 15px 25px rgba(0,0,0,0.05); }
         .slider-container { position: relative; width: 100%; height: 100%; }
-        .slider-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 0.8s ease; background-size: cover; background-position: center; }
+        .slider-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 0.5s ease; background-size: cover; background-position: center; }
         .slider-slide.active { opacity: 1; }
-        .slider-arrow { position: absolute; top: 50%; transform: translateY(-50%); width: 44px; height: 44px; background: white; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10; color: #1a1a1a; font-size: 18px; transition: all 0.3s; border: none; }
-        .slider-arrow:hover { background: #1a1a1a; color: white; }
-        .slider-arrow-left { left: 20px; }
-        .slider-arrow-right { right: 20px; }
-        .slider-dots { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; z-index: 10; }
-        .slider-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.5); cursor: pointer; transition: all 0.3s; }
-        .slider-dot.active { background: white; width: 28px; border-radius: 4px; }
+        .slider-arrow { position: absolute; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; background: rgba(255,255,255,0.8); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10; color: #1e293b; font-size: 18px; backdrop-filter: blur(4px); transition: all 0.2s; }
+        .slider-arrow:hover { background: white; }
+        .slider-arrow-left { left: 16px; }
+        .slider-arrow-right { right: 16px; }
+        .slider-dots { position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; z-index: 10; }
+        .slider-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.5); cursor: pointer; transition: all 0.2s; }
+        .slider-dot.active { background: white; width: 24px; border-radius: 4px; }
 
-        /* Services Section - CRÉATIF ET ÉLÉGANT */
-        .services-section { padding: 60px 0; }
-        .section-title { text-align: center; margin-bottom: 50px; }
-        .section-title h2 { font-family: 'Cormorant Garamond', serif; font-size: 44px; color: #1a1a1a; margin-bottom: 12px; font-weight: 500; letter-spacing: -1px; }
-        .section-title p { color: #8c8c8c; font-size: 16px; font-weight: 300; text-transform: uppercase; letter-spacing: 4px; }
-        .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; }
-        .service-card { background: white; padding: 35px 20px 30px; text-align: center; transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); position: relative; border: 1px solid #f0f0f0; box-shadow: 0 10px 25px -8px rgba(0,0,0,0.03); }
-        .service-card:hover { transform: translateY(-8px); box-shadow: 0 30px 40px -15px rgba(0,0,0,0.08); border-color: transparent; background: white; }
-        .service-icon { width: 75px; height: 75px; margin: 0 auto 25px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: #faf7f4; color: #b8946e; font-size: 30px; transition: all 0.4s; border: 1px solid rgba(184, 148, 110, 0.1); }
-        .service-card:hover .service-icon { background: #1a1a1a; color: white; border-color: #1a1a1a; transform: scale(1.05); }
-        .service-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; color: #1a1a1a; margin-bottom: 8px; letter-spacing: -0.5px; }
-        .service-card .tagline { font-size: 12px; color: #b8946e; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; font-weight: 400; }
-        .service-card p { color: #6a6a6a; font-size: 13px; font-weight: 300; line-height: 1.6; max-width: 180px; margin: 0 auto; }
+        /* Services */
+        .section-title { text-align: center; margin-bottom: 36px; }
+        .section-title h2 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 6vw, 36px); color: #0f172a; margin-bottom: 8px; }
+        .section-title p { color: #64748b; font-size: 16px; }
+        .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; padding: 20px 0; }
+        .service-card { background: white; padding: 24px 12px; border-radius: 24px; border: 1px solid #f1f5f9; text-align: center; transition: all 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.02); height: 100%; display: flex; flex-direction: column; align-items: center; }
+        .service-card:hover { transform: translateY(-5px); box-shadow: 0 15px 25px rgba(0,0,0,0.05); border-color: #e2e8f0; }
+        .service-icon { width: 56px; height: 56px; background: linear-gradient(135deg, #f0f9ff, #e0f2fe); border-radius: 18px; display: flex; align-items: center; justify-content: center; color: #0ea5e9; font-size: 26px; margin-bottom: 16px; }
+        .service-card h3 { font-size: 15px; font-weight: 600; color: #0f172a; }
 
         /* Map & Hours */
         .info-section { display: grid; grid-template-columns: 1.2fr 1fr; gap: 24px; padding: 40px 0; }
-        .map-container { overflow: hidden; height: 420px; box-shadow: 0 25px 40px -10px rgba(0,0,0,0.05); border: 1px solid #f0f0f0; }
+        .map-container { border-radius: 28px; overflow: hidden; height: 420px; box-shadow: 0 15px 25px rgba(0,0,0,0.05); border: 1px solid #f1f5f9; }
         .map-container iframe { width: 100%; height: 100%; border: 0; }
-        .hours { background: #1a1a1a; padding: 40px; color: white; box-shadow: 0 25px 40px -10px rgba(0,0,0,0.1); }
-        .hours h3 { font-family: 'Cormorant Garamond', serif; font-size: 32px; margin-bottom: 24px; font-weight: 500; color: white; }
-        .schedule { display: flex; flex-direction: column; gap: 18px; }
-        .schedule-item { display: flex; justify-content: space-between; padding-bottom: 14px; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 15px; font-weight: 300; }
-        .schedule-item span:last-child { color: #b8946e; font-weight: 400; }
+        .hours { background: linear-gradient(135deg, #0f172a, #1e293b); border-radius: 28px; padding: 32px; color: white; box-shadow: 0 15px 25px rgba(0,0,0,0.1); }
+        .hours h3 { font-family: 'Playfair Display', serif; font-size: 28px; margin-bottom: 24px; }
+        .schedule { display: flex; flex-direction: column; gap: 16px; }
+        .schedule-item { display: flex; justify-content: space-between; padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 15px; }
 
         /* About Section - SLIDER 7 IMAGES */
-        .about-section { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 50px; align-items: center; padding: 50px 0; }
-        .about-slider { position: relative; width: 100%; max-width: 400px; margin: 0 auto; aspect-ratio: 1/1; overflow: hidden; box-shadow: 0 25px 40px -10px rgba(0,0,0,0.05); border: 1px solid #f0f0f0; }
+        .about-section { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 40px; align-items: center; padding: 40px 0; }
+        .about-slider { position: relative; width: 100%; max-width: 380px; margin: 0 auto; aspect-ratio: 1/1; border-radius: 28px; overflow: hidden; box-shadow: 0 15px 25px rgba(0,0,0,0.05); }
         .about-slides { position: relative; width: 100%; height: 100%; }
         .about-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 0.8s ease; background-size: cover; background-position: center; }
         .about-slide.active { opacity: 1; }
-        .about-dots { position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; z-index: 10; padding: 8px 16px; background: rgba(255,255,255,0.9); border-radius: 30px; }
-        .about-dot { width: 8px; height: 8px; border-radius: 50%; background: #ccc; cursor: pointer; transition: all 0.3s; border: none; }
-        .about-dot.active { background: #1a1a1a; width: 24px; border-radius: 4px; }
-        .about-content h3 { font-family: 'Cormorant Garamond', serif; font-size: 32px; color: #1a1a1a; margin-bottom: 20px; font-weight: 500; }
-        .about-content p { color: #5c5c5c; margin-bottom: 16px; font-size: 15px; line-height: 1.8; font-weight: 300; }
+        .about-dots { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); display: flex; gap: 6px; z-index: 10; padding: 6px 14px; background: rgba(0,0,0,0.2); backdrop-filter: blur(8px); border-radius: 30px; max-width: 90%; overflow-x: auto; flex-wrap: wrap; justify-content: center; }
+        .about-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.6); cursor: pointer; transition: all 0.3s; border: none; flex-shrink: 0; }
+        .about-dot.active { background: white; width: 20px; border-radius: 10px; }
+        .about-content h3 { font-family: 'Playfair Display', serif; font-size: 28px; color: #0f172a; margin-bottom: 20px; }
+        .about-content p { color: #475569; margin-bottom: 16px; font-size: 15px; line-height: 1.7; }
 
         /* Testimonials Grid */
-        .testimonials-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; padding: 20px 0 40px; }
-        .testimonial-card { background: white; padding: 28px; border: 1px solid #f0f0f0; box-shadow: 0 10px 25px -8px rgba(0,0,0,0.03); transition: all 0.3s; height: 100%; display: flex; flex-direction: column; }
-        .testimonial-card:hover { transform: translateY(-5px); box-shadow: 0 20px 30px -10px rgba(0,0,0,0.05); }
-        .testimonial-header { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
-        .testimonial-avatar { width: 50px; height: 50px; background: #1a1a1a; display: flex; align-items: center; justify-content: center; color: white; font-weight: 500; font-size: 18px; flex-shrink: 0; }
-        .testimonial-info h4 { font-size: 16px; font-weight: 500; color: #1a1a1a; }
-        .testimonial-info p { font-size: 12px; color: #8c8c8c; text-transform: uppercase; letter-spacing: 1px; }
-        .testimonial-stars { color: #b8946e; font-size: 13px; margin-bottom: 14px; }
-        .testimonial-text { color: #5c5c5c; font-size: 14px; line-height: 1.7; font-style: italic; flex: 1; font-weight: 300; }
+        .testimonials-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; padding: 20px 0 40px; }
+        .testimonial-card { background: white; padding: 24px; border-radius: 24px; border: 1px solid #f1f5f9; box-shadow: 0 8px 15px rgba(0,0,0,0.02); transition: transform 0.2s; height: 100%; display: flex; flex-direction: column; }
+        .testimonial-card:hover { transform: translateY(-4px); box-shadow: 0 15px 25px rgba(0,0,0,0.05); }
+        .testimonial-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+        .testimonial-avatar { width: 48px; height: 48px; background: linear-gradient(135deg, #0ea5e9, #3b82f6); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 18px; flex-shrink: 0; }
+        .testimonial-info h4 { font-size: 16px; font-weight: 600; color: #0f172a; }
+        .testimonial-info p { font-size: 13px; color: #64748b; }
+        .testimonial-stars { color: #eab308; font-size: 14px; margin-bottom: 12px; }
+        .testimonial-text { color: #334155; font-size: 14px; line-height: 1.6; font-style: italic; flex: 1; }
 
         /* RDV Section */
-        .rdv-section { background: white; border: 1px solid #f0f0f0; padding: 50px 30px; margin: 50px 0; text-align: center; box-shadow: 0 10px 25px -8px rgba(0,0,0,0.03); }
-        .rdv-form { max-width: 480px; margin: 30px auto 0; }
-        .form-group { margin-bottom: 22px; text-align: left; }
-        .form-group label { display: block; margin-bottom: 8px; font-weight: 400; color: #1a1a1a; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; }
-        .form-group input, .form-group select { width: 100%; padding: 16px 18px; font-size: 15px; border: 1px solid #e0e0e0; background: white; font-family: 'Outfit', sans-serif; transition: border 0.3s; border-radius: 0; appearance: none; -webkit-appearance: none; font-weight: 300; }
-        .form-group select { background-image: url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2716%27 height=%2716%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27%231a1a1a%27 stroke-width=%272%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3E%3Cpolyline points=%276 9 12 15 18 9%27%3E%3C/polyline%3E%3C/svg%3E'); background-repeat: no-repeat; background-position: right 18px center; background-size: 14px; padding-right: 48px; }
-        .form-group input:focus, .form-group select:focus { outline: none; border-color: #1a1a1a; }
-        .rdv-note { margin-top: 20px; font-size: 13px; color: #8c8c8c; }
+        .rdv-section { background: #f8fafc; border-radius: 40px; padding: 40px 24px; margin: 40px 0; text-align: center; box-shadow: 0 8px 15px rgba(0,0,0,0.02); border: 1px solid #f1f5f9; }
+        .rdv-form { max-width: 500px; margin: 30px auto 0; }
+        .form-group { margin-bottom: 20px; text-align: left; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 500; color: #0f172a; font-size: 15px; }
+        .form-group input, .form-group select { width: 100%; padding: 16px 18px; font-size: 16px; border: 1px solid #e2e8f0; border-radius: 18px; background: white; font-family: 'Inter', sans-serif; transition: border 0.2s, box-shadow 0.2s; appearance: none; -webkit-appearance: none; }
+        .form-group select { background-image: url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2716%27 height=%2716%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27%23475569%27 stroke-width=%272%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3E%3Cpolyline points=%276 9 12 15 18 9%27%3E%3C/polyline%3E%3C/svg%3E'); background-repeat: no-repeat; background-position: right 18px center; background-size: 16px; padding-right: 48px; }
+        .form-group input:focus, .form-group select:focus { outline: none; border-color: #0ea5e9; box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1); }
+        .rdv-note { margin-top: 16px; font-size: 14px; color: #64748b; }
 
         /* Footer */
-        .footer { background: #1a1a1a; color: white; padding: 50px 0 25px; margin-top: 50px; }
+        .footer { background: #0f172a; color: white; padding: 40px 0 20px; margin-top: 40px; border-radius: 40px 40px 0 0; }
         .footer-content { text-align: center; max-width: 600px; margin: 0 auto; }
-        .footer-logo { display: flex; align-items: center; justify-content: center; gap: 14px; margin-bottom: 30px; }
-        .footer-info p { color: #a0a0a0; margin: 10px 0; font-size: 14px; font-weight: 300; }
-        .footer-info i { width: 24px; color: #b8946e; }
-        .footer-bottom { text-align: center; padding-top: 30px; margin-top: 30px; border-top: 1px solid #333; color: #8c8c8c; font-size: 12px; text-transform: uppercase; letter-spacing: 2px; }
+        .footer-logo { display: flex; align-items: center; justify-content: center; gap: 14px; margin-bottom: 28px; }
+        .footer-info p { color: #cbd5e1; margin: 10px 0; font-size: 15px; }
+        .footer-info i { width: 24px; color: #0ea5e9; }
+        .footer-bottom { text-align: center; padding-top: 28px; margin-top: 28px; border-top: 1px solid #334155; color: #94a3b8; font-size: 14px; }
 
         /* Back to Top */
-        .back-to-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: #1a1a1a; color: white; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 8px 20px rgba(0,0,0,0.1); opacity: 0; visibility: hidden; transition: all 0.3s; z-index: 999; border: none; font-size: 20px; }
+        .back-to-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: #0ea5e9; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 8px 20px rgba(14, 165, 233, 0.3); opacity: 0; visibility: hidden; transition: all 0.3s; z-index: 999; border: none; font-size: 20px; }
         .back-to-top.show { opacity: 1; visibility: visible; }
-        .back-to-top:hover { background: #b8946e; }
+        .back-to-top:hover { background: #0284c7; transform: translateY(-3px); }
 
-        /* Responsive */
+        /* Mobile */
         @media (max-width: 1024px) { .services-grid { grid-template-columns: repeat(4, 1fr); } .testimonials-grid { grid-template-columns: repeat(4, 1fr); } }
         @media (max-width: 768px) {
             .container { padding: 0 16px; }
@@ -144,21 +139,20 @@
             .services-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
             .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
             .about-section { grid-template-columns: 1fr; }
-            .about-slider { max-width: 340px; }
-            .rdv-section { padding: 40px 20px; }
-            .hero-slider { height: 300px; }
+            .about-slider { max-width: 320px; }
+            .rdv-section { padding: 32px 16px; }
+            .hero-slider { height: 280px; }
             .back-to-top { bottom: 20px; right: 20px; width: 44px; height: 44px; }
         }
         @media (max-width: 480px) {
-            .hero-title { font-size: 32px; }
+            .hero-title { font-size: 28px; }
             .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
-            .service-card { padding: 25px 15px; }
-            .service-icon { width: 60px; height: 60px; font-size: 24px; }
-            .service-card h3 { font-size: 20px; }
-            .hero-slider { height: 240px; }
+            .service-card { padding: 20px 8px; }
+            .service-icon { width: 48px; height: 48px; font-size: 22px; }
+            .service-card h3 { font-size: 13px; }
+            .hero-slider { height: 220px; }
             .about-slider { max-width: 280px; }
             .testimonials-grid { grid-template-columns: 1fr; }
-            .section-title h2 { font-size: 36px; }
         }
     </style>
 </head>
@@ -177,8 +171,8 @@
 
         <section class="hero">
             <div class="hero-content">
-                <span class="hero-badge">Tiflet, Maroc</span>
-                <h1 class="hero-title">L'art du sourire <br><i>naturel</i></h1>
+                <span class="hero-badge"><i class="fas fa-map-pin"></i> Tiflet, Maroc</span>
+                <h1 class="hero-title">Votre sourire <br><i>notre passion</i></h1>
                 <div class="hero-features">
                     <div class="feature-item"><div class="feature-icon"><i class="fas fa-check"></i></div><span>Soins · Prothèse · Orthodontie · Chirurgie</span></div>
                     <div class="feature-item"><div class="feature-icon"><i class="fas fa-check"></i></div><span>Implantologie · Blanchiment · Radiologie</span></div>
@@ -203,26 +197,24 @@
             </div>
         </section>
 
-        <!-- SECTION SERVICES - CRÉATIVE -->
-        <section class="services-section">
-            <div class="section-title">
-                <p>Excellence & Précision</p>
-                <h2>Une symphonie de soins</h2>
-            </div>
+        <section>
+            <div class="section-title"><h2>Nos soins dentaires</h2></div>
             <div class="services-grid">
-                <div class="service-card"><div class="service-icon"><i class="fas fa-teeth"></i></div><h3>Sourire Éclatant</h3><div class="tagline">Soins doux & précis</div><p>Des traitements personnalisés pour une santé bucco-dentaire optimale.</p></div>
-                <div class="service-card"><div class="service-icon"><i class="fas fa-smile"></i></div><h3>Harmonie Parfaite</h3><div class="tagline">L'art de la restauration</div><p>Redonner vie et esthétique à votre sourire avec élégance.</p></div>
-                <div class="service-card"><div class="service-icon"><i class="fas fa-teeth-open"></i></div><h3>Alignement Sublime</h3><div class="tagline">La confiance en mouvement</div><p>Des technologies discrètes pour un alignement parfait.</p></div>
-                <div class="service-card"><div class="service-icon"><i class="fas fa-bone"></i></div><h3>Racines d'Avenir</h3><div class="tagline">Stabilité & naturel</div><p>Retrouvez la solidité et le confort de dents naturelles.</p></div>
-                <div class="service-card"><div class="service-icon"><i class="fas fa-syringe"></i></div><h3>Douceur Précise</h3><div class="tagline">Interventions sereines</div><p>Des actes chirurgicaux réalisés avec une minutie absolue.</p></div>
-                <div class="service-card"><div class="service-icon"><i class="fas fa-star"></i></div><h3>Éclat Lumière</h3><div class="tagline">La brillance révélée</div><p>Révélez la blancheur naturelle de vos dents en toute sécurité.</p></div>
-                <div class="service-card"><div class="service-icon"><i class="fas fa-x-ray"></i></div><h3>Vision HD</h3><div class="tagline">Diagnostic d'excellence</div><p>Imagerie 3D pour un diagnostic précis et fiable.</p></div>
-                <div class="service-card"><div class="service-icon"><i class="fas fa-child"></i></div><h3>Premiers Pas Sereins</h3><div class="tagline">Le sourire des enfants</div><p>Une approche douce pour des visites sans appréhension.</p></div>
+                <div class="service-card"><div class="service-icon"><i class="fas fa-teeth"></i></div><h3>Soins dentaires</h3></div>
+                <div class="service-card"><div class="service-icon"><i class="fas fa-smile"></i></div><h3>Prothèse</h3></div>
+                <div class="service-card"><div class="service-icon"><i class="fas fa-teeth-open"></i></div><h3>Orthodontie</h3></div>
+                <div class="service-card"><div class="service-icon"><i class="fas fa-bone"></i></div><h3>Implantologie</h3></div>
+                <div class="service-card"><div class="service-icon"><i class="fas fa-syringe"></i></div><h3>Chirurgie</h3></div>
+                <div class="service-card"><div class="service-icon"><i class="fas fa-star"></i></div><h3>Blanchiment</h3></div>
+                <div class="service-card"><div class="service-icon"><i class="fas fa-x-ray"></i></div><h3>Radiologie</h3></div>
+                <div class="service-card"><div class="service-icon"><i class="fas fa-child"></i></div><h3>Pédodontie</h3></div>
             </div>
         </section>
 
         <section class="info-section">
-            <div class="map-container"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3306.471103630471!2d-6.3603234!3d33.8913368!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda0cf002d5cfc29%3A0xc7545737f40a49f6!2sCentre%20dentaire%20Bougrine!5e0!3m2!1sfr!2sma!4v1715000000000!5m2!1sfr!2sma" allowfullscreen="" loading="lazy"></iframe></div>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3306.471103630471!2d-6.3603234!3d33.8913368!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda0cf002d5cfc29%3A0xc7545737f40a49f6!2sCentre%20dentaire%20Bougrine!5e0!3m2!1sfr!2sma!4v1715000000000!5m2!1sfr!2sma" allowfullscreen="" loading="lazy"></iframe>
+            </div>
             <div class="hours">
                 <h3>Horaires d'ouverture</h3>
                 <div class="schedule">
@@ -233,11 +225,17 @@
             </div>
         </section>
 
-        <!-- SECTION ABOUT -->
+        <!-- SECTION ABOUT - SLIDER 7 IMAGES -->
         <section class="about-section">
             <div class="about-slider" id="aboutSlider">
                 <div class="about-slides">
-                    <div class="about-slide active" style="background-image: url('01.jpg');"></div><div class="about-slide" style="background-image: url('02.jpg');"></div><div class="about-slide" style="background-image: url('03.jpg');"></div><div class="about-slide" style="background-image: url('04.jpg');"></div><div class="about-slide" style="background-image: url('05.jpg');"></div><div class="about-slide" style="background-image: url('06.jpg');"></div><div class="about-slide" style="background-image: url('07.jpg');"></div>
+                    <div class="about-slide active" style="background-image: url('01.jpg');"></div>
+                    <div class="about-slide" style="background-image: url('02.jpg');"></div>
+                    <div class="about-slide" style="background-image: url('03.jpg');"></div>
+                    <div class="about-slide" style="background-image: url('04.jpg');"></div>
+                    <div class="about-slide" style="background-image: url('05.jpg');"></div>
+                    <div class="about-slide" style="background-image: url('06.jpg');"></div>
+                    <div class="about-slide" style="background-image: url('07.jpg');"></div>
                 </div>
                 <div class="about-dots" id="aboutDots"></div>
             </div>
@@ -248,30 +246,33 @@
             </div>
         </section>
 
-        <!-- SECTION TÉMOIGNAGES -->
+        <!-- SECTION TÉMOIGNAGES - 8 AVIS -->
         <section>
-            <div class="section-title"><p>Avis vérifiés Google Maps</p><h2>Ce que disent nos patients</h2></div>
+            <div class="section-title"><h2>Ce que disent nos patients</h2><p>Avis vérifiés Google Maps</p></div>
             <div class="testimonials-grid" id="testimonialsContainer"></div>
         </section>
 
         <section class="rdv-section" id="rdv">
-            <div class="section-title"><p>Réservation en ligne</p><h2>Prendre un rendez-vous</h2></div>
+            <div class="section-title"><h2>Prendre un rendez-vous</h2></div>
             <div class="rdv-form">
-                <div class="form-group"><label>Date souhaitée</label><input type="text" id="rdvDate" placeholder="Choisir une date" readonly></div>
-                <div class="form-group"><label>Heure souhaitée</label><select id="rdvTime" required><option value="" disabled selected>Choisir une heure</option></select></div>
+                <div class="form-group"><label><i class="far fa-calendar-alt"></i> Date souhaitée</label><input type="text" id="rdvDate" placeholder="Choisir une date" readonly></div>
+                <div class="form-group"><label><i class="far fa-clock"></i> Heure souhaitée</label><select id="rdvTime" required><option value="" disabled selected>Choisir une heure</option></select></div>
                 <button class="btn-primary" id="confirmRdvBtn" style="width: 100%; justify-content: center;"><i class="fab fa-whatsapp"></i> Confirmer sur WhatsApp</button>
-                <p class="rdv-note">Les dimanches sont fermés. Le samedi jusqu'à 13h.</p>
+                <p class="rdv-note"><i class="fas fa-info-circle"></i> Les dimanches sont fermés. Le samedi jusqu'à 13h.</p>
             </div>
         </section>
     </div>
 
     <footer class="footer">
         <div class="container footer-content">
-            <div class="footer-logo"><div class="logo-icon"><i class="fas fa-tooth"></i></div><div><h2 style="color:white; font-family:'Cormorant Garamond';">Dr. Chaymaa Bougrine</h2><p style="color:#8c8c8c;">CENTRE DENTAIRE BOUGRINE</p></div></div>
+            <div class="footer-logo"><div class="logo-icon"><i class="fas fa-tooth"></i></div><div><h2 style="color:white; font-family:'Playfair Display';">Dr. Chaymaa Bougrine</h2><p style="color:#94a3b8;">CENTRE DENTAIRE BOUGRINE</p></div></div>
             <div class="footer-info">
-                <p><i class="fas fa-map-marker-alt"></i> Tiflet, Maroc</p><p><i class="fas fa-phone-alt"></i> 05 30 36 69 19</p><p><i class="fab fa-whatsapp"></i> 06 63 64 06 04</p><p><i class="fas fa-envelope"></i> centredentairebougrine@gmail.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> Tiflet, Maroc</p>
+                <p><i class="fas fa-phone-alt"></i> 05 30 36 69 19</p>
+                <p><i class="fab fa-whatsapp"></i> 06 63 64 06 04</p>
+                <p><i class="fas fa-envelope"></i> centredentairebougrine@gmail.com</p>
             </div>
-            <div class="footer-bottom"><p>© 2026 Centre Dentaire BOUGRINE - Tous droits réservés.</p></div>
+            <div class="footer-bottom"><p>© 2026 Centre Dentaire BOUGRINE - Dr. Chaymaa Bougrine. Tous droits réservés.</p></div>
         </div>
     </footer>
 
@@ -280,26 +281,51 @@
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/fr.js"></script>
     <script>
-        // Sliders & Data...
-        let currentSlide = 0; const slides = document.querySelectorAll('.slider-slide'); const dotsContainer = document.getElementById('sliderDots');
+        // Slider Hero (6 images)
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slider-slide');
+        const dotsContainer = document.getElementById('sliderDots');
         function initSlider() { dotsContainer.innerHTML = ''; slides.forEach((_, i) => { const dot = document.createElement('div'); dot.classList.add('slider-dot'); if(i===0) dot.classList.add('active'); dot.addEventListener('click', ()=>goToSlide(i)); dotsContainer.appendChild(dot); }); }
         function goToSlide(n) { slides[currentSlide].classList.remove('active'); dotsContainer.children[currentSlide].classList.remove('active'); currentSlide = (n+slides.length)%slides.length; slides[currentSlide].classList.add('active'); dotsContainer.children[currentSlide].classList.add('active'); }
         function changeSlide(dir) { goToSlide(currentSlide+dir); }
         initSlider(); setInterval(()=>changeSlide(1), 6000);
 
-        let currentAboutSlide = 0; const aboutSlides = document.querySelectorAll('.about-slide'); const aboutDotsContainer = document.getElementById('aboutDots');
+        // Slider About (7 images)
+        let currentAboutSlide = 0;
+        const aboutSlides = document.querySelectorAll('.about-slide');
+        const aboutDotsContainer = document.getElementById('aboutDots');
         function initAboutSlider() { aboutDotsContainer.innerHTML = ''; aboutSlides.forEach((_, i) => { const dot = document.createElement('button'); dot.classList.add('about-dot'); if(i===0) dot.classList.add('active'); dot.addEventListener('click', ()=>goToAboutSlide(i)); aboutDotsContainer.appendChild(dot); }); }
         function goToAboutSlide(n) { aboutSlides[currentAboutSlide].classList.remove('active'); aboutDotsContainer.children[currentAboutSlide].classList.remove('active'); currentAboutSlide = (n+aboutSlides.length)%aboutSlides.length; aboutSlides[currentAboutSlide].classList.add('active'); aboutDotsContainer.children[currentAboutSlide].classList.add('active'); }
         initAboutSlider(); setInterval(()=>goToAboutSlide(currentAboutSlide+1), 6000);
 
+        // Témoignages (8)
         const testimonials = [
-            { name: "Zineb El Omari", date: "il y a 3 semaines", stars: 5, text: "Très bonne dentiste ! Dr Chayma est douce, professionnelle et prend le temps d’expliquer les soins. Je suis très satisfaite du résultat, je recommande sans hésiter.", avatar: "Z" },{ name: "fatima zahra kamouch", date: "il y a 5 mois", stars: 4, text: "Très satisfait de ma visite. Le centre dentaire est très propre et l’ambiance à l’accueil est agréable et conviviale. Un grand merci à la Dr Bougrine chaymaa...", avatar: "F" },{ name: "Hajar Elmezrioui", date: "il y a 5 mois", stars: 5, text: "La meilleure dentiste qui soit. Elle répond toujours au téléphone, même tard, et ne laisse jamais ses patients attendre...", avatar: "H" },{ name: "Yasmine Az", date: "il y a 4 mois", stars: 5, text: "Très bon cabinet dentaire, professionnel et accueillant, je recommande", avatar: "Y" },{ name: "SAID TITI", date: "il y a 11 mois", stars: 5, text: "Je recommande vivement le cabinet de la Dr chaymaa Bougrine! Elle est extrêmement professionnelle, douce et attentionnée.", avatar: "S" },{ name: "Sou ab", date: "il y a 2 mois", stars: 5, text: "Merci à docteur Chaymaa, elle est à l'écoute et travaille avec soin, j'apprécie mon expérience chez elle, aucune douleur ressentie", avatar: "S" },{ name: "riham oussaid", date: "il y a 5 mois", stars: 5, text: "أحسن تجربة عند دكتوره شيماء. متفهمة، كتشرح كلشي بوضوح وكتخدم بواحد الدقة والرفق.", avatar: "R" },{ name: "Nada Zakarya", date: "il y a 4 mois", stars: 5, text: "Un cabinet et personnel agréables, le médecin est à l’écoute et propose des soins de qualité ❤️", avatar: "N" }
+            { name: "Zineb El Omari", date: "il y a 3 semaines", stars: 5, text: "Très bonne dentiste ! Dr Chayma est douce, professionnelle et prend le temps d’expliquer les soins. Je suis très satisfaite du résultat, je recommande sans hésiter.", avatar: "Z" },
+            { name: "fatima zahra kamouch", date: "il y a 5 mois", stars: 4, text: "Très satisfait de ma visite. Le centre dentaire est très propre et l’ambiance à l’accueil est agréable et conviviale. Un grand merci à la Dr Bougrine chaymaa...", avatar: "F" },
+            { name: "Hajar Elmezrioui", date: "il y a 5 mois", stars: 5, text: "La meilleure dentiste qui soit. Elle répond toujours au téléphone, même tard, et ne laisse jamais ses patients attendre...", avatar: "H" },
+            { name: "Yasmine Az", date: "il y a 4 mois", stars: 5, text: "Très bon cabinet dentaire, professionnel et accueillant, je recommande", avatar: "Y" },
+            { name: "SAID TITI", date: "il y a 11 mois", stars: 5, text: "Je recommande vivement le cabinet de la Dr chaymaa Bougrine! Elle est extrêmement professionnelle, douce et attentionnée.", avatar: "S" },
+            { name: "Sou ab", date: "il y a 2 mois", stars: 5, text: "Merci à docteur Chaymaa, elle est à l'écoute et travaille avec soin, j'apprécie mon expérience chez elle, aucune douleur ressentie", avatar: "S" },
+            { name: "riham oussaid", date: "il y a 5 mois", stars: 5, text: "أحسن تجربة عند دكتوره شيماء. متفهمة، كتشرح كلشي بوضوح وكتخدم بواحد الدقة والرفق.", avatar: "R" },
+            { name: "Nada Zakarya", date: "il y a 4 mois", stars: 5, text: "Un cabinet et personnel agréables, le médecin est à l’écoute et propose des soins de qualité ❤️", avatar: "N" }
         ];
         document.getElementById('testimonialsContainer').innerHTML = testimonials.map(t => `<div class="testimonial-card"><div class="testimonial-header"><div class="testimonial-avatar">${t.avatar}</div><div class="testimonial-info"><h4>${t.name}</h4><p>${t.date}</p></div></div><div class="testimonial-stars">${'★'.repeat(t.stars)}${'☆'.repeat(5-t.stars)}</div><p class="testimonial-text">"${t.text}"</p></div>`).join('');
 
+        // Calendrier
         flatpickr("#rdvDate", { locale: "fr", dateFormat: "d/m/Y", minDate: "today", disable: [d=>d.getDay()===0] });
-        const timeSelect = document.getElementById('rdvTime'); for(let h=9; h<18; h++) for(let m of ['00','30']) { if(h===17&&m==='30') continue; const t=`${h.toString().padStart(2,'0')}:${m}`; timeSelect.appendChild(new Option(t,t)); } timeSelect.appendChild(new Option('18:00','18:00'));
-        document.getElementById('confirmRdvBtn').addEventListener('click', ()=>{ const d=document.getElementById('rdvDate').value, t=document.getElementById('rdvTime').value; if(!d||!t) return alert('Veuillez sélectionner une date et une heure.'); const parts=d.split('/'), sd=new Date(parts[2],parts[1]-1,parts[0]); if(sd.getDay()===0) return alert('Fermé le dimanche.'); if(sd.getDay()===6&&t>"13:00") return alert('Samedi jusqu\'à 13h.'); window.open(`https://wa.me/212663640604?text=Bonjour Centre Dentaire BOUGRINE,%0A%0AJe souhaite prendre rendez-vous le ${d} à ${t}.%0A%0APouvez-vous confirmer ?%0A%0AMerci.`, '_blank'); });
+        const timeSelect = document.getElementById('rdvTime');
+        for(let h=9; h<18; h++) for(let m of ['00','30']) { if(h===17&&m==='30') continue; const t=`${h.toString().padStart(2,'0')}:${m}`; timeSelect.appendChild(new Option(t,t)); }
+        timeSelect.appendChild(new Option('18:00','18:00'));
+
+        document.getElementById('confirmRdvBtn').addEventListener('click', ()=>{
+            const d=document.getElementById('rdvDate').value, t=document.getElementById('rdvTime').value;
+            if(!d||!t) return alert('Veuillez sélectionner une date et une heure.');
+            const parts=d.split('/'), sd=new Date(parts[2],parts[1]-1,parts[0]);
+            if(sd.getDay()===0) return alert('Fermé le dimanche.');
+            if(sd.getDay()===6&&t>"13:00") return alert('Samedi jusqu\'à 13h.');
+            window.open(`https://wa.me/212663640604?text=Bonjour Centre Dentaire BOUGRINE,%0A%0AJe souhaite prendre rendez-vous le ${d} à ${t}.%0A%0APouvez-vous confirmer ?%0A%0AMerci.`, '_blank');
+        });
+
         window.addEventListener('scroll', ()=>document.getElementById('backToTop').classList.toggle('show', window.scrollY>300));
     </script>
 </body>
