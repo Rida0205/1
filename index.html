@@ -77,15 +77,15 @@
         .schedule { display: flex; flex-direction: column; gap: 16px; }
         .schedule-item { display: flex; justify-content: space-between; padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 15px; }
 
-        /* About Section - SLIDER MODERNE SANS FLÈCHES */
-        .about-section { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; padding: 40px 0; }
-        .about-slider { position: relative; width: 100%; aspect-ratio: 1/1; border-radius: 28px; overflow: hidden; box-shadow: 0 15px 25px rgba(0,0,0,0.05); }
+        /* About Section - SLIDER MODERNE SANS FLÈCHES (TAILLE RÉDUITE) */
+        .about-section { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 40px; align-items: center; padding: 40px 0; }
+        .about-slider { position: relative; width: 100%; max-width: 380px; margin: 0 auto; aspect-ratio: 1/1; border-radius: 28px; overflow: hidden; box-shadow: 0 15px 25px rgba(0,0,0,0.05); }
         .about-slides { position: relative; width: 100%; height: 100%; }
         .about-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 0.8s ease; background-size: cover; background-position: center; }
         .about-slide.active { opacity: 1; }
-        .about-dots { position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; z-index: 10; padding: 8px 16px; background: rgba(0,0,0,0.2); backdrop-filter: blur(8px); border-radius: 40px; }
-        .about-dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.5); cursor: pointer; transition: all 0.3s; border: none; }
-        .about-dot.active { background: white; width: 28px; border-radius: 10px; }
+        .about-dots { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; z-index: 10; padding: 6px 14px; background: rgba(0,0,0,0.2); backdrop-filter: blur(8px); border-radius: 30px; }
+        .about-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.6); cursor: pointer; transition: all 0.3s; border: none; }
+        .about-dot.active { background: white; width: 24px; border-radius: 10px; }
         .about-content h3 { font-family: 'Playfair Display', serif; font-size: 28px; color: #0f172a; margin-bottom: 20px; }
         .about-content p { color: #475569; margin-bottom: 16px; font-size: 15px; line-height: 1.7; }
 
@@ -129,6 +129,7 @@
             .map-container { height: 320px; }
             .services-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
             .about-section { grid-template-columns: 1fr; }
+            .about-slider { max-width: 320px; }
             .rdv-section { padding: 32px 16px; }
             .testimonials-grid { grid-template-columns: 1fr; }
             .hero-slider { height: 280px; }
@@ -140,6 +141,7 @@
             .service-icon { width: 48px; height: 48px; font-size: 22px; }
             .service-card h3 { font-size: 13px; }
             .hero-slider { height: 220px; }
+            .about-slider { max-width: 280px; }
         }
     </style>
 </head>
@@ -210,7 +212,7 @@
             </div>
         </section>
 
-        <!-- SECTION ABOUT - SLIDER MODERNE SANS FLÈCHES -->
+        <!-- SECTION ABOUT - SLIDER DE TAILLE RÉDUITE -->
         <section class="about-section">
             <div class="about-slider" id="aboutSlider">
                 <div class="about-slides">
@@ -287,7 +289,7 @@
         initSlider();
         setInterval(() => changeSlide(1), 5000);
 
-        // Slider Moderne pour About (sans flèches)
+        // Slider Moderne pour About (taille réduite)
         let currentAboutSlide = 0;
         const aboutSlides = document.querySelectorAll('.about-slide');
         const aboutDotsContainer = document.getElementById('aboutDots');
