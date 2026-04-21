@@ -77,15 +77,16 @@
         .schedule { display: flex; flex-direction: column; gap: 16px; }
         .schedule-item { display: flex; justify-content: space-between; padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 15px; }
 
-        /* About Section - Images Carrées */
-        .about-section { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; padding: 40px 0; }
+        /* About Section - Galerie Interactive */
+        .about-section { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; padding: 40px 0; }
         .about-gallery { display: flex; flex-direction: column; gap: 16px; }
-        .about-main-img { width: 100%; aspect-ratio: 1/1; border-radius: 28px; overflow: hidden; box-shadow: 0 15px 25px rgba(0,0,0,0.05); }
-        .about-main-img img { width: 100%; height: 100%; object-fit: cover; }
-        .about-sub-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-        .about-sub-img { aspect-ratio: 1/1; border-radius: 20px; overflow: hidden; box-shadow: 0 8px 15px rgba(0,0,0,0.03); }
-        .about-sub-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
-        .about-sub-img:hover img { transform: scale(1.05); }
+        .gallery-main { width: 100%; aspect-ratio: 1/1; border-radius: 28px; overflow: hidden; box-shadow: 0 15px 25px rgba(0,0,0,0.05); }
+        .gallery-main img { width: 100%; height: 100%; object-fit: cover; transition: opacity 0.3s; }
+        .gallery-thumbs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+        .gallery-thumb { aspect-ratio: 1/1; border-radius: 20px; overflow: hidden; cursor: pointer; box-shadow: 0 8px 15px rgba(0,0,0,0.03); border: 2px solid transparent; transition: all 0.2s; }
+        .gallery-thumb:hover { transform: scale(1.02); }
+        .gallery-thumb.active { border-color: #0ea5e9; box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.2); }
+        .gallery-thumb img { width: 100%; height: 100%; object-fit: cover; }
         .about-content h3 { font-family: 'Playfair Display', serif; font-size: 28px; color: #0f172a; margin-bottom: 20px; }
         .about-content p { color: #475569; margin-bottom: 16px; font-size: 15px; line-height: 1.7; }
 
@@ -208,14 +209,17 @@
             </div>
         </section>
 
-        <!-- SECTION ABOUT - IMAGES CARRÉES -->
+        <!-- SECTION ABOUT - GALERIE INTERACTIVE -->
         <section class="about-section">
             <div class="about-gallery">
-                <div class="about-main-img"><img src="01.jpg" alt="Dr. Chaymaa Bougrine"></div>
-                <div class="about-sub-grid">
-                    <div class="about-sub-img"><img src="02.jpg" alt="Caravane médicale"></div>
-                    <div class="about-sub-img"><img src="03.jpg" alt="Formation"></div>
-                    <div class="about-sub-img"><img src="04.jpg" alt="Conférence"></div>
+                <div class="gallery-main" id="galleryMain">
+                    <img src="01.jpg" alt="Dr. Chaymaa Bougrine" id="mainImage">
+                </div>
+                <div class="gallery-thumbs" id="galleryThumbs">
+                    <div class="gallery-thumb active" data-src="01.jpg"><img src="01.jpg" alt="Thumb 1"></div>
+                    <div class="gallery-thumb" data-src="02.jpg"><img src="02.jpg" alt="Thumb 2"></div>
+                    <div class="gallery-thumb" data-src="03.jpg"><img src="03.jpg" alt="Thumb 3"></div>
+                    <div class="gallery-thumb" data-src="04.jpg"><img src="04.jpg" alt="Thumb 4"></div>
                 </div>
             </div>
             <div class="about-content">
@@ -255,7 +259,7 @@
     </footer>
 
     <script>
-        // Slider
+        // Slider du Hero
         let currentSlide = 0;
         const slides = document.querySelectorAll('.slider-slide');
         const dotsContainer = document.getElementById('sliderDots');
@@ -283,6 +287,22 @@
         
         initSlider();
         setInterval(() => changeSlide(1), 5000);
+
+        // Galerie Interactive (About Section)
+        const mainImage = document.getElementById('mainImage');
+        const thumbs = document.querySelectorAll('.gallery-thumb');
+        
+        thumbs.forEach(thumb => {
+            thumb.addEventListener('click', function() {
+                // Mise à jour de l'image principale
+                const newSrc = this.getAttribute('data-src');
+                mainImage.src = newSrc;
+                
+                // Mise à jour de la classe active
+                thumbs.forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
 
         // Témoignages
         const testimonials = [
