@@ -82,12 +82,10 @@
         .service-icon { width: 56px; height: 56px; background: linear-gradient(135deg, #f0f9ff, #e0f2fe); border-radius: 18px; display: flex; align-items: center; justify-content: center; color: #0ea5e9; font-size: 26px; margin-bottom: 16px; }
         .service-card h3 { font-size: 15px; font-weight: 600; color: #0f172a; }
 
-        /* Map & Hours - LAZY LOAD GOOGLE MAPS */
-        .map-placeholder { border-radius: 28px; overflow: hidden; height: 420px; box-shadow: 0 15px 25px rgba(0,0,0,0.05); border: 1px solid #f1f5f9; background: #f8fafc; display: flex; align-items: center; justify-content: center; cursor: pointer; }
-        .map-placeholder button { background: #0ea5e9; color: white; border: none; padding: 16px 32px; border-radius: 40px; font-weight: 600; font-size: 16px; cursor: pointer; display: flex; align-items: center; gap: 10px; }
-        .map-container { border-radius: 28px; overflow: hidden; height: 420px; box-shadow: 0 15px 25px rgba(0,0,0,0.05); border: 1px solid #f1f5f9; display: none; }
-        .map-container iframe { width: 100%; height: 100%; border: 0; }
+        /* Map & Hours */
         .info-section { display: grid; grid-template-columns: 1.2fr 1fr; gap: 24px; padding: 40px 0; }
+        .map-container { border-radius: 28px; overflow: hidden; height: 420px; box-shadow: 0 15px 25px rgba(0,0,0,0.05); border: 1px solid #f1f5f9; }
+        .map-container iframe { width: 100%; height: 100%; border: 0; }
         .hours { background: linear-gradient(135deg, #0f172a, #1e293b); border-radius: 28px; padding: 32px; color: white; box-shadow: 0 15px 25px rgba(0,0,0,0.1); }
         .hours h3 { font-family: 'Playfair Display', serif; font-size: 28px; margin-bottom: 24px; }
         .schedule { display: flex; flex-direction: column; gap: 16px; }
@@ -149,7 +147,7 @@
             .hero-features { align-items: center; }
             .hero-buttons { justify-content: center; }
             .info-section { grid-template-columns: 1fr; }
-            .map-placeholder, .map-container { height: 320px; }
+            .map-container { height: 320px; }
             .services-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
             .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
             .about-section { grid-template-columns: 1fr; }
@@ -227,11 +225,8 @@
             </section>
 
             <section class="info-section">
-                <div class="map-placeholder" id="mapPlaceholder">
-                    <button id="loadMapBtn"><i class="fas fa-map-marker-alt"></i> Charger la carte</button>
-                </div>
-                <div class="map-container" id="mapContainer">
-                    <iframe data-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3306.471103630471!2d-6.3603234!3d33.8913368!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda0cf002d5cfc29%3A0xc7545737f40a49f6!2sCentre%20dentaire%20Bougrine!5e0!3m2!1sfr!2sma!4v1715000000000!5m2!1sfr!2sma" allowfullscreen="" loading="lazy" title="Carte Google Maps du Centre Dentaire Bougrine"></iframe>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3306.471103630471!2d-6.3603234!3d33.8913368!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda0cf002d5cfc29%3A0xc7545737f40a49f6!2sCentre%20dentaire%20Bougrine!5e0!3m2!1sfr!2sma!4v1715000000000!5m2!1sfr!2sma" allowfullscreen="" loading="lazy" title="Carte Google Maps du Centre Dentaire Bougrine"></iframe>
                 </div>
                 <div class="hours">
                     <h3>Horaires d'ouverture</h3>
@@ -312,15 +307,6 @@
         function initAboutSlider() { aboutDotsContainer.innerHTML = ''; aboutSlides.forEach((_, i) => { const dot = document.createElement('button'); dot.classList.add('about-dot'); dot.setAttribute('aria-label', `Voir l'image ${i+1} sur ${aboutSlides.length}`); dot.setAttribute('role', 'tab'); if(i===0) dot.classList.add('active'); dot.addEventListener('click', ()=>goToAboutSlide(i)); aboutDotsContainer.appendChild(dot); }); }
         function goToAboutSlide(n) { aboutSlides[currentAboutSlide].classList.remove('active'); aboutDotsContainer.children[currentAboutSlide].classList.remove('active'); currentAboutSlide = (n+aboutSlides.length)%aboutSlides.length; aboutSlides[currentAboutSlide].classList.add('active'); aboutDotsContainer.children[currentAboutSlide].classList.add('active'); }
         initAboutSlider(); setInterval(()=>goToAboutSlide(currentAboutSlide+1), 6000);
-
-        // Lazy Load Google Maps
-        document.getElementById('loadMapBtn').addEventListener('click', function() {
-            document.getElementById('mapPlaceholder').style.display = 'none';
-            const mapContainer = document.getElementById('mapContainer');
-            mapContainer.style.display = 'block';
-            const iframe = mapContainer.querySelector('iframe');
-            iframe.src = iframe.dataset.src;
-        });
 
         // Smooth Scroll
         document.querySelectorAll('.js-smooth-scroll').forEach(anchor => {
