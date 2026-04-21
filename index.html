@@ -3,19 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Dr. Chaymaa Bougrine | Centre Dentaire BOUGRINE</title>
+    <title>Dr. Chaymaa Bougrine | Centre Dentaire BOUGRINE - Tiflet</title>
+    <meta name="description" content="Centre Dentaire BOUGRINE à Tiflet. Dr. Chaymaa Bougrine, chirurgien-dentiste. Soins dentaires, prothèse, orthodontie, implantologie, blanchiment et radiologie. Prenez rendez-vous en ligne.">
+    
+    <!-- Preconnect pour accélérer le chargement -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://maps.googleapis.com">
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 64 64' xmlns='http://www.w3.org/2000/svg' fill='%237300ff'%3E%3Cpath d='M55.455.339H8.67C4.085.339.356 4.069.356 8.655v46.781c0 4.587 3.73 8.316 8.314 8.316h46.785c4.583 0 8.314-3.729 8.314-8.316V8.655c0-4.586-3.731-8.316-8.314-8.316zM44.667 32.394c-.397 2.565.411 5.439-.352 11.216c-.791 5.835-2.162 10.955-4.83 10.955c-3.155 0-2.732-5.823-2.364-10.561c.108-1.426.188-2.658.112-3.502c-.32-3.53-1.839-6.016-5.114-6.016c-3.256 0-4.796 2.486-5.115 6.016c-.076.845.004 2.077.112 3.502c.368 4.738.789 10.561-2.364 10.561c-2.668 0-4.039-5.119-4.83-10.955c-.764-5.777.045-8.651-.353-11.216c-.76-4.86-5.001-9.217-3.692-15.414c.727-3.437 2.62-5.054 4.493-5.734c4.321-1.572 7.11 1.457 11.747 1.457c4.638 0 7.427-3.029 11.746-1.457c1.875.679 3.767 2.296 4.493 5.734c1.311 6.197-2.932 10.554-3.691 15.414z'%3E%3C/path%3E%3C/svg%3E">
     
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"></noscript>
     
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:wght@400;600;700&amp;display=swap" rel="stylesheet">
     
     <!-- Flatpickr Calendar -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"></noscript>
 
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -72,10 +82,12 @@
         .service-icon { width: 56px; height: 56px; background: linear-gradient(135deg, #f0f9ff, #e0f2fe); border-radius: 18px; display: flex; align-items: center; justify-content: center; color: #0ea5e9; font-size: 26px; margin-bottom: 16px; }
         .service-card h3 { font-size: 15px; font-weight: 600; color: #0f172a; }
 
-        /* Map & Hours */
-        .info-section { display: grid; grid-template-columns: 1.2fr 1fr; gap: 24px; padding: 40px 0; }
-        .map-container { border-radius: 28px; overflow: hidden; height: 420px; box-shadow: 0 15px 25px rgba(0,0,0,0.05); border: 1px solid #f1f5f9; }
+        /* Map & Hours - LAZY LOAD GOOGLE MAPS */
+        .map-placeholder { border-radius: 28px; overflow: hidden; height: 420px; box-shadow: 0 15px 25px rgba(0,0,0,0.05); border: 1px solid #f1f5f9; background: #f8fafc; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+        .map-placeholder button { background: #0ea5e9; color: white; border: none; padding: 16px 32px; border-radius: 40px; font-weight: 600; font-size: 16px; cursor: pointer; display: flex; align-items: center; gap: 10px; }
+        .map-container { border-radius: 28px; overflow: hidden; height: 420px; box-shadow: 0 15px 25px rgba(0,0,0,0.05); border: 1px solid #f1f5f9; display: none; }
         .map-container iframe { width: 100%; height: 100%; border: 0; }
+        .info-section { display: grid; grid-template-columns: 1.2fr 1fr; gap: 24px; padding: 40px 0; }
         .hours { background: linear-gradient(135deg, #0f172a, #1e293b); border-radius: 28px; padding: 32px; color: white; box-shadow: 0 15px 25px rgba(0,0,0,0.1); }
         .hours h3 { font-family: 'Playfair Display', serif; font-size: 28px; margin-bottom: 24px; }
         .schedule { display: flex; flex-direction: column; gap: 16px; }
@@ -137,7 +149,7 @@
             .hero-features { align-items: center; }
             .hero-buttons { justify-content: center; }
             .info-section { grid-template-columns: 1fr; }
-            .map-container { height: 320px; }
+            .map-placeholder, .map-container { height: 320px; }
             .services-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
             .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
             .about-section { grid-template-columns: 1fr; }
@@ -167,7 +179,7 @@
             </div>
             <div class="header-contact">
                 <a href="tel:+212530366919" aria-label="Appeler le 05 30 36 69 19"><i class="fas fa-phone-alt" aria-hidden="true"></i> 05 30 36 69 19</a>
-                <a href="#" class="btn-rdv" onclick="document.getElementById('rdv').scrollIntoView({ behavior: 'smooth' })" role="button"><i class="far fa-calendar-alt" aria-hidden="true"></i> Prendre RDV</a>
+                <a href="#rdv" class="btn-rdv js-smooth-scroll" role="button"><i class="far fa-calendar-alt" aria-hidden="true"></i> Prendre RDV</a>
             </div>
         </header>
 
@@ -181,13 +193,13 @@
                         <div class="feature-item"><div class="feature-icon" aria-hidden="true"><i class="fas fa-check"></i></div><span>Implantologie · Blanchiment · Radiologie</span></div>
                     </div>
                     <div class="hero-buttons">
-                        <a class="btn-primary" onclick="document.getElementById('rdv').scrollIntoView({ behavior: 'smooth' })" role="button" tabindex="0"><i class="far fa-calendar-check" aria-hidden="true"></i> RDV en ligne</a>
+                        <a href="#rdv" class="btn-primary js-smooth-scroll" role="button" tabindex="0"><i class="far fa-calendar-check" aria-hidden="true"></i> RDV en ligne</a>
                         <a href="tel:+212530366919" class="btn-secondary"><i class="fas fa-phone-alt" aria-hidden="true"></i> Appeler</a>
                     </div>
                 </div>
                 <div class="hero-slider" id="heroSlider">
                     <div class="slider-container">
-                        <div class="slider-slide active" style="background-image: url('1.jpg');" role="img" aria-label="Image du centre dentaire 1"></div>
+                        <div class="slider-slide active" style="background-image: url('1.jpg');" role="img" aria-label="Image du centre dentaire 1" fetchpriority="high"></div>
                         <div class="slider-slide" style="background-image: url('2.jpg');" role="img" aria-label="Image du centre dentaire 2"></div>
                         <div class="slider-slide" style="background-image: url('3.jpg');" role="img" aria-label="Image du centre dentaire 3"></div>
                         <div class="slider-slide" style="background-image: url('4.jpg');" role="img" aria-label="Image du centre dentaire 4"></div>
@@ -215,8 +227,11 @@
             </section>
 
             <section class="info-section">
-                <div class="map-container">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3306.471103630471!2d-6.3603234!3d33.8913368!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda0cf002d5cfc29%3A0xc7545737f40a49f6!2sCentre%20dentaire%20Bougrine!5e0!3m2!1sfr!2sma!4v1715000000000!5m2!1sfr!2sma" allowfullscreen="" loading="lazy" title="Carte Google Maps du Centre Dentaire Bougrine"></iframe>
+                <div class="map-placeholder" id="mapPlaceholder">
+                    <button id="loadMapBtn"><i class="fas fa-map-marker-alt"></i> Charger la carte</button>
+                </div>
+                <div class="map-container" id="mapContainer">
+                    <iframe data-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3306.471103630471!2d-6.3603234!3d33.8913368!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda0cf002d5cfc29%3A0xc7545737f40a49f6!2sCentre%20dentaire%20Bougrine!5e0!3m2!1sfr!2sma!4v1715000000000!5m2!1sfr!2sma" allowfullscreen="" loading="lazy" title="Carte Google Maps du Centre Dentaire Bougrine"></iframe>
                 </div>
                 <div class="hours">
                     <h3>Horaires d'ouverture</h3>
@@ -297,6 +312,26 @@
         function initAboutSlider() { aboutDotsContainer.innerHTML = ''; aboutSlides.forEach((_, i) => { const dot = document.createElement('button'); dot.classList.add('about-dot'); dot.setAttribute('aria-label', `Voir l'image ${i+1} sur ${aboutSlides.length}`); dot.setAttribute('role', 'tab'); if(i===0) dot.classList.add('active'); dot.addEventListener('click', ()=>goToAboutSlide(i)); aboutDotsContainer.appendChild(dot); }); }
         function goToAboutSlide(n) { aboutSlides[currentAboutSlide].classList.remove('active'); aboutDotsContainer.children[currentAboutSlide].classList.remove('active'); currentAboutSlide = (n+aboutSlides.length)%aboutSlides.length; aboutSlides[currentAboutSlide].classList.add('active'); aboutDotsContainer.children[currentAboutSlide].classList.add('active'); }
         initAboutSlider(); setInterval(()=>goToAboutSlide(currentAboutSlide+1), 6000);
+
+        // Lazy Load Google Maps
+        document.getElementById('loadMapBtn').addEventListener('click', function() {
+            document.getElementById('mapPlaceholder').style.display = 'none';
+            const mapContainer = document.getElementById('mapContainer');
+            mapContainer.style.display = 'block';
+            const iframe = mapContainer.querySelector('iframe');
+            iframe.src = iframe.dataset.src;
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('.js-smooth-scroll').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId && targetId !== '#') {
+                    document.querySelector(targetId).scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
 
         // Témoignages
         const testimonials = [
