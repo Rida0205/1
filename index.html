@@ -77,15 +77,15 @@
         .schedule { display: flex; flex-direction: column; gap: 16px; }
         .schedule-item { display: flex; justify-content: space-between; padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 15px; }
 
-        /* About Section - SLIDER MODERNE SANS FLÈCHES (TAILLE RÉDUITE) */
+        /* About Section - SLIDER MODERNE SANS FLÈCHES (7 IMAGES) */
         .about-section { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 40px; align-items: center; padding: 40px 0; }
         .about-slider { position: relative; width: 100%; max-width: 380px; margin: 0 auto; aspect-ratio: 1/1; border-radius: 28px; overflow: hidden; box-shadow: 0 15px 25px rgba(0,0,0,0.05); }
         .about-slides { position: relative; width: 100%; height: 100%; }
         .about-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 0.8s ease; background-size: cover; background-position: center; }
         .about-slide.active { opacity: 1; }
-        .about-dots { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; z-index: 10; padding: 6px 14px; background: rgba(0,0,0,0.2); backdrop-filter: blur(8px); border-radius: 30px; }
-        .about-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.6); cursor: pointer; transition: all 0.3s; border: none; }
-        .about-dot.active { background: white; width: 24px; border-radius: 10px; }
+        .about-dots { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); display: flex; gap: 6px; z-index: 10; padding: 6px 14px; background: rgba(0,0,0,0.2); backdrop-filter: blur(8px); border-radius: 30px; max-width: 90%; overflow-x: auto; flex-wrap: wrap; justify-content: center; }
+        .about-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.6); cursor: pointer; transition: all 0.3s; border: none; flex-shrink: 0; }
+        .about-dot.active { background: white; width: 20px; border-radius: 10px; }
         .about-content h3 { font-family: 'Playfair Display', serif; font-size: 28px; color: #0f172a; margin-bottom: 20px; }
         .about-content p { color: #475569; margin-bottom: 16px; font-size: 15px; line-height: 1.7; }
 
@@ -117,6 +117,11 @@
         .footer-info i { width: 24px; color: #0ea5e9; }
         .footer-bottom { text-align: center; padding-top: 28px; margin-top: 28px; border-top: 1px solid #334155; color: #94a3b8; font-size: 14px; }
 
+        /* Back to Top Button */
+        .back-to-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: #0ea5e9; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 8px 20px rgba(14, 165, 233, 0.3); opacity: 0; visibility: hidden; transition: all 0.3s; z-index: 999; border: none; font-size: 20px; }
+        .back-to-top.show { opacity: 1; visibility: visible; }
+        .back-to-top:hover { background: #0284c7; transform: translateY(-3px); box-shadow: 0 12px 25px rgba(14, 165, 233, 0.4); }
+
         /* Mobile */
         @media (max-width: 1024px) { .services-grid { grid-template-columns: repeat(4, 1fr); } }
         @media (max-width: 768px) {
@@ -133,6 +138,7 @@
             .rdv-section { padding: 32px 16px; }
             .testimonials-grid { grid-template-columns: 1fr; }
             .hero-slider { height: 280px; }
+            .back-to-top { bottom: 20px; right: 20px; width: 44px; height: 44px; font-size: 18px; }
         }
         @media (max-width: 480px) {
             .hero-title { font-size: 28px; }
@@ -142,7 +148,11 @@
             .service-card h3 { font-size: 13px; }
             .hero-slider { height: 220px; }
             .about-slider { max-width: 280px; }
+            .back-to-top { bottom: 16px; right: 16px; width: 40px; height: 40px; font-size: 16px; }
         }
+
+        /* Correction affichage time picker sur mobile */
+        input[type="time"]::-webkit-calendar-picker-indicator { opacity: 1; }
     </style>
 </head>
 <body>
@@ -212,7 +222,7 @@
             </div>
         </section>
 
-        <!-- SECTION ABOUT - SLIDER DE TAILLE RÉDUITE -->
+        <!-- SECTION ABOUT - SLIDER 7 IMAGES -->
         <section class="about-section">
             <div class="about-slider" id="aboutSlider">
                 <div class="about-slides">
@@ -220,6 +230,9 @@
                     <div class="about-slide" style="background-image: url('02.jpg');"></div>
                     <div class="about-slide" style="background-image: url('03.jpg');"></div>
                     <div class="about-slide" style="background-image: url('04.jpg');"></div>
+                    <div class="about-slide" style="background-image: url('05.jpg');"></div>
+                    <div class="about-slide" style="background-image: url('06.jpg');"></div>
+                    <div class="about-slide" style="background-image: url('07.jpg');"></div>
                 </div>
                 <div class="about-dots" id="aboutDots"></div>
             </div>
@@ -255,9 +268,12 @@
                 <p><i class="fab fa-whatsapp"></i> 06 63 64 06 04</p>
                 <p><i class="fas fa-envelope"></i> centredentairebougrine@gmail.com</p>
             </div>
-            <div class="footer-bottom"><p>© 2025 Centre Dentaire BOUGRINE - Dr. Chaymaa Bougrine. Tous droits réservés.</p></div>
+            <div class="footer-bottom"><p>© 2026 Centre Dentaire BOUGRINE - Dr. Chaymaa Bougrine. Tous droits réservés.</p></div>
         </div>
     </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"><i class="fas fa-arrow-up"></i></button>
 
     <script>
         // Slider du Hero
@@ -289,7 +305,7 @@
         initSlider();
         setInterval(() => changeSlide(1), 5000);
 
-        // Slider Moderne pour About (taille réduite)
+        // Slider Moderne pour About (7 images)
         let currentAboutSlide = 0;
         const aboutSlides = document.querySelectorAll('.about-slide');
         const aboutDotsContainer = document.getElementById('aboutDots');
@@ -351,6 +367,13 @@
             if (selectedDate.getDay() === 6 && time > "13:00") { alert('Le samedi, les rendez-vous sont uniquement jusqu\'à 13h00.'); return; }
             const formattedDate = date.split('-').reverse().join('/');
             window.open(`https://wa.me/212663640604?text=Bonjour Centre Dentaire BOUGRINE,%0A%0AJe souhaite prendre rendez-vous le ${formattedDate} à ${time}.%0A%0APouvez-vous confirmer ?%0A%0AMerci.`, '_blank');
+        });
+
+        // Back to Top Button
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) backToTop.classList.add('show');
+            else backToTop.classList.remove('show');
         });
     </script>
 </body>
