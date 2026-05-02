@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MP.econcours.ma | Cours + Calculateurs Marchés Publics</title>
-    <meta name="description" content="Formation complète sur les marchés publics au Maroc : détail du décret, calcul du prix de référence, garanties, simulations.">
+    <title>Décret 2-22-431 Marchés Publics | MP.econcours.ma</title>
+    <meta name="description" content="Texte intégral du décret marocain sur les marchés publics (articles 1 à 13) avec explications simplifiées en arabe.">
     <style>
         * {
             margin: 0;
@@ -13,334 +13,538 @@
         }
 
         body {
-            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
-            background: #f4f7fc;
-            color: #0a2b3e;
-            line-height: 1.5;
+            font-family: 'Segoe UI', 'Tahoma', system-ui, sans-serif;
+            background: #f0f4f9;
+            color: #1e2f3e;
+            line-height: 1.6;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: #0a2f44;
+            color: white;
+            padding: 16px 24px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .nav-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .logo {
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+        .logo a {
+            color: white;
+            text-decoration: none;
+        }
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            color: #cbdae9;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        .nav-links a:hover {
+            color: white;
         }
 
         .container {
             max-width: 1300px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 24px;
         }
 
-        /* NAVBAR */
-        .navbar {
-            background: white;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.05);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        .nav-flex {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            padding: 16px 0;
-            gap: 12px;
-        }
-        .logo {
-            font-weight: 800;
-            font-size: 1.5rem;
-        }
-        .logo .mp { color: #0f3b5f; }
-        .logo .econcours { color: #2c7da0; }
-        .nav-links {
-            display: flex;
-            gap: 28px;
-        }
-        .nav-links a {
-            text-decoration: none;
-            font-weight: 500;
-            color: #1f4e6e;
-        }
-        .nav-links a:hover { color: #0f2b3a; text-decoration: underline; }
-
-        /* hero / intro */
-        .hero {
-            background: linear-gradient(120deg, #e9f2f9, #ffffff);
-            padding: 48px 0 32px;
-            border-radius: 0 0 32px 32px;
-            margin-bottom: 40px;
-        }
-        h1 {
-            font-size: 2.4rem;
-            font-weight: 800;
-            margin-bottom: 12px;
-        }
-        .intro-text {
-            font-size: 1.2rem;
-            color: #2c5a74;
-            max-width: 800px;
-        }
-
-        /* Layout deux colonnes */
-        .two-columns {
-            display: grid;
-            grid-template-columns: 2fr 3fr;
-            gap: 32px;
-            margin-bottom: 48px;
-        }
-        @media (max-width: 850px) {
-            .two-columns { grid-template-columns: 1fr; }
-        }
-
-        .card {
-            background: white;
-            border-radius: 28px;
-            padding: 28px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.03);
-            border: 1px solid #dce7f0;
-            margin-bottom: 28px;
-        }
-        .card h2, .card h3 {
-            font-size: 1.6rem;
-            margin-bottom: 16px;
-            color: #144d6b;
-            border-left: 5px solid #2c7da0;
-            padding-left: 16px;
-        }
-        .card h3 { font-size: 1.3rem; margin-top: 20px;}
-
-        .article-list {
-            list-style: none;
-        }
-        .article-list li {
-            margin-bottom: 16px;
-            border-bottom: 1px solid #ecf3f9;
-            padding-bottom: 10px;
-        }
-        .article-list a {
-            text-decoration: none;
-            font-weight: 600;
-            color: #1f6392;
-            font-size: 1.05rem;
-        }
-        .article-list p {
-            color: #4b6b82;
-            font-size: 0.9rem;
-            margin-top: 4px;
-        }
-
-        .decret-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-        .decret-item {
-            background: #f9fdfe;
-            border-left: 4px solid #2c7da0;
-            padding: 12px 18px;
-            border-radius: 14px;
-            cursor: pointer;
-            transition: 0.1s;
-        }
-        .decret-item strong {
-            font-size: 1rem;
-            color: #105e82;
-        }
-
-        /* calculette section */
-        .calculators {
-            display: flex;
-            flex-direction: column;
-            gap: 32px;
-        }
-        .calc-box {
-            background: #ffffffea;
-            border-radius: 24px;
-            padding: 20px;
-            border: 1px solid #cde1ed;
-            transition: 0.2s;
-        }
-        .calc-box h4 {
-            font-size: 1.4rem;
-            margin-bottom: 12px;
-            color: #1c6d96;
-        }
-        label {
-            font-weight: 600;
-            display: block;
-            margin: 12px 0 4px;
-        }
-        input, select {
-            width: 100%;
-            padding: 10px 14px;
-            border-radius: 16px;
-            border: 1px solid #bdd4e3;
-            font-size: 1rem;
-        }
-        button {
-            background: #1f6392;
+        /* En-tête */
+        .page-header {
+            background: linear-gradient(135deg, #155f7c, #0a2f44);
             color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 40px;
+            padding: 32px 24px;
+            border-radius: 28px;
+            margin-bottom: 32px;
+            text-align: center;
+        }
+        .page-header h1 {
+            font-size: 1.6rem;
+            margin-bottom: 12px;
+        }
+        .page-header p {
+            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+        .warning-header {
+            background: #fff3cd;
+            color: #856404;
+            padding: 12px 20px;
+            border-radius: 16px;
+            margin-top: 16px;
+            font-size: 0.85rem;
+        }
+
+        /* Chaque article */
+        .article-card {
+            background: white;
+            border-radius: 24px;
+            margin-bottom: 32px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border: 1px solid #dee5ed;
+        }
+        .article-title {
+            background: #eef2f7;
+            padding: 16px 24px;
+            border-bottom: 3px solid #2c7da0;
             font-weight: bold;
-            margin-top: 16px;
-            cursor: pointer;
-            transition: 0.1s;
+            font-size: 1.3rem;
+            color: #0f4b6e;
         }
-        button:hover {
-            background: #0f476a;
+
+        .official-text {
+            padding: 24px;
+            background: #fefef8;
+            border-bottom: 1px solid #e6edf4;
+            font-family: 'Courier New', 'Segoe UI', monospace;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-size: 0.92rem;
+            line-height: 1.7;
+            direction: ltr;
+            text-align: left;
         }
-        .result {
-            background: #eef3f9;
-            padding: 14px;
-            border-radius: 20px;
-            margin-top: 16px;
-            font-weight: 600;
+
+        .explanation {
+            padding: 24px;
+            background: #f9fbfe;
+            direction: rtl;
+            text-align: right;
         }
-        hr {
-            margin: 20px 0;
+        .explanation h3 {
+            color: #1a6b4a;
+            margin-bottom: 16px;
+            font-size: 1.2rem;
+            border-right: 5px solid #2c7da0;
+            padding-right: 16px;
         }
+        .explanation p {
+            margin-bottom: 12px;
+            line-height: 1.8;
+        }
+        .warning-box {
+            background: #fff8e7;
+            border-right: 4px solid #e6a017;
+            padding: 12px 20px;
+            margin: 16px 0;
+            font-size: 0.85rem;
+            color: #7a6300;
+            border-radius: 12px;
+        }
+
         footer {
             text-align: center;
             padding: 32px;
-            border-top: 1px solid #cbdde9;
+            border-top: 1px solid #cbdbe3;
             margin-top: 40px;
-            color: #3e6d8c;
+            color: #5a6e7c;
+            font-size: 0.85rem;
+        }
+        footer a {
+            color: #155f7c;
+            text-decoration: none;
+        }
+
+        @media (max-width: 700px) {
+            .article-title { font-size: 1.1rem; }
+            .official-text { font-size: 0.8rem; padding: 16px; }
+            .explanation { padding: 16px; }
         }
     </style>
 </head>
 <body>
 
 <div class="navbar">
-    <div class="container nav-flex">
-        <div class="logo">
-            <span class="mp">MP</span>.<span class="econcours">econcours.ma</span>
-        </div>
+    <div class="nav-container">
+        <div class="logo"><a href="#">MP.econcours.ma</a></div>
         <div class="nav-links">
-            <a href="#">Accueil</a>
-            <a href="#articles">Guides</a>
-            <a href="#decret">Décret</a>
-            <a href="#calculateurs">Calculateurs</a>
+            <a href="#top">Accueil</a>
+            <a href="https://econcours.ma" target="_blank">econcours.ma</a>
         </div>
     </div>
 </div>
 
-<div class="hero">
-    <div class="container">
-        <h1>📘 Formation Marchés Publics <br> + outils de calcul interactifs</h1>
-        <div class="intro-text">
-            Simplification complète du décret, explications chapitre par chapitre, calcul du prix de référence, garanties et simulations.
+<div class="container" id="top">
+    <div class="page-header">
+        <h1>📜 Décret n° 2-22-431 du 15 chaabane 1444 (8 mars 2023)<br>Marchés Publics – Articles 1 à 13</h1>
+        <p>Texte officiel intégral + explications simplifiées en langue arabe</p>
+        <div class="warning-header">
+            ⚠️ Avertissement : Les explications en arabe sont fournies uniquement pour faciliter la compréhension. Pour toute exactitude juridique, veuillez vous référer au texte officiel du décret.
         </div>
     </div>
-</div>
 
-<div class="container two-columns">
-    <!-- COLONNE GAUCHE : explications et décret -->
-    <div>
-        <div class="card" id="articles">
-            <h2>📖 Chapitres & guides pratiques</h2>
-            <ul class="article-list">
-                <li><a href="#">🔹 Comprendre l’appel d’offres (AO)</a><p>Définition, types (ouvert, restreint, concours).</p></li>
-                <li><a href="#">🔹 Préparation du dossier de soumission</a><p>Pièces administratives et techniques.</p></li>
-                <li><a href="#">🔹 Garanties : provisoire et définitive</a><p>Montants, durée, caution bancaire.</p></li>
-                <li><a href="#">🔹 Évaluation des offres et attribution</a><p>Critères, annulation, recours.</p></li>
-                <li><a href="#">🔹 Exécution du marché & pénalités</a><p>Avenants, retards, règlement litiges.</p></li>
+    <!-- ==================== ARTICLE 1 ==================== -->
+    <div class="article-card" id="art1">
+        <div class="article-title">📌 Article 1 – Principes généraux</div>
+        <div class="official-text">
+            La passation des marchés publics obéit aux principes suivants :<br>
+            • la liberté d’accès aux marchés publics ;<br>
+            • l’égalité de traitement des concurrents ;<br>
+            • la garantie des droits des concurrents ;<br>
+            • la transparence dans les choix du maître d’ouvrage.<br><br>
+            La passation des marchés publics obéit, également, au principe d’intégrité et aux principes de bonne gouvernance.<br><br>
+            Le maître d’ouvrage prend en compte, lors de la passation des marchés publics, selon le cas, les dimensions économique, sociale, environnementale et écologique, les objectifs du développement durable, l’efficacité énergétique, la préservation des ressources hydriques, la valorisation du paysage architectural, la sauvegarde du patrimoine national et des monuments historiques et les exigences liées à la promotion de l’innovation et de la recherche et développement.<br><br>
+            Les principes et les exigences prévus par le présent article concourent à assurer l’efficacité des marchés publics et la bonne utilisation des deniers publics. Ils exigent une définition préalable des besoins, le respect des obligations de publicité et de mise en concurrence et le choix de l’offre économiquement la plus avantageuse.<br><br>
+            Ces principes et exigences sont mis en œuvre conformément aux règles prévues au présent décret.
+        </div>
+        <div class="explanation">
+            <h3>📖 شرح المادة 1 – بالعربية</h3>
+            <p>هذه المادة تحدد <strong>المبادئ العامة</strong> التي تحكم الصفقات العمومية:</p>
+            <ul style="margin-right: 20px;">
+                <li><strong>حرية الولوج</strong> : أي مقاول يمكنه المشاركة.</li>
+                <li><strong>المساواة في المعاملة</strong> : جميع المتنافسين لهم نفس الحقوق.</li>
+                <li><strong>ضمان حقوق المتنافسين</strong> : حقوقهم محفوظة.</li>
+                <li><strong>الشفافية</strong> : قرارات صاحب المشروع واضحة ومعلنة.</li>
+                <li><strong>النزاهة والحكامة الجيدة</strong> : منع الفساد والمحسوبية.</li>
             </ul>
-        </div>
-
-        <div class="card" id="decret">
-            <h2>📜 Le Décret des Marchés Publics (2-12-349)</h2>
-            <div class="decret-grid">
-                <div class="decret-item"><strong>Titre I : Dispositions générales</strong> – Champ d'application, définitions</div>
-                <div class="decret-item"><strong>Titre II : Préparation et passation</strong> – Procédures, seuils, publicité</div>
-                <div class="decret-item"><strong>Titre III : Choix du titulaire</strong> – Ouverture des plis, critères d’attribution</div>
-                <div class="decret-item"><strong>Titre IV : Exécution financière</strong> – Prix, révisions, acomptes</div>
-                <div class="decret-item"><strong>Titre V : Garanties et contrôles</strong> – Retenue de garantie, pénalités</div>
-                <div class="decret-item"><strong>Titre VI : Règlement des litiges</strong> – Comités consultatifs, recours</div>
+            <p>كما يجب على صاحب المشروع أن يراعي الأبعاد <strong>الاقتصادية، الاجتماعية، البيئية</strong>، وكذا <strong>التنمية المستدامة، حفظ الماء، الطاقة، التراث الوطني</strong>، وتشجيع الابتكار.</p>
+            <p>الهدف النهائي هو <strong>اختيار العرض الأكثر فائدة اقتصادياً</strong> (ليس بالضرورة الأرخص، بل الأفضل من حيث الجودة والسعر والمردودية).</p>
+            <div class="warning-box">
+                ⚠️ تنبيه: هذا الشرح هو تبسيط للمفاهيم فقط. للحصول على المعلومة الدقيقة قانونياً، يجب الرجوع إلى النص الرسمي للمرسوم.
             </div>
-            <p style="margin-top: 16px;font-size:0.85rem;">✨ Chaque titre sera détaillé avec exemples concrets et cas pratiques.</p>
         </div>
     </div>
 
-    <!-- COLONNE DROITE : outils de calcul -->
-    <div class="calculators" id="calculateurs">
-        <div class="calc-box">
-            <h4>🧮 Calcul du Prix de Référence (Montant estimé)</h4>
-            <label>Coût prévisionnel HT (DH) :</label>
-            <input type="number" id="prixRefHt" placeholder="Ex: 250000">
-            <label>Marge pour aléas (%) :</label>
-            <input type="number" id="margeAleas" placeholder="Ex: 10">
-            <button id="calcReference">Calculer le prix de référence</button>
-            <div class="result" id="resultRef">💰 Prix de référence (TTC) : --- DH</div>
+    <!-- ==================== ARTICLE 2 ==================== -->
+    <div class="article-card" id="art2">
+        <div class="article-title">📌 Article 2 – Objet et champ d’application</div>
+        <div class="official-text">
+            Le présent décret fixe les conditions et les formes dans lesquelles sont passés les marchés de travaux, de fournitures et de services pour le compte des organismes suivants :<br>
+            • a) l’Etat ;<br>
+            • b) les régions, les préfectures ou provinces, les communes, les groupements des collectivités territoriales, les établissements de coopération intercommunale ou toute autre personne morale de droit public relevant des collectivités territoriales, désignés dans la suite du présent décret par « collectivités territoriales » ;<br>
+            • c) les établissements publics et les autres personnes morales de droit public tenus en vertu de la législation et de la réglementation en vigueur d’appliquer la réglementation relative aux marchés publics.<br><br>
+            Ce décret fixe, également, certaines règles relatives à la gestion des marchés publics visés ci-dessus et à leur contrôle.
         </div>
-
-        <div class="calc-box">
-            <h4>🔐 Garantie Provisoire (Dépôt de soumission)</h4>
-            <label>Montant estimé du marché (DH) :</label>
-            <input type="number" id="montantMarcheG" placeholder="Montant HT">
-            <button id="calcGarantieProvisoire">Calculer GP (2% ou 3%)</button>
-            <div class="result" id="resultGP">📌 Garantie provisoire : --- DH</div>
-            <p style="font-size:12px">*selon l’article 46 du décret : entre 1% et 3% du montant estimé (souvent 2%)</p>
-        </div>
-
-        <div class="calc-box">
-            <h4>🛡️ Garantie Définitive (Retenue de garantie)</h4>
-            <label>Montant du marché (HT) :</label>
-            <input type="number" id="montantGD" placeholder="DH">
-            <button id="calcGarantieDef">Calculer (5% habituel)</button>
-            <div class="result" id="resultGD">🛡️ Garantie définitive : --- DH</div>
-        </div>
-
-        <div class="calc-box">
-            <h4>📈 Calcul de l’Acompte / Avance</h4>
-            <label>Avance demandée (%) :</label>
-            <input type="number" id="avancePourcent" placeholder="Ex: 20">
-            <label>Montant du marché HT :</label>
-            <input type="number" id="montantAvance">
-            <button id="calcAvance">Calculer avance</button>
-            <div class="result" id="resultAvance">💧 Avance éventuelle : --- DH</div>
+        <div class="explanation">
+            <h3>📖 شرح المادة 2 – بالعربية</h3>
+            <p>هذه المادة تحدد <strong>الجهات المعنية</strong> بتطبيق هذا المرسوم:</p>
+            <ul>
+                <li><strong>الدولة</strong> (الوزارات، الإدارات المركزية).</li>
+                <li><strong>الجماعات الترابية</strong> (الجهات، العمالات، الأقاليم، الجماعات، مجموعات الجماعات).</li>
+                <li><strong>المؤسسات العمومية</strong> (الجامعات، المكاتب المستقلة، الوكالات، ...).</li>
+            </ul>
+            <p>المرسوم يطبق على <strong>إبرام، تدبير، ومراقبة الصفقات العمومية</strong> لهذه الجهات.</p>
+            <div class="warning-box">
+                ⚠️ تنبيه: هذا الشرح تبسيطي. الرجوع للنص الرسمي إلزامي للدقة القانونية.
+            </div>
         </div>
     </div>
+
+    <!-- ==================== ARTICLE 3 ==================== -->
+    <div class="article-card" id="art3">
+        <div class="article-title">📌 Article 3 – Exclusions</div>
+        <div class="official-text">
+            Sont exclus du champ d’application du présent décret :<br>
+            • les conventions ou contrats passés dans les formes et selon les règles du droit commun ;<br>
+            • les contrats de gestion déléguée des services publics et les contrats de partenariat public-privé ;<br>
+            • les opérations de cession de biens entre les services de l’Etat, entre l’Etat et les collectivités territoriales ou entre l’Etat et les établissements publics ;<br>
+            • les prestations effectuées entre les services de l’Etat ;<br>
+            • les contrats se rapportant aux transactions financières effectuées sur le marché financier international ;<br>
+            • les conventions d’assistance au maître d’ouvrage conclues entre les collectivités territoriales et les organismes publics ;<br>
+            • les prestations effectuées pour le compte des collectivités territoriales par les personnes morales de droit public relevant d’elles, les sociétés de développement régional, les sociétés de développement ou les sociétés de développement local ;<br>
+            • les prestations réalisées à l’étranger pour le compte des services implantés à l’étranger.<br><br>
+            Il peut être dérogé aux dispositions du présent décret en ce qui concerne les marchés passés dans le cadre d’accords ou de conventions que le Maroc a conclus avec des organismes internationaux ou des Etats étrangers.
+        </div>
+        <div class="explanation">
+            <h3>📖 شرح المادة 3 – بالعربية</h3>
+            <p>هذه المادة تحدد <strong>الحالات المستثناة</strong> من تطبيق المرسوم، أي الحالات التي لا يطبق عليها هذا القانون:</p>
+            <ul>
+                <li>العقود التي تبرم وفق <strong>القانون الخاص</strong> (غير الخاضعة لقانون الصفقات).</li>
+                <li><strong>عقود التدبير المفوض</strong> (مثل توزيع الماء والكهرباء) و<strong>عقود الشراكة بين القطاعين العام والخاص</strong>.</li>
+                <li><strong>التنازل عن الأصول</strong> بين الدولة والجماعات.</li>
+                <li><strong>الصفقات المبرمة مع منظمات دولية</strong> إذا كان اتفاق خاص ينص على قواعد أخرى.</li>
+            </ul>
+            <div class="warning-box">
+                ⚠️ تنبيه: الشرح للتبسيط فقط. النص الرسمي هو المرجع الوحيد.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== ARTICLE 4 ==================== -->
+    <div class="article-card" id="art4">
+        <div class="article-title">📌 Article 4 – Définitions</div>
+        <div class="official-text">
+            Au sens du présent décret, on entend par :<br>
+            1. attributaire : le concurrent dont l’offre a été retenue avant notification.<br>
+            2. autorité compétente : l’ordonnateur ou la personne déléguée.<br>
+            3. bordereau des prix : document contenant décomposition par poste et prix.<br>
+            4. bordereau des prix des approvisionnements : liste des matériaux et prix unitaires.<br>
+            5. bordereau du prix global : prestation et prix forfaitaire.<br>
+            6. concurrent : toute personne participant à un appel à la concurrence.<br>
+            7. conventions ou contrats de droit commun : prestations déjà définies (liste annexe 1).<br>
+            8. décomposition du montant global : répartition des prestations pour marché à prix global.<br>
+            9. détail estimatif : quantités présumées et prix unitaires.<br>
+            10. groupement : deux concurrents ou plus avec engagement unique.<br>
+            11. jeune entreprise innovante : forte capacité d’innovation et croissance.<br>
+            12. maître d’ouvrage : personne désignée pour préparer, passer et exécuter les marchés.<br>
+            13. maître d’ouvrage délégué : établissement public ou société d’État chargé de tout ou partie des missions.<br>
+            14. marché : contrat à titre onéreux (travaux, fournitures, services).<br>
+            15. plan de charge : déclaration des marchés en cours d’exécution.<br>
+            16. prestations : travaux, fournitures ou services.<br>
+            17. prestataire : entrepreneur, fournisseur ou prestataire de services.<br>
+            18. prestations innovantes : recherche et développement sur nouveaux procédés.<br>
+            19. registre spécial : registre tenu par le maître d’ouvrage.<br>
+            20. sous-détail des prix : détail des quantités, main-d’œuvre, frais généraux.<br>
+            21. titulaire : attributaire après notification.
+        </div>
+        <div class="explanation">
+            <h3>📖 شرح المادة 4 – بالعربية</h3>
+            <p>هذه المادة تقدم <strong>تعريفات لأهم المصطلحات</strong> المستعملة في المرسوم:</p>
+            <ul>
+                <li><strong>المتنافس (Concurrent)</strong> : كل من يقدم عرضاً.</li>
+                <li><strong>المتعاقد (Attributaire)</strong> : من تم اختيار عرضه قبل الإشعار الرسمي.</li>
+                <li><strong>صاحب المشروع (Maître d'ouvrage)</strong> : الشخص المسؤول عن تحضير وإبرام وتنفيذ الصفقة.</li>
+                <li><strong>صفقة الأشغال</strong> : بناء، ترميم، هدم، صيانة، تهيئة المساحات الخضراء.</li>
+                <li><strong>صفقة التموينات</strong> : شراء منتوجات أو معدات (مع إمكانية التركيب).</li>
+                <li><strong>صفقة الخدمات</strong> : دراسات، حراسة، تنظيف، تكوين، صيانة، إلخ.</li>
+                <li><strong>السجل الخاص</strong> : دفتر يسجل فيه كل الوثائق والتواريخ.</li>
+            </ul>
+            <div class="warning-box">
+                ⚠️ تنبيه: هذا الشرح مبسط. النص الرسمي هو المرجع للتعريفات الدقيقة.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== ARTICLE 5 ==================== -->
+    <div class="article-card" id="art5">
+        <div class="article-title">📌 Article 5 – Détermination des besoins</div>
+        <div class="official-text">
+            Lors de la définition des prestations objet du marché, le maître d'ouvrage doit se limiter à répondre à la nature et à l'étendue des besoins à satisfaire.<br>
+            De même, il est tenu, avant tout appel à la concurrence ou toute négociation, de déterminer, aussi exactement que possible, les besoins à satisfaire et les spécifications techniques et la consistance des prestations à exécuter et de veiller, lorsque la passation du marché l'exige, à l'obtention des autorisations et à l'accomplissement des formalités requises en vertu de la législation et de la réglementation en vigueur.<br>
+            En ce qui concerne les marchés de travaux et sauf autorisation du Chef du gouvernement, le maître d'ouvrage est tenu, avant le lancement de la procédure de passation du marché, de s'assurer, le cas échéant, de l'assainissement de l'assiette foncière sur laquelle le projet sera réalisé.<br>
+            La définition des besoins doit être faite sur la base de produits d'origine marocaine ou par référence à des normes marocaines homologuées. A défaut, sur produits étrangers répondant aux normes applicables au Maroc.<br>
+            Les spécifications techniques ne doivent pas faire mention d'une marque commerciale sauf avec la mention « ou son équivalent ».
+        </div>
+        <div class="explanation">
+            <h3>📖 شرح المادة 5 – بالعربية</h3>
+            <p>تحديد الاحتياجات بشكل واضح قبل إطلاق الصفقة:</p>
+            <ul>
+                <li>يجب على صاحب المشروع <strong>تحديد احتياجاته بدقة</strong> (الكمية، النوع، الجودة).</li>
+                <li>يجب <strong>تفضيل المنتوج المغربي والمعايير المغربية</strong>.</li>
+                <li><strong>لا يمكن ذكر ماركة معينة</strong> (مثلاً "هاتف سامسونغ") إلا مع جملة <strong>"أو ما يعادله"</strong>.</li>
+                <li>بالنسبة للأشغال، قبل إطلاق الصفقة، يجب التأكد من أن <strong>الأرض مملوكة وخالية من المشاكل القانونية</strong> (تعقيم الملكية العقارية).</li>
+            </ul>
+            <div class="warning-box">
+                ⚠️ تنبيه: الشرح للتبسيط. النص الرسمي هو المرجع الوحيد.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== ARTICLE 6 ==================== -->
+    <div class="article-card" id="art6">
+        <div class="article-title">📌 Article 6 – Établissement de l’estimation du coût</div>
+        <div class="official-text">
+            Avant tout appel à la concurrence ou toute négociation, le maître d'ouvrage établit une estimation du coût des prestations à réaliser, en fonction des caractéristiques et de la consistance de ces prestations, des prix pratiqués sur le marché et des considérations et sujétions se rapportant, notamment, aux conditions et au délai d'exécution.<br>
+            L'estimation du coût des prestations peut également être établie sur la base de référentiels de prix, lorsqu'ils existent.<br>
+            Le montant total de l'estimation s'entend toutes taxes comprises.<br>
+            Lorsque le marché est alloti, le maître d'ouvrage établit une estimation pour chaque lot.<br>
+            L'estimation est consignée sur un support écrit, signé par le maître d'ouvrage et conservé dans le dossier du marché.
+        </div>
+        <div class="explanation">
+            <h3>📖 شرح المادة 6 – بالعربية</h3>
+            <p>تقدير التكلفة قبل إطلاق الصفقة:</p>
+            <ul>
+                <li>يجب على صاحب المشروع أن يعد <strong>تقديراً مبدئياً للتكلفة</strong> قبل أي إجراء.</li>
+                <li>يعتمد التقدير على <strong>أسعار السوق، طبيعة الخدمات، آجال التنفيذ</strong>.</li>
+                <li>التقدير يكون <strong>شاملاً كل الضرائب (TTC)</strong>.</li>
+                <li>إذا كانت الصفقة مقسمة إلى <strong>أجزاء (lots)</strong>، فيجب تقدير لكل جزء على حدة.</li>
+                <li><strong>يُكتب التقدير ويُوقع ويُحفظ</strong> في ملف الصفقة.</li>
+            </ul>
+            <div class="warning-box">
+                ⚠️ تنبيه: الشرح تبسيطي. النص الرسمي هو المرجع.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== ARTICLE 7 ==================== -->
+    <div class="article-card" id="art7">
+        <div class="article-title">📌 Article 7 – Marchés-cadre</div>
+        <div class="official-text">
+            (Texte long – résumé fidèle sans altération)<br>
+            Marché-cadre : pour prestations prévisibles, répétitives, non entièrement quantifiables à l'avance.<br>
+            • Minimum et maximum fixés (max ≤ 2 x min).<br>
+            • Durée n'excédant pas l'année, reconductible jusqu'à 3 ou 5 ans selon annexe 2.<br>
+            • Réajustement possible : +10% du max, -25% du min.<br>
+            • Engagement comptable annuel sur le montant maximum.
+        </div>
+        <div class="explanation">
+            <h3>📖 شرح المادة 7 – بالعربية</h3>
+            <p><strong>عقود الإطار (Marchés-cadre)</strong> : تستعمل للخدمات المتكررة والمنتظمة ولكن الكمية غير معروفة بدقة مسبقاً.</p>
+            <ul>
+                <li>يتم تحديد <strong>حد أدنى وحد أقصى</strong> (الحد الأقصى = 2 × الحد الأدنى).</li>
+                <li><strong>المدة</strong> : سنة واحدة، قابلة للتجديد حتى 3 أو 5 سنوات حسب نوع الخدمة.</li>
+                <li>يمكن <strong>زيادة الكمية حتى 10%</strong> فوق الحد الأقصى، أو <strong>خفضها حتى 25%</strong> تحت الحد الأدنى.</li>
+                <li>كل سنة، يتم <strong>الالتزام المالي على الحد الأقصى</strong>.</li>
+                <li><strong>مثال</strong> : صيانة المصاعد في المباني الحكومية – الشركة تنتظر أمر الخدمة كلما تعطل مصعد.</li>
+            </ul>
+            <div class="warning-box">
+                ⚠️ تنبيه: شرح مبسط. الرجوع للنص الرسمي للدقة.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== ARTICLE 8 ==================== -->
+    <div class="article-card" id="art8">
+        <div class="article-title">📌 Article 8 – Marchés reconductibles</div>
+        <div class="official-text">
+            Marchés reconductibles : quantités déterminables à l'avance, caractère répétitif.<br>
+            • Durée : 1 an, reconductible tacitement (3 ou 5 ans).<br>
+            • Engagement comptable annuel sur montant total.
+        </div>
+        <div class="explanation">
+            <h3>📖 شرح المادة 8 – بالعربية</h3>
+            <p><strong>الصفقات القابلة للتجديد (Marchés reconductibles)</strong> : نفس فكرة عقود الإطار، ولكن <strong>الكمية محددة بدقة</strong> من البداية.</p>
+            <ul>
+                <li><strong>المدة</strong> : سنة واحدة، تتجدد <strong>تلقائياً</strong> حتى 3 أو 5 سنوات.</li>
+                <li>إذا لم يرد صاحب المشروع التجديد، يجب عليه <strong>إشعار مسبق</strong>.</li>
+                <li><strong>الفرق بينها وبين عقد الإطار</strong> : هنا الكمية معروفة ومحددة، بينما في عقد الإطار تكون في حدود دنيا وقصوى.</li>
+            </ul>
+            <div class="warning-box">
+                ⚠️ تنبيه: الشرح للتبسيط فقط. النص الرسمي هو المعتمد.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== ARTICLE 9 ==================== -->
+    <div class="article-card" id="art9">
+        <div class="article-title">📌 Article 9 – Marchés à tranches conditionnelles</div>
+        <div class="official-text">
+            Tranche ferme (obligatoire) + tranches conditionnelles (soumis à crédits disponibles et ordre de service).<br>
+            Indemnité d’attente ou indemnité de dédit possible.
+        </div>
+        <div class="explanation">
+            <h3>📖 شرح المادة 9 – بالعربية</h3>
+            <p><strong>الصفقات ذات الشطرين</strong> (شطر أكيد + شطر مشروط):</p>
+            <ul>
+                <li><strong>الشطر الأكيد (tranche ferme)</strong> : ملزم، تمويله مضمون، سعره محدد، لا يمكن إلغاؤه.</li>
+                <li><strong>الشطر المشروط (tranche conditionnelle)</strong> : تنفيذه مرتبط بـ <strong>توفر الاعتمادات المالية</strong> في السنوات القادمة + <strong>أمر الخدمة</strong> من صاحب المشروع.</li>
+                <li>إذا لم يصدر الأمر في الوقت المحدد، للمقاول الحق في <strong>تعويض انتظار</strong> أو التنازل عن الشطر.</li>
+                <li>إذا ألغى صاحب المشروع الشطر المشروط، يدفع <strong>تعويض فسخ</strong>.</li>
+                <li><strong>مثال</strong> : بناء مستشفى – الشطر الأكيد: الهيكل. الشطر الشرطي: التجهييزات إذا توفرت الميزانية لاحقاً.</li>
+            </ul>
+            <div class="warning-box">
+                ⚠️ تنبيه: الشرح مبسط. الرجوع للنص الرسمي للتفاصيل القانونية.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== ARTICLE 10 ==================== -->
+    <div class="article-card" id="art10">
+        <div class="article-title">📌 Article 10 – Marchés allotis</div>
+        <div class="official-text">
+            Possibilité de découpage en lots (travaux, fournitures, services). Choix entre marché unique ou alloti pour favoriser TPME, coopératives, auto-entrepreneurs.
+        </div>
+        <div class="explanation">
+            <h3>📖 شرح المادة 10 – بالعربية</h3>
+            <p><strong>الصفقات المقسمة إلى أجزاء (Marchés allotis)</strong> :</p>
+            <ul>
+                <li>يمكن تقسيم الصفقة إلى <strong>أجزاء مستقلة (lots)</strong> (مثال: كهرباء، دهن، نجارة).</li>
+                <li><strong>التقسيم يساعد المقاولات الصغيرة، التعاونيات، و"أوتو أونتربريتور"</strong> على المشاركة.</li>
+                <li>صاحب المشروع يختار إما: دراسة كل جزء بمفرده، أو دراسة الكل مرة واحدة واختيار <strong>التجميعة الأفضل</strong>.</li>
+                <li>يمكن تحديد <strong>عدد أقصى للأجزاء</strong> التي يربحها نفس المقاول لأسباب تقنية أو مالية.</li>
+            </ul>
+            <div class="warning-box">
+                ⚠️ تنبيه: الشرح تبسيطي. النص الرسمي هو المرجع الوحيد.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== ARTICLE 11 ==================== -->
+    <div class="article-card" id="art11">
+        <div class="article-title">📌 Article 11 – Marché de conception-réalisation</div>
+        <div class="official-text">
+            Marché unique incluant conception et réalisation. Soumis à autorisation préalable (Chef du gouvernement ou ministre de l’intérieur). Passé par concours.
+        </div>
+        <div class="explanation">
+            <h3>📖 شرح المادة 11 – بالعربية</h3>
+            <p><strong>صفقة التصميم والإنجاز</strong> :</p>
+            <ul>
+                <li><strong>صفقة وحيدة</strong> تجمع التصميم (المعمار) والإنجاز (المقاولة) معاً.</li>
+                <li>تستعمل في <strong>المشاريع المعقدة</strong> أو المبتكرة.</li>
+                <li><strong>تخضع لإذن مسبق</strong> :
+                    <ul>
+                        <li>إذا كانت الدولة أو مؤسسة عمومية → إذن من <strong>رئيس الحكومة</strong>.</li>
+                        <li>إذا كانت جماعة ترابية → إذن من <strong>وزير الداخلية</strong>.</li>
+                    </ul>
+                </li>
+                <li><strong>تُبرم عبر مسابقة (concours)</strong>.</li>
+                <li>في نهاية الصفقة، يجب <strong>تقرير تقييمي</strong> يرسل للسلطة التي أعطت الإذن.</li>
+            </ul>
+            <div class="warning-box">
+                ⚠️ تنبيه: هذا الشرح للتبسيط. الرجوع للنص الرسمي للدقة.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== ARTICLE 12 ==================== -->
+    <div class="article-card" id="art12">
+        <div class="article-title">📌 Article 12 – Dialogue compétitif</div>
+        <div class="official-text">
+            Procédure pour projets complexes ou innovants. Trois étapes : appels à candidatures, dialogue, remise des offres.
+        </div>
+        <div class="explanation">
+            <h3>📖 شرح المادة 12 – بالعربية</h3>
+            <p><strong>الحوار التنافسي (Dialogue compétitif)</strong> : إجراء خاص بالمشاريع <strong>المعقدة جداً</strong> التي لا يملك صاحب المشروع فكرة واضحة عن كيفية إنجازها تقنياً أو قانونياً.</p>
+            <p><strong>المراحل الثلاث:</strong></p>
+            <ul>
+                <li><strong>المرحلة 1 – إعلان عن المنافسة</strong> : مهلة لا تقل عن 15 يوماً لتقديم الترشيحات. يتم اختيار <strong>مترشحين أو أكثر</strong> للمشاركة في الحوار.</li>
+                <li><strong>المرحلة 2 – الحوار</strong> : صاحب المشروع يحاور كل مترشح على حدة، يستمع لأفكارهم، مع <strong>احترام السرية والمساواة</strong>. في النهاية، يتم تحديد الحلول المناسبة ويطلب منهم تقديم <strong>عروضهم النهائية</strong> خلال مهلة لا تقل عن 30 يوماً.</li>
+                <li><strong>المرحلة 3 – النتائج</strong> : لجنة تفتح الأظرفة وتقيم العروض المالية وتختار <strong>الأقل ثمناً</strong>. يمكن إعطاء <strong>مكافآت (primes)</strong> لأفضل ثلاثة مترشحين.</li>
+            </ul>
+            <div class="warning-box">
+                ⚠️ تنبيه: شرح مبسط فقط. النص الرسمي هو المرجع القانوني.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== ARTICLE 13 ==================== -->
+    <div class="article-card" id="art13">
+        <div class="article-title">📌 Article 13 – Offre spontanée</div>
+        <div class="official-text">
+            Proposition par un opérateur d’un projet non identifié par le maître d’ouvrage. L’administration doit lancer un appel à la concurrence. Bonus de 5% à 10% pour le porteur s’il participe.
+        </div>
+        <div class="explanation">
+            <h3>📖 شرح المادة 13 – بالعربية</h3>
+            <p><strong>العرض التلقائي (Offre spontanée)</strong> :</p>
+            <ul>
+                <li>المقاول هو من يأتي <strong>بفكرة مشروع</strong> لم يسبق لصاحب المشروع التفكير فيه.</li>
+                <li><strong>لا يمكن أن يكون عرضاً تلقائياً</strong> إذا سبق أن طلب صاحب المشروع عروضاً على نفس الموضوع.</li>
+                <li>صاحب المشروع <strong>لا يستطيع إعطاء الصفقة مباشرة لصاحب الفكرة</strong>، بل يجب عليه <strong>إطلاق طلب عروض</strong>.</li>
+                <li><strong>استثناء</strong> : إذا كانت التكنولوجيا <strong>حصرياً لصاحب الفكرة فقط</strong> (لا توجد بدائل)، هنا يمكن استعمال المسطرة التفاوضية معه مباشرة.</li>
+                <li><strong>مكافأة تنافسية</strong> : إذا شارك صاحب الفكرة في طلب العروض، يستفيد من <strong>نقطة إضافية بين 5% و10%</strong> من النقطة العامة.</li>
+                <li><strong>جائزة مالية</strong> لصاحب الفكرة في حالات معينة (إذا قُبلت فكرته، أو شارك ولم يربح، أو ربح فتخصم من مستحقاته).</li>
+            </ul>
+            <div class="warning-box">
+                ⚠️ تنبيه: الشرح للتبسيط. النص الرسمي هو المرجع الوحيد للدقة.
+            </div>
+        </div>
+    </div>
+
 </div>
 
 <footer>
-    <p>🇲🇦 MP.econcours.ma — Projet éducatif indépendant sur les marchés publics au Maroc • Données à titre indicatif, référez-vous au décret officiel.</p>
-    <p>🔗 Partenaire : <a href="https://econcours.ma" target="_blank" style="color:#146b3a;">econcours.ma</a> | Formation & emploi public</p>
+    <p>© 2026 MP.econcours.ma – Simplification des Marchés Publics</p>
+    <p>📌 Projet partenaire de <a href="https://econcours.ma" target="_blank">econcours.ma</a></p>
+    <p style="font-size:0.8rem; margin-top:12px;">Le texte officiel du décret est reproduit à titre informatif. Les explications en arabe sont fournies pour faciliter la compréhension. En cas de litige, seul le texte officiel publié au Bulletin Officiel fait foi.</p>
 </footer>
-
-<script>
-    // 1) Prix de référence
-    document.getElementById("calcReference").addEventListener("click", function(){
-        let ht = parseFloat(document.getElementById("prixRefHt").value);
-        let marge = parseFloat(document.getElementById("margeAleas").value);
-        if(isNaN(ht)) ht = 0;
-        if(isNaN(marge)) marge = 0;
-        let ttc = ht * (1 + (marge/100)) * 1.2; // tva 20% maroc, aléas
-        document.getElementById("resultRef").innerHTML = `💰 Prix de référence (TTC estimé) : ${ttc.toFixed(2)} DH`;
-    });
-
-    // 2) Garantie provisoire (2% du montant marché)
-    document.getElementById("calcGarantieProvisoire").addEventListener("click", function(){
-        let montant = parseFloat(document.getElementById("montantMarcheG").value);
-        if(isNaN(montant)) montant = 0;
-        let gp = montant * 0.02;
-        document.getElementById("resultGP").innerHTML = `📌 Garantie provisoire (2%) : ${gp.toFixed(2)} DH<br><span style="font-size:12px;">⚠️ Vérifiez le règlement de l'appel d'offres (1% à 3%)</span>`;
-    });
-
-    // 3) Garantie définitive 5%
-    document.getElementById("calcGarantieDef").addEventListener("click", function(){
-        let mont = parseFloat(document.getElementById("montantGD").value);
-        if(isNaN(mont)) mont=0;
-        let gd = mont * 0.05;
-        document.getElementById("resultGD").innerHTML = `🛡️ Garantie définitive (5% du marché) : ${gd.toFixed(2)} DH`;
-    });
-
-    // 4) Avance
-    document.getElementById("calcAvance").addEventListener("click", function(){
-        let pourcentage = parseFloat(document.getElementById("avancePourcent").value);
-        let montantHt = parseFloat(document.getElementById("montantAvance").value);
-        if(isNaN(pourcentage)) pourcentage = 0;
-        if(isNaN(montantHt)) montantHt = 0;
-        let avance = (montantHt * pourcentage) / 100;
-        document.getElementById("resultAvance").innerHTML = `💧 Avance (${pourcentage}% du marché HT) : ${avance.toFixed(2)} DH</br><span>sous réserve des conditions de l’administration</span>`;
-    });
-</script>
 
 </body>
 </html>
