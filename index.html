@@ -20,7 +20,6 @@
             line-height: 1.5;
         }
 
-        /* Navbar moderne */
         .navbar {
             background: rgba(10, 47, 68, 0.95);
             backdrop-filter: blur(12px);
@@ -63,7 +62,6 @@
             color: white;
         }
 
-        /* Hero section */
         .hero {
             background: linear-gradient(115deg, #0c4e6e, #0a2f44);
             border-radius: 48px;
@@ -91,14 +89,12 @@
             font-size: 0.85rem;
         }
 
-        /* Conteneur principal */
         .container {
             max-width: 1400px;
             margin: 0 auto;
             padding: 0 32px 48px 32px;
         }
 
-        /* Chapitres */
         .chapter {
             margin-bottom: 56px;
         }
@@ -112,7 +108,6 @@
             display: inline-block;
         }
 
-        /* Cartes d'articles */
         .articles-grid {
             display: flex;
             flex-direction: column;
@@ -156,26 +151,18 @@
             font-weight: 600;
             color: #144d6b;
         }
-        .article-header h2 small {
-            font-weight: 400;
-            font-size: 1rem;
-            color: #4a7c9c;
-        }
 
-        /* Texte officiel */
         .official-text {
             padding: 28px;
             background: #ffffff;
             border-bottom: 1px solid #eef3fc;
-            font-family: 'SF Mono', 'Courier New', monospace;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             line-height: 1.7;
             white-space: pre-wrap;
             word-break: break-word;
             color: #1e3a5f;
         }
 
-        /* Explications */
         .explanations {
             padding: 28px;
             background: #fafdf8;
@@ -218,11 +205,7 @@
             align-items: center;
             gap: 10px;
         }
-        .warning-note i {
-            font-size: 1.1rem;
-        }
 
-        /* Loading & error */
         .loader {
             text-align: center;
             padding: 80px;
@@ -256,7 +239,7 @@
             .hero h1 { font-size: 1.4rem; }
             .container { padding: 0 20px 32px 20px; }
             .article-header h2 { font-size: 1.1rem; }
-            .official-text { font-size: 0.8rem; padding: 20px; }
+            .official-text { font-size: 0.85rem; padding: 20px; }
         }
     </style>
 </head>
@@ -290,29 +273,33 @@
 <footer>
     <p>© 2026 MP.econcours.ma – Simplification des Marchés Publics – Maroc</p>
     <p>Projet partenaire de <a href="https://econcours.ma" target="_blank">econcours.ma</a></p>
-    <p style="font-size:0.75rem; margin-top:12px;">Les données sont chargées dynamiquement depuis data.json</p>
 </footer>
 
 <script>
-    async function loadDecret() {
-        const contentDiv = document.getElementById('content');
-        try {
-            const response = await fetch('data.json');
-            if (!response.ok) throw new Error(`HTTP ${response.status} - Fichier data.json introuvable`);
-            const data = await response.json();
-            const decret = data.decret;
-
+    // استدعاء ملف JSON وعرض المحتوى
+    fetch('data.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Impossible de charger data.json');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Données chargées avec succès:', data);
+            
+            const contentDiv = document.getElementById('content');
             let html = '';
-            for (const chapter of decret.chapitres) {
+            
+            for (const chapitre of data.decret.chapitres) {
                 html += `
                     <div class="chapter">
                         <div class="chapter-title">
-                            <i class="fas fa-book-open"></i> Chapitre ${chapter.numero} : ${chapter.titre}
+                            <i class="fas fa-book-open"></i> Chapitre ${chapitre.numero} : ${chapitre.titre}
                         </div>
                         <div class="articles-grid">
                 `;
-                for (const article of chapter.articles) {
-                    // Échappement des caractères problématiques
+                
+                for (const article of chapitre.articles) {
                     const texteOriginal = (article.texte_original || '').replace(/\n/g, '<br>');
                     const explicationArabe = article.explication_arabe || 'شرح غير متوفر حالياً';
                     const explicationFrancais = article.explication_francais || 'Explication non disponible';
@@ -342,11 +329,15 @@
                         </div>
                     `;
                 }
+                
                 html += `</div></div>`;
             }
+            
             contentDiv.innerHTML = html;
-        } catch (error) {
-            contentDiv.innerHTML = `
+        })
+        .catch(error => {
+            console.error('Erreur:', error);
+            document.getElementById('content').innerHTML = `
                 <div class="error-message">
                     <i class="fas fa-database" style="font-size: 2rem;"></i>
                     <h3>Erreur de chargement des données</h3>
@@ -354,10 +345,7 @@
                     <p style="font-size:0.8rem;">Détail technique : ${error.message}</p>
                 </div>
             `;
-        }
-    }
-
-    loadDecret();
+        });
 </script>
 
 </body>
