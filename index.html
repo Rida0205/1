@@ -3,31 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MP.econcours.ma | Cours + Calculateurs Marchés Publics</title>
-    <meta name="description" content="Formation complète sur les marchés publics au Maroc : calcul du prix de référence selon la méthode officielle, garanties, simulations.">
+    <title>MP.econcours.ma | Formation + Calculateurs Marchés Publics</title>
+    <meta name="description" content="Formation complète sur les marchés publics au Maroc : calcul du prix de référence selon la méthode officielle, avance, garanties, simulations.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text x='50%' y='50%' text-anchor='middle' dy='.35em' font-size='80' fill='%232c7da0'>📘</text></svg>">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
             background: #f4f7fc;
             color: #0a2b3e;
             line-height: 1.5;
         }
-
-        .container {
-            max-width: 1300px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* NAVBAR */
+        .container { max-width: 1300px; margin: 0 auto; padding: 0 24px; }
         .navbar {
             background: white;
             box-shadow: 0 2px 12px rgba(0,0,0,0.05);
@@ -43,52 +31,27 @@
             padding: 16px 0;
             gap: 12px;
         }
-        .logo {
-            font-weight: 800;
-            font-size: 1.5rem;
-        }
+        .logo { font-weight: 800; font-size: 1.5rem; }
         .logo .mp { color: #0f3b5f; }
         .logo .econcours { color: #2c7da0; }
-        .nav-links {
-            display: flex;
-            gap: 28px;
-        }
-        .nav-links a {
-            text-decoration: none;
-            font-weight: 500;
-            color: #1f4e6e;
-        }
+        .nav-links { display: flex; gap: 28px; }
+        .nav-links a { text-decoration: none; font-weight: 500; color: #1f4e6e; }
         .nav-links a:hover { color: #0f2b3a; text-decoration: underline; }
-
-        /* hero / intro */
         .hero {
             background: linear-gradient(120deg, #e9f2f9, #ffffff);
             padding: 48px 0 32px;
             border-radius: 0 0 32px 32px;
             margin-bottom: 40px;
         }
-        h1 {
-            font-size: 2.4rem;
-            font-weight: 800;
-            margin-bottom: 12px;
-        }
-        .intro-text {
-            font-size: 1.2rem;
-            color: #2c5a74;
-            max-width: 800px;
-        }
-
-        /* Layout deux colonnes */
+        h1 { font-size: 2.4rem; font-weight: 800; margin-bottom: 12px; }
+        .intro-text { font-size: 1.2rem; color: #2c5a74; max-width: 800px; }
         .two-columns {
             display: grid;
             grid-template-columns: 2fr 3fr;
             gap: 32px;
             margin-bottom: 48px;
         }
-        @media (max-width: 850px) {
-            .two-columns { grid-template-columns: 1fr; }
-        }
-
+        @media (max-width: 850px) { .two-columns { grid-template-columns: 1fr; } }
         .card {
             background: white;
             border-radius: 28px;
@@ -104,19 +67,11 @@
             border-left: 5px solid #2c7da0;
             padding-left: 16px;
         }
-
-        /* Liste des guides */
-        .guides-list {
-            list-style: none;
-        }
+        .guides-list { list-style: none; }
         .guides-list li {
             margin-bottom: 20px;
             border-bottom: 1px solid #ecf3f9;
             padding-bottom: 16px;
-            transition: 0.2s;
-        }
-        .guides-list li:last-child {
-            border-bottom: none;
         }
         .guides-list .lesson-title {
             font-weight: 700;
@@ -125,11 +80,7 @@
             display: block;
             margin-bottom: 6px;
         }
-        .guides-list .lesson-desc {
-            color: #4b6b82;
-            font-size: 0.9rem;
-            line-height: 1.5;
-        }
+        .guides-list .lesson-desc { color: #4b6b82; font-size: 0.9rem; }
         .coming-soon {
             color: #a0b8cc;
             font-style: italic;
@@ -139,13 +90,7 @@
             border-top: 1px dashed #dce7f0;
             padding-top: 20px;
         }
-
-        /* calculateurs */
-        .calculators {
-            display: flex;
-            flex-direction: column;
-            gap: 32px;
-        }
+        .calculators { display: flex; flex-direction: column; gap: 32px; }
         .calc-box {
             background: #ffffffea;
             border-radius: 24px;
@@ -153,26 +98,15 @@
             border: 1px solid #cde1ed;
             transition: 0.2s;
         }
-        .calc-box:hover {
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-        }
-        .calc-box h4 {
-            font-size: 1.4rem;
-            margin-bottom: 12px;
-            color: #1c6d96;
-        }
-        label {
-            font-weight: 600;
-            display: block;
-            margin: 12px 0 4px;
-        }
+        .calc-box:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        .calc-box h4 { font-size: 1.4rem; margin-bottom: 12px; color: #1c6d96; }
+        label { font-weight: 600; display: block; margin: 12px 0 4px; }
         select, input {
             width: 100%;
             padding: 10px 14px;
             border-radius: 16px;
             border: 1px solid #bdd4e3;
             font-size: 1rem;
-            transition: 0.2s;
         }
         select:focus, input:focus {
             outline: none;
@@ -190,10 +124,7 @@
             cursor: pointer;
             transition: 0.2s;
         }
-        button:hover {
-            background: #0f476a;
-            transform: translateY(-1px);
-        }
+        button:hover { background: #0f476a; transform: translateY(-1px); }
         .result {
             background: #eef3f9;
             padding: 14px;
@@ -202,25 +133,10 @@
             font-weight: 600;
             font-size: 0.95rem;
         }
-        .offres-list {
-            margin-top: 12px;
-            font-size: 0.85rem;
-            color: #4b6b82;
-        }
-        .add-offre {
-            display: flex;
-            gap: 10px;
-            margin-top: 10px;
-        }
-        .add-offre input {
-            flex: 2;
-            margin-top: 0;
-        }
-        .add-offre button {
-            margin-top: 0;
-            padding: 10px 16px;
-            background: #4a7c9c;
-        }
+        .offres-list { margin-top: 12px; font-size: 0.85rem; color: #4b6b82; }
+        .add-offre { display: flex; gap: 10px; margin-top: 10px; }
+        .add-offre input { flex: 2; margin-top: 0; }
+        .add-offre button { margin-top: 0; padding: 10px 16px; background: #4a7c9c; }
         .offre-tag {
             display: inline-block;
             background: #eef3f9;
@@ -234,6 +150,10 @@
             text-decoration: line-through;
             color: #c00;
         }
+        .remove-offre { cursor: pointer; margin-left: 6px; color: #c00; }
+        .checkbox-group { margin: 12px 0; display: flex; align-items: center; gap: 10px; }
+        .checkbox-group input { width: auto; margin: 0; }
+        .info-note { font-size: 0.75rem; color: #6b8ba0; margin-top: 10px; }
         footer {
             text-align: center;
             padding: 32px;
@@ -241,24 +161,17 @@
             margin-top: 40px;
             color: #3e6d8c;
         }
-        footer a {
-            color: #146b3a;
-            text-decoration: none;
-        }
-        .info-note {
-            font-size: 0.75rem;
-            color: #6b8ba0;
-            margin-top: 10px;
-        }
+        footer a { color: #146b3a; text-decoration: none; }
+        .badge-success { background: #d4edda; color: #155724; padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; display: inline-block; margin-left: 8px; }
+        .badge-danger { background: #f8d7da; color: #721c24; padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; display: inline-block; margin-left: 8px; }
+        hr { margin: 15px 0; }
     </style>
 </head>
 <body>
 
 <div class="navbar">
     <div class="container nav-flex">
-        <div class="logo">
-            <span class="mp">MP</span>.<span class="econcours">econcours.ma</span>
-        </div>
+        <div class="logo"><span class="mp">MP</span>.<span class="econcours">econcours.ma</span></div>
         <div class="nav-links">
             <a href="#">Accueil</a>
             <a href="#guides">Guides</a>
@@ -270,9 +183,7 @@
 <div class="hero">
     <div class="container">
         <h1>📘 Formation Marchés Publics <br> + outils de calcul interactifs</h1>
-        <div class="intro-text">
-            Simplification des marchés publics au Maroc : calcul du prix de référence selon la méthode officielle, garanties et simulations.
-        </div>
+        <div class="intro-text">Simplification des marchés publics au Maroc : calcul du prix de référence selon la méthode officielle, avance, garanties et simulations.</div>
     </div>
 </div>
 
@@ -282,48 +193,29 @@
         <div class="card" id="guides">
             <h2>📖 Chapitres & guides pratiques</h2>
             <ul class="guides-list">
-                <li>
-                    <span class="lesson-title">🔹 Comprendre l'appel d'offres (AO)</span>
-                    <span class="lesson-desc">Définition, types (ouvert, restreint, concours).</span>
-                </li>
-                <li>
-                    <span class="lesson-title">🔹 Préparation du dossier de soumission</span>
-                    <span class="lesson-desc">Pièces administratives et techniques.</span>
-                </li>
-                <li>
-                    <span class="lesson-title">🔹 Garanties : provisoire et définitive</span>
-                    <span class="lesson-desc">Montants, durée, caution bancaire.</span>
-                </li>
-                <li>
-                    <span class="lesson-title">🔹 Évaluation des offres et attribution</span>
-                    <span class="lesson-desc">Critères, annulation, recours.</span>
-                </li>
-                <li>
-                    <span class="lesson-title">🔹 Exécution du marché & pénalités</span>
-                    <span class="lesson-desc">Avenants, retards, règlement litiges.</span>
-                </li>
+                <li><span class="lesson-title">🔹 Comprendre l'appel d'offres (AO)</span><span class="lesson-desc">Définition, types (ouvert, restreint, concours).</span></li>
+                <li><span class="lesson-title">🔹 Préparation du dossier de soumission</span><span class="lesson-desc">Pièces administratives et techniques.</span></li>
+                <li><span class="lesson-title">🔹 Garanties : provisoire et définitive</span><span class="lesson-desc">Montants, durée, caution bancaire.</span></li>
+                <li><span class="lesson-title">🔹 Évaluation des offres et attribution</span><span class="lesson-desc">Critères, annulation, recours.</span></li>
+                <li><span class="lesson-title">🔹 Exécution du marché & pénalités</span><span class="lesson-desc">Avenants, retards, règlement litiges.</span></li>
             </ul>
-            <div class="coming-soon">
-                📚 D'autres chapitres seront ajoutés prochainement...
-            </div>
+            <div class="coming-soon">📚 D'autres chapitres seront ajoutés prochainement...</div>
         </div>
     </div>
 
-    <!-- COLONNE DROITE : outils de calcul -->
+    <!-- COLONNE DROITE : calculateurs -->
     <div class="calculators" id="calculateurs">
         
-        <!-- Calcul du Prix de Référence - NOUVELLE VERSION -->
+        <!-- 1. Prix de référence -->
         <div class="calc-box">
             <h4>🧮 Calcul du Prix de Référence (Méthode officielle)</h4>
             <label>Estimation du maître d'ouvrage (E) - DH :</label>
             <input type="number" id="estimation" placeholder="Ex: 100000" value="100000">
-            
             <label>Type de marché :</label>
             <select id="typeMarche">
                 <option value="travaux">Travaux</option>
                 <option value="fournitures">Fournitures & Services</option>
             </select>
-            
             <label>Liste des offres (DH) :</label>
             <div id="offresContainer" class="offres-list"></div>
             <div class="add-offre">
@@ -332,30 +224,68 @@
             </div>
             <button id="btnResetOffres">🗑️ Réinitialiser les offres</button>
             <button id="calcReference">🎯 Calculer le prix de référence</button>
-            <div class="result" id="resultRef">
-                📊 En attente des offres...
+            <div class="result" id="resultRef">📊 En attente des offres...</div>
+            <div class="info-note">📌 Élimination E±20% (travaux) ou E-25% (F&S) → P = (E+M)/2 → offre la plus proche</div>
+        </div>
+
+        <!-- 2. AVANCE (NOUVELLE VERSION COMPLÈTE) -->
+        <div class="calc-box">
+            <h4>💰 Calcul de l'Avance (Décret n°2-14-272)</h4>
+            <label>Montant total du marché (TTC) - DH :</label>
+            <input type="number" id="avanceMontantMarche" placeholder="Ex: 12000000" value="12000000">
+            
+            <label>Délai d'exécution (en mois) :</label>
+            <input type="number" id="avanceDelai" placeholder="Ex: 6" value="6">
+            
+            <div class="checkbox-group">
+                <input type="checkbox" id="sousTraitance">
+                <label style="margin:0">❌ Le marché comporte une partie sous-traitée (aucune avance pour cette partie)</label>
             </div>
+            
+            <label>Type de marché :</label>
+            <select id="avanceTypeMarche">
+                <option value="normal">Marché normal</option>
+                <option value="cadre">Marché-cadre (basé sur le montant minimum)</option>
+                <option value="reconductible">Marché reconductible (basé sur la 1ère année)</option>
+                <option value="tranche">Marché à tranches (basé sur la tranche ferme)</option>
+            </select>
+            
+            <label>Nombre de lots attribués au même titulaire (optionnel) :</label>
+            <input type="number" id="avanceNbLots" placeholder="Ex: 3" value="1">
+            
+            <button id="calcAvanceDetail">📊 Calculer l'avance</button>
+            <div class="result" id="resultAvanceDetail">💰 Avance : --- DH</div>
+            
+            <div class="checkbox-group">
+                <input type="checkbox" id="cautionFournie">
+                <label style="margin:0">✅ Caution bancaire fournie (obligatoire pour recevoir l'avance)</label>
+            </div>
+            
+            <label>Pourcentage d'exécution du marché (%) :</label>
+            <input type="number" id="pourcentageExecution" placeholder="Ex: 50" value="30">
+            <button id="calcRemboursement">🔄 Simuler le remboursement</button>
+            <div class="result" id="resultRemboursement">💸 Suivi du remboursement : ---</div>
+            
             <div class="info-note">
-                <strong>Méthode :</strong><br>
-                1️⃣ Élimination des offres excessives (E + 20%)<br>
-                2️⃣ Élimination des offres anormalement basses (Travaux: E-20% / F&S: E-25%)<br>
-                3️⃣ Calcul de la moyenne (M) des offres restantes<br>
-                4️⃣ P = (E + M) / 2<br>
-                5️⃣ L'offre gagnante = la plus proche de P
+                <strong>📋 Règles d'octroi :</strong><br>
+                • Montant ≥ 500 000 DH TTC ET délai ≥ 4 mois<br>
+                • Avance = 10% sur premiers 10M DH + 5% sur le reste (plafond 20M DH)<br>
+                • ❌ Pas d'avance sur la partie sous-traitée<br>
+                • 🔐 Caution bancaire obligatoire avant versement<br>
+                • 🔄 Remboursement automatique déduit des acomptes, total à 80% d'exécution
             </div>
         </div>
 
-        <!-- Garantie Provisoire -->
+        <!-- 3. Garantie Provisoire -->
         <div class="calc-box">
             <h4>🔐 Garantie Provisoire (Dépôt de soumission)</h4>
             <label>Montant estimé du marché (DH) :</label>
             <input type="number" id="montantMarcheG" placeholder="Montant HT">
             <button id="calcGarantieProvisoire">Calculer GP (2%)</button>
             <div class="result" id="resultGP">📌 Garantie provisoire : --- DH</div>
-            <div class="info-note">*selon l'article 46 du décret : entre 1% et 3% du montant estimé (souvent 2%)</div>
         </div>
 
-        <!-- Garantie Définitive -->
+        <!-- 4. Garantie Définitive -->
         <div class="calc-box">
             <h4>🛡️ Garantie Définitive (Retenue de garantie)</h4>
             <label>Montant du marché (HT) :</label>
@@ -364,16 +294,6 @@
             <div class="result" id="resultGD">🛡️ Garantie définitive : --- DH</div>
         </div>
 
-        <!-- Acompte / Avance -->
-        <div class="calc-box">
-            <h4>📈 Calcul de l'Acompte / Avance</h4>
-            <label>Avance demandée (%) :</label>
-            <input type="number" id="avancePourcent" placeholder="Ex: 20">
-            <label>Montant du marché HT :</label>
-            <input type="number" id="montantAvance" placeholder="DH">
-            <button id="calcAvance">Calculer avance</button>
-            <div class="result" id="resultAvance">💧 Avance éventuelle : --- DH</div>
-        </div>
     </div>
 </div>
 
@@ -383,167 +303,121 @@
 </footer>
 
 <script>
-    // ========== PRIX DE RÉFÉRENCE (Méthode officielle) ==========
-    let offres = [80000, 90000, 100000, 130000]; // Offres par défaut
-    
+    // ========== 1. PRIX DE RÉFÉRENCE ==========
+    let offres = [80000, 90000, 100000, 130000];
     function afficherOffres() {
         const container = document.getElementById('offresContainer');
         if (!container) return;
-        
         const estimation = parseFloat(document.getElementById('estimation').value) || 0;
         const typeMarche = document.getElementById('typeMarche').value;
         const seuilBas = typeMarche === 'travaux' ? 0.20 : 0.25;
         const seuilHaut = 0.20;
-        
         let html = '<strong>💰 Offres :</strong><br>';
         offres.forEach((offre, index) => {
             let isExcluded = false;
             let raison = '';
             if (estimation > 0) {
-                if (offre > estimation * (1 + seuilHaut)) {
-                    isExcluded = true;
-                    raison = ' (excessive)';
-                } else if (offre < estimation * (1 - seuilBas)) {
-                    isExcluded = true;
-                    raison = ' (anormalement basse)';
-                }
+                if (offre > estimation * (1 + seuilHaut)) { isExcluded = true; raison = ' (excessive)'; }
+                else if (offre < estimation * (1 - seuilBas)) { isExcluded = true; raison = ' (anormalement basse)'; }
             }
-            html += `<span class="offre-tag ${isExcluded ? 'excluded' : ''}">
-                        ${offre.toLocaleString()} DH${raison}
-                        <i class="remove-offre" style="cursor:pointer; margin-left:6px; color:#c00;" onclick="supprimerOffre(${index})">✖</i>
-                    </span>`;
+            html += `<span class="offre-tag ${isExcluded ? 'excluded' : ''}">${offre.toLocaleString()} DH${raison}<span class="remove-offre" onclick="supprimerOffre(${index})">✖</span></span>`;
         });
-        if (offres.length === 0) html += '<span>Aucune offre pour le moment.</span>';
+        if (offres.length === 0) html += '<span>Aucune offre.</span>';
         container.innerHTML = html;
     }
-    
-    function supprimerOffre(index) {
-        offres.splice(index, 1);
-        afficherOffres();
-    }
-    
+    function supprimerOffre(index) { offres.splice(index, 1); afficherOffres(); }
     document.getElementById('btnAddOffre')?.addEventListener('click', function() {
         const input = document.getElementById('newOffre');
         const valeur = parseFloat(input.value);
-        if (!isNaN(valeur) && valeur > 0) {
-            offres.push(valeur);
-            input.value = '';
-            afficherOffres();
-        } else {
-            alert('Veuillez entrer un montant valide (nombre positif)');
-        }
+        if (!isNaN(valeur) && valeur > 0) { offres.push(valeur); input.value = ''; afficherOffres(); }
+        else alert('Montant valide requis');
     });
-    
-    document.getElementById('btnResetOffres')?.addEventListener('click', function() {
-        offres = [];
-        afficherOffres();
-    });
-    
+    document.getElementById('btnResetOffres')?.addEventListener('click', function() { offres = []; afficherOffres(); });
     document.getElementById('calcReference')?.addEventListener('click', function() {
         const estimation = parseFloat(document.getElementById('estimation').value);
         const typeMarche = document.getElementById('typeMarche').value;
-        
-        if (isNaN(estimation) || estimation <= 0) {
-            document.getElementById('resultRef').innerHTML = '❌ Veuillez entrer une estimation valide.';
+        if (isNaN(estimation) || estimation <= 0 || offres.length === 0) {
+            document.getElementById('resultRef').innerHTML = '❌ Estimation et offres requises.';
             return;
         }
-        
-        if (offres.length === 0) {
-            document.getElementById('resultRef').innerHTML = '❌ Veuillez ajouter au moins une offre.';
-            return;
-        }
-        
-        const seuilHaut = 0.20; // +20%
-        const seuilBas = typeMarche === 'travaux' ? 0.20 : 0.25; // -20% travaux, -25% F&S
-        
-        // Étape 1 & 2 : Filtrer les offres
-        const offresFiltrees = offres.filter(offre => {
-            if (offre > estimation * (1 + seuilHaut)) return false;
-            if (offre < estimation * (1 - seuilBas)) return false;
-            return true;
-        });
-        
-        const offresExclues = offres.length - offresFiltrees.length;
-        
+        const seuilHaut = 0.20;
+        const seuilBas = typeMarche === 'travaux' ? 0.20 : 0.25;
+        const offresFiltrees = offres.filter(o => o <= estimation * (1 + seuilHaut) && o >= estimation * (1 - seuilBas));
         if (offresFiltrees.length === 0) {
-            document.getElementById('resultRef').innerHTML = `
-                ⚠️ Toutes les offres ont été exclues.<br>
-                <small>Vérifiez les seuils: Excessif > ${(estimation * (1 + seuilHaut)).toLocaleString()} DH<br>
-                Anormalement bas < ${(estimation * (1 - seuilBas)).toLocaleString()} DH</small>
-            `;
+            document.getElementById('resultRef').innerHTML = '⚠️ Toutes les offres ont été exclues.';
             return;
         }
-        
-        // Étape 3: Calculer la moyenne des offres restantes
-        const somme = offresFiltrees.reduce((a, b) => a + b, 0);
-        const moyenne = somme / offresFiltrees.length;
-        
-        // Étape 4: Calculer P = (E + M) / 2
+        const moyenne = offresFiltrees.reduce((a,b)=>a+b,0) / offresFiltrees.length;
         const prixReference = (estimation + moyenne) / 2;
-        
-        // Étape 5: Trouver l'offre la plus proche de P
         let offreGagnante = offresFiltrees[0];
         let ecartMin = Math.abs(offresFiltrees[0] - prixReference);
-        
         for (const offre of offresFiltrees) {
             const ecart = Math.abs(offre - prixReference);
-            if (ecart < ecartMin) {
-                ecartMin = ecart;
-                offreGagnante = offre;
-            }
+            if (ecart < ecartMin) { ecartMin = ecart; offreGagnante = offre; }
         }
-        
-        // Cas particulier: si aucune offre n'est inférieure à P
-        const offresInferieures = offresFiltrees.filter(o => o <= prixReference);
-        let mentionSpeciale = '';
-        if (offresInferieures.length === 0) {
-            mentionSpeciale = '<br><small>⚠️ Aucune offre inférieure à P, l\'offre la plus proche au-dessus a été retenue.</small>';
-        }
-        
-        document.getElementById('resultRef').innerHTML = `
-            <strong>📊 Résultats du calcul :</strong><br>
-            • Estimation (E) : ${estimation.toLocaleString()} DH<br>
-            • Offres exclues : ${offresExclues} / ${offres.length}<br>
-            • Offres retenues : ${offresFiltrees.map(o => o.toLocaleString()).join(', ')}<br>
-            • Moyenne des offres retenues (M) : ${moyenne.toLocaleString()} DH<br>
-            • <strong>Prix de référence (P) = (E + M)/2 = ${prixReference.toLocaleString()} DH</strong><br>
-            • 🏆 <strong>Offre gagnante : ${offreGagnante.toLocaleString()} DH</strong>${mentionSpeciale}
-        `;
+        document.getElementById('resultRef').innerHTML = `📊 E = ${estimation.toLocaleString()} DH | M = ${moyenne.toLocaleString()} DH<br>🎯 P = ${prixReference.toLocaleString()} DH<br>🏆 Offre gagnante : ${offreGagnante.toLocaleString()} DH`;
     });
-    
-    // ========== GARANTIE PROVISOIRE ==========
+
+    // ========== 2. AVANCE COMPLÈTE ==========
+    function calculerAvance(montant, sousTraitance, nbLots = 1) {
+        let montantBase = montant * nbLots;
+        if (sousTraitance) return 0;
+        if (montantBase < 500000) return 0;
+        let avance = 0;
+        if (montantBase <= 10000000) avance = montantBase * 0.10;
+        else avance = (10000000 * 0.10) + ((montantBase - 10000000) * 0.05);
+        return Math.min(avance, 20000000);
+    }
+    document.getElementById('calcAvanceDetail')?.addEventListener('click', function() {
+        let montant = parseFloat(document.getElementById('avanceMontantMarche').value);
+        let delai = parseFloat(document.getElementById('avanceDelai').value);
+        let sousTraitance = document.getElementById('sousTraitance').checked;
+        let typeMarche = document.getElementById('avanceTypeMarche').value;
+        let nbLots = parseInt(document.getElementById('avanceNbLots').value) || 1;
+        if (isNaN(montant) || montant <= 0) { document.getElementById('resultAvanceDetail').innerHTML = '❌ Montant invalide'; return; }
+        if (typeMarche === 'cadre') montant = montant; // montant minimum
+        if (typeMarche === 'reconductible') montant = montant;
+        if (sousTraitance) { document.getElementById('resultAvanceDetail').innerHTML = '❌ Aucune avance pour la partie sous-traitée.'; return; }
+        if (montant < 500000) { document.getElementById('resultAvanceDetail').innerHTML = '❌ Montant < 500 000 DH → Avance non accordée.'; return; }
+        if (delai < 4) { document.getElementById('resultAvanceDetail').innerHTML = '❌ Délai < 4 mois → Avance non accordée.'; return; }
+        let avance = calculerAvance(montant, false, nbLots);
+        let cautionOk = document.getElementById('cautionFournie').checked;
+        let statusCaution = cautionOk ? '✅ Caution bancaire fournie' : '⚠️ Caution bancaire requise avant versement';
+        document.getElementById('resultAvanceDetail').innerHTML = `💰 Montant de l'avance : ${avance.toLocaleString()} DH<br>📌 ${statusCaution}<br>📋 Basé sur: ${typeMarche === 'cadre' ? 'montant minimum' : (typeMarche === 'reconductible' ? '1ère année' : (typeMarche === 'tranche' ? 'tranche ferme' : 'montant total'))} | Lots: ${nbLots}`;
+    });
+    document.getElementById('calcRemboursement')?.addEventListener('click', function() {
+        let montant = parseFloat(document.getElementById('avanceMontantMarche').value);
+        let pourcentExec = parseFloat(document.getElementById('pourcentageExecution').value);
+        let avance = calculerAvance(montant, false, 1);
+        if (isNaN(avance) || avance === 0) { document.getElementById('resultRemboursement').innerHTML = 'Avance non calculée.'; return; }
+        let rembourse = 0;
+        if (pourcentExec >= 80) rembourse = avance;
+        else rembourse = avance * (pourcentExec / 80);
+        rembourse = Math.min(rembourse, avance);
+        let reste = avance - rembourse;
+        document.getElementById('resultRemboursement').innerHTML = `💸 Avance totale: ${avance.toLocaleString()} DH<br>📊 Exécution: ${pourcentExec}%<br>💳 Remboursé: ${rembourse.toLocaleString()} DH<br>💰 Reste à rembourser: ${reste.toLocaleString()} DH<br>${pourcentExec >= 80 ? '✅ Avance entièrement remboursée (80% atteint)' : '⏳ Remboursement en cours...'}`;
+    });
+
+    // ========== 3. GARANTIE PROVISOIRE ==========
     document.getElementById("calcGarantieProvisoire")?.addEventListener("click", function(){
         let montant = parseFloat(document.getElementById("montantMarcheG").value);
         if(isNaN(montant)) montant = 0;
         let gp = montant * 0.02;
-        document.getElementById("resultGP").innerHTML = `📌 Garantie provisoire (2%) : ${gp.toFixed(2)} DH<br><span style="font-size:12px;">⚠️ Vérifiez le règlement de l'appel d'offres (1% à 3%)</span>`;
+        document.getElementById("resultGP").innerHTML = `📌 Garantie provisoire (2%) : ${gp.toFixed(2)} DH<br><span style="font-size:12px;">⚠️ Vérifiez le règlement (1% à 3%)</span>`;
     });
 
-    // ========== GARANTIE DÉFINITIVE ==========
+    // ========== 4. GARANTIE DÉFINITIVE ==========
     document.getElementById("calcGarantieDef")?.addEventListener("click", function(){
         let mont = parseFloat(document.getElementById("montantGD").value);
         if(isNaN(mont)) mont = 0;
         let gd = mont * 0.05;
-        document.getElementById("resultGD").innerHTML = `🛡️ Garantie définitive (5% du marché) : ${gd.toFixed(2)} DH`;
+        document.getElementById("resultGD").innerHTML = `🛡️ Garantie définitive (5%) : ${gd.toFixed(2)} DH`;
     });
 
-    // ========== AVANCE / ACOMPTE ==========
-    document.getElementById("calcAvance")?.addEventListener("click", function(){
-        let pourcentage = parseFloat(document.getElementById("avancePourcent").value);
-        let montantHt = parseFloat(document.getElementById("montantAvance").value);
-        if(isNaN(pourcentage)) pourcentage = 0;
-        if(isNaN(montantHt)) montantHt = 0;
-        let avance = (montantHt * pourcentage) / 100;
-        document.getElementById("resultAvance").innerHTML = `💧 Avance (${pourcentage}% du marché HT) : ${avance.toFixed(2)} DH<br><span style="font-size:12px;">sous réserve des conditions de l'administration</span>`;
-    });
-    
-    // Initialisation de l'affichage
+    // Initialisation
     afficherOffres();
-    
-    // Rafraîchir l'affichage quand le type de marché ou l'estimation change
     document.getElementById('typeMarche')?.addEventListener('change', afficherOffres);
     document.getElementById('estimation')?.addEventListener('input', afficherOffres);
 </script>
-
 </body>
 </html>
