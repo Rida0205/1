@@ -98,7 +98,7 @@
             padding: 0 32px 48px 32px;
         }
 
-        /* Grille des chapitres */
+        /* Chapitres */
         .chapter {
             margin-bottom: 56px;
         }
@@ -298,7 +298,7 @@
         const contentDiv = document.getElementById('content');
         try {
             const response = await fetch('data.json');
-            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            if (!response.ok) throw new Error(`HTTP ${response.status} - Fichier data.json introuvable`);
             const data = await response.json();
             const decret = data.decret;
 
@@ -312,22 +312,27 @@
                         <div class="articles-grid">
                 `;
                 for (const article of chapter.articles) {
+                    // Échappement des caractères problématiques
+                    const texteOriginal = (article.texte_original || '').replace(/\n/g, '<br>');
+                    const explicationArabe = article.explication_arabe || 'شرح غير متوفر حالياً';
+                    const explicationFrancais = article.explication_francais || 'Explication non disponible';
+                    
                     html += `
                         <div class="article-card">
                             <div class="article-header">
                                 <div class="article-num">${article.numero}</div>
-                                <h2>Article ${article.numero} – ${article.intitule} <small>(${article.intitule})</small></h2>
+                                <h2>Article ${article.numero} – ${article.intitule}</h2>
                             </div>
                             <div class="official-text">
                                 <strong><i class="fas fa-file-alt"></i> Texte officiel :</strong><br><br>
-                                ${article.texte_original.replace(/\n/g, '<br>')}
+                                ${texteOriginal}
                             </div>
                             <div class="explanations">
                                 <h3><i class="fas fa-language"></i> 📖 شرح بالعربية</h3>
-                                <p>${article.explication_arabe || 'شرح غير متوفر حالياً'}</p>
+                                <p>${explicationArabe}</p>
                                 <div class="explanations-fr">
                                     <h3><i class="fas fa-language"></i> 📖 Explication en français</h3>
-                                    <p>${article.explication_francais || 'Explication non disponible'}</p>
+                                    <p>${explicationFrancais}</p>
                                 </div>
                                 <div class="warning-note">
                                     <i class="fas fa-info-circle"></i>
