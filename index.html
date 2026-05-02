@@ -1,335 +1,372 @@
 <!DOCTYPE html>
-<html lang="fr" dir="ltr">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Dr. Chaymaa Bougrine | Centre Dentaire BOUGRINE - Tiflet</title>
-    <meta name="description" content="Centre Dentaire BOUGRINE à Tiflet. Dr. Chaymaa Bougrine, chirurgien-dentiste. Soins dentaires, prothèse, orthodontie, implantologie, blanchiment et radiologie. Prenez rendez-vous en ligne.">
-    
-    <!-- Preconnect pour accélérer le chargement -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    <link rel="preconnect" href="https://cdn.jsdelivr.net">
-    <link rel="preconnect" href="https://maps.googleapis.com">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 64 64' xmlns='http://www.w3.org/2000/svg' fill='%237300ff'%3E%3Cpath d='M55.455.339H8.67C4.085.339.356 4.069.356 8.655v46.781c0 4.587 3.73 8.316 8.314 8.316h46.785c4.583 0 8.314-3.729 8.314-8.316V8.655c0-4.586-3.731-8.316-8.314-8.316zM44.667 32.394c-.397 2.565.411 5.439-.352 11.216c-.791 5.835-2.162 10.955-4.83 10.955c-3.155 0-2.732-5.823-2.364-10.561c.108-1.426.188-2.658.112-3.502c-.32-3.53-1.839-6.016-5.114-6.016c-3.256 0-4.796 2.486-5.115 6.016c-.076.845.004 2.077.112 3.502c.368 4.738.789 10.561-2.364 10.561c-2.668 0-4.039-5.119-4.83-10.955c-.764-5.777.045-8.651-.353-11.216c-.76-4.86-5.001-9.217-3.692-15.414c.727-3.437 2.62-5.054 4.493-5.734c4.321-1.572 7.11 1.457 11.747 1.457c4.638 0 7.427-3.029 11.746-1.457c1.875.679 3.767 2.296 4.493 5.734c1.311 6.197-2.932 10.554-3.691 15.414z'%3E%3C/path%3E%3C/svg%3E">
-    
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"></noscript>
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:wght@400;600;700&amp;display=swap" rel="stylesheet">
-    
-    <!-- Flatpickr Calendar -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"></noscript>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>MP.econcours.ma | Simplification des Marchés Publics</title>
+    <meta name="description" content="MP.econcours.ma simplifie les marchés publics au Maroc. Guides, modèles et astuces pour répondre aux appels d'offres facilement.">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #1e293b; line-height: 1.5; -webkit-font-smoothing: antialiased; }
-        .container { max-width: 1280px; margin: 0 auto; padding: 0 20px; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-        /* Header */
-        .header { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; border-bottom: 1px solid #e2e8f0; flex-wrap: wrap; gap: 16px; }
-        .logo { display: flex; align-items: center; gap: 12px; }
-        .logo-icon { width: 48px; height: 48px; background: linear-gradient(135deg, #0ea5e9, #3b82f6); border-radius: 14px; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; box-shadow: 0 6px 12px rgba(14, 165, 233, 0.2); }
-        .logo-text h1 { font-family: 'Playfair Display', serif; font-size: clamp(20px, 5vw, 24px); font-weight: 700; color: #0f172a; }
-        .logo-text span { font-size: 13px; color: #64748b; letter-spacing: 2px; font-weight: 500; }
-        .header-contact { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
-        .header-contact a { display: flex; align-items: center; gap: 8px; color: #1e293b; text-decoration: none; font-weight: 500; font-size: 15px; transition: color 0.2s; }
-        .header-contact a:hover { color: #0ea5e9; }
-        .btn-rdv { background: linear-gradient(135deg, #0ea5e9, #3b82f6); color: white !important; padding: 12px 24px; border-radius: 40px; font-weight: 600; box-shadow: 0 6px 14px rgba(14, 165, 233, 0.25); transition: transform 0.2s, box-shadow 0.2s; }
-        .btn-rdv:hover { transform: translateY(-2px); box-shadow: 0 10px 18px rgba(14, 165, 233, 0.3); }
+        body {
+            font-family: 'Segoe UI', 'Poppins', system-ui, -apple-system, 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #eef2ff 100%);
+            color: #0a2540;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header / Nav */
+        .navbar {
+            background: white;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(2px);
+            background: rgba(255,255,255,0.92);
+        }
+
+        .nav-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .logo h1 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+        }
+
+        .logo .mp {
+            color: #1e3a8a;
+        }
+        .logo .econcours {
+            color: #2b6e9e;
+            font-weight: 500;
+        }
+
+        .tagline {
+            font-size: 0.85rem;
+            color: #2c3e66;
+            border-left: 2px solid #1e3a8a;
+            padding-left: 12px;
+        }
 
         /* Hero */
-        .hero { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; padding: 40px 0; }
-        .hero-badge { display: inline-block; background: #e0f2fe; color: #0369a1; padding: 6px 16px; border-radius: 40px; font-size: 13px; font-weight: 600; margin-bottom: 20px; }
-        .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(32px, 6vw, 48px); font-weight: 700; color: #0f172a; margin-bottom: 20px; line-height: 1.2; }
-        .hero-title i { color: #0b7eb3; }
-        .hero-features { display: flex; flex-direction: column; gap: 14px; margin: 24px 0; }
-        .feature-item { display: flex; align-items: center; gap: 12px; font-size: 15px; }
-        .feature-icon { width: 36px; height: 36px; background: #f0f9ff; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #0ea5e9; font-size: 16px; }
-        .hero-buttons { display: flex; gap: 14px; flex-wrap: wrap; }
-        .btn-primary { background: linear-gradient(135deg, #0ea5e9, #3b82f6); color: white; padding: 14px 28px; border-radius: 40px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; border: none; cursor: pointer; box-shadow: 0 6px 14px rgba(14, 165, 233, 0.2); transition: all 0.2s; }
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(14, 165, 233, 0.3); }
-        .btn-secondary { background: white; color: #1e293b; padding: 14px 28px; border-radius: 40px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; border: 1px solid #e2e8f0; transition: all 0.2s; }
-        .btn-secondary:hover { border-color: #0ea5e9; color: #0ea5e9; background: #f8fafc; }
-        
-        /* Slider du Hero - 6 IMAGES */
-        .hero-slider { position: relative; width: 100%; height: 380px; border-radius: 36px; overflow: hidden; box-shadow: 0 15px 25px rgba(0,0,0,0.05); }
-        .slider-container { position: relative; width: 100%; height: 100%; }
-        .slider-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 0.5s ease; background-size: cover; background-position: center; }
-        .slider-slide.active { opacity: 1; }
-        .slider-arrow { position: absolute; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; background: rgba(255,255,255,0.8); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10; color: #1e293b; font-size: 18px; backdrop-filter: blur(4px); transition: all 0.2s; border: none; }
-        .slider-arrow:hover { background: white; }
-        .slider-arrow-left { left: 16px; }
-        .slider-arrow-right { right: 16px; }
-        .slider-dots { position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; z-index: 10; }
-        .slider-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.5); cursor: pointer; transition: all 0.2s; border: none; position: relative; }
-        .slider-dot::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 44px; height: 44px; background: transparent; }
-        .slider-dot.active { background: white; width: 24px; border-radius: 4px; }
-
-        /* Services */
-        .section-title { text-align: center; margin-bottom: 36px; }
-        .section-title h2 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 6vw, 36px); color: #0f172a; margin-bottom: 8px; }
-        .section-title p { color: #64748b; font-size: 16px; }
-        .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; padding: 20px 0; }
-        .service-card { background: white; padding: 24px 12px; border-radius: 24px; border: 1px solid #f1f5f9; text-align: center; transition: all 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.02); height: 100%; display: flex; flex-direction: column; align-items: center; }
-        .service-card:hover { transform: translateY(-5px); box-shadow: 0 15px 25px rgba(0,0,0,0.05); border-color: #e2e8f0; }
-        .service-icon { width: 56px; height: 56px; background: linear-gradient(135deg, #f0f9ff, #e0f2fe); border-radius: 18px; display: flex; align-items: center; justify-content: center; color: #0ea5e9; font-size: 26px; margin-bottom: 16px; }
-        .service-card h3 { font-size: 15px; font-weight: 600; color: #0f172a; }
-
-        /* Map & Hours */
-        .info-section { display: grid; grid-template-columns: 1.2fr 1fr; gap: 24px; padding: 40px 0; }
-        .map-container { border-radius: 28px; overflow: hidden; height: 420px; box-shadow: 0 15px 25px rgba(0,0,0,0.05); border: 1px solid #f1f5f9; }
-        .map-container iframe { width: 100%; height: 100%; border: 0; }
-        .hours { background: linear-gradient(135deg, #0f172a, #1e293b); border-radius: 28px; padding: 32px; color: white; box-shadow: 0 15px 25px rgba(0,0,0,0.1); }
-        .hours h3 { font-family: 'Playfair Display', serif; font-size: 28px; margin-bottom: 24px; }
-        .schedule { display: flex; flex-direction: column; gap: 16px; }
-        .schedule-item { display: flex; justify-content: space-between; padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 15px; }
-
-        /* About Section - SLIDER 7 IMAGES */
-        .about-section { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 40px; align-items: center; padding: 40px 0; }
-        .about-slider { position: relative; width: 100%; max-width: 380px; margin: 0 auto; aspect-ratio: 1/1; border-radius: 28px; overflow: hidden; box-shadow: 0 15px 25px rgba(0,0,0,0.05); }
-        .about-slides { position: relative; width: 100%; height: 100%; }
-        .about-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 0.8s ease; background-size: cover; background-position: center; }
-        .about-slide.active { opacity: 1; }
-        .about-dots { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); display: flex; gap: 4px; z-index: 10; padding: 6px 12px; background: rgba(0,0,0,0.2); backdrop-filter: blur(8px); border-radius: 30px; white-space: nowrap; }
-        .about-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.6); cursor: pointer; transition: all 0.3s; border: none; flex-shrink: 0; position: relative; }
-        .about-dot::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 44px; height: 44px; background: transparent; }
-        .about-dot.active { background: white; width: 20px; border-radius: 10px; }
-        .about-content h3 { font-family: 'Playfair Display', serif; font-size: 28px; color: #0f172a; margin-bottom: 20px; }
-        .about-content p { color: #475569; margin-bottom: 16px; font-size: 15px; line-height: 1.7; }
-
-        /* Testimonials Grid */
-        .testimonials-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; padding: 20px 0 40px; }
-        .testimonial-card { background: white; padding: 24px; border-radius: 24px; border: 1px solid #f1f5f9; box-shadow: 0 8px 15px rgba(0,0,0,0.02); transition: transform 0.2s; height: 100%; display: flex; flex-direction: column; }
-        .testimonial-card:hover { transform: translateY(-4px); box-shadow: 0 15px 25px rgba(0,0,0,0.05); }
-        .testimonial-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
-        .testimonial-avatar { width: 48px; height: 48px; background: linear-gradient(135deg, #0ea5e9, #3b82f6); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 18px; flex-shrink: 0; }
-        .testimonial-info .name { font-size: 16px; font-weight: 600; color: #0f172a; display: block; }
-        .testimonial-info .date { font-size: 13px; color: #64748b; }
-        .testimonial-stars { color: #eab308; font-size: 14px; margin-bottom: 12px; }
-        .testimonial-text { color: #334155; font-size: 14px; line-height: 1.6; font-style: italic; flex: 1; }
-
-        /* RDV Section */
-        .rdv-section { background: #f8fafc; border-radius: 40px; padding: 40px 24px; margin: 40px 0; text-align: center; box-shadow: 0 8px 15px rgba(0,0,0,0.02); border: 1px solid #f1f5f9; }
-        .rdv-form { max-width: 500px; margin: 30px auto 0; }
-        .form-group { margin-bottom: 20px; text-align: left; }
-        .form-group label { display: block; margin-bottom: 8px; font-weight: 500; color: #0f172a; font-size: 15px; }
-        .form-group input, .form-group select { width: 100%; padding: 16px 18px; font-size: 16px; border: 1px solid #e2e8f0; border-radius: 18px; background: white; font-family: 'Inter', sans-serif; transition: border 0.2s, box-shadow 0.2s; appearance: none; -webkit-appearance: none; }
-        .form-group select { background-image: url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2716%27 height=%2716%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27%23475569%27 stroke-width=%272%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3E%3Cpolyline points=%276 9 12 15 18 9%27%3E%3C/polyline%3E%3C/svg%3E'); background-repeat: no-repeat; background-position: right 18px center; background-size: 16px; padding-right: 48px; }
-        .form-group input:focus, .form-group select:focus { outline: none; border-color: #0ea5e9; box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1); }
-        .rdv-note { margin-top: 16px; font-size: 14px; color: #64748b; }
-
-        /* Footer */
-        .footer { background: #0f172a; color: white; padding: 40px 0 20px; margin-top: 40px; border-radius: 40px 40px 0 0; }
-        .footer-content { text-align: center; max-width: 600px; margin: 0 auto; }
-        .footer-logo { display: flex; align-items: center; justify-content: center; gap: 14px; margin-bottom: 28px; }
-        .footer-info p { color: #cbd5e1; margin: 10px 0; font-size: 15px; }
-        .footer-info i { width: 24px; color: #0ea5e9; }
-        .footer-bottom { text-align: center; padding-top: 28px; margin-top: 28px; border-top: 1px solid #334155; color: #94a3b8; font-size: 14px; }
-
-        /* Back to Top */
-        .back-to-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: #0ea5e9; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 8px 20px rgba(14, 165, 233, 0.3); opacity: 0; visibility: hidden; transition: all 0.3s; z-index: 999; border: none; font-size: 20px; }
-        .back-to-top.show { opacity: 1; visibility: visible; }
-        .back-to-top:hover { background: #0284c7; transform: translateY(-3px); }
-
-        /* Mobile */
-        @media (max-width: 1024px) { .services-grid { grid-template-columns: repeat(4, 1fr); } .testimonials-grid { grid-template-columns: repeat(4, 1fr); } }
-        @media (max-width: 768px) {
-            .container { padding: 0 16px; }
-            .header { flex-direction: column; text-align: center; }
-            .hero { grid-template-columns: 1fr; text-align: center; gap: 24px; }
-            .hero-features { align-items: center; }
-            .hero-buttons { justify-content: center; }
-            .info-section { grid-template-columns: 1fr; }
-            .map-container { height: 320px; }
-            .services-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
-            .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
-            .about-section { grid-template-columns: 1fr; }
-            .about-slider { max-width: 320px; }
-            .rdv-section { padding: 32px 16px; }
-            .hero-slider { height: 280px; }
-            .back-to-top { bottom: 20px; right: 20px; width: 44px; height: 44px; }
+        .hero {
+            padding: 80px 0 60px;
+            text-align: center;
         }
-        @media (max-width: 480px) {
-            .hero-title { font-size: 28px; }
-            .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
-            .service-card { padding: 20px 8px; }
-            .service-icon { width: 48px; height: 48px; font-size: 22px; }
-            .service-card h3 { font-size: 13px; }
-            .hero-slider { height: 220px; }
-            .about-slider { max-width: 280px; }
-            .testimonials-grid { grid-template-columns: 1fr; }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #1e3a8a, #2b6e9e);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 20px;
+        }
+
+        .hero .simplif {
+            font-size: 1.3rem;
+            color: #1e293b;
+            max-width: 700px;
+            margin: 0 auto 32px;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            background: white;
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+            border: 1px solid #cbd5e1;
+            color: #1e3a8a;
+        }
+
+        .btn-primary {
+            background: #1e3a8a;
+            border: none;
+            color: white;
+            box-shadow: 0 10px 15px -3px rgba(30,58,138,0.2);
+        }
+        .btn-primary:hover {
+            background: #0f2b6d;
+            transform: translateY(-2px);
+        }
+        .btn-outline:hover {
+            background: #eef2ff;
+            border-color: #1e3a8a;
+        }
+
+        /* Cards features */
+        .features {
+            padding: 60px 0;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 48px;
+            color: #0f172a;
+        }
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+        }
+        .card {
+            background: white;
+            border-radius: 32px;
+            padding: 32px 24px;
+            transition: 0.2s;
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.05);
+            border: 1px solid #e2e8f0;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 30px 40px -18px rgba(0,0,0,0.1);
+        }
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+        .card p {
+            color: #334155;
+        }
+
+        /* formulaire email */
+        .newsletter {
+            background: #0f2b4f;
+            border-radius: 48px;
+            padding: 48px 32px;
+            margin: 40px 0 60px;
+            color: white;
+            text-align: center;
+        }
+        .newsletter h3 {
+            font-size: 1.8rem;
+            margin-bottom: 12px;
+        }
+        .newsletter p {
+            margin-bottom: 24px;
+            opacity: 0.85;
+        }
+        .form-group {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .form-group input {
+            flex: 1;
+            padding: 14px 20px;
+            border-radius: 60px;
+            border: none;
+            font-size: 1rem;
+            min-width: 200px;
+        }
+        .form-group button {
+            background: #f59e0b;
+            border: none;
+            padding: 14px 32px;
+            border-radius: 60px;
+            font-weight: bold;
+            color: #1e293b;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .form-group button:hover {
+            background: #fbbf24;
+            transform: scale(0.98);
+        }
+        .info-note {
+            margin-top: 20px;
+            font-size: 0.75rem;
+            opacity: 0.7;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 0 32px;
+            border-top: 1px solid #cbd5e180;
+            font-size: 0.85rem;
+            color: #2c3e66;
+        }
+        footer a {
+            color: #1e3a8a;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        @media (max-width: 700px) {
+            .hero h2 { font-size: 1.8rem; }
+            .section-title { font-size: 1.7rem; }
+            .navbar .tagline { display: none; }
+            .container { padding: 0 20px; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header class="header">
-            <div class="logo">
-                <div class="logo-icon" aria-hidden="true"><i class="fas fa-tooth"></i></div>
-                <div class="logo-text"><h1>Dr. Chaymaa Bougrine</h1><span>CENTRE DENTAIRE BOUGRINE</span></div>
-            </div>
-            <div class="header-contact">
-                <a href="tel:+212530366919" aria-label="Appeler le 05 30 36 69 19"><i class="fas fa-phone-alt" aria-hidden="true"></i> 05 30 36 69 19</a>
-                <a href="#rdv" class="btn-rdv js-smooth-scroll" role="button"><i class="far fa-calendar-alt" aria-hidden="true"></i> Prendre RDV</a>
-            </div>
-        </header>
 
-        <main id="main-content" role="main">
-            <section class="hero">
-                <div class="hero-content">
-                    <span class="hero-badge"><i class="fas fa-map-pin" aria-hidden="true"></i> Tiflet, Maroc</span>
-                    <h1 class="hero-title">Votre sourire <br><i>notre passion</i></h1>
-                    <div class="hero-features">
-                        <div class="feature-item"><div class="feature-icon" aria-hidden="true"><i class="fas fa-check"></i></div><span>Soins · Prothèse · Orthodontie · Chirurgie</span></div>
-                        <div class="feature-item"><div class="feature-icon" aria-hidden="true"><i class="fas fa-check"></i></div><span>Implantologie · Blanchiment · Radiologie</span></div>
-                    </div>
-                    <div class="hero-buttons">
-                        <a href="#rdv" class="btn-primary js-smooth-scroll" role="button" tabindex="0"><i class="far fa-calendar-check" aria-hidden="true"></i> RDV en ligne</a>
-                        <a href="tel:+212530366919" class="btn-secondary"><i class="fas fa-phone-alt" aria-hidden="true"></i> Appeler</a>
-                    </div>
-                </div>
-                <div class="hero-slider" id="heroSlider">
-                    <div class="slider-container">
-                        <div class="slider-slide active" style="background-image: url('1.jpg');" role="img" aria-label="Image du centre dentaire 1" fetchpriority="high"></div>
-                        <div class="slider-slide" style="background-image: url('2.jpg');" role="img" aria-label="Image du centre dentaire 2"></div>
-                        <div class="slider-slide" style="background-image: url('3.jpg');" role="img" aria-label="Image du centre dentaire 3"></div>
-                        <div class="slider-slide" style="background-image: url('4.jpg');" role="img" aria-label="Image du centre dentaire 4"></div>
-                        <div class="slider-slide" style="background-image: url('5.jpg');" role="img" aria-label="Image du centre dentaire 5"></div>
-                        <div class="slider-slide" style="background-image: url('6.jpg');" role="img" aria-label="Image du centre dentaire 6"></div>
-                    </div>
-                    <button class="slider-arrow slider-arrow-left" onclick="changeSlide(-1)" aria-label="Image précédente"><i class="fas fa-chevron-left" aria-hidden="true"></i></button>
-                    <button class="slider-arrow slider-arrow-right" onclick="changeSlide(1)" aria-label="Image suivante"><i class="fas fa-chevron-right" aria-hidden="true"></i></button>
-                    <div class="slider-dots" id="sliderDots" role="tablist" aria-label="Navigation des images"></div>
-                </div>
-            </section>
-
-            <section>
-                <div class="section-title"><h2>Nos soins dentaires</h2></div>
-                <div class="services-grid">
-                    <div class="service-card"><div class="service-icon" aria-hidden="true"><i class="fas fa-teeth"></i></div><h3>Soins dentaires</h3></div>
-                    <div class="service-card"><div class="service-icon" aria-hidden="true"><i class="fas fa-smile"></i></div><h3>Prothèse</h3></div>
-                    <div class="service-card"><div class="service-icon" aria-hidden="true"><i class="fas fa-teeth-open"></i></div><h3>Orthodontie</h3></div>
-                    <div class="service-card"><div class="service-icon" aria-hidden="true"><i class="fas fa-bone"></i></div><h3>Implantologie</h3></div>
-                    <div class="service-card"><div class="service-icon" aria-hidden="true"><i class="fas fa-syringe"></i></div><h3>Chirurgie</h3></div>
-                    <div class="service-card"><div class="service-icon" aria-hidden="true"><i class="fas fa-star"></i></div><h3>Blanchiment</h3></div>
-                    <div class="service-card"><div class="service-icon" aria-hidden="true"><i class="fas fa-x-ray"></i></div><h3>Radiologie</h3></div>
-                    <div class="service-card"><div class="service-icon" aria-hidden="true"><i class="fas fa-child"></i></div><h3>Pédodontie</h3></div>
-                </div>
-            </section>
-
-            <section class="info-section">
-                <div class="map-container">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3306.471103630471!2d-6.3603234!3d33.8913368!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda0cf002d5cfc29%3A0xc7545737f40a49f6!2sCentre%20dentaire%20Bougrine!5e0!3m2!1sfr!2sma!4v1715000000000!5m2!1sfr!2sma" allowfullscreen="" loading="lazy" title="Carte Google Maps du Centre Dentaire Bougrine"></iframe>
-                </div>
-                <div class="hours">
-                    <h3>Horaires d'ouverture</h3>
-                    <div class="schedule">
-                        <div class="schedule-item"><span>Lundi - Vendredi</span> <span>09h00 – 18h00</span></div>
-                        <div class="schedule-item"><span>Samedi</span> <span>09h00 – 13h00</span></div>
-                        <div class="schedule-item"><span>Dimanche</span> <span>Fermé</span></div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- SECTION ABOUT -->
-            <section class="about-section">
-                <div class="about-slider" id="aboutSlider">
-                    <div class="about-slides">
-                        <div class="about-slide active" style="background-image: url('01.jpg');" role="img" aria-label="Dr. Chaymaa Bougrine - Photo 1"></div>
-                        <div class="about-slide" style="background-image: url('02.jpg');" role="img" aria-label="Caravane médicale - Photo 2"></div>
-                        <div class="about-slide" style="background-image: url('03.jpg');" role="img" aria-label="Formation - Photo 3"></div>
-                        <div class="about-slide" style="background-image: url('04.jpg');" role="img" aria-label="Conférence - Photo 4"></div>
-                        <div class="about-slide" style="background-image: url('05.jpg');" role="img" aria-label="Engagement humanitaire - Photo 5"></div>
-                        <div class="about-slide" style="background-image: url('06.jpg');" role="img" aria-label="Cabinet dentaire - Photo 6"></div>
-                        <div class="about-slide" style="background-image: url('07.jpg');" role="img" aria-label="Équipe médicale - Photo 7"></div>
-                    </div>
-                    <div class="about-dots" id="aboutDots" role="tablist" aria-label="Navigation des photos"></div>
-                </div>
-                <div class="about-content">
-                    <h3>Engagement & Expertise</h3>
-                    <p>Dr. Chaymaa Bougrine est chirurgienne-dentiste engagée dans l'humanitaire. Elle a participé à des caravanes médicales à Tiddas (avril 2024) avec le Rotary Club Rabat Chellah, ainsi qu'à la 8ᵉ édition de la caravane « Basma » à Imindounit (février 2024), zone sinistrée par le séisme. Aux côtés de trois associations, elle a contribué à un hôpital de campagne qui a pris en charge plus de 700 personnes.</p>
-                <p>Par ailleurs, Dr. Bougrine investit dans sa pratique clinique via des formations internationales : endodontie avancée avec le Pr. Remy Balthazard, formation à la Durr Dental Academy en Allemagne, et un séminaire à Casablanca avec des experts égyptiens. Elle participe également à des programmes de leadership citoyen avec le Réseau Tiflet Young Leaders et la Fondation Heinrich Böll.</p>
-            </div>
-        </section>
-
-        <!-- SECTION TÉMOIGNAGES -->
-        <section>
-            <div class="section-title"><h2>Ce que disent nos patients</h2><p>Avis vérifiés Google Maps</p></div>
-            <div class="testimonials-grid" id="testimonialsContainer"></div>
-        </section>
-
-        <section class="rdv-section" id="rdv">
-            <div class="section-title"><h2>Prendre un rendez-vous</h2></div>
-            <div class="rdv-form">
-                <div class="form-group"><label for="rdvDate"><i class="far fa-calendar-alt" aria-hidden="true"></i> Date souhaitée</label><input type="text" id="rdvDate" placeholder="Choisir une date" readonly></div>
-                <div class="form-group"><label for="rdvTime"><i class="far fa-clock" aria-hidden="true"></i> Heure souhaitée</label><select id="rdvTime" required aria-label="Choisir une heure de rendez-vous"><option value="" disabled selected>Choisir une heure</option></select></div>
-                <button class="btn-primary" id="confirmRdvBtn" style="width: 100%; justify-content: center;"><i class="fab fa-whatsapp" aria-hidden="true"></i> Confirmer sur WhatsApp</button>
-                <p class="rdv-note"><i class="fas fa-info-circle" aria-hidden="true"></i> Les dimanches sont fermés. Le samedi jusqu'à 13h.</p>
-            </div>
-        </section>
-    </main>
-    </div>
-
-    <footer class="footer">
-        <div class="container footer-content">
-            <div class="footer-logo"><div class="logo-icon" aria-hidden="true"><i class="fas fa-tooth"></i></div><div><h2 style="color:white; font-family:'Playfair Display';">Dr. Chaymaa Bougrine</h2><p style="color:#94a3b8;">CENTRE DENTAIRE BOUGRINE</p></div></div>
-            <div class="footer-info">
-                <p><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Tiflet, Maroc</p>
-                <p><i class="fas fa-phone-alt" aria-hidden="true"></i> 05 30 36 69 19</p>
-                <p><i class="fab fa-whatsapp" aria-hidden="true"></i> 06 63 64 06 04</p>
-                <p><i class="fas fa-envelope" aria-hidden="true"></i> centredentairebougrine@gmail.com</p>
-            </div>
-            <div class="footer-bottom"><p>© 2026 Centre Dentaire BOUGRINE - Dr. Chaymaa Bougrine. Tous droits réservés.</p></div>
+<nav class="navbar">
+    <div class="container nav-flex">
+        <div class="logo">
+            <h1><span class="mp">MP</span>.<span class="econcours">econcours.ma</span></h1>
         </div>
-    </footer>
+        <div class="tagline">
+            📄 Simplification des Marchés Publics
+        </div>
+    </div>
+</nav>
 
-    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })" aria-label="Retour en haut de la page"><i class="fas fa-arrow-up" aria-hidden="true"></i></button>
+<main>
+    <div class="container">
+        <div class="hero">
+            <h2>Répondez aux appels d'offres <br> sans casse-tête</h2>
+            <div class="simplif">
+                MP.econcours.ma vous accompagne pour comprendre, préparer et soumissionner
+                aux marchés publics au Maroc, de façon claire et gratuite.
+            </div>
+            <div class="btn-group">
+                <a href="#" class="btn btn-primary" id="notifyBtn">📢 M'alerter au lancement</a>
+                <a href="#" class="btn btn-outline" id="soonGuide">📘 Aperçu des guides</a>
+            </div>
+        </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/fr.js"></script>
-    <script>
-        // Slider Hero
-        let currentSlide = 0; const slides = document.querySelectorAll('.slider-slide'); const dotsContainer = document.getElementById('sliderDots');
-        function initSlider() { dotsContainer.innerHTML = ''; slides.forEach((_, i) => { const dot = document.createElement('button'); dot.classList.add('slider-dot'); dot.setAttribute('aria-label', `Aller à l'image ${i+1} sur ${slides.length}`); dot.setAttribute('role', 'tab'); if(i===0) dot.classList.add('active'); dot.addEventListener('click', ()=>goToSlide(i)); dotsContainer.appendChild(dot); }); }
-        function goToSlide(n) { slides[currentSlide].classList.remove('active'); dotsContainer.children[currentSlide].classList.remove('active'); currentSlide = (n+slides.length)%slides.length; slides[currentSlide].classList.add('active'); dotsContainer.children[currentSlide].classList.add('active'); }
-        function changeSlide(dir) { goToSlide(currentSlide+dir); }
-        initSlider(); setInterval(()=>changeSlide(1), 6000);
+        <div class="features">
+            <h2 class="section-title">🎯 Ce que nous allons simplifier pour vous</h2>
+            <div class="grid-3">
+                <div class="card">
+                    <div class="card-icon">📚</div>
+                    <h3>Guides pas-à-pas</h3>
+                    <p>De l'expression de besoin jusqu'à l'attribution : chaque étape du code des marchés publics décryptée en français simple.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">📄</div>
+                    <h3>Modèles prêts à l'emploi</h3>
+                    <p>Lettres de soumission, RC, bordereaux, attestations — des documents types pour gagner du temps.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">⚡</div>
+                    <h3>Pièges à éviter</h3>
+                    <p>Les erreurs fréquentes qui disqualifient les soumissionnaires, et comment les contourner.</p>
+                </div>
+            </div>
+        </div>
 
-        // Slider About
-        let currentAboutSlide = 0; const aboutSlides = document.querySelectorAll('.about-slide'); const aboutDotsContainer = document.getElementById('aboutDots');
-        function initAboutSlider() { aboutDotsContainer.innerHTML = ''; aboutSlides.forEach((_, i) => { const dot = document.createElement('button'); dot.classList.add('about-dot'); dot.setAttribute('aria-label', `Voir l'image ${i+1} sur ${aboutSlides.length}`); dot.setAttribute('role', 'tab'); if(i===0) dot.classList.add('active'); dot.addEventListener('click', ()=>goToAboutSlide(i)); aboutDotsContainer.appendChild(dot); }); }
-        function goToAboutSlide(n) { aboutSlides[currentAboutSlide].classList.remove('active'); aboutDotsContainer.children[currentAboutSlide].classList.remove('active'); currentAboutSlide = (n+aboutSlides.length)%aboutSlides.length; aboutSlides[currentAboutSlide].classList.add('active'); aboutDotsContainer.children[currentAboutSlide].classList.add('active'); }
-        initAboutSlider(); setInterval(()=>goToAboutSlide(currentAboutSlide+1), 6000);
+        <div class="newsletter" id="newsletter">
+            <h3>🚀 Lancement prochain</h3>
+            <p>Recevez un email dès que MP.econcours.ma sera en ligne + un guide PDF gratuit "Les 5 clés pour réussir son premier marché public".</p>
+            <div class="form-group">
+                <input type="email" id="emailInput" placeholder="Votre email professionnel" required>
+                <button id="subscribeBtn">Je veux être informé</button>
+            </div>
+            <div class="info-note" id="formFeedback"></div>
+        </div>
+    </div>
+</main>
 
-        // Smooth Scroll
-        document.querySelectorAll('.js-smooth-scroll').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                if (targetId && targetId !== '#') {
-                    document.querySelector(targetId).scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        });
+<footer>
+    <div class="container">
+        <p>🇲🇦 Projet porté par <a href="https://econcours.ma" target="_blank">econcours.ma</a> — Simplifier l'administration pour les citoyens et entreprises.</p>
+        <p style="margin-top: 16px;">&copy; 2026 MP.econcours.ma — Tous droits réservés. · Version bêta à venir</p>
+    </div>
+</footer>
 
-        // Témoignages
-        const testimonials = [
-            { name: "Zineb El Omari", date: "il y a 3 semaines", stars: 5, text: "Très bonne dentiste ! Dr Chayma est douce, professionnelle et prend le temps d’expliquer les soins. Je suis très satisfaite du résultat, je recommande sans hésiter.", avatar: "Z" },{ name: "fatima zahra kamouch", date: "il y a 5 mois", stars: 4, text: "Très satisfait de ma visite. Le centre dentaire est très propre et l’ambiance à l’accueil est agréable et conviviale. Un grand merci à la Dr Bougrine chaymaa...", avatar: "F" },{ name: "Hajar Elmezrioui", date: "il y a 5 mois", stars: 5, text: "La meilleure dentiste qui soit. Elle répond toujours au téléphone, même tard, et ne laisse jamais ses patients attendre...", avatar: "H" },{ name: "Yasmine Az", date: "il y a 4 mois", stars: 5, text: "Très bon cabinet dentaire, professionnel et accueillant, je recommande", avatar: "Y" },{ name: "SAID TITI", date: "il y a 11 mois", stars: 5, text: "Je recommande vivement le cabinet de la Dr chaymaa Bougrine! Elle est extrêmement professionnelle, douce et attentionnée.", avatar: "S" },{ name: "Sou ab", date: "il y a 2 mois", stars: 5, text: "Merci à docteur Chaymaa, elle est à l'écoute et travaille avec soin, j'apprécie mon expérience chez elle, aucune douleur ressentie", avatar: "S" },{ name: "riham oussaid", date: "il y a 5 mois", stars: 5, text: "أحسن تجربة عند دكتوره شيماء. متفهمة، كتشرح كلشي بوضوح وكتخدم بواحد الدقة والرفق.", avatar: "R" },{ name: "Nada Zakarya", date: "il y a 4 mois", stars: 5, text: "Un cabinet et personnel agréables, le médecin est à l’écoute et propose des soins de qualité ❤️", avatar: "N" }
-        ];
-        document.getElementById('testimonialsContainer').innerHTML = testimonials.map(t => `<div class="testimonial-card"><div class="testimonial-header"><div class="testimonial-avatar" aria-hidden="true">${t.avatar}</div><div class="testimonial-info"><span class="name">${t.name}</span><span class="date">${t.date}</span></div></div><div class="testimonial-stars" aria-label="${t.stars} étoiles sur 5">${'★'.repeat(t.stars)}${'☆'.repeat(5-t.stars)}</div><p class="testimonial-text">"${t.text}"</p></div>`).join('');
+<script>
+    // Petit JS pour démonstration et simuler inscription (sans backend réel, mais prêt pour GitHub Pages)
+    const subscribeBtn = document.getElementById('subscribeBtn');
+    const emailInput = document.getElementById('emailInput');
+    const feedback = document.getElementById('formFeedback');
+    const notifyBtn = document.getElementById('notifyBtn');
+    const soonGuide = document.getElementById('soonGuide');
 
-        // Calendrier
-        flatpickr("#rdvDate", { locale: "fr", dateFormat: "d/m/Y", minDate: "today", disable: [d=>d.getDay()===0] });
-        const timeSelect = document.getElementById('rdvTime'); for(let h=9; h<18; h++) for(let m of ['00','30']) { if(h===17&&m==='30') continue; const t=`${h.toString().padStart(2,'0')}:${m}`; timeSelect.appendChild(new Option(t,t)); } timeSelect.appendChild(new Option('18:00','18:00'));
-        document.getElementById('confirmRdvBtn').addEventListener('click', ()=>{ const d=document.getElementById('rdvDate').value, t=document.getElementById('rdvTime').value; if(!d||!t) return alert('Veuillez sélectionner une date et une heure.'); const parts=d.split('/'), sd=new Date(parts[2],parts[1]-1,parts[0]); if(sd.getDay()===0) return alert('Fermé le dimanche.'); if(sd.getDay()===6&&t>"13:00") return alert('Samedi jusqu\'à 13h.'); window.open(`https://wa.me/212663640604?text=Bonjour Centre Dentaire BOUGRINE,%0A%0AJe souhaite prendre rendez-vous le ${d} à ${t}.%0A%0APouvez-vous confirmer ?%0A%0AMerci.`, '_blank'); });
-        window.addEventListener('scroll', ()=>document.getElementById('backToTop').classList.toggle('show', window.scrollY>300));
-    </script>
+    // Fonction pour enregistrer (simule envoi, mais vous pourrez plus tard connecter Formspree ou autre)
+    function subscribeUser(email) {
+        if (!email || !email.includes('@') || !email.includes('.')) {
+            feedback.innerHTML = "❌ Email invalide. Merci d'entrer une adresse valide.";
+            feedback.style.color = "#ffdd99";
+            return false;
+        }
+
+        // Stockage local pour mock (juste pour démonstration)
+        localStorage.setItem('mp_subscriber_email', email);
+        feedback.innerHTML = "✅ Merci ! Vous recevrez un email dès le lancement officiel. (Pas de spam, promis)";
+        feedback.style.color = "#cafc98";
+        emailInput.value = '';
+        
+        // Optionnel: en vrai vous pourriez appeler une API via Google Forms, sheet.best etc.
+        console.log("🚀 Inscription simulée : ", email);
+        return true;
+    }
+
+    subscribeBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const email = emailInput.value.trim();
+        subscribeUser(email);
+    });
+
+    notifyBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const email = emailInput.value.trim();
+        if(email) {
+            subscribeUser(email);
+        } else {
+            // si champ vide, on fait défiler vers le formulaire
+            document.getElementById('newsletter').scrollIntoView({ behavior: 'smooth' });
+            feedback.innerHTML = "📧 Veuillez entrer votre email ci-dessous pour être informé.";
+            feedback.style.color = "#fff3b7";
+        }
+    });
+
+    soonGuide.addEventListener('click', (e) => {
+        e.preventDefault();
+        alert("📘 Les guides complets seront accessibles gratuitement après lancement. Inscrivez-vous pour les recevoir en avant-première !");
+    });
+
+    // Simple message de bienvenue pour indiquer le statut preview
+    window.addEventListener('load', () => {
+        console.log("MP.econcours.ma — Landing page ready for GitHub Pages");
+        if(localStorage.getItem('mp_subscriber_email')) {
+            feedback.innerHTML = "✨ Vous êtes déjà inscrit(e) sur cette navigation. Merci pour votre intérêt !";
+            feedback.style.color = "#ffefb9";
+        }
+    });
+</script>
+
 </body>
 </html>
