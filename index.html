@@ -2,9 +2,9 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>MP.econcours.ma | Simplification des Marchés Publics</title>
-    <meta name="description" content="MP.econcours.ma simplifie les marchés publics au Maroc. Guides, modèles et astuces pour répondre aux appels d'offres facilement.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MP.econcours.ma | Cours + Calculateurs Marchés Publics</title>
+    <meta name="description" content="Formation complète sur les marchés publics au Maroc : détail du décret, calcul du prix de référence, garanties, simulations.">
     <style>
         * {
             margin: 0;
@@ -13,358 +13,332 @@
         }
 
         body {
-            font-family: 'Segoe UI', 'Poppins', system-ui, -apple-system, 'Inter', sans-serif;
-            background: linear-gradient(135deg, #f8fafc 0%, #eef2ff 100%);
-            color: #0a2540;
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+            background: #f4f7fc;
+            color: #0a2b3e;
             line-height: 1.5;
-            scroll-behavior: smooth;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 0 auto;
             padding: 0 24px;
         }
 
-        /* Header / Nav */
+        /* NAVBAR */
         .navbar {
             background: white;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
-            padding: 1rem 0;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.05);
             position: sticky;
             top: 0;
             z-index: 100;
-            backdrop-filter: blur(2px);
-            background: rgba(255,255,255,0.92);
         }
-
         .nav-flex {
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 16px;
+            padding: 16px 0;
+            gap: 12px;
         }
-
-        .logo h1 {
-            font-size: 1.6rem;
-            font-weight: 700;
-            letter-spacing: -0.3px;
-        }
-
-        .logo .mp {
-            color: #1e3a8a;
-        }
-        .logo .econcours {
-            color: #2b6e9e;
-            font-weight: 500;
-        }
-
-        .tagline {
-            font-size: 0.85rem;
-            color: #2c3e66;
-            border-left: 2px solid #1e3a8a;
-            padding-left: 12px;
-        }
-
-        /* Hero */
-        .hero {
-            padding: 80px 0 60px;
-            text-align: center;
-        }
-
-        .hero h2 {
-            font-size: 2.5rem;
+        .logo {
             font-weight: 800;
-            background: linear-gradient(135deg, #1e3a8a, #2b6e9e);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-            margin-bottom: 20px;
+            font-size: 1.5rem;
         }
-
-        .hero .simplif {
-            font-size: 1.3rem;
-            color: #1e293b;
-            max-width: 700px;
-            margin: 0 auto 32px;
-        }
-
-        .btn-group {
+        .logo .mp { color: #0f3b5f; }
+        .logo .econcours { color: #2c7da0; }
+        .nav-links {
             display: flex;
-            gap: 16px;
-            justify-content: center;
-            flex-wrap: wrap;
+            gap: 28px;
         }
-
-        .btn {
-            display: inline-block;
-            background: white;
-            padding: 12px 28px;
-            border-radius: 40px;
-            font-weight: 600;
+        .nav-links a {
             text-decoration: none;
-            transition: all 0.2s ease;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
-            border: 1px solid #cbd5e1;
-            color: #1e3a8a;
+            font-weight: 500;
+            color: #1f4e6e;
+        }
+        .nav-links a:hover { color: #0f2b3a; text-decoration: underline; }
+
+        /* hero / intro */
+        .hero {
+            background: linear-gradient(120deg, #e9f2f9, #ffffff);
+            padding: 48px 0 32px;
+            border-radius: 0 0 32px 32px;
+            margin-bottom: 40px;
+        }
+        h1 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+        .intro-text {
+            font-size: 1.2rem;
+            color: #2c5a74;
+            max-width: 800px;
         }
 
-        .btn-primary {
-            background: #1e3a8a;
-            border: none;
-            color: white;
-            box-shadow: 0 10px 15px -3px rgba(30,58,138,0.2);
-        }
-        .btn-primary:hover {
-            background: #0f2b6d;
-            transform: translateY(-2px);
-        }
-        .btn-outline:hover {
-            background: #eef2ff;
-            border-color: #1e3a8a;
-        }
-
-        /* Cards features */
-        .features {
-            padding: 60px 0;
-        }
-        .section-title {
-            text-align: center;
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 48px;
-            color: #0f172a;
-        }
-        .grid-3 {
+        /* Layout deux colonnes */
+        .two-columns {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: 2fr 3fr;
             gap: 32px;
+            margin-bottom: 48px;
         }
+        @media (max-width: 850px) {
+            .two-columns { grid-template-columns: 1fr; }
+        }
+
         .card {
             background: white;
-            border-radius: 32px;
-            padding: 32px 24px;
-            transition: 0.2s;
-            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.05);
-            border: 1px solid #e2e8f0;
+            border-radius: 28px;
+            padding: 28px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.03);
+            border: 1px solid #dce7f0;
+            margin-bottom: 28px;
         }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 30px 40px -18px rgba(0,0,0,0.1);
+        .card h2, .card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 16px;
+            color: #144d6b;
+            border-left: 5px solid #2c7da0;
+            padding-left: 16px;
         }
-        .card-icon {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
+        .card h3 { font-size: 1.3rem; margin-top: 20px;}
+
+        .article-list {
+            list-style: none;
         }
-        .card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 12px;
-            font-weight: 700;
+        .article-list li {
+            margin-bottom: 16px;
+            border-bottom: 1px solid #ecf3f9;
+            padding-bottom: 10px;
         }
-        .card p {
-            color: #334155;
+        .article-list a {
+            text-decoration: none;
+            font-weight: 600;
+            color: #1f6392;
+            font-size: 1.05rem;
+        }
+        .article-list p {
+            color: #4b6b82;
+            font-size: 0.9rem;
+            margin-top: 4px;
         }
 
-        /* formulaire email */
-        .newsletter {
-            background: #0f2b4f;
-            border-radius: 48px;
-            padding: 48px 32px;
-            margin: 40px 0 60px;
-            color: white;
-            text-align: center;
-        }
-        .newsletter h3 {
-            font-size: 1.8rem;
-            margin-bottom: 12px;
-        }
-        .newsletter p {
-            margin-bottom: 24px;
-            opacity: 0.85;
-        }
-        .form-group {
+        .decret-grid {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+            flex-direction: column;
             gap: 12px;
-            max-width: 500px;
-            margin: 0 auto;
         }
-        .form-group input {
-            flex: 1;
-            padding: 14px 20px;
-            border-radius: 60px;
-            border: none;
-            font-size: 1rem;
-            min-width: 200px;
-        }
-        .form-group button {
-            background: #f59e0b;
-            border: none;
-            padding: 14px 32px;
-            border-radius: 60px;
-            font-weight: bold;
-            color: #1e293b;
+        .decret-item {
+            background: #f9fdfe;
+            border-left: 4px solid #2c7da0;
+            padding: 12px 18px;
+            border-radius: 14px;
             cursor: pointer;
-            transition: 0.2s;
+            transition: 0.1s;
         }
-        .form-group button:hover {
-            background: #fbbf24;
-            transform: scale(0.98);
-        }
-        .info-note {
-            margin-top: 20px;
-            font-size: 0.75rem;
-            opacity: 0.7;
+        .decret-item strong {
+            font-size: 1rem;
+            color: #105e82;
         }
 
+        /* calculette section */
+        .calculators {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+        .calc-box {
+            background: #ffffffea;
+            border-radius: 24px;
+            padding: 20px;
+            border: 1px solid #cde1ed;
+            transition: 0.2s;
+        }
+        .calc-box h4 {
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+            color: #1c6d96;
+        }
+        label {
+            font-weight: 600;
+            display: block;
+            margin: 12px 0 4px;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px 14px;
+            border-radius: 16px;
+            border: 1px solid #bdd4e3;
+            font-size: 1rem;
+        }
+        button {
+            background: #1f6392;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 40px;
+            font-weight: bold;
+            margin-top: 16px;
+            cursor: pointer;
+            transition: 0.1s;
+        }
+        button:hover {
+            background: #0f476a;
+        }
+        .result {
+            background: #eef3f9;
+            padding: 14px;
+            border-radius: 20px;
+            margin-top: 16px;
+            font-weight: 600;
+        }
+        hr {
+            margin: 20px 0;
+        }
         footer {
             text-align: center;
-            padding: 40px 0 32px;
-            border-top: 1px solid #cbd5e180;
-            font-size: 0.85rem;
-            color: #2c3e66;
-        }
-        footer a {
-            color: #1e3a8a;
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        @media (max-width: 700px) {
-            .hero h2 { font-size: 1.8rem; }
-            .section-title { font-size: 1.7rem; }
-            .navbar .tagline { display: none; }
-            .container { padding: 0 20px; }
+            padding: 32px;
+            border-top: 1px solid #cbdde9;
+            margin-top: 40px;
+            color: #3e6d8c;
         }
     </style>
 </head>
 <body>
 
-<nav class="navbar">
+<div class="navbar">
     <div class="container nav-flex">
         <div class="logo">
-            <h1><span class="mp">MP</span>.<span class="econcours">econcours.ma</span></h1>
+            <span class="mp">MP</span>.<span class="econcours">econcours.ma</span>
         </div>
-        <div class="tagline">
-            📄 Simplification des Marchés Publics
+        <div class="nav-links">
+            <a href="#">Accueil</a>
+            <a href="#articles">Guides</a>
+            <a href="#decret">Décret</a>
+            <a href="#calculateurs">Calculateurs</a>
         </div>
     </div>
-</nav>
+</div>
 
-<main>
+<div class="hero">
     <div class="container">
-        <div class="hero">
-            <h2>Répondez aux appels d'offres <br> sans casse-tête</h2>
-            <div class="simplif">
-                MP.econcours.ma vous accompagne pour comprendre, préparer et soumissionner
-                aux marchés publics au Maroc, de façon claire et gratuite.
-            </div>
-            <div class="btn-group">
-                <a href="#" class="btn btn-primary" id="notifyBtn">📢 M'alerter au lancement</a>
-                <a href="#" class="btn btn-outline" id="soonGuide">📘 Aperçu des guides</a>
-            </div>
-        </div>
-
-        <div class="features">
-            <h2 class="section-title">🎯 Ce que nous allons simplifier pour vous</h2>
-            <div class="grid-3">
-                <div class="card">
-                    <div class="card-icon">📚</div>
-                    <h3>Guides pas-à-pas</h3>
-                    <p>De l'expression de besoin jusqu'à l'attribution : chaque étape du code des marchés publics décryptée en français simple.</p>
-                </div>
-                <div class="card">
-                    <div class="card-icon">📄</div>
-                    <h3>Modèles prêts à l'emploi</h3>
-                    <p>Lettres de soumission, RC, bordereaux, attestations — des documents types pour gagner du temps.</p>
-                </div>
-                <div class="card">
-                    <div class="card-icon">⚡</div>
-                    <h3>Pièges à éviter</h3>
-                    <p>Les erreurs fréquentes qui disqualifient les soumissionnaires, et comment les contourner.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="newsletter" id="newsletter">
-            <h3>🚀 Lancement prochain</h3>
-            <p>Recevez un email dès que MP.econcours.ma sera en ligne + un guide PDF gratuit "Les 5 clés pour réussir son premier marché public".</p>
-            <div class="form-group">
-                <input type="email" id="emailInput" placeholder="Votre email professionnel" required>
-                <button id="subscribeBtn">Je veux être informé</button>
-            </div>
-            <div class="info-note" id="formFeedback"></div>
+        <h1>📘 Formation Marchés Publics <br> + outils de calcul interactifs</h1>
+        <div class="intro-text">
+            Simplification complète du décret, explications chapitre par chapitre, calcul du prix de référence, garanties et simulations.
         </div>
     </div>
-</main>
+</div>
+
+<div class="container two-columns">
+    <!-- COLONNE GAUCHE : explications et décret -->
+    <div>
+        <div class="card" id="articles">
+            <h2>📖 Chapitres & guides pratiques</h2>
+            <ul class="article-list">
+                <li><a href="#">🔹 Comprendre l’appel d’offres (AO)</a><p>Définition, types (ouvert, restreint, concours).</p></li>
+                <li><a href="#">🔹 Préparation du dossier de soumission</a><p>Pièces administratives et techniques.</p></li>
+                <li><a href="#">🔹 Garanties : provisoire et définitive</a><p>Montants, durée, caution bancaire.</p></li>
+                <li><a href="#">🔹 Évaluation des offres et attribution</a><p>Critères, annulation, recours.</p></li>
+                <li><a href="#">🔹 Exécution du marché & pénalités</a><p>Avenants, retards, règlement litiges.</p></li>
+            </ul>
+        </div>
+
+        <div class="card" id="decret">
+            <h2>📜 Le Décret des Marchés Publics (2-12-349)</h2>
+            <div class="decret-grid">
+                <div class="decret-item"><strong>Titre I : Dispositions générales</strong> – Champ d'application, définitions</div>
+                <div class="decret-item"><strong>Titre II : Préparation et passation</strong> – Procédures, seuils, publicité</div>
+                <div class="decret-item"><strong>Titre III : Choix du titulaire</strong> – Ouverture des plis, critères d’attribution</div>
+                <div class="decret-item"><strong>Titre IV : Exécution financière</strong> – Prix, révisions, acomptes</div>
+                <div class="decret-item"><strong>Titre V : Garanties et contrôles</strong> – Retenue de garantie, pénalités</div>
+                <div class="decret-item"><strong>Titre VI : Règlement des litiges</strong> – Comités consultatifs, recours</div>
+            </div>
+            <p style="margin-top: 16px;font-size:0.85rem;">✨ Chaque titre sera détaillé avec exemples concrets et cas pratiques.</p>
+        </div>
+    </div>
+
+    <!-- COLONNE DROITE : outils de calcul -->
+    <div class="calculators" id="calculateurs">
+        <div class="calc-box">
+            <h4>🧮 Calcul du Prix de Référence (Montant estimé)</h4>
+            <label>Coût prévisionnel HT (DH) :</label>
+            <input type="number" id="prixRefHt" placeholder="Ex: 250000">
+            <label>Marge pour aléas (%) :</label>
+            <input type="number" id="margeAleas" placeholder="Ex: 10">
+            <button id="calcReference">Calculer le prix de référence</button>
+            <div class="result" id="resultRef">💰 Prix de référence (TTC) : --- DH</div>
+        </div>
+
+        <div class="calc-box">
+            <h4>🔐 Garantie Provisoire (Dépôt de soumission)</h4>
+            <label>Montant estimé du marché (DH) :</label>
+            <input type="number" id="montantMarcheG" placeholder="Montant HT">
+            <button id="calcGarantieProvisoire">Calculer GP (2% ou 3%)</button>
+            <div class="result" id="resultGP">📌 Garantie provisoire : --- DH</div>
+            <p style="font-size:12px">*selon l’article 46 du décret : entre 1% et 3% du montant estimé (souvent 2%)</p>
+        </div>
+
+        <div class="calc-box">
+            <h4>🛡️ Garantie Définitive (Retenue de garantie)</h4>
+            <label>Montant du marché (HT) :</label>
+            <input type="number" id="montantGD" placeholder="DH">
+            <button id="calcGarantieDef">Calculer (5% habituel)</button>
+            <div class="result" id="resultGD">🛡️ Garantie définitive : --- DH</div>
+        </div>
+
+        <div class="calc-box">
+            <h4>📈 Calcul de l’Acompte / Avance</h4>
+            <label>Avance demandée (%) :</label>
+            <input type="number" id="avancePourcent" placeholder="Ex: 20">
+            <label>Montant du marché HT :</label>
+            <input type="number" id="montantAvance">
+            <button id="calcAvance">Calculer avance</button>
+            <div class="result" id="resultAvance">💧 Avance éventuelle : --- DH</div>
+        </div>
+    </div>
+</div>
 
 <footer>
-    <div class="container">
-        <p>🇲🇦 Projet porté par <a href="https://econcours.ma" target="_blank">econcours.ma</a> — Simplifier l'administration pour les citoyens et entreprises.</p>
-        <p style="margin-top: 16px;">&copy; 2026 MP.econcours.ma — Tous droits réservés. · Version bêta à venir</p>
-    </div>
+    <p>🇲🇦 MP.econcours.ma — Projet éducatif indépendant sur les marchés publics au Maroc • Données à titre indicatif, référez-vous au décret officiel.</p>
+    <p>🔗 Partenaire : <a href="https://econcours.ma" target="_blank" style="color:#146b3a;">econcours.ma</a> | Formation & emploi public</p>
 </footer>
 
 <script>
-    // Petit JS pour démonstration et simuler inscription (sans backend réel, mais prêt pour GitHub Pages)
-    const subscribeBtn = document.getElementById('subscribeBtn');
-    const emailInput = document.getElementById('emailInput');
-    const feedback = document.getElementById('formFeedback');
-    const notifyBtn = document.getElementById('notifyBtn');
-    const soonGuide = document.getElementById('soonGuide');
-
-    // Fonction pour enregistrer (simule envoi, mais vous pourrez plus tard connecter Formspree ou autre)
-    function subscribeUser(email) {
-        if (!email || !email.includes('@') || !email.includes('.')) {
-            feedback.innerHTML = "❌ Email invalide. Merci d'entrer une adresse valide.";
-            feedback.style.color = "#ffdd99";
-            return false;
-        }
-
-        // Stockage local pour mock (juste pour démonstration)
-        localStorage.setItem('mp_subscriber_email', email);
-        feedback.innerHTML = "✅ Merci ! Vous recevrez un email dès le lancement officiel. (Pas de spam, promis)";
-        feedback.style.color = "#cafc98";
-        emailInput.value = '';
-        
-        // Optionnel: en vrai vous pourriez appeler une API via Google Forms, sheet.best etc.
-        console.log("🚀 Inscription simulée : ", email);
-        return true;
-    }
-
-    subscribeBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        const email = emailInput.value.trim();
-        subscribeUser(email);
+    // 1) Prix de référence
+    document.getElementById("calcReference").addEventListener("click", function(){
+        let ht = parseFloat(document.getElementById("prixRefHt").value);
+        let marge = parseFloat(document.getElementById("margeAleas").value);
+        if(isNaN(ht)) ht = 0;
+        if(isNaN(marge)) marge = 0;
+        let ttc = ht * (1 + (marge/100)) * 1.2; // tva 20% maroc, aléas
+        document.getElementById("resultRef").innerHTML = `💰 Prix de référence (TTC estimé) : ${ttc.toFixed(2)} DH`;
     });
 
-    notifyBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        const email = emailInput.value.trim();
-        if(email) {
-            subscribeUser(email);
-        } else {
-            // si champ vide, on fait défiler vers le formulaire
-            document.getElementById('newsletter').scrollIntoView({ behavior: 'smooth' });
-            feedback.innerHTML = "📧 Veuillez entrer votre email ci-dessous pour être informé.";
-            feedback.style.color = "#fff3b7";
-        }
+    // 2) Garantie provisoire (2% du montant marché)
+    document.getElementById("calcGarantieProvisoire").addEventListener("click", function(){
+        let montant = parseFloat(document.getElementById("montantMarcheG").value);
+        if(isNaN(montant)) montant = 0;
+        let gp = montant * 0.02;
+        document.getElementById("resultGP").innerHTML = `📌 Garantie provisoire (2%) : ${gp.toFixed(2)} DH<br><span style="font-size:12px;">⚠️ Vérifiez le règlement de l'appel d'offres (1% à 3%)</span>`;
     });
 
-    soonGuide.addEventListener('click', (e) => {
-        e.preventDefault();
-        alert("📘 Les guides complets seront accessibles gratuitement après lancement. Inscrivez-vous pour les recevoir en avant-première !");
+    // 3) Garantie définitive 5%
+    document.getElementById("calcGarantieDef").addEventListener("click", function(){
+        let mont = parseFloat(document.getElementById("montantGD").value);
+        if(isNaN(mont)) mont=0;
+        let gd = mont * 0.05;
+        document.getElementById("resultGD").innerHTML = `🛡️ Garantie définitive (5% du marché) : ${gd.toFixed(2)} DH`;
     });
 
-    // Simple message de bienvenue pour indiquer le statut preview
-    window.addEventListener('load', () => {
-        console.log("MP.econcours.ma — Landing page ready for GitHub Pages");
-        if(localStorage.getItem('mp_subscriber_email')) {
-            feedback.innerHTML = "✨ Vous êtes déjà inscrit(e) sur cette navigation. Merci pour votre intérêt !";
-            feedback.style.color = "#ffefb9";
-        }
+    // 4) Avance
+    document.getElementById("calcAvance").addEventListener("click", function(){
+        let pourcentage = parseFloat(document.getElementById("avancePourcent").value);
+        let montantHt = parseFloat(document.getElementById("montantAvance").value);
+        if(isNaN(pourcentage)) pourcentage = 0;
+        if(isNaN(montantHt)) montantHt = 0;
+        let avance = (montantHt * pourcentage) / 100;
+        document.getElementById("resultAvance").innerHTML = `💧 Avance (${pourcentage}% du marché HT) : ${avance.toFixed(2)} DH</br><span>sous réserve des conditions de l’administration</span>`;
     });
 </script>
 
