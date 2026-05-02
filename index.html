@@ -3,251 +3,535 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Décret 2-22-431 | Marchés Publics | MP.econcours.ma</title>
+    <title>MP.econcours.ma | Cours + Calculateurs + Décret Marchés Publics</title>
+    <meta name="description" content="Formation complète sur les marchés publics au Maroc : détail du décret, calcul du prix de référence, garanties, simulations.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: 'Inter', 'Segoe UI', sans-serif;
-            background: linear-gradient(135deg, #f5f7fc 0%, #eef2f8 100%);
-            color: #1a2c3e;
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+            background: #f4f7fc;
+            color: #0a2b3e;
             line-height: 1.5;
         }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* NAVBAR */
         .navbar {
-            background: rgba(10, 47, 68, 0.95);
-            backdrop-filter: blur(12px);
+            background: white;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.05);
             position: sticky;
             top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            z-index: 100;
         }
-        .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 16px 32px;
+        .nav-flex {
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 16px;
+            padding: 16px 0;
+            gap: 12px;
         }
-        .logo a {
-            color: white;
-            text-decoration: none;
+        .logo {
+            font-weight: 800;
             font-size: 1.5rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #fff, #9ad0f5);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
         }
-        .nav-links { display: flex; gap: 28px; }
-        .nav-links a { color: #cde5f5; text-decoration: none; font-weight: 500; transition: 0.2s; }
-        .nav-links a:hover { color: white; }
+        .logo .mp { color: #0f3b5f; }
+        .logo .econcours { color: #2c7da0; }
+        .nav-links {
+            display: flex;
+            gap: 28px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 500;
+            color: #1f4e6e;
+        }
+        .nav-links a:hover { color: #0f2b3a; text-decoration: underline; }
+
+        /* hero / intro */
         .hero {
-            background: linear-gradient(115deg, #0c4e6e, #0a2f44);
-            border-radius: 48px;
-            margin: 32px 32px 48px 32px;
-            padding: 48px 48px;
-            color: white;
-            box-shadow: 0 25px 40px -12px rgba(0,0,0,0.25);
+            background: linear-gradient(120deg, #e9f2f9, #ffffff);
+            padding: 48px 0 32px;
+            border-radius: 0 0 32px 32px;
+            margin-bottom: 40px;
         }
-        .hero h1 { font-size: 2rem; font-weight: 700; margin-bottom: 16px; }
-        .hero p { font-size: 1rem; opacity: 0.9; max-width: 800px; margin-bottom: 24px; }
-        .warning-badge {
-            background: rgba(247, 179, 43, 0.15);
-            border-left: 4px solid #f7b32b;
-            padding: 16px 24px;
-            border-radius: 20px;
-            font-size: 0.85rem;
+        h1 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            margin-bottom: 12px;
         }
-        .container { max-width: 1400px; margin: 0 auto; padding: 0 32px 48px 32px; }
-        .chapter { margin-bottom: 56px; }
-        .chapter-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #144d6b;
-            margin-bottom: 24px;
-            padding-bottom: 12px;
-            border-bottom: 3px solid #2c7da0;
-            display: inline-block;
+        .intro-text {
+            font-size: 1.2rem;
+            color: #2c5a74;
+            max-width: 800px;
         }
-        .articles-grid { display: flex; flex-direction: column; gap: 32px; }
-        .article-card {
+
+        /* Layout deux colonnes */
+        .two-columns {
+            display: grid;
+            grid-template-columns: 2fr 3fr;
+            gap: 32px;
+            margin-bottom: 48px;
+        }
+        @media (max-width: 850px) {
+            .two-columns { grid-template-columns: 1fr; }
+        }
+
+        .card {
             background: white;
             border-radius: 28px;
-            overflow: hidden;
-            box-shadow: 0 12px 28px -8px rgba(0,0,0,0.08);
-            transition: all 0.3s ease;
-            border: 1px solid #e9f0f6;
-        }
-        .article-card:hover { transform: translateY(-6px); box-shadow: 0 24px 40px -12px rgba(0,0,0,0.15); }
-        .article-header {
-            background: #fbfefe;
-            padding: 20px 28px;
-            border-bottom: 2px solid #2c7da0;
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            flex-wrap: wrap;
-        }
-        .article-num {
-            background: #2c7da0;
-            color: white;
-            width: 44px;
-            height: 44px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 60px;
-            font-weight: 700;
-            font-size: 1.2rem;
-        }
-        .article-header h2 { font-size: 1.4rem; font-weight: 600; color: #144d6b; }
-        .official-text {
             padding: 28px;
-            background: #ffffff;
-            border-bottom: 1px solid #eef3fc;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.03);
+            border: 1px solid #dce7f0;
+            margin-bottom: 28px;
+        }
+        .card h2, .card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 16px;
+            color: #144d6b;
+            border-left: 5px solid #2c7da0;
+            padding-left: 16px;
+        }
+        .card h3 { font-size: 1.3rem; margin-top: 20px;}
+
+        .article-list {
+            list-style: none;
+        }
+        .article-list li {
+            margin-bottom: 16px;
+            border-bottom: 1px solid #ecf3f9;
+            padding-bottom: 10px;
+        }
+        .article-list a {
+            text-decoration: none;
+            font-weight: 600;
+            color: #1f6392;
+            font-size: 1.05rem;
+            cursor: pointer;
+        }
+        .article-list p {
+            color: #4b6b82;
+            font-size: 0.9rem;
+            margin-top: 4px;
+        }
+
+        /* Style pour les articles du décret dans la colonne de gauche */
+        .decret-articles-list {
+            list-style: none;
+        }
+        .decret-articles-list li {
+            margin-bottom: 12px;
+            border-bottom: 1px solid #ecf3f9;
+            padding-bottom: 10px;
+        }
+        .decret-articles-list a {
+            text-decoration: none;
+            font-weight: 600;
+            color: #105e82;
+            font-size: 0.95rem;
+            display: block;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .decret-articles-list a:hover {
+            color: #2c7da0;
+            transform: translateX(5px);
+        }
+        .decret-articles-list small {
+            color: #6b8ba0;
+            font-size: 0.75rem;
+        }
+
+        /* Modal pour afficher les articles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(4px);
+        }
+        .modal-content {
+            background: white;
+            border-radius: 32px;
+            max-width: 800px;
+            width: 90%;
+            max-height: 85vh;
+            overflow-y: auto;
+            padding: 28px;
+            position: relative;
+            animation: fadeInUp 0.3s ease;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 24px;
+            font-size: 28px;
+            cursor: pointer;
+            color: #888;
+            transition: 0.2s;
+        }
+        .modal-close:hover { color: #c00; }
+        .modal-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #144d6b;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #2c7da0;
+        }
+        .modal-text {
             font-size: 0.95rem;
             line-height: 1.7;
-            white-space: pre-wrap;
             color: #1e3a5f;
+            margin-bottom: 24px;
+            white-space: pre-wrap;
         }
-        .explanations {
-            padding: 28px;
-            background: #fafdf8;
+        .modal-explication {
+            background: #f9fdf6;
+            padding: 20px;
+            border-radius: 24px;
+            margin-top: 20px;
             direction: rtl;
             text-align: right;
         }
-        .explanations h3 {
-            font-size: 1.2rem;
+        .modal-explication h4 {
             color: #1f6e43;
-            margin-bottom: 16px;
-            padding-right: 16px;
-            border-right: 4px solid #2c7da0;
-            font-weight: 600;
+            margin-bottom: 12px;
+            font-size: 1.1rem;
         }
-        .explanations p { margin-bottom: 12px; line-height: 1.7; }
-        .explanations-fr {
-            margin-top: 24px;
-            padding-top: 20px;
+        .modal-explication-fr {
+            margin-top: 16px;
+            padding-top: 16px;
             border-top: 1px dashed #cde0ef;
             direction: ltr;
             text-align: left;
         }
-        .explanations-fr h3 {
-            border-right: none;
-            border-left: 4px solid #2c7da0;
-            padding-left: 16px;
-            padding-right: 0;
-        }
-        .warning-note {
+        .warning-modal {
             background: #fff8e7;
-            padding: 14px 20px;
-            border-radius: 20px;
-            margin-top: 20px;
-            font-size: 0.8rem;
+            padding: 12px 16px;
+            border-radius: 16px;
+            margin-top: 16px;
+            font-size: 0.75rem;
             color: #b45f06;
-            display: flex;
-            align-items: center;
-            gap: 10px;
         }
-        .loader { text-align: center; padding: 80px; font-size: 1.2rem; color: #2c7da0; }
-        .error-message { background: #fee; color: #c00; padding: 40px; border-radius: 28px; text-align: center; }
+
+        /* calculette section */
+        .calculators {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+        .calc-box {
+            background: #ffffffea;
+            border-radius: 24px;
+            padding: 20px;
+            border: 1px solid #cde1ed;
+            transition: 0.2s;
+        }
+        .calc-box h4 {
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+            color: #1c6d96;
+        }
+        label {
+            font-weight: 600;
+            display: block;
+            margin: 12px 0 4px;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px 14px;
+            border-radius: 16px;
+            border: 1px solid #bdd4e3;
+            font-size: 1rem;
+        }
+        button {
+            background: #1f6392;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 40px;
+            font-weight: bold;
+            margin-top: 16px;
+            cursor: pointer;
+            transition: 0.1s;
+        }
+        button:hover {
+            background: #0f476a;
+        }
+        .result {
+            background: #eef3f9;
+            padding: 14px;
+            border-radius: 20px;
+            margin-top: 16px;
+            font-weight: 600;
+        }
         footer {
             text-align: center;
-            padding: 40px 24px;
-            background: #e4eef7;
-            margin-top: 32px;
-            border-radius: 32px 32px 0 0;
-            color: #2b5e7a;
+            padding: 32px;
+            border-top: 1px solid #cbdde9;
+            margin-top: 40px;
+            color: #3e6d8c;
         }
-        footer a { color: #0f4b6e; text-decoration: none; font-weight: 600; }
-        @media (max-width: 760px) {
-            .hero { margin: 16px; padding: 32px 24px; }
-            .hero h1 { font-size: 1.4rem; }
-            .container { padding: 0 20px 32px 20px; }
-            .article-header h2 { font-size: 1.1rem; }
-            .official-text { font-size: 0.85rem; padding: 20px; }
+        footer a {
+            color: #146b3a;
+            text-decoration: none;
+        }
+        .loader {
+            text-align: center;
+            padding: 40px;
+            color: #2c7da0;
         }
     </style>
 </head>
 <body>
-    <div class="navbar">
-        <div class="nav-container">
-            <div class="logo"><a href="#">MP.econcours.ma</a></div>
-            <div class="nav-links">
-                <a href="https://econcours.ma" target="_blank"><i class="fas fa-briefcase"></i> econcours.ma</a>
-            </div>
+
+<div class="navbar">
+    <div class="container nav-flex">
+        <div class="logo">
+            <span class="mp">MP</span>.<span class="econcours">econcours.ma</span>
+        </div>
+        <div class="nav-links">
+            <a href="#">Accueil</a>
+            <a href="#articles">Guides</a>
+            <a href="#decret">Décret</a>
+            <a href="#calculateurs">Calculateurs</a>
         </div>
     </div>
-    <div class="hero">
-        <h1><i class="fas fa-gavel"></i> Décret n° 2-22-431<br>Marchés Publics – Articles 1 à 13</h1>
-        <p>Texte officiel intégral + explications simplifiées en arabe et français</p>
-        <div class="warning-badge">
-            <i class="fas fa-exclamation-triangle"></i> Avertissement : Les explications sont fournies pour faciliter la compréhension. Seul le texte officiel du Bulletin Officiel fait foi.
-        </div>
-    </div>
+</div>
+
+<div class="hero">
     <div class="container">
-        <div id="content"><div class="loader"><i class="fas fa-spinner fa-pulse"></i> Chargement du décret...</div></div>
+        <h1>📘 Formation Marchés Publics <br> + outils de calcul interactifs</h1>
+        <div class="intro-text">
+            Simplification complète du décret, explications chapitre par chapitre, calcul du prix de référence, garanties et simulations.
+        </div>
     </div>
-    <footer>
-        <p>© 2026 MP.econcours.ma – Simplification des Marchés Publics – Maroc</p>
-        <p>Projet partenaire de <a href="https://econcours.ma" target="_blank">econcours.ma</a></p>
-    </footer>
-    <script>
-        fetch('data.json')
-            .then(response => {
-                if (!response.ok) throw new Error('Fichier data.json introuvable');
-                return response.json();
-            })
-            .then(data => {
-                console.log('Données chargées avec succès', data);
-                const contentDiv = document.getElementById('content');
-                let html = '';
-                for (const chapitre of data.decret.chapitres) {
-                    html += `<div class="chapter"><div class="chapter-title"><i class="fas fa-book-open"></i> Chapitre ${chapitre.numero} : ${chapitre.titre}</div><div class="articles-grid">`;
-                    for (const article of chapitre.articles) {
-                        html += `
-                            <div class="article-card">
-                                <div class="article-header">
-                                    <div class="article-num">${article.numero}</div>
-                                    <h2>Article ${article.numero} – ${article.intitule}</h2>
-                                </div>
-                                <div class="official-text">
-                                    <strong><i class="fas fa-file-alt"></i> Texte officiel :</strong><br><br>
-                                    ${(article.texte_original || '').replace(/\n/g, '<br>')}
-                                </div>
-                                <div class="explanations">
-                                    <h3><i class="fas fa-language"></i> 📖 شرح بالعربية</h3>
-                                    <p>${article.explication_arabe || 'شرح غير متوفر'}</p>
-                                    <div class="explanations-fr">
-                                        <h3><i class="fas fa-language"></i> 📖 Explication en français</h3>
-                                        <p>${article.explication_francais || 'Explication non disponible'}</p>
-                                    </div>
-                                    <div class="warning-note">
-                                        <i class="fas fa-info-circle"></i>
-                                        ⚠️ هذه التفسيرات هي للتبسيط فقط. لأي غرض قانوني، يجب الرجوع إلى النص الرسمي للمرسوم.
-                                    </div>
-                                </div>
-                            </div>
-                        `;
-                    }
-                    html += `</div></div>`;
+</div>
+
+<div class="container two-columns">
+    <!-- COLONNE GAUCHE : explications et décret -->
+    <div>
+        <div class="card" id="articles">
+            <h2>📖 Chapitres & guides pratiques</h2>
+            <ul class="article-list">
+                <li><a href="#">🔹 Comprendre l'appel d'offres (AO)</a><p>Définition, types (ouvert, restreint, concours).</p></li>
+                <li><a href="#">🔹 Préparation du dossier de soumission</a><p>Pièces administratives et techniques.</p></li>
+                <li><a href="#">🔹 Garanties : provisoire et définitive</a><p>Montants, durée, caution bancaire.</p></li>
+                <li><a href="#">🔹 Évaluation des offres et attribution</a><p>Critères, annulation, recours.</p></li>
+                <li><a href="#">🔹 Exécution du marché & pénalités</a><p>Avenants, retards, règlement litiges.</p></li>
+            </ul>
+        </div>
+
+        <div class="card" id="decret">
+            <h2>📜 Le Décret des Marchés Publics (2-22-431)</h2>
+            <div id="decretArticlesList">
+                <div class="loader">Chargement des articles...</div>
+            </div>
+            <p style="margin-top: 16px;font-size:0.85rem;">✨ Cliquez sur un article pour voir le texte officiel et les explications.</p>
+        </div>
+    </div>
+
+    <!-- COLONNE DROITE : outils de calcul -->
+    <div class="calculators" id="calculateurs">
+        <div class="calc-box">
+            <h4>🧮 Calcul du Prix de Référence (Montant estimé)</h4>
+            <label>Coût prévisionnel HT (DH) :</label>
+            <input type="number" id="prixRefHt" placeholder="Ex: 250000">
+            <label>Marge pour aléas (%) :</label>
+            <input type="number" id="margeAleas" placeholder="Ex: 10">
+            <button id="calcReference">Calculer le prix de référence</button>
+            <div class="result" id="resultRef">💰 Prix de référence (TTC) : --- DH</div>
+        </div>
+
+        <div class="calc-box">
+            <h4>🔐 Garantie Provisoire (Dépôt de soumission)</h4>
+            <label>Montant estimé du marché (DH) :</label>
+            <input type="number" id="montantMarcheG" placeholder="Montant HT">
+            <button id="calcGarantieProvisoire">Calculer GP (2% ou 3%)</button>
+            <div class="result" id="resultGP">📌 Garantie provisoire : --- DH</div>
+            <p style="font-size:12px">*selon l'article 46 du décret : entre 1% et 3% du montant estimé (souvent 2%)</p>
+        </div>
+
+        <div class="calc-box">
+            <h4>🛡️ Garantie Définitive (Retenue de garantie)</h4>
+            <label>Montant du marché (HT) :</label>
+            <input type="number" id="montantGD" placeholder="DH">
+            <button id="calcGarantieDef">Calculer (5% habituel)</button>
+            <div class="result" id="resultGD">🛡️ Garantie définitive : --- DH</div>
+        </div>
+
+        <div class="calc-box">
+            <h4>📈 Calcul de l'Acompte / Avance</h4>
+            <label>Avance demandée (%) :</label>
+            <input type="number" id="avancePourcent" placeholder="Ex: 20">
+            <label>Montant du marché HT :</label>
+            <input type="number" id="montantAvance">
+            <button id="calcAvance">Calculer avance</button>
+            <div class="result" id="resultAvance">💧 Avance éventuelle : --- DH</div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>🇲🇦 MP.econcours.ma — Projet éducatif indépendant sur les marchés publics au Maroc • Données à titre indicatif, référez-vous au décret officiel.</p>
+    <p>🔗 Partenaire : <a href="https://econcours.ma" target="_blank" style="color:#146b3a;">econcours.ma</a> | Formation & emploi public</p>
+</footer>
+
+<!-- Modal pour afficher le détail des articles -->
+<div id="articleModal" class="modal">
+    <div class="modal-content">
+        <span class="modal-close" onclick="closeModal()">&times;</span>
+        <div class="modal-title" id="modalTitle"></div>
+        <div class="modal-text" id="modalText"></div>
+        <div class="modal-explication" id="modalExplication"></div>
+        <div class="warning-modal">
+            ⚠️ هذه التفسيرات هي للتبسيط فقط. لأي غرض قانوني، يجب الرجوع إلى النص الرسمي للمرسوم.
+        </div>
+    </div>
+</div>
+
+<script>
+    // ========== HONORER JSON ==========
+    let articlesData = [];
+
+    fetch('data.json')
+        .then(response => {
+            if (!response.ok) throw new Error('data.json introuvable');
+            return response.json();
+        })
+        .then(data => {
+            console.log('Données chargées', data);
+            // Aplatir tous les articles dans un tableau avec leur chapitre
+            for (const chapitre of data.decret.chapitres) {
+                for (const article of chapitre.articles) {
+                    articlesData.push({
+                        numero: article.numero,
+                        intitule: article.intitule,
+                        texte_original: article.texte_original,
+                        explication_arabe: article.explication_arabe,
+                        explication_francais: article.explication_francais,
+                        chapitre: chapitre.numero
+                    });
                 }
-                contentDiv.innerHTML = html;
-            })
-            .catch(error => {
-                document.getElementById('content').innerHTML = `
-                    <div class="error-message">
-                        <i class="fas fa-database" style="font-size: 2rem;"></i>
-                        <h3>Erreur de chargement des données</h3>
-                        <p>Impossible de charger le fichier data.json. Vérifiez qu'il existe au même emplacement.</p>
-                        <p style="font-size:0.8rem;">Détail : ${error.message}</p>
-                    </div>
-                `;
-            });
-    </script>
+            }
+            // Trier par numéro
+            articlesData.sort((a,b) => a.numero - b.numero);
+            afficherListeArticles();
+        })
+        .catch(error => {
+            console.error('Erreur:', error);
+            document.getElementById('decretArticlesList').innerHTML = `
+                <div style="color:#c00;padding:20px;text-align:center;">
+                    ⚠️ Erreur de chargement : ${error.message}<br>
+                    Vérifiez que data.json existe au même emplacement.
+                </div>
+            `;
+        });
+
+    function afficherListeArticles() {
+        const container = document.getElementById('decretArticlesList');
+        if (!container) return;
+        
+        let html = '<ul class="decret-articles-list">';
+        for (const article of articlesData) {
+            html += `
+                <li>
+                    <a onclick="afficherArticle(${article.numero})">
+                        📌 Article ${article.numero} – ${article.intitule}
+                    </a>
+                    <small> (Chapitre ${article.chapitre})</small>
+                </li>
+            `;
+        }
+        html += '</ul>';
+        container.innerHTML = html;
+    }
+
+    function afficherArticle(numero) {
+        const article = articlesData.find(a => a.numero === numero);
+        if (!article) return;
+        
+        document.getElementById('modalTitle').innerHTML = `Article ${article.numero} – ${article.intitule}`;
+        document.getElementById('modalText').innerHTML = `<strong>Texte officiel :</strong><br><br>${(article.texte_original || '').replace(/\n/g, '<br>')}`;
+        document.getElementById('modalExplication').innerHTML = `
+            <h4>📖 شرح بالعربية</h4>
+            <p>${article.explication_arabe || 'شرح غير متوفر'}</p>
+            <div class="modal-explication-fr">
+                <h4>📖 Explication en français</h4>
+                <p>${article.explication_francais || 'Explication non disponible'}</p>
+            </div>
+        `;
+        
+        document.getElementById('articleModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+        document.getElementById('articleModal').style.display = 'none';
+    }
+
+    // Fermer en cliquant à l'extérieur
+    window.onclick = function(event) {
+        const modal = document.getElementById('articleModal');
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    }
+
+    // ========== CALCULATEURS ==========
+    document.getElementById("calcReference").addEventListener("click", function(){
+        let ht = parseFloat(document.getElementById("prixRefHt").value);
+        let marge = parseFloat(document.getElementById("margeAleas").value);
+        if(isNaN(ht)) ht = 0;
+        if(isNaN(marge)) marge = 0;
+        let ttc = ht * (1 + (marge/100)) * 1.2;
+        document.getElementById("resultRef").innerHTML = `💰 Prix de référence (TTC estimé) : ${ttc.toFixed(2)} DH`;
+    });
+
+    document.getElementById("calcGarantieProvisoire").addEventListener("click", function(){
+        let montant = parseFloat(document.getElementById("montantMarcheG").value);
+        if(isNaN(montant)) montant = 0;
+        let gp = montant * 0.02;
+        document.getElementById("resultGP").innerHTML = `📌 Garantie provisoire (2%) : ${gp.toFixed(2)} DH<br><span style="font-size:12px;">⚠️ Vérifiez le règlement de l'appel d'offres (1% à 3%)</span>`;
+    });
+
+    document.getElementById("calcGarantieDef").addEventListener("click", function(){
+        let mont = parseFloat(document.getElementById("montantGD").value);
+        if(isNaN(mont)) mont=0;
+        let gd = mont * 0.05;
+        document.getElementById("resultGD").innerHTML = `🛡️ Garantie définitive (5% du marché) : ${gd.toFixed(2)} DH`;
+    });
+
+    document.getElementById("calcAvance").addEventListener("click", function(){
+        let pourcentage = parseFloat(document.getElementById("avancePourcent").value);
+        let montantHt = parseFloat(document.getElementById("montantAvance").value);
+        if(isNaN(pourcentage)) pourcentage = 0;
+        if(isNaN(montantHt)) montantHt = 0;
+        let avance = (montantHt * pourcentage) / 100;
+        document.getElementById("resultAvance").innerHTML = `💧 Avance (${pourcentage}% du marché HT) : ${avance.toFixed(2)} DH<br><span>sous réserve des conditions de l'administration</span>`;
+    });
+</script>
+
 </body>
 </html>
