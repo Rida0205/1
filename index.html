@@ -151,9 +151,11 @@
             color: #c00;
         }
         .remove-offre { cursor: pointer; margin-left: 6px; color: #c00; }
-        .checkbox-group { margin: 12px 0; display: flex; align-items: center; gap: 10px; }
+        .checkbox-group { margin: 12px 0; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
         .checkbox-group input { width: auto; margin: 0; }
         .info-note { font-size: 0.75rem; color: #6b8ba0; margin-top: 10px; }
+        .inline-group { display: flex; gap: 15px; align-items: center; flex-wrap: wrap; }
+        .inline-group label { margin: 0; }
         footer {
             text-align: center;
             padding: 32px;
@@ -162,8 +164,6 @@
             color: #3e6d8c;
         }
         footer a { color: #146b3a; text-decoration: none; }
-        .badge-success { background: #d4edda; color: #155724; padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; display: inline-block; margin-left: 8px; }
-        .badge-danger { background: #f8d7da; color: #721c24; padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; display: inline-block; margin-left: 8px; }
         hr { margin: 15px 0; }
     </style>
 </head>
@@ -228,7 +228,7 @@
             <div class="info-note">📌 Élimination E±20% (travaux) ou E-25% (F&S) → P = (E+M)/2 → offre la plus proche</div>
         </div>
 
-        <!-- 2. AVANCE (NOUVELLE VERSION COMPLÈTE) -->
+        <!-- 2. AVANCE (Version améliorée) -->
         <div class="calc-box">
             <h4>💰 Calcul de l'Avance (Décret n°2-14-272)</h4>
             <label>Montant total du marché (TTC) - DH :</label>
@@ -237,10 +237,12 @@
             <label>Délai d'exécution (en mois) :</label>
             <input type="number" id="avanceDelai" placeholder="Ex: 6" value="6">
             
-            <div class="checkbox-group">
-                <input type="checkbox" id="sousTraitance">
-                <label style="margin:0">❌ Le marché comporte une partie sous-traitée (aucune avance pour cette partie)</label>
+            <div class="inline-group">
+                <label style="margin:0;">📌 Partie sous-traitée :</label>
+                <input type="number" id="sousTraitancePourcent" placeholder="%" step="5" value="0" style="width:80px;">
+                <span>%</span>
             </div>
+            <div class="info-note" style="margin-top:4px;">Si >0, l'avance sera réduite proportionnellement (aucune avance sur la partie sous-traitée).</div>
             
             <label>Type de marché :</label>
             <select id="avanceTypeMarche">
@@ -250,7 +252,7 @@
                 <option value="tranche">Marché à tranches (basé sur la tranche ferme)</option>
             </select>
             
-            <label>Nombre de lots attribués au même titulaire (optionnel) :</label>
+            <label>Nombre de lots attribués au même titulaire :</label>
             <input type="number" id="avanceNbLots" placeholder="Ex: 3" value="1">
             
             <button id="calcAvanceDetail">📊 Calculer l'avance</button>
@@ -258,11 +260,12 @@
             
             <div class="checkbox-group">
                 <input type="checkbox" id="cautionFournie">
-                <label style="margin:0">✅ Caution bancaire fournie (obligatoire pour recevoir l'avance)</label>
+                <label style="margin:0">🔐 Caution bancaire fournie (obligatoire pour recevoir l'avance)</label>
             </div>
             
             <label>Pourcentage d'exécution du marché (%) :</label>
-            <input type="number" id="pourcentageExecution" placeholder="Ex: 50" value="30">
+            <input type="number" id="pourcentageExecution" placeholder="Ex: 0" value="0">
+            <div class="info-note">Laissez 0% si vous ne voulez pas simuler le remboursement.</div>
             <button id="calcRemboursement">🔄 Simuler le remboursement</button>
             <div class="result" id="resultRemboursement">💸 Suivi du remboursement : ---</div>
             
@@ -270,7 +273,7 @@
                 <strong>📋 Règles d'octroi :</strong><br>
                 • Montant ≥ 500 000 DH TTC ET délai ≥ 4 mois<br>
                 • Avance = 10% sur premiers 10M DH + 5% sur le reste (plafond 20M DH)<br>
-                • ❌ Pas d'avance sur la partie sous-traitée<br>
+                • ❌ Pas d'avance sur la partie sous-traitée (déduite selon % saisi)<br>
                 • 🔐 Caution bancaire obligatoire avant versement<br>
                 • 🔄 Remboursement automatique déduit des acomptes, total à 80% d'exécution
             </div>
@@ -359,37 +362,51 @@
     });
 
     // ========== 2. AVANCE COMPLÈTE ==========
-    function calculerAvance(montant, sousTraitance, nbLots = 1) {
+    function calculerAvance(montant, pourcentSousTraitance = 0, nbLots = 1) {
         let montantBase = montant * nbLots;
-        if (sousTraitance) return 0;
-        if (montantBase < 500000) return 0;
+        // Déduire la partie sous-traitée
+        let montantNonSousTraite = montantBase * (1 - (pourcentSousTraitance / 100));
+        if (montantNonSousTraite < 500000) return 0;
         let avance = 0;
-        if (montantBase <= 10000000) avance = montantBase * 0.10;
-        else avance = (10000000 * 0.10) + ((montantBase - 10000000) * 0.05);
+        if (montantNonSousTraite <= 10000000) avance = montantNonSousTraite * 0.10;
+        else avance = (10000000 * 0.10) + ((montantNonSousTraite - 10000000) * 0.05);
         return Math.min(avance, 20000000);
     }
     document.getElementById('calcAvanceDetail')?.addEventListener('click', function() {
         let montant = parseFloat(document.getElementById('avanceMontantMarche').value);
         let delai = parseFloat(document.getElementById('avanceDelai').value);
-        let sousTraitance = document.getElementById('sousTraitance').checked;
+        let pourcentSousTraitance = parseFloat(document.getElementById('sousTraitancePourcent').value) || 0;
         let typeMarche = document.getElementById('avanceTypeMarche').value;
         let nbLots = parseInt(document.getElementById('avanceNbLots').value) || 1;
         if (isNaN(montant) || montant <= 0) { document.getElementById('resultAvanceDetail').innerHTML = '❌ Montant invalide'; return; }
-        if (typeMarche === 'cadre') montant = montant; // montant minimum
-        if (typeMarche === 'reconductible') montant = montant;
-        if (sousTraitance) { document.getElementById('resultAvanceDetail').innerHTML = '❌ Aucune avance pour la partie sous-traitée.'; return; }
+        
+        // Gestion des types spéciaux (on garde le même montant, l'utilisateur saisit la valeur adaptée)
+        let montantAdapte = montant;
+        let mentionType = '';
+        if (typeMarche === 'cadre') mentionType = ' (basé sur montant minimum)';
+        else if (typeMarche === 'reconductible') mentionType = ' (basé sur 1ère année)';
+        else if (typeMarche === 'tranche') mentionType = ' (basé sur tranche ferme)';
+        
         if (montant < 500000) { document.getElementById('resultAvanceDetail').innerHTML = '❌ Montant < 500 000 DH → Avance non accordée.'; return; }
         if (delai < 4) { document.getElementById('resultAvanceDetail').innerHTML = '❌ Délai < 4 mois → Avance non accordée.'; return; }
-        let avance = calculerAvance(montant, false, nbLots);
+        
+        let avance = calculerAvance(montantAdapte, pourcentSousTraitance, nbLots);
         let cautionOk = document.getElementById('cautionFournie').checked;
         let statusCaution = cautionOk ? '✅ Caution bancaire fournie' : '⚠️ Caution bancaire requise avant versement';
-        document.getElementById('resultAvanceDetail').innerHTML = `💰 Montant de l'avance : ${avance.toLocaleString()} DH<br>📌 ${statusCaution}<br>📋 Basé sur: ${typeMarche === 'cadre' ? 'montant minimum' : (typeMarche === 'reconductible' ? '1ère année' : (typeMarche === 'tranche' ? 'tranche ferme' : 'montant total'))} | Lots: ${nbLots}`;
+        let mentionSousTraitance = '';
+        if (pourcentSousTraitance > 0) {
+            mentionSousTraitance = `<br>📌 Partie sous-traitée (${pourcentSousTraitance}%) : ${(montant * nbLots * pourcentSousTraitance / 100).toLocaleString()} DH exclus de l'avance.`;
+        }
+        document.getElementById('resultAvanceDetail').innerHTML = `💰 Montant de l'avance : ${avance.toLocaleString()} DH<br>📌 ${statusCaution}${mentionSousTraitance}<br>📋 ${mentionType || 'Marché normal'} | Lots: ${nbLots}`;
     });
+    
     document.getElementById('calcRemboursement')?.addEventListener('click', function() {
         let montant = parseFloat(document.getElementById('avanceMontantMarche').value);
-        let pourcentExec = parseFloat(document.getElementById('pourcentageExecution').value);
-        let avance = calculerAvance(montant, false, 1);
-        if (isNaN(avance) || avance === 0) { document.getElementById('resultRemboursement').innerHTML = 'Avance non calculée.'; return; }
+        let pourcentSousTraitance = parseFloat(document.getElementById('sousTraitancePourcent').value) || 0;
+        let nbLots = parseInt(document.getElementById('avanceNbLots').value) || 1;
+        let pourcentExec = parseFloat(document.getElementById('pourcentageExecution').value) || 0;
+        let avance = calculerAvance(montant, pourcentSousTraitance, nbLots);
+        if (isNaN(avance) || avance === 0) { document.getElementById('resultRemboursement').innerHTML = 'Avance non calculée (montant ou conditions non remplies).'; return; }
         let rembourse = 0;
         if (pourcentExec >= 80) rembourse = avance;
         else rembourse = avance * (pourcentExec / 80);
