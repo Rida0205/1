@@ -206,20 +206,6 @@
             gap: 10px;
         }
 
-        .loader {
-            text-align: center;
-            padding: 80px;
-            font-size: 1.2rem;
-            color: #2c7da0;
-        }
-        .error-message {
-            background: #fee;
-            color: #c00;
-            padding: 40px;
-            border-radius: 28px;
-            text-align: center;
-        }
-
         footer {
             text-align: center;
             padding: 40px 24px;
@@ -263,11 +249,7 @@
 </div>
 
 <div class="container">
-    <div id="content">
-        <div class="loader">
-            <i class="fas fa-spinner fa-pulse"></i> Chargement du décret...
-        </div>
-    </div>
+    <div id="content"></div>
 </div>
 
 <footer>
@@ -276,76 +258,149 @@
 </footer>
 
 <script>
-    // استدعاء ملف JSON وعرض المحتوى
-    fetch('data.json')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Impossible de charger data.json');
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log('Données chargées avec succès:', data);
-            
-            const contentDiv = document.getElementById('content');
-            let html = '';
-            
-            for (const chapitre of data.decret.chapitres) {
-                html += `
-                    <div class="chapter">
-                        <div class="chapter-title">
-                            <i class="fas fa-book-open"></i> Chapitre ${chapitre.numero} : ${chapitre.titre}
-                        </div>
-                        <div class="articles-grid">
-                `;
-                
-                for (const article of chapitre.articles) {
-                    const texteOriginal = (article.texte_original || '').replace(/\n/g, '<br>');
-                    const explicationArabe = article.explication_arabe || 'شرح غير متوفر حالياً';
-                    const explicationFrancais = article.explication_francais || 'Explication non disponible';
-                    
-                    html += `
-                        <div class="article-card">
-                            <div class="article-header">
-                                <div class="article-num">${article.numero}</div>
-                                <h2>Article ${article.numero} – ${article.intitule}</h2>
-                            </div>
-                            <div class="official-text">
-                                <strong><i class="fas fa-file-alt"></i> Texte officiel :</strong><br><br>
-                                ${texteOriginal}
-                            </div>
-                            <div class="explanations">
-                                <h3><i class="fas fa-language"></i> 📖 شرح بالعربية</h3>
-                                <p>${explicationArabe}</p>
-                                <div class="explanations-fr">
-                                    <h3><i class="fas fa-language"></i> 📖 Explication en français</h3>
-                                    <p>${explicationFrancais}</p>
-                                </div>
-                                <div class="warning-note">
-                                    <i class="fas fa-info-circle"></i>
-                                    ⚠️ هذه التفسيرات هي للتبسيط فقط. لأي غرض قانوني، يجب الرجوع إلى النص الرسمي للمرسوم.
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                }
-                
-                html += `</div></div>`;
-            }
-            
-            contentDiv.innerHTML = html;
-        })
-        .catch(error => {
-            console.error('Erreur:', error);
-            document.getElementById('content').innerHTML = `
-                <div class="error-message">
-                    <i class="fas fa-database" style="font-size: 2rem;"></i>
-                    <h3>Erreur de chargement des données</h3>
-                    <p>Impossible de charger le fichier data.json. Vérifiez que le fichier existe au même emplacement que cette page.</p>
-                    <p style="font-size:0.8rem;">Détail technique : ${error.message}</p>
+    // Données intégrées directement dans le code (pas besoin de fichier JSON externe)
+    const articlesData = [
+        { numero: 1, intitule: "Principes généraux", 
+          texte: "La passation des marchés publics obéit aux principes suivants : la liberté d'accès aux marchés publics ; l'égalité de traitement des concurrents ; la garantie des droits des concurrents ; la transparence dans les choix du maître d'ouvrage. La passation obéit également au principe d'intégrité et de bonne gouvernance. Le maître d'ouvrage prend en compte les dimensions économique, sociale, environnementale, les objectifs du développement durable, l'efficacité énergétique, la préservation des ressources hydriques, la sauvegarde du patrimoine national et la promotion de l'innovation.",
+          explication_ar: "المادة الأولى تحدد المبادئ العامة: حرية الولوج، المساواة بين المتنافسين، ضمان الحقوق، الشفافية، النزاهة، مراعاة البيئة والتنمية المستدامة، واختيار العرض الأكثر فائدة اقتصادياً.",
+          explication_fr: "Cet article définit les principes fondamentaux : liberté d'accès, égalité de traitement, garantie des droits, transparence, intégrité, développement durable, et choix de l'offre économiquement la plus avantageuse." },
+        
+        { numero: 2, intitule: "Objet et champ d'application", 
+          texte: "Le présent décret fixe les conditions et les formes des marchés de travaux, de fournitures et de services pour l'Etat, les collectivités territoriales (régions, préfectures, provinces, communes), et les établissements publics.",
+          explication_ar: "تحدد الجهات المعنية: الدولة، الجماعات الترابية، والمؤسسات العمومية. يطبق المرسوم على إبرام وتدبير ومراقبة صفقات هذه الجهات.",
+          explication_fr: "Définit les organismes concernés : l'État, les collectivités territoriales et les établissements publics." },
+        
+        { numero: 3, intitule: "Exclusions", 
+          texte: "Sont exclus du champ d'application : les contrats de droit commun, les contrats de gestion déléguée, les partenariats public-privé, les cessions de biens entre services de l'Etat, et les marchés dans le cadre d'accords internationaux.",
+          explication_ar: "يستثنى من تطبيق المرسوم: عقود القانون الخاص، عقود التدبير المفوض، عقود الشراكة بين القطاعين العام والخاص، والصفقات المبرمة مع منظمات دولية.",
+          explication_fr: "Exclus : contrats de droit commun, gestion déléguée, PPP, et marchés internationaux avec règles particulières." },
+        
+        { numero: 4, intitule: "Définitions", 
+          texte: "Définit 21 termes : attributaire (concurrent dont l'offre est retenue), autorité compétente (ordonnateur), bordereau des prix, concurrent (participant à l'appel d'offres), maître d'ouvrage (responsable de la passation), marché de travaux (construction, rénovation), marché de fournitures (achat de produits), marché de services (études, entretien, formation), titulaire (attributaire après notification).",
+          explication_ar: "تشرح المصطلحات الأساسية: المتنافس، المتعاقد، صاحب المشروع، صفقة الأشغال، صفقة التموينات، صفقة الخدمات، السجل الخاص، وغيرها.",
+          explication_fr: "Définit les termes clés : concurrent, attributaire, maître d'ouvrage, marché de travaux, fournitures, services." },
+        
+        { numero: 5, intitule: "Détermination des besoins", 
+          texte: "Le maître d'ouvrage doit déterminer précisément ses besoins. Il doit favoriser les produits marocains et les normes marocaines. Les spécifications techniques ne doivent pas mentionner de marque commerciale sans la mention 'ou son équivalent'. Pour les marchés de travaux, assainissement préalable de l'assiette foncière.",
+          explication_ar: "يجب تحديد الاحتياجات بدقة، تفضيل المنتوج المغربي، عدم ذكر ماركة بدون جملة 'أو ما يعادلها'، والتأكد من أن الأرض مملوكة قانوناً قبل بدء الصفقة.",
+          explication_fr: "Définition précise des besoins, priorité aux produits marocains, pas de marque sans 'ou équivalent', et vérification de la propriété foncière pour les travaux." },
+        
+        { numero: 6, intitule: "Estimation du coût", 
+          texte: "Avant tout appel à la concurrence, le maître d'ouvrage établit une estimation du coût TTC basée sur les prix du marché. Pour les marchés allotis, une estimation par lot. L'estimation est écrite, signée et conservée.",
+          explication_ar: "تقدير التكلفة شامل الضرائب قبل إطلاق الصفقة، يعتمد على أسعار السوق. يكتب ويوقع ويحفظ في ملف الصفقة.",
+          explication_fr: "Estimation du coût TTC avant tout appel d'offres, basée sur les prix du marché, écrite et signée." },
+        
+        { numero: 7, intitule: "Marchés-cadre", 
+          texte: "Pour prestations prévisibles, répétitives mais non entièrement quantifiables. Fixation d'un minimum et d'un maximum (max ≤ 2 x min). Durée : 1 an, reconductible jusqu'à 3 ou 5 ans. Réajustement possible : +10% du maximum, -25% du minimum.",
+          explication_ar: "عقود الإطار للخدمات المتكررة. تحدد كمية دنيا وقصوى. المدة سنة قابلة للتجديد. يمكن زيادة الكمية 10% أو نقصانها 25%.",
+          explication_fr: "Contrats-cadre pour prestations répétitives. Min et max (max ≤ 2 x min). Durée 1 an renouvelable. Ajustement +10% ou -25%." },
+        
+        { numero: 8, intitule: "Marchés reconductibles", 
+          texte: "Quantités déterminables à l'avance. Durée : 1 an, reconduction tacite jusqu'à 3 ou 5 ans. La non-reconduction nécessite un préavis.",
+          explication_ar: "صفقات قابلة للتجديد، الكمية محددة بدقة. المدة سنة قابلة للتجديد التلقائي. الإشعار المسبق مطلوب لعدم التجديد.",
+          explication_fr: "Quantités déterminables. Durée 1 an renouvelable jusqu'à 3 ou 5 ans. Préavis pour non-reconduction." },
+        
+        { numero: 9, intitule: "Marchés à tranches conditionnelles", 
+          texte: "Tranche ferme (obligatoire) + tranches conditionnelles (sous réserve de crédits et ordre de service). Indemnité d'attente ou indemnité de dédit possibles.",
+          explication_ar: "شطر أكيد + أشطار مشروطة مرتبطة بالاعتمادات المالية. تعويض انتظار أو تعويض فسخ ممكن.",
+          explication_fr: "Tranche ferme + tranches conditionnelles (sous réserve de crédits). Indemnités possibles." },
+        
+        { numero: 10, intitule: "Marchés allotis", 
+          texte: "Découpage en lots pour favoriser les TPME, coopératives et auto-entrepreneurs. Attribution lot par lot ou par meilleure combinaison globale.",
+          explication_ar: "تقسيم الصفقة إلى أجزاء لدعم المقاولات الصغيرة والتعاونيات. الاختيار إما جزءاً جزءاً أو أفضل تجميعة.",
+          explication_fr: "Division en lots pour favoriser les TPME. Attribution lot par lot ou meilleure combinaison." },
+        
+        { numero: 11, intitule: "Marché de conception-réalisation", 
+          texte: "Marché unique incluant conception et exécution. Autorisation préalable : Chef du gouvernement (État) ou ministre de l'intérieur (collectivités). Passé par concours.",
+          explication_ar: "صفقة واحدة للتصميم والإنجاز. تحتاج إذناً مسبقاً من رئيس الحكومة أو وزير الداخلية. تبرم عبر مسابقة.",
+          explication_fr: "Marché unique conception-réalisation. Autorisation préalable obligatoire. Procédure par concours." },
+        
+        { numero: 12, intitule: "Dialogue compétitif", 
+          texte: "Procédure pour projets complexes. Trois étapes : appel à candidatures (15 jours), dialogue avec les candidats, puis offres finales (30 jours). Choix de l'offre la moins-disante.",
+          explication_ar: "إجراء للمشاريع المعقدة: إعلان، حوار مع المتنافسين، ثم عروض نهائية خلال 30 يوماً. تختار اللجنة العرض الأقل ثمناً.",
+          explication_fr: "Procédure pour projets complexes : appel (15j), dialogue, offres finales (30j). Choix de l'offre la moins-disante." },
+        
+        { numero: 13, intitule: "Offre spontanée", 
+          texte: "L'entrepreneur propose une idée non identifiée. L'administration doit lancer un appel d'offres. Bonus de 5% à 10% pour le porteur s'il participe. Prime possible.",
+          explication_ar: "فكرة من المقاول. الإدارة تطلق طلب عروض. صاحب الفكرة يستفيد من نقطة إضافية 5-10% إذا شارك. جائزة مالية ممكنة.",
+          explication_fr: "Idée de l'entrepreneur. Appel d'offres obligatoire. Bonus de 5 à 10% pour l'auteur. Prime possible." }
+    ];
+
+    // Génération du HTML
+    const contentDiv = document.getElementById('content');
+    let html = '';
+
+    // Chapitre 1
+    html += `
+        <div class="chapter">
+            <div class="chapter-title"><i class="fas fa-book-open"></i> Chapitre 1 : Dispositions générales</div>
+            <div class="articles-grid">
+    `;
+    for (let i = 0; i < 6; i++) {
+        const a = articlesData[i];
+        html += `
+            <div class="article-card">
+                <div class="article-header">
+                    <div class="article-num">${a.numero}</div>
+                    <h2>Article ${a.numero} – ${a.intitule}</h2>
                 </div>
-            `;
-        });
+                <div class="official-text">
+                    <strong><i class="fas fa-file-alt"></i> Texte officiel :</strong><br><br>
+                    ${a.texte}
+                </div>
+                <div class="explanations">
+                    <h3><i class="fas fa-language"></i> 📖 شرح بالعربية</h3>
+                    <p>${a.explication_ar}</p>
+                    <div class="explanations-fr">
+                        <h3><i class="fas fa-language"></i> 📖 Explication en français</h3>
+                        <p>${a.explication_fr}</p>
+                    </div>
+                    <div class="warning-note">
+                        <i class="fas fa-info-circle"></i>
+                        ⚠️ هذه التفسيرات هي للتبسيط فقط. لأي غرض قانوني، يجب الرجوع إلى النص الرسمي للمرسوم.
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+    html += `</div></div>`;
+
+    // Chapitre 2
+    html += `
+        <div class="chapter">
+            <div class="chapter-title"><i class="fas fa-book-open"></i> Chapitre 2 : Types et prix des marchés</div>
+            <div class="articles-grid">
+    `;
+    for (let i = 6; i < articlesData.length; i++) {
+        const a = articlesData[i];
+        html += `
+            <div class="article-card">
+                <div class="article-header">
+                    <div class="article-num">${a.numero}</div>
+                    <h2>Article ${a.numero} – ${a.intitule}</h2>
+                </div>
+                <div class="official-text">
+                    <strong><i class="fas fa-file-alt"></i> Texte officiel :</strong><br><br>
+                    ${a.texte}
+                </div>
+                <div class="explanations">
+                    <h3><i class="fas fa-language"></i> 📖 شرح بالعربية</h3>
+                    <p>${a.explication_ar}</p>
+                    <div class="explanations-fr">
+                        <h3><i class="fas fa-language"></i> 📖 Explication en français</h3>
+                        <p>${a.explication_fr}</p>
+                    </div>
+                    <div class="warning-note">
+                        <i class="fas fa-info-circle"></i>
+                        ⚠️ هذه التفسيرات هي للتبسيط فقط. لأي غرض قانوني، يجب الرجوع إلى النص الرسمي للمرسوم.
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+    html += `</div></div>`;
+
+    contentDiv.innerHTML = html;
 </script>
 
 </body>
