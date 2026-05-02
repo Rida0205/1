@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MP.econcours.ma | Cours + Calculateurs + Décret Marchés Publics</title>
-    <meta name="description" content="Formation complète sur les marchés publics au Maroc : détail du décret, calcul du prix de référence, garanties, simulations.">
+    <title>MP.econcours.ma | Cours + Calculateurs Marchés Publics</title>
+    <meta name="description" content="Formation complète sur les marchés publics au Maroc : calcul du prix de référence, garanties, simulations.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text x='50%' y='50%' text-anchor='middle' dy='.35em' font-size='80' fill='%232c7da0'>📘</text></svg>">
     <style>
         * {
             margin: 0;
@@ -96,144 +98,47 @@
             border: 1px solid #dce7f0;
             margin-bottom: 28px;
         }
-        .card h2, .card h3 {
+        .card h2 {
             font-size: 1.6rem;
-            margin-bottom: 16px;
+            margin-bottom: 24px;
             color: #144d6b;
             border-left: 5px solid #2c7da0;
             padding-left: 16px;
         }
-        .card h3 { font-size: 1.3rem; margin-top: 20px;}
 
-        .article-list {
+        /* Liste des guides / chapitres */
+        .guides-list {
             list-style: none;
         }
-        .article-list li {
-            margin-bottom: 16px;
+        .guides-list li {
+            margin-bottom: 20px;
             border-bottom: 1px solid #ecf3f9;
-            padding-bottom: 10px;
+            padding-bottom: 16px;
+            transition: 0.2s;
         }
-        .article-list a {
-            text-decoration: none;
-            font-weight: 600;
+        .guides-list li:last-child {
+            border-bottom: none;
+        }
+        .guides-list .lesson-title {
+            font-weight: 700;
+            font-size: 1.1rem;
             color: #1f6392;
-            font-size: 1.05rem;
-            cursor: pointer;
+            display: block;
+            margin-bottom: 6px;
         }
-        .article-list p {
+        .guides-list .lesson-desc {
             color: #4b6b82;
             font-size: 0.9rem;
-            margin-top: 4px;
+            line-height: 1.5;
         }
-
-        /* Style pour les articles du décret dans la colonne de gauche */
-        .decret-articles-list {
-            list-style: none;
-        }
-        .decret-articles-list li {
-            margin-bottom: 12px;
-            border-bottom: 1px solid #ecf3f9;
-            padding-bottom: 10px;
-        }
-        .decret-articles-list a {
-            text-decoration: none;
-            font-weight: 600;
-            color: #105e82;
-            font-size: 0.95rem;
-            display: block;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-        .decret-articles-list a:hover {
-            color: #2c7da0;
-            transform: translateX(5px);
-        }
-        .decret-articles-list small {
-            color: #6b8ba0;
-            font-size: 0.75rem;
-        }
-
-        /* Modal pour afficher les articles */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.6);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-            backdrop-filter: blur(4px);
-        }
-        .modal-content {
-            background: white;
-            border-radius: 32px;
-            max-width: 800px;
-            width: 90%;
-            max-height: 85vh;
-            overflow-y: auto;
-            padding: 28px;
-            position: relative;
-            animation: fadeInUp 0.3s ease;
-        }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .modal-close {
-            position: absolute;
-            top: 20px;
-            right: 24px;
-            font-size: 28px;
-            cursor: pointer;
-            color: #888;
-            transition: 0.2s;
-        }
-        .modal-close:hover { color: #c00; }
-        .modal-title {
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: #144d6b;
-            margin-bottom: 20px;
-            padding-bottom: 12px;
-            border-bottom: 2px solid #2c7da0;
-        }
-        .modal-text {
-            font-size: 0.95rem;
-            line-height: 1.7;
-            color: #1e3a5f;
-            margin-bottom: 24px;
-            white-space: pre-wrap;
-        }
-        .modal-explication {
-            background: #f9fdf6;
-            padding: 20px;
-            border-radius: 24px;
+        .coming-soon {
+            color: #a0b8cc;
+            font-style: italic;
+            font-size: 0.8rem;
             margin-top: 20px;
-            direction: rtl;
-            text-align: right;
-        }
-        .modal-explication h4 {
-            color: #1f6e43;
-            margin-bottom: 12px;
-            font-size: 1.1rem;
-        }
-        .modal-explication-fr {
-            margin-top: 16px;
-            padding-top: 16px;
-            border-top: 1px dashed #cde0ef;
-            direction: ltr;
-            text-align: left;
-        }
-        .warning-modal {
-            background: #fff8e7;
-            padding: 12px 16px;
-            border-radius: 16px;
-            margin-top: 16px;
-            font-size: 0.75rem;
-            color: #b45f06;
+            text-align: center;
+            border-top: 1px dashed #dce7f0;
+            padding-top: 20px;
         }
 
         /* calculette section */
@@ -249,6 +154,9 @@
             border: 1px solid #cde1ed;
             transition: 0.2s;
         }
+        .calc-box:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
         .calc-box h4 {
             font-size: 1.4rem;
             margin-bottom: 12px;
@@ -259,12 +167,18 @@
             display: block;
             margin: 12px 0 4px;
         }
-        input, select {
+        input {
             width: 100%;
             padding: 10px 14px;
             border-radius: 16px;
             border: 1px solid #bdd4e3;
             font-size: 1rem;
+            transition: 0.2s;
+        }
+        input:focus {
+            outline: none;
+            border-color: #2c7da0;
+            box-shadow: 0 0 0 2px rgba(44,125,160,0.1);
         }
         button {
             background: #1f6392;
@@ -275,10 +189,11 @@
             font-weight: bold;
             margin-top: 16px;
             cursor: pointer;
-            transition: 0.1s;
+            transition: 0.2s;
         }
         button:hover {
             background: #0f476a;
+            transform: translateY(-1px);
         }
         .result {
             background: #eef3f9;
@@ -286,6 +201,7 @@
             border-radius: 20px;
             margin-top: 16px;
             font-weight: 600;
+            font-size: 0.95rem;
         }
         footer {
             text-align: center;
@@ -298,10 +214,8 @@
             color: #146b3a;
             text-decoration: none;
         }
-        .loader {
-            text-align: center;
-            padding: 40px;
-            color: #2c7da0;
+        footer a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -314,8 +228,7 @@
         </div>
         <div class="nav-links">
             <a href="#">Accueil</a>
-            <a href="#articles">Guides</a>
-            <a href="#decret">Décret</a>
+            <a href="#guides">Guides</a>
             <a href="#calculateurs">Calculateurs</a>
         </div>
     </div>
@@ -325,31 +238,41 @@
     <div class="container">
         <h1>📘 Formation Marchés Publics <br> + outils de calcul interactifs</h1>
         <div class="intro-text">
-            Simplification complète du décret, explications chapitre par chapitre, calcul du prix de référence, garanties et simulations.
+            Simplification des marchés publics au Maroc : guides pratiques, calcul du prix de référence, garanties et simulations.
         </div>
     </div>
 </div>
 
 <div class="container two-columns">
-    <!-- COLONNE GAUCHE : explications et décret -->
+    <!-- COLONNE GAUCHE : guides pratiques -->
     <div>
-        <div class="card" id="articles">
+        <div class="card" id="guides">
             <h2>📖 Chapitres & guides pratiques</h2>
-            <ul class="article-list">
-                <li><a href="#">🔹 Comprendre l'appel d'offres (AO)</a><p>Définition, types (ouvert, restreint, concours).</p></li>
-                <li><a href="#">🔹 Préparation du dossier de soumission</a><p>Pièces administratives et techniques.</p></li>
-                <li><a href="#">🔹 Garanties : provisoire et définitive</a><p>Montants, durée, caution bancaire.</p></li>
-                <li><a href="#">🔹 Évaluation des offres et attribution</a><p>Critères, annulation, recours.</p></li>
-                <li><a href="#">🔹 Exécution du marché & pénalités</a><p>Avenants, retards, règlement litiges.</p></li>
+            <ul class="guides-list">
+                <li>
+                    <span class="lesson-title">🔹 Comprendre l'appel d'offres (AO)</span>
+                    <span class="lesson-desc">Définition, types (ouvert, restreint, concours).</span>
+                </li>
+                <li>
+                    <span class="lesson-title">🔹 Préparation du dossier de soumission</span>
+                    <span class="lesson-desc">Pièces administratives et techniques.</span>
+                </li>
+                <li>
+                    <span class="lesson-title">🔹 Garanties : provisoire et définitive</span>
+                    <span class="lesson-desc">Montants, durée, caution bancaire.</span>
+                </li>
+                <li>
+                    <span class="lesson-title">🔹 Évaluation des offres et attribution</span>
+                    <span class="lesson-desc">Critères, annulation, recours.</span>
+                </li>
+                <li>
+                    <span class="lesson-title">🔹 Exécution du marché & pénalités</span>
+                    <span class="lesson-desc">Avenants, retards, règlement litiges.</span>
+                </li>
             </ul>
-        </div>
-
-        <div class="card" id="decret">
-            <h2>📜 Le Décret des Marchés Publics (2-22-431)</h2>
-            <div id="decretArticlesList">
-                <div class="loader">Chargement des articles...</div>
+            <div class="coming-soon">
+                📚 D'autres chapitres seront ajoutés prochainement...
             </div>
-            <p style="margin-top: 16px;font-size:0.85rem;">✨ Cliquez sur un article pour voir le texte officiel et les explications.</p>
         </div>
     </div>
 
@@ -369,9 +292,9 @@
             <h4>🔐 Garantie Provisoire (Dépôt de soumission)</h4>
             <label>Montant estimé du marché (DH) :</label>
             <input type="number" id="montantMarcheG" placeholder="Montant HT">
-            <button id="calcGarantieProvisoire">Calculer GP (2% ou 3%)</button>
+            <button id="calcGarantieProvisoire">Calculer GP (2%)</button>
             <div class="result" id="resultGP">📌 Garantie provisoire : --- DH</div>
-            <p style="font-size:12px">*selon l'article 46 du décret : entre 1% et 3% du montant estimé (souvent 2%)</p>
+            <p style="font-size:12px; margin-top:8px;">*selon l'article 46 du décret : entre 1% et 3% du montant estimé (souvent 2%)</p>
         </div>
 
         <div class="calc-box">
@@ -387,7 +310,7 @@
             <label>Avance demandée (%) :</label>
             <input type="number" id="avancePourcent" placeholder="Ex: 20">
             <label>Montant du marché HT :</label>
-            <input type="number" id="montantAvance">
+            <input type="number" id="montantAvance" placeholder="DH">
             <button id="calcAvance">Calculer avance</button>
             <div class="result" id="resultAvance">💧 Avance éventuelle : --- DH</div>
         </div>
@@ -396,119 +319,21 @@
 
 <footer>
     <p>🇲🇦 MP.econcours.ma — Projet éducatif indépendant sur les marchés publics au Maroc • Données à titre indicatif, référez-vous au décret officiel.</p>
-    <p>🔗 Partenaire : <a href="https://econcours.ma" target="_blank" style="color:#146b3a;">econcours.ma</a> | Formation & emploi public</p>
+    <p>🔗 Partenaire : <a href="https://econcours.ma" target="_blank">econcours.ma</a> | Formation & emploi public</p>
 </footer>
 
-<!-- Modal pour afficher le détail des articles -->
-<div id="articleModal" class="modal">
-    <div class="modal-content">
-        <span class="modal-close" onclick="closeModal()">&times;</span>
-        <div class="modal-title" id="modalTitle"></div>
-        <div class="modal-text" id="modalText"></div>
-        <div class="modal-explication" id="modalExplication"></div>
-        <div class="warning-modal">
-            ⚠️ هذه التفسيرات هي للتبسيط فقط. لأي غرض قانوني، يجب الرجوع إلى النص الرسمي للمرسوم.
-        </div>
-    </div>
-</div>
-
 <script>
-    // ========== HONORER JSON ==========
-    let articlesData = [];
-
-    fetch('data.json')
-        .then(response => {
-            if (!response.ok) throw new Error('data.json introuvable');
-            return response.json();
-        })
-        .then(data => {
-            console.log('Données chargées', data);
-            // Aplatir tous les articles dans un tableau avec leur chapitre
-            for (const chapitre of data.decret.chapitres) {
-                for (const article of chapitre.articles) {
-                    articlesData.push({
-                        numero: article.numero,
-                        intitule: article.intitule,
-                        texte_original: article.texte_original,
-                        explication_arabe: article.explication_arabe,
-                        explication_francais: article.explication_francais,
-                        chapitre: chapitre.numero
-                    });
-                }
-            }
-            // Trier par numéro
-            articlesData.sort((a,b) => a.numero - b.numero);
-            afficherListeArticles();
-        })
-        .catch(error => {
-            console.error('Erreur:', error);
-            document.getElementById('decretArticlesList').innerHTML = `
-                <div style="color:#c00;padding:20px;text-align:center;">
-                    ⚠️ Erreur de chargement : ${error.message}<br>
-                    Vérifiez que data.json existe au même emplacement.
-                </div>
-            `;
-        });
-
-    function afficherListeArticles() {
-        const container = document.getElementById('decretArticlesList');
-        if (!container) return;
-        
-        let html = '<ul class="decret-articles-list">';
-        for (const article of articlesData) {
-            html += `
-                <li>
-                    <a onclick="afficherArticle(${article.numero})">
-                        📌 Article ${article.numero} – ${article.intitule}
-                    </a>
-                    <small> (Chapitre ${article.chapitre})</small>
-                </li>
-            `;
-        }
-        html += '</ul>';
-        container.innerHTML = html;
-    }
-
-    function afficherArticle(numero) {
-        const article = articlesData.find(a => a.numero === numero);
-        if (!article) return;
-        
-        document.getElementById('modalTitle').innerHTML = `Article ${article.numero} – ${article.intitule}`;
-        document.getElementById('modalText').innerHTML = `<strong>Texte officiel :</strong><br><br>${(article.texte_original || '').replace(/\n/g, '<br>')}`;
-        document.getElementById('modalExplication').innerHTML = `
-            <h4>📖 شرح بالعربية</h4>
-            <p>${article.explication_arabe || 'شرح غير متوفر'}</p>
-            <div class="modal-explication-fr">
-                <h4>📖 Explication en français</h4>
-                <p>${article.explication_francais || 'Explication non disponible'}</p>
-            </div>
-        `;
-        
-        document.getElementById('articleModal').style.display = 'flex';
-    }
-
-    function closeModal() {
-        document.getElementById('articleModal').style.display = 'none';
-    }
-
-    // Fermer en cliquant à l'extérieur
-    window.onclick = function(event) {
-        const modal = document.getElementById('articleModal');
-        if (event.target === modal) {
-            modal.style.display = 'none';
-        }
-    }
-
-    // ========== CALCULATEURS ==========
+    // Calculateur Prix de référence
     document.getElementById("calcReference").addEventListener("click", function(){
         let ht = parseFloat(document.getElementById("prixRefHt").value);
         let marge = parseFloat(document.getElementById("margeAleas").value);
         if(isNaN(ht)) ht = 0;
         if(isNaN(marge)) marge = 0;
-        let ttc = ht * (1 + (marge/100)) * 1.2;
+        let ttc = ht * (1 + (marge/100)) * 1.2; // TVA 20% Maroc
         document.getElementById("resultRef").innerHTML = `💰 Prix de référence (TTC estimé) : ${ttc.toFixed(2)} DH`;
     });
 
+    // Garantie provisoire (2%)
     document.getElementById("calcGarantieProvisoire").addEventListener("click", function(){
         let montant = parseFloat(document.getElementById("montantMarcheG").value);
         if(isNaN(montant)) montant = 0;
@@ -516,20 +341,22 @@
         document.getElementById("resultGP").innerHTML = `📌 Garantie provisoire (2%) : ${gp.toFixed(2)} DH<br><span style="font-size:12px;">⚠️ Vérifiez le règlement de l'appel d'offres (1% à 3%)</span>`;
     });
 
+    // Garantie définitive (5%)
     document.getElementById("calcGarantieDef").addEventListener("click", function(){
         let mont = parseFloat(document.getElementById("montantGD").value);
-        if(isNaN(mont)) mont=0;
+        if(isNaN(mont)) mont = 0;
         let gd = mont * 0.05;
         document.getElementById("resultGD").innerHTML = `🛡️ Garantie définitive (5% du marché) : ${gd.toFixed(2)} DH`;
     });
 
+    // Acompte / Avance
     document.getElementById("calcAvance").addEventListener("click", function(){
         let pourcentage = parseFloat(document.getElementById("avancePourcent").value);
         let montantHt = parseFloat(document.getElementById("montantAvance").value);
         if(isNaN(pourcentage)) pourcentage = 0;
         if(isNaN(montantHt)) montantHt = 0;
         let avance = (montantHt * pourcentage) / 100;
-        document.getElementById("resultAvance").innerHTML = `💧 Avance (${pourcentage}% du marché HT) : ${avance.toFixed(2)} DH<br><span>sous réserve des conditions de l'administration</span>`;
+        document.getElementById("resultAvance").innerHTML = `💧 Avance (${pourcentage}% du marché HT) : ${avance.toFixed(2)} DH<br><span style="font-size:12px;">sous réserve des conditions de l'administration</span>`;
     });
 </script>
 
