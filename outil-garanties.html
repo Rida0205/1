@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>MP.econcours.ma | Garanties</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary-dark: #0a2540;
+            --primary: #1a3a5c;
+            --gold: #c9a03d;
+            --white: #ffffff;
+            --gray-light: #f8fafc;
+            --gray: #eef2f8;
+            --text-dark: #1e2f3e;
+            --text-gray: #5a6e7c;
+            --shadow: 0 10px 30px -12px rgba(0,0,0,0.1);
+            --radius: 24px;
+        }
+        body { font-family: 'Roboto', sans-serif; color: var(--text-dark); background: var(--gray-light); }
+        h1, h2, .logo, .nav-links a, .btn { font-family: 'Poppins', sans-serif; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+        
+        .navbar { background: var(--white); box-shadow: 0 4px 12px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; padding: 16px 24px; max-width: 1400px; margin: 0 auto; flex-wrap: wrap; gap: 16px; }
+        .logo { font-size: 1.5rem; font-weight: 700; }
+        .logo .mp { color: var(--primary-dark); }
+        .logo .econcours { color: var(--gold); }
+        .nav-links { display: flex; gap: 28px; flex-wrap: wrap; }
+        .nav-links a { text-decoration: none; font-weight: 500; color: var(--text-dark); transition: color 0.2s; }
+        .nav-links a:hover { color: var(--gold); }
+        .nav-links i { margin-right: 6px; }
+        
+        .page-header { background: linear-gradient(135deg, var(--primary-dark), var(--primary)); color: white; padding: 40px 0; text-align: center; }
+        .page-header h1 { font-size: 2rem; margin-bottom: 8px; }
+        .page-header a { color: var(--gold); text-decoration: none; display: inline-flex; align-items: center; gap: 8px; margin-top: 16px; }
+        
+        .tool-container { max-width: 800px; margin: 60px auto; background: white; border-radius: var(--radius); padding: 40px; box-shadow: var(--shadow); }
+        .tool-icon { text-align: center; margin-bottom: 24px; }
+        .tool-icon i { font-size: 3rem; color: var(--gold); background: rgba(201,160,61,0.1); padding: 20px; border-radius: 30px; }
+        .tool-container h2 { color: var(--primary); margin-bottom: 8px; }
+        .tool-container p { color: var(--text-gray); margin-bottom: 32px; }
+        
+        label { font-weight: 600; display: block; margin: 20px 0 8px; color: var(--text-dark); }
+        input { width: 100%; padding: 14px 16px; border-radius: 16px; border: 1.5px solid var(--gray); font-size: 0.95rem; font-family: inherit; }
+        input:focus { outline: none; border-color: var(--gold); }
+        
+        .btn { display: inline-flex; align-items: center; gap: 10
