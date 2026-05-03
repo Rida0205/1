@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>MP.econcours.ma | Outils de calcul</title>
+    <meta name="description" content="Calculateurs pour marchés publics : prix de référence, avance, garanties, pénalités, offres anormales.">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
@@ -11,6 +12,7 @@
         :root {
             --primary-dark: #0a2540;
             --primary: #1a3a5c;
+            --primary-light: #2c5282;
             --gold: #c9a03d;
             --gold-light: #e2c28b;
             --white: #ffffff;
@@ -23,7 +25,7 @@
             --radius: 24px;
         }
         body { font-family: 'Roboto', sans-serif; color: var(--text-dark); background: var(--gray-light); }
-        h1, h2, h3, .logo, .nav-links a { font-family: 'Poppins', sans-serif; }
+        h1, h2, h3, .logo, .nav-links a, .btn { font-family: 'Poppins', sans-serif; }
         .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
         
         .navbar { background: var(--white); box-shadow: var(--shadow-sm); position: sticky; top: 0; z-index: 1000; }
@@ -40,17 +42,38 @@
         .page-header h1 { font-size: 2.5rem; margin-bottom: 12px; }
         .page-header p { opacity: 0.9; max-width: 700px; margin: 0 auto; }
         
-        .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px; margin: 60px 0; }
-        .tool-card { background: white; border-radius: var(--radius); padding: 32px; text-align: center; transition: all 0.3s; border: 1px solid var(--gray); cursor: pointer; text-decoration: none; display: block; }
-        .tool-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); border-color: var(--gold-light); }
-        .tool-icon { width: 80px; height: 80px; background: rgba(201,160,61,0.1); border-radius: 40px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; }
-        .tool-icon i { font-size: 2.5rem; color: var(--gold); }
-        .tool-card h3 { font-size: 1.3rem; color: var(--primary); margin-bottom: 12px; }
-        .tool-card p { color: var(--text-gray); font-size: 0.9rem; margin-bottom: 20px; }
-        .tool-link { color: var(--gold); font-weight: 600; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 6px; }
-        .tool-card:hover .tool-link { gap: 12px; }
+        .tools-container { margin: 60px 0; display: flex; flex-direction: column; gap: 48px; }
         
-        .info-box { background: var(--gray-light); border-radius: var(--radius); padding: 32px; text-align: center; margin: 40px 0; border: 1px solid var(--gray); }
+        .tool-block { background: white; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-sm); border: 1px solid var(--gray); }
+        .tool-header { background: var(--primary); padding: 20px 28px; color: white; display: flex; align-items: center; gap: 15px; }
+        .tool-header i { font-size: 1.8rem; background: rgba(255,255,255,0.2); padding: 12px; border-radius: 20px; }
+        .tool-header h2 { font-size: 1.4rem; font-weight: 600; }
+        .tool-body { padding: 28px; }
+        
+        label { font-weight: 600; display: block; margin: 16px 0 6px; font-size: 0.85rem; color: var(--text-dark); }
+        select, input { width: 100%; padding: 14px 16px; border-radius: 16px; border: 1.5px solid var(--gray); font-size: 0.95rem; font-family: inherit; background: white; transition: 0.2s; }
+        select:focus, input:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(201,160,61,0.1); }
+        
+        .btn { display: inline-flex; align-items: center; gap: 10px; background: var(--primary); color: white; border: none; padding: 12px 28px; border-radius: 60px; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: all 0.2s; }
+        .btn:hover { background: var(--primary-light); transform: translateY(-2px); }
+        .btn-gold { background: var(--gold); color: var(--primary-dark); }
+        .btn-gold:hover { background: #b88a2a; }
+        
+        .result { background: var(--gray-light); padding: 18px; border-radius: 20px; margin-top: 20px; border-left: 4px solid var(--gold); font-weight: 500; }
+        
+        .offres-list { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
+        .offre-tag { background: var(--gray); padding: 6px 14px; border-radius: 30px; font-size: 0.8rem; display: inline-flex; align-items: center; gap: 8px; }
+        .offre-tag.excluded { background: #ffe0e0; text-decoration: line-through; color: #c00; }
+        .remove-offre { cursor: pointer; color: #c00; font-weight: bold; }
+        .add-offre { display: flex; gap: 10px; margin: 12px 0; flex-wrap: wrap; }
+        .add-offre input { flex: 2; margin: 0; }
+        .add-offre button { width: auto; margin: 0; padding: 12px 20px; background: var(--gold); color: var(--primary-dark); }
+        .row-buttons { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 10px; }
+        .info-note { background: #fef8e7; padding: 12px 16px; border-radius: 16px; font-size: 0.7rem; color: #b68b40; margin-top: 16px; }
+        .inline-group { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+        .inline-group input { width: 100px; margin: 0; }
+        .checkbox-group { display: flex; align-items: center; gap: 12px; margin: 16px 0; }
+        .checkbox-group input { width: auto; margin: 0; }
         
         footer { background: var(--primary-dark); color: rgba(255,255,255,0.7); padding: 48px 24px 32px; margin-top: 60px; }
         .footer-container { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
@@ -59,7 +82,13 @@
         .footer-col a:hover { color: var(--gold); }
         .footer-bottom { text-align: center; padding-top: 32px; margin-top: 32px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.8rem; }
         
-        @media (max-width: 768px) { .page-header h1 { font-size: 1.8rem; } .tools-grid { gap: 20px; } }
+        @media (max-width: 768px) {
+            .page-header h1 { font-size: 1.8rem; }
+            .tool-header h2 { font-size: 1.1rem; }
+            .tool-header i { font-size: 1.3rem; padding: 8px; }
+            .tool-body { padding: 20px; }
+            .nav-links { gap: 16px; font-size: 0.85rem; }
+        }
     </style>
 </head>
 <body>
@@ -71,66 +100,299 @@
             <a href="index.html"><i class="fas fa-home"></i> Accueil</a>
             <a href="cours.html"><i class="fas fa-book"></i> Cours</a>
             <a href="outils.html" class="active"><i class="fas fa-calculator"></i> Outils</a>
-            <a href="apropos.html"><i class="fas fa-info-circle"></i> À propos</a>
-            <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
         </div>
     </div>
 </div>
 
 <div class="page-header">
     <h1>🧮 Outils de calcul intelligents</h1>
-    <p>Automatisez vos calculs selon la réglementation officielle</p>
+    <p>Tous les calculateurs en un seul endroit - Basés sur la réglementation marocaine</p>
 </div>
 
 <div class="container">
-    <div class="tools-grid">
-        <a href="outil-prix-reference.html" class="tool-card">
-            <div class="tool-icon"><i class="fas fa-chart-line"></i></div>
-            <h3>🎯 Calcul du prix de référence</h3>
-            <p>Estimation + offres → Prix de référence officiel</p>
-            <span class="tool-link">Accéder <i class="fas fa-arrow-right"></i></span>
-        </a>
-        <a href="outil-avance.html" class="tool-card">
-            <div class="tool-icon"><i class="fas fa-coins"></i></div>
-            <h3>💰 Calcul de l'avance</h3>
-            <p>Avance selon décret 2-14-272 (10% / 5% / plafond)</p>
-            <span class="tool-link">Accéder <i class="fas fa-arrow-right"></i></span>
-        </a>
-        <a href="outil-garanties.html" class="tool-card">
-            <div class="tool-icon"><i class="fas fa-shield-alt"></i></div>
-            <h3>🛡️ Garanties (provisoire / définitive)</h3>
-            <p>Calcul automatique des cautions et retenues</p>
-            <span class="tool-link">Accéder <i class="fas fa-arrow-right"></i></span>
-        </a>
-        <a href="outil-penalites.html" class="tool-card">
-            <div class="tool-icon"><i class="fas fa-clock"></i></div>
-            <h3>⏱️ Calcul des pénalités de retard</h3>
-            <p>Pénalités journalières, plafonds, simulation</p>
-            <span class="tool-link">Accéder <i class="fas fa-arrow-right"></i></span>
-        </a>
-        <a href="outil-offres-anormales.html" class="tool-card">
-            <div class="tool-icon"><i class="fas fa-exclamation-triangle"></i></div>
-            <h3>⚠️ Détection offres anormales</h3>
-            <p>Seuils : travaux -20% / fournitures -25%</p>
-            <span class="tool-link">Accéder <i class="fas fa-arrow-right"></i></span>
-        </a>
-    </div>
+    <div class="tools-container">
 
-    <div class="info-box">
-        <i class="fas fa-gem" style="font-size: 2rem; color: var(--gold);"></i>
-        <h3 style="margin: 16px 0 8px;">Tous nos outils sont gratuits</h3>
-        <p>Basés sur la réglementation marocaine en vigueur (Décret 2-22-431 et textes associés)</p>
+        <!-- OUTIL 1 : PRIX DE RÉFÉRENCE -->
+        <div class="tool-block">
+            <div class="tool-header">
+                <i class="fas fa-chart-line"></i>
+                <h2>🎯 Calcul du prix de référence (méthode officielle)</h2>
+            </div>
+            <div class="tool-body">
+                <label>Estimation du maître d'ouvrage (E) - DH</label>
+                <input type="number" id="prixRefEstimation" value="100000">
+                <label>Type de marché</label>
+                <select id="prixRefTypeMarche">
+                    <option value="travaux">Travaux (-20%)</option>
+                    <option value="fournitures">Fournitures & Services (-25%)</option>
+                </select>
+                <label>Liste des offres (DH)</label>
+                <div id="prixRefOffresContainer" class="offres-list"></div>
+                <div class="add-offre">
+                    <input type="number" id="prixRefNewOffre" placeholder="Ajouter une offre">
+                    <button id="prixRefBtnAddOffre"><i class="fas fa-plus"></i> Ajouter</button>
+                </div>
+                <div class="row-buttons">
+                    <button id="prixRefBtnResetOffres" class="btn-gold" style="background: var(--gray); color: var(--text-dark);"><i class="fas fa-trash-alt"></i> Réinitialiser</button>
+                    <button id="prixRefBtnCalculer" class="btn"><i class="fas fa-calculator"></i> Calculer</button>
+                </div>
+                <div class="result" id="prixRefResult">📊 En attente des offres...</div>
+                <div class="info-note">📌 Élimination des offres excessives (+20% de E) et des offres anormalement basses (Travaux: -20% / F&S: -25%) → Moyenne (M) des offres restantes → P = (E + M)/2 → L'offre la plus proche de P est retenue.</div>
+            </div>
+        </div>
+
+        <!-- OUTIL 2 : AVANCE -->
+        <div class="tool-block">
+            <div class="tool-header">
+                <i class="fas fa-coins"></i>
+                <h2>💰 Calcul de l'avance (Décret n°2-14-272)</h2>
+            </div>
+            <div class="tool-body">
+                <label>Montant total du marché (TTC) - DH</label>
+                <input type="number" id="avanceMontant" value="12000000">
+                <label>Délai d'exécution (mois)</label>
+                <input type="number" id="avanceDelai" value="6">
+                <div class="inline-group">
+                    <label>Partie sous-traitée (%)</label>
+                    <input type="number" id="avanceSousTraitance" step="5" value="0" style="width:100px;"> <span>%</span>
+                </div>
+                <label>Type de marché</label>
+                <select id="avanceTypeMarche">
+                    <option value="normal">Marché normal</option>
+                    <option value="cadre">Marché-cadre (montant minimum)</option>
+                    <option value="reconductible">Marché reconductible (1ère année)</option>
+                    <option value="tranche">Marché à tranches (tranche ferme)</option>
+                </select>
+                <label>Nombre de lots (même titulaire)</label>
+                <input type="number" id="avanceNbLots" value="1">
+                <div class="checkbox-group">
+                    <input type="checkbox" id="avanceCaution">
+                    <label style="margin:0">🔐 Caution bancaire fournie</label>
+                </div>
+                <label>Pourcentage d'exécution (%) pour simulation</label>
+                <input type="number" id="avanceExecution" value="0" step="10">
+                <button id="avanceBtnCalculer" class="btn"><i class="fas fa-calculator"></i> Calculer</button>
+                <div class="result" id="avanceResult">💰 Avance : --- DH</div>
+                <div class="info-note">📋 Conditions : Montant ≥ 500 000 DH ET délai ≥ 4 mois. Calcul : 10% sur premiers 10M DH + 5% sur reste (max 20M DH). Remboursement complet à 80% d'exécution.</div>
+            </div>
+        </div>
+
+        <!-- OUTIL 3 : GARANTIES -->
+        <div class="tool-block">
+            <div class="tool-header">
+                <i class="fas fa-shield-alt"></i>
+                <h2>🛡️ Garanties (Provisoire & Définitive)</h2>
+            </div>
+            <div class="tool-body">
+                <label>Montant du marché (DH)</label>
+                <input type="number" id="garantiesMontant" placeholder="Ex: 1000000">
+                <div class="row-buttons">
+                    <button id="garantiesBtnProvisoire" class="btn"><i class="fas fa-lock"></i> Garantie provisoire (2%)</button>
+                    <button id="garantiesBtnDefinitive" class="btn-gold" style="background: var(--gold); color: var(--primary-dark);"><i class="fas fa-shield-alt"></i> Garantie définitive (5%)</button>
+                </div>
+                <div class="result" id="garantiesResult">📌 Cliquez sur un bouton ci-dessus</div>
+                <div class="info-note">📌 Garantie provisoire : généralement 2% du montant estimé (article 46). Garantie définitive : 5% du montant du marché.</div>
+            </div>
+        </div>
+
+        <!-- OUTIL 4 : PÉNALITÉS DE RETARD -->
+        <div class="tool-block">
+            <div class="tool-header">
+                <i class="fas fa-clock"></i>
+                <h2>⏱️ Calcul des pénalités de retard</h2>
+            </div>
+            <div class="tool-body">
+                <label>Montant total du marché (DH)</label>
+                <input type="number" id="penalitesMontant" value="1000000">
+                <label>Taux de pénalité journalier (%)</label>
+                <input type="number" id="penalitesTaux" value="0.5" step="0.1">
+                <label>Nombre de jours de retard</label>
+                <input type="number" id="penalitesJours" value="10">
+                <label>Plafond maximum (%)</label>
+                <input type="number" id="penalitesPlafond" value="10">
+                <button id="penalitesBtnCalculer" class="btn"><i class="fas fa-calculator"></i> Calculer</button>
+                <div class="result" id="penalitesResult">⏱️ Pénalités : --- DH</div>
+                <div class="info-note">📌 Pénalités = Montant × (Taux/100) × Jours. Limitée au plafond (ex: 10% du montant).</div>
+            </div>
+        </div>
+
+        <!-- OUTIL 5 : DÉTECTION OFFRES ANORMALES -->
+        <div class="tool-block">
+            <div class="tool-header">
+                <i class="fas fa-exclamation-triangle"></i>
+                <h2>⚠️ Détection des offres anormalement basses</h2>
+            </div>
+            <div class="tool-body">
+                <label>Estimation du maître d'ouvrage (E) - DH</label>
+                <input type="number" id="anormalesEstimation" value="100000">
+                <label>Type de marché</label>
+                <select id="anormalesTypeMarche">
+                    <option value="travaux">Travaux (seuil -20%)</option>
+                    <option value="fournitures">Fournitures & Services (seuil -25%)</option>
+                </select>
+                <label>Liste des offres (DH)</label>
+                <div id="anormalesOffresContainer" class="offres-list"></div>
+                <div class="add-offre">
+                    <input type="number" id="anormalesNewOffre" placeholder="Ajouter une offre">
+                    <button id="anormalesBtnAddOffre"><i class="fas fa-plus"></i> Ajouter</button>
+                </div>
+                <button id="anormalesBtnResetOffres" class="btn-gold" style="background: var(--gray); color: var(--text-dark);"><i class="fas fa-trash-alt"></i> Réinitialiser</button>
+                <button id="anormalesBtnCheck" class="btn"><i class="fas fa-check-circle"></i> Vérifier</button>
+                <div class="result" id="anormalesResult">📊 En attente des offres...</div>
+                <div class="info-note">📌 Une offre est anormalement basse si : Offre < E - 20% (travaux) ou Offre < E - 25% (fournitures/services).</div>
+            </div>
+        </div>
+
     </div>
 </div>
 
 <footer>
     <div class="footer-container">
         <div class="footer-col"><h4>MP.econcours.ma</h4><a href="index.html">Accueil</a><a href="cours.html">Cours</a><a href="outils.html">Outils</a></div>
-        <div class="footer-col"><h4>Ressources</h4><a href="#">Décret 2-22-431</a><a href="#">FAQ</a><a href="contact.html">Contact</a></div>
+        <div class="footer-col"><h4>Ressources</h4><a href="#">Décret 2-22-431</a><a href="#">FAQ</a></div>
         <div class="footer-col"><h4>Partenaire</h4><a href="https://econcours.ma" target="_blank">econcours.ma</a></div>
-        <div class="footer-col"><h4>Suivez-nous</h4><a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a><a href="#"><i class="fab fa-twitter"></i> Twitter</a></div>
+        <div class="footer-col"><h4>Légal</h4><a href="#">Mentions légales</a><a href="#">Confidentialité</a></div>
     </div>
     <div class="footer-bottom"><p>🇲🇦 Plateforme basée sur la réglementation marocaine des marchés publics | © 2026</p></div>
 </footer>
+
+<script>
+    // ========== OUTIL 1 : PRIX DE RÉFÉRENCE ==========
+    let prixRefOffres = [80000, 90000, 100000, 130000];
+    function afficherPrixRefOffres() {
+        const container = document.getElementById('prixRefOffresContainer');
+        if (!container) return;
+        const E = parseFloat(document.getElementById('prixRefEstimation').value) || 0;
+        const type = document.getElementById('prixRefTypeMarche').value;
+        const seuilBas = type === 'travaux' ? 0.20 : 0.25;
+        const seuilHaut = 0.20;
+        let html = '';
+        prixRefOffres.forEach((offre, index) => {
+            let isExcluded = false;
+            if (E > 0) {
+                if (offre > E * (1 + seuilHaut)) isExcluded = true;
+                else if (offre < E * (1 - seuilBas)) isExcluded = true;
+            }
+            html += `<span class="offre-tag ${isExcluded ? 'excluded' : ''}">${offre.toLocaleString()} DH<span class="remove-offre" onclick="supprimerPrixRefOffre(${index})">✖</span></span>`;
+        });
+        if (prixRefOffres.length === 0) html = '<span>Aucune offre. Ajoutez-en une.</span>';
+        container.innerHTML = html;
+    }
+    function supprimerPrixRefOffre(index) { prixRefOffres.splice(index, 1); afficherPrixRefOffres(); }
+    document.getElementById('prixRefBtnAddOffre')?.addEventListener('click', function() {
+        let v = parseFloat(document.getElementById('prixRefNewOffre').value);
+        if (!isNaN(v) && v > 0) { prixRefOffres.push(v); document.getElementById('prixRefNewOffre').value = ''; afficherPrixRefOffres(); }
+        else alert('Montant valide requis');
+    });
+    document.getElementById('prixRefBtnResetOffres')?.addEventListener('click', function() { prixRefOffres = []; afficherPrixRefOffres(); });
+    document.getElementById('prixRefBtnCalculer')?.addEventListener('click', function() {
+        let E = parseFloat(document.getElementById('prixRefEstimation').value);
+        let type = document.getElementById('prixRefTypeMarche').value;
+        if (isNaN(E) || E <= 0 || prixRefOffres.length === 0) {
+            document.getElementById('prixRefResult').innerHTML = '❌ Estimation et offres requises.';
+            return;
+        }
+        let seuilHaut = 0.20;
+        let seuilBas = type === 'travaux' ? 0.20 : 0.25;
+        let filtrees = prixRefOffres.filter(o => o <= E * (1 + seuilHaut) && o >= E * (1 - seuilBas));
+        if (filtrees.length === 0) {
+            document.getElementById('prixRefResult').innerHTML = '⚠️ Toutes les offres ont été exclues.';
+            return;
+        }
+        let M = filtrees.reduce((a,b)=>a+b,0) / filtrees.length;
+        let P = (E + M) / 2;
+        let gagnante = filtrees.reduce((a,b) => Math.abs(a-P) < Math.abs(b-P) ? a : b);
+        document.getElementById('prixRefResult').innerHTML = `<strong>📊 Résultat :</strong><br>• E = ${E.toLocaleString()} DH<br>• Offres retenues : ${filtrees.map(o => o.toLocaleString()).join(', ')}<br>• M = ${M.toLocaleString()} DH<br>• <strong>P = ${P.toLocaleString()} DH</strong><br>• 🏆 Offre gagnante : ${gagnante.toLocaleString()} DH`;
+    });
+
+    // ========== OUTIL 2 : AVANCE ==========
+    function calcAvance(montant, sousPercent = 0, lots = 1) {
+        let base = montant * lots * (1 - sousPercent/100);
+        if (base < 500000) return 0;
+        let av = base <= 10000000 ? base * 0.10 : (10000000 * 0.10) + ((base - 10000000) * 0.05);
+        return Math.min(av, 20000000);
+    }
+    document.getElementById('avanceBtnCalculer')?.addEventListener('click', function() {
+        let montant = parseFloat(document.getElementById('avanceMontant').value);
+        let delai = parseFloat(document.getElementById('avanceDelai').value);
+        let sous = parseFloat(document.getElementById('avanceSousTraitance').value) || 0;
+        let lots = parseInt(document.getElementById('avanceNbLots').value) || 1;
+        let caution = document.getElementById('avanceCaution').checked;
+        if (isNaN(montant) || montant <= 0) { document.getElementById('avanceResult').innerHTML = '❌ Montant invalide'; return; }
+        if (montant < 500000) { document.getElementById('avanceResult').innerHTML = '❌ Montant < 500 000 DH → Avance non accordée.'; return; }
+        if (delai < 4) { document.getElementById('avanceResult').innerHTML = '❌ Délai < 4 mois → Avance non accordée.'; return; }
+        let avance = calcAvance(montant, sous, lots);
+        let exec = parseFloat(document.getElementById('avanceExecution').value) || 0;
+        let remb = exec >= 80 ? avance : avance * (exec / 80);
+        remb = Math.min(remb, avance);
+        let cautionMsg = caution ? '✅ Caution fournie' : '⚠️ Caution requise avant versement';
+        document.getElementById('avanceResult').innerHTML = `💰 Avance : ${avance.toLocaleString()} DH<br>📌 ${cautionMsg}<br>📊 Exécution: ${exec}% → Remboursé: ${remb.toLocaleString()} DH | Reste: ${(avance-remb).toLocaleString()} DH`;
+    });
+
+    // ========== OUTIL 3 : GARANTIES ==========
+    document.getElementById('garantiesBtnProvisoire')?.addEventListener('click', function() {
+        let m = parseFloat(document.getElementById('garantiesMontant').value) || 0;
+        document.getElementById('garantiesResult').innerHTML = `📌 Garantie provisoire (2%) : ${(m*0.02).toFixed(2)} DH<br><span style="font-size:0.8rem;">⚠️ Vérifiez le règlement (1% à 3%)</span>`;
+    });
+    document.getElementById('garantiesBtnDefinitive')?.addEventListener('click', function() {
+        let m = parseFloat(document.getElementById('garantiesMontant').value) || 0;
+        document.getElementById('garantiesResult').innerHTML = `🛡️ Garantie définitive (5%) : ${(m*0.05).toFixed(2)} DH`;
+    });
+
+    // ========== OUTIL 4 : PÉNALITÉS ==========
+    document.getElementById('penalitesBtnCalculer')?.addEventListener('click', function() {
+        let montant = parseFloat(document.getElementById('penalitesMontant').value) || 0;
+        let taux = parseFloat(document.getElementById('penalitesTaux').value) || 0;
+        let jours = parseFloat(document.getElementById('penalitesJours').value) || 0;
+        let plafond = parseFloat(document.getElementById('penalitesPlafond').value) || 100;
+        let penalites = montant * (taux / 100) * jours;
+        let max = montant * (plafond / 100);
+        let penalitesFinales = Math.min(penalites, max);
+        document.getElementById('penalitesResult').innerHTML = `⏱️ Pénalités brutes : ${penalites.toLocaleString()} DH<br>📌 Plafond (${plafond}%) : ${max.toLocaleString()} DH<br><strong>💰 Pénalités à appliquer : ${penalitesFinales.toLocaleString()} DH</strong>`;
+    });
+
+    // ========== OUTIL 5 : OFFRES ANORMALES ==========
+    let anormalesOffres = [65000, 80000, 95000, 110000];
+    function afficherAnormalesOffres() {
+        const container = document.getElementById('anormalesOffresContainer');
+        if (!container) return;
+        let html = '';
+        anormalesOffres.forEach((offre, index) => {
+            html += `<span class="offre-tag">${offre.toLocaleString()} DH<span class="remove-offre" onclick="supprimerAnormalesOffre(${index})">✖</span></span>`;
+        });
+        if (anormalesOffres.length === 0) html = '<span>Aucune offre.</span>';
+        container.innerHTML = html;
+    }
+    function supprimerAnormalesOffre(index) { anormalesOffres.splice(index, 1); afficherAnormalesOffres(); }
+    document.getElementById('anormalesBtnAddOffre')?.addEventListener('click', function() {
+        let v = parseFloat(document.getElementById('anormalesNewOffre').value);
+        if (!isNaN(v) && v > 0) { anormalesOffres.push(v); document.getElementById('anormalesNewOffre').value = ''; afficherAnormalesOffres(); }
+        else alert('Montant valide requis');
+    });
+    document.getElementById('anormalesBtnResetOffres')?.addEventListener('click', function() { anormalesOffres = []; afficherAnormalesOffres(); });
+    document.getElementById('anormalesBtnCheck')?.addEventListener('click', function() {
+        let E = parseFloat(document.getElementById('anormalesEstimation').value);
+        let type = document.getElementById('anormalesTypeMarche').value;
+        let seuil = type === 'travaux' ? 0.20 : 0.25;
+        let limite = E * (1 - seuil);
+        if (isNaN(E) || E <= 0 || anormalesOffres.length === 0) {
+            document.getElementById('anormalesResult').innerHTML = '❌ Estimation et offres requises.';
+            return;
+        }
+        let normales = [];
+        let anormales = [];
+        anormalesOffres.forEach(offre => {
+            if (offre < limite) anormales.push(offre);
+            else normales.push(offre);
+        });
+        document.getElementById('anormalesResult').innerHTML = `<strong>📊 Résultat :</strong><br>• Seuil : ${limite.toLocaleString()} DH (${seuil*100}% en dessous de E)<br>• Offres normales : ${normales.length > 0 ? normales.map(o=>o.toLocaleString()).join(', ') : 'aucune'}<br>• ⚠️ Offres anormalement basses : ${anormales.length > 0 ? anormales.map(o=>o.toLocaleString()).join(', ') : 'aucune'}<br>${anormales.length > 0 ? '📌 Ces offres doivent être exclues du calcul du prix de référence.' : '✅ Toutes les offres sont dans les normes.'}`;
+    });
+
+    // Initialisations
+    afficherPrixRefOffres();
+    afficherAnormalesOffres();
+    document.getElementById('prixRefEstimation')?.addEventListener('input', afficherPrixRefOffres);
+    document.getElementById('prixRefTypeMarche')?.addEventListener('change', afficherPrixRefOffres);
+</script>
 </body>
 </html>
