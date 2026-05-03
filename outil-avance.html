@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>MP.econcours.ma | Calcul de l'avance</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary-dark: #0a2540;
+            --primary: #1a3a5c;
+            --primary-light: #2c5282;
+            --gold: #c9a03d;
+            --gold-light: #e2c28b;
+            --white: #ffffff;
+            --gray-light: #f8fafc;
+            --gray: #eef2f8;
+            --text-dark: #1e2f3e;
+            --text-gray: #5a6e7c;
+            --shadow: 0 10px 30px -12px rgba(0,0,0,0.1);
+            --shadow-sm: 0 4px 12px rgba(0,0,0,0.05);
+            --radius: 24px;
+        }
+        body { font-family: 'Roboto', sans-serif; color: var(--text-dark); background: var(--gray-light); }
+        h1, h2, .logo, .nav-links a, .btn { font-family: 'Poppins', sans-serif; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+        
+        .navbar { background: var(--white); box-shadow: var(--shadow-sm); position: sticky; top: 0; z-index: 1000; }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; padding: 16px 24px; max-width: 1400px; margin: 0 auto; flex-wrap: wrap; gap: 16px; }
+        .logo { font-size: 1.5rem; font-weight: 700; }
+        .logo .mp { color: var(--primary-dark); }
+        .logo .econcours { color: var(--gold); }
+        .nav-links { display: flex; gap: 28px; flex-wrap: wrap; }
+        .nav-links a { text-decoration: none; font-weight: 500; color: var(--text-dark); transition: color 0.2s; }
+        .nav-links a:hover { color: var(--gold); }
+        .nav-links i { margin-right: 6px; }
+        
+        .page-header { background: linear-gradient(135deg, var(--primary-dark), var(--primary)); color: white; padding: 40px 0; text-align: center; }
+        .page-header h1 { font-size: 2rem; margin-bottom: 8px; }
+        .page-header a { color: var(--gold); text-decoration: none; display: inline-flex; align-items: center; gap: 8px; margin-top: 16px; }
+        
+        .tool-container { max-width: 800px; margin: 60px auto; background: white; border-radius: var(--radius); padding: 40px; box-shadow: var(--shadow); }
+        .tool-icon { text-align: center; margin-bottom: 24px; }
+        .tool-icon i { font-size: 3rem; color: var(--gold); background: rgba(201,160,61,0.1); padding: 20px; border-radius: 30px; }
+        .tool-container h2 { color: var(--primary); margin-bottom: 8px; }
+        .tool-container p { color: var(--text-gray); margin-bottom: 32px; }
+        
+        label { font-weight: 600; display: block; margin: 20px 0 8px; color: var(--text-dark); }
+        select, input { width: 100%; padding: 14px 16px; border-radius: 16px; border: 1.5px solid var(--gray); font-size: 0.95rem; font-family: inherit; }
+        select:focus, input:focus { outline: none; border-color: var(--gold); }
+        
+        .btn { display: inline-flex; align-items: center; gap: 10px; background: var(--primary); color: white; border: none; padding: 12px 28px; border-radius: 60px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+        .btn:hover { background: var(--primary-light); transform: translateY(-2px); }
+        
+        .result { background: var(--gray-light); padding: 20px; border-radius: 20px; margin-top: 24px; border-left: 4px solid var(--gold); font-weight: 500; line-height: 1.6; }
+        
+        .inline-group { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+        .inline-group input { width: 100px; margin: 0; }
+        .checkbox-group { display: flex; align-items: center; gap: 12px; margin: 20px 0; }
+        .checkbox-group input { width: auto; margin: 0; }
+        .info-note { background: #fef8e7; padding: 12px 16px; border-radius: 16px; font-size: 0.7rem; color: #b68b40; margin-top: 20px; }
+        
+        footer { background: var(--primary-dark); color: rgba(255,255,255,0.7); padding: 48px 24px 32px; margin-top: 60px; }
+        .footer-container { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
+        .footer-col h4 { color: white; margin-bottom: 16px; }
+        .footer-col a { display: block; color: rgba(255,255,255,0.6); text-decoration: none; margin-bottom: 10px; font-size: 0.85rem; }
+        .footer-col a:hover { color: var(--gold); }
+        .footer-bottom { text-align: center; padding-top: 32px; margin-top: 32px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.8rem; }
+        
+        @media (max-width: 768px) { .tool-container { padding: 24px; margin: 30px 20px; } .page-header h1 { font-size: 1.5rem; } }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <div class="nav-container">
+        <div class="logo"><span class="mp">MP</span><span>.</span><span class="econcours">econcours.ma</span></div>
+        <div class="nav-links">
+            <a href="index.html"><i class="fas fa-home"></i> Accueil</a>
+            <a href="cours.html"><i class="fas fa-book"></i> Cours</a>
+            <a href="outils.html"><i class="fas fa-calculator"></i> Outils</a>
+            <a href="apropos.html"><i class="fas fa-info-circle"></i> À propos</a>
+            <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+        </div>
+    </div>
+</div>
+
+<div class="page-header">
+    <h1>💰 Calcul de l'avance</h1>
+    <p>Décret n° 2-14-272 relatif aux avances</p>
+    <a href="outils.html"><i class="fas fa-arrow-left"></i> Retour aux outils</a>
+</div>
+
+<div class="tool-container">
+    <div class="tool-icon"><i class="fas fa-coins"></i></div>
+    <h2>Avance sur le marché</h2>
+    <p>Calcul selon la réglementation marocaine</p>
+    
+    <label>Montant total du marché (TTC) - DH</label>
+    <input type="number" id="avanceMontant" value="12000000">
+    
+    <label>Délai d'exécution (mois)</label>
+    <input type="number" id="avanceDelai" value="6">
+    
+    <div class="inline-group">
+        <label>Partie sous-traitée (%)</label>
+        <input type="number" id="avanceSousTraitance" step="5" value="0" style="width:100px;"> <span>%</span>
+    </div>
+    
+    <label>Type de marché</label>
+    <select id="avanceTypeMarche">
+        <option value="normal">Marché normal</option>
+        <option value="cadre">Marché-cadre (montant minimum)</option>
+        <option value="reconductible">Marché reconductible (1ère année)</option>
+        <option value="tranche">Marché à tranches (tranche ferme)</option>
+    </select>
+    
+    <label>Nombre de lots (même titulaire)</label>
+    <input type="number" id="avanceNbLots" value="1">
+    
+    <div class="checkbox-group">
+        <input type="checkbox" id="avanceCaution">
+        <label style="margin:0">🔐 Caution bancaire fournie (obligatoire)</label>
+    </div>
+    
+    <label>Pourcentage d'exécution (%) - Simulation remboursement</label>
+    <input type="number" id="avanceExecution" value="0" step="10">
+    
+    <button id="btnCalculer" class="btn"><i class="fas fa-calculator"></i> Calculer</button>
+    
+    <div class="result" id="result">💰 Avance : --- DH</div>
+    
+    <div class="info-note">
+        📋 <strong>Règles d'octroi :</strong><br>
+        • Conditions : Montant ≥ 500 000 DH TTC ET délai ≥ 4 mois<br>
+        • Calcul : 10% sur les premiers 10 000 000 DH + 5% sur le reste<br>
+        • Plafond maximum : 20 000 000 DH<br>
+        • ❌ Pas d'avance sur la partie sous-traitée<br>
+        • 🔐 Caution bancaire obligatoire avant versement<br>
+        • 🔄 Remboursement automatique déduit des acomptes, total à 80% d'exécution
+    </div>
+</div>
+
+<footer>
+    <div class="footer-container">
+        <div class="footer-col"><h4>MP.econcours.ma</h4><a href="index.html">Accueil</a><a href="cours.html">Cours</a><a href="outils.html">Outils</a></div>
+        <div class="footer-col"><h4>Ressources</h4><a href="#">Décret 2-22-431</a><a href="#">FAQ</a></div>
+        <div class="footer-col"><h4>À propos</h4><a href="apropos.html">Notre projet</a><a href="contact.html">Contact</a></div>
+        <div class="footer-col"><h4>Partenaire</h4><a href="https://econcours.ma" target="_blank">econcours.ma</a></div>
+    </div>
+    <div class="footer-bottom"><p>🇲🇦 Plateforme basée sur la réglementation marocaine | © 2026</p></div>
+</footer>
+
+<script>
+    function calcAvance(montant, sousPercent = 0, lots = 1) {
+        let base = montant * lots * (1 - sousPercent/100);
+        if (base < 500000) return 0;
+        let av = base <= 10000000 ? base * 0.10 : (10000000 * 0.10) + ((base - 10000000) * 0.05);
+        return Math.min(av, 20000000);
+    }
+    document.getElementById('btnCalculer')?.addEventListener('click', function() {
+        let montant = parseFloat(document.getElementById('avanceMontant').value);
+        let delai = parseFloat(document.getElementById('avanceDelai').value);
+        let sous = parseFloat(document.getElementById('avanceSousTraitance').value) || 0;
+        let lots = parseInt(document.getElementById('avanceNbLots').value) || 1;
+        let caution = document.getElementById('avanceCaution').checked;
+        let exec = parseFloat(document.getElementById('avanceExecution').value) || 0;
+        
+        if (isNaN(montant) || montant <= 0) {
+            document.getElementById('result').innerHTML = '❌ Montant invalide';
+            return;
+        }
+        if (montant < 500000) {
+            document.getElementById('result').innerHTML = '❌ Montant < 500 000 DH → Avance non accordée.';
+            return;
+        }
+        if (delai < 4) {
+            document.getElementById('result').innerHTML = '❌ Délai < 4 mois → Avance non accordée.';
+            return;
+        }
+        
+        let avance = calcAvance(montant, sous, lots);
+        let cautionMsg = caution ? '✅ Caution bancaire fournie' : '⚠️ Caution bancaire requise avant versement';
+        let sousMsg = sous > 0 ? `<br>📌 Partie sous-traitée (${sous}%) exclue : ${(montant * lots * sous / 100).toLocaleString()} DH` : '';
+        
+        let remb = exec >= 80 ? avance : avance * (exec / 80);
+        remb = Math.min(remb, avance);
+        
+        document.getElementById('result').innerHTML = `
+            <strong>💰 Montant de l'avance : ${avance.toLocaleString()} DH</strong>
+            ${sousMsg}
+            <br>📌 ${cautionMsg}
+            <hr style="margin: 12px 0; border-color: #ddd;">
+            📊 Simulation remboursement (<strong>${exec}%</strong> exécutés) :
+            <br>💳 Remboursé : ${remb.toLocaleString()} DH
+            <br>💰 Reste à rembourser : ${(avance - remb).toLocaleString()} DH
+            ${exec >= 80 ? '<br>✅ Avance entièrement remboursée (80% atteint)' : '<br>⏳ Remboursement en cours...'}
+        `;
+    });
+</script>
+</body>
+</html>
