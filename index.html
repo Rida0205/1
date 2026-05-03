@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Smart Job Matcher | ECONCONCOURS.MA</title>
+  <title>Smart Job Matcher | Econcours.ma</title>
   <style>
     /* ----- RESET & GLOBAL ----- */
     * {
@@ -14,36 +14,34 @@
 
     body {
       font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, sans-serif;
-      background: #f9fafb;
-      color: #111827;
+      background: #f5f7fb;
+      color: #1a2634;
       line-height: 1.5;
     }
 
-    /* smooth scroll behavior */
+    /* smooth scroll */
     html {
       scroll-behavior: smooth;
     }
 
-    /* container */
     .container {
       max-width: 1280px;
       margin: 0 auto;
       padding: 0 2rem;
     }
 
-    /* ----- HEADER (modern SaaS) ----- */
-    .site-header {
-      background: white;
-      border-bottom: 1px solid #eef2f6;
-      padding: 1rem 0;
+    /* ----- MODERN NAVBAR ----- */
+    .navbar {
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
       position: sticky;
       top: 0;
-      backdrop-filter: blur(8px);
-      background: rgba(255, 255, 255, 0.92);
-      z-index: 10;
+      z-index: 100;
+      padding: 0.9rem 0;
     }
 
-    .header-inner {
+    .nav-inner {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -51,95 +49,101 @@
       gap: 1rem;
     }
 
-    .logo h2 {
-      font-size: 1.6rem;
-      font-weight: 700;
-      background: linear-gradient(135deg, #0f2b3d, #1b4a6e);
+    .logo h1 {
+      font-size: 1.7rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #0f2b3d, #1d6f9c);
       background-clip: text;
       -webkit-background-clip: text;
       color: transparent;
-      letter-spacing: -0.3px;
+      letter-spacing: -0.02em;
     }
-
     .logo span {
-      font-size: 0.85rem;
-      font-weight: 400;
-      color: #5c6f87;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: #5a6e7c;
       display: block;
+      margin-top: -2px;
     }
 
     /* language toggle modern */
     .lang-switch {
       display: flex;
-      gap: 0.5rem;
-      background: #f1f5f9;
-      padding: 0.25rem;
+      gap: 0.4rem;
+      background: #f0f3f8;
+      padding: 0.3rem;
       border-radius: 3rem;
     }
 
     .lang-btn {
       background: transparent;
       border: none;
-      padding: 0.5rem 1.2rem;
+      padding: 0.45rem 1.2rem;
       border-radius: 2rem;
       font-weight: 600;
       font-size: 0.85rem;
       cursor: pointer;
-      transition: all 0.2s ease;
-      color: #334155;
-      box-shadow: none;
+      transition: all 0.2s;
+      color: #435564;
     }
 
     .lang-btn.active {
       background: white;
-      color: #0f2b3d;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      color: #1d6f9c;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
     }
 
-    .lang-btn:hover:not(.active) {
-      background: #e6edf4;
-    }
-
-    /* HERO SECTION */
-    .hero-section {
-      padding: 3rem 0 2.5rem;
+    /* ----- HERO SECTION (SaaS style) ----- */
+    .hero {
       text-align: center;
+      padding: 3rem 0 2.5rem;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: #e9f0f5;
+      padding: 0.25rem 1rem;
+      border-radius: 2rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #1d6f9c;
+      margin-bottom: 1rem;
     }
 
     .hero-title {
-      font-size: 3rem;
+      font-size: 3.2rem;
       font-weight: 800;
-      background: linear-gradient(145deg, #0b2b38, #1d4a6e);
+      background: linear-gradient(145deg, #0f2b3d, #1d6f9c);
       background-clip: text;
       -webkit-background-clip: text;
       color: transparent;
-      max-width: 800px;
+      max-width: 850px;
       margin: 0 auto 1rem;
       letter-spacing: -0.02em;
     }
 
     .hero-desc {
       font-size: 1.2rem;
-      color: #4b5565;
+      color: #4c5a68;
       max-width: 650px;
-      margin: 0 auto 2rem;
+      margin: 0 auto 1rem;
     }
 
-    /* enhanced form card */
+    /* ----- FORM CARD (clean, elevated) ----- */
     .form-card {
       background: white;
       border-radius: 2rem;
-      box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(0,0,0,0.02);
-      padding: 2rem;
-      transition: transform 0.2s ease;
-      margin-bottom: 2rem;
+      box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0,0,0,0.02);
+      padding: 2rem 2rem 2.2rem;
+      transition: transform 0.2s;
+      margin-bottom: 2.5rem;
     }
 
     .form-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 1.8rem;
-      margin-bottom: 1.5rem;
+      margin-bottom: 2rem;
     }
 
     .input-group {
@@ -150,16 +154,24 @@
 
     .input-group label {
       font-weight: 600;
-      font-size: 0.9rem;
-      color: #1e2f44;
+      font-size: 0.85rem;
+      color: #2c3f55;
       display: flex;
       align-items: center;
       gap: 6px;
+      letter-spacing: -0.2px;
     }
 
-    .input-group input,
-    .input-group textarea {
-      padding: 0.9rem 1.2rem;
+    .input-icon {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .input-icon input,
+    .input-icon textarea {
+      width: 100%;
+      padding: 0.9rem 1rem 0.9rem 2.8rem;
       border-radius: 1.2rem;
       border: 1.5px solid #e2edf2;
       background: #ffffff;
@@ -168,42 +180,66 @@
       font-family: inherit;
     }
 
-    .input-group input:focus,
-    .input-group textarea:focus {
-      outline: none;
-      border-color: #2c7da0;
-      box-shadow: 0 0 0 3px rgba(44,125,160,0.12);
+    .input-icon textarea {
+      padding: 0.9rem 1rem 0.9rem 2.8rem;
+      resize: vertical;
     }
 
-    textarea {
-      min-height: 95px;
-      resize: vertical;
+    .input-icon i {
+      position: absolute;
+      left: 1rem;
+      font-size: 1.1rem;
+      color: #8fa0b0;
+      pointer-events: none;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: #1d6f9c;
+      box-shadow: 0 0 0 3px rgba(29,111,156,0.1);
     }
 
     /* primary button */
     .btn-primary {
-      background: linear-gradient(105deg, #1f5e7e, #1a4b6e);
+      background: linear-gradient(105deg, #1d6f9c, #155a7e);
       color: white;
       border: none;
-      padding: 1rem 1.8rem;
+      padding: 1rem 2rem;
       border-radius: 3rem;
       font-weight: 600;
       font-size: 1rem;
       cursor: pointer;
       transition: all 0.25s;
       width: 100%;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 0.5rem;
+      gap: 0.6rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
     }
 
     .btn-primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 12px 18px -8px rgba(27, 74, 110, 0.4);
-      background: linear-gradient(105deg, #146b8a, #12466b);
+      box-shadow: 0 15px 25px -10px rgba(29,111,156,0.4);
+      background: linear-gradient(105deg, #155f88, #0e4a6b);
     }
+
+    /* loading overlay & spinner */
+    .loading-overlay {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+    }
+    .spinner {
+      width: 42px;
+      height: 42px;
+      border: 3px solid #e2edf2;
+      border-top: 3px solid #1d6f9c;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
 
     /* results section */
     .results-header {
@@ -215,25 +251,31 @@
     }
 
     .results-title {
-      font-size: 1.8rem;
+      font-size: 1.7rem;
       font-weight: 700;
-      color: #0f2b3d;
+      color: #1a2c3e;
     }
 
-    .results-badge {
+    .results-count {
       background: #e9f0f5;
-      padding: 0.3rem 1rem;
-      border-radius: 40px;
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: #1f5e7e;
+      padding: 0.25rem 1rem;
+      border-radius: 2rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #1d6f9c;
     }
 
-    /* modern card grid */
+    /* modern cards grid */
     .cards-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-      gap: 2rem;
+      gap: 1.8rem;
+      animation: fadeUp 0.5s ease;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .company-card {
@@ -241,33 +283,33 @@
       border-radius: 1.8rem;
       padding: 1.5rem;
       transition: all 0.25s ease;
-      border: 1px solid #eef2f8;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.02);
+      border: 1px solid #ecf3f8;
+      box-shadow: 0 5px 18px rgba(0, 0, 0, 0.02);
       position: relative;
     }
 
     .company-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.1);
-      border-color: #dce5ed;
+      transform: translateY(-6px);
+      box-shadow: 0 22px 30px -12px rgba(0, 0, 0, 0.12);
+      border-color: #d4e2ed;
     }
 
     .best-match {
-      border-left: 5px solid #f5b042;
-      background: linear-gradient(115deg, #ffffff, #fffcf5);
-      box-shadow: 0 12px 22px -12px rgba(245,176,66,0.15);
+      border-left: 6px solid #f4b642;
+      background: linear-gradient(115deg, #ffffff, #fffbf0);
+      box-shadow: 0 12px 20px -12px rgba(244,182,66,0.2);
     }
 
     .card-header {
       display: flex;
       justify-content: space-between;
-      flex-wrap: wrap;
       align-items: baseline;
-      margin-bottom: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.8rem;
     }
 
     .company-name {
-      font-size: 1.4rem;
+      font-size: 1.45rem;
       font-weight: 800;
       color: #1a2c3e;
       letter-spacing: -0.3px;
@@ -275,20 +317,20 @@
 
     .match-score {
       background: #dff1ff;
-      padding: 0.25rem 0.8rem;
+      padding: 0.3rem 0.9rem;
       border-radius: 2rem;
       font-weight: 700;
-      font-size: 0.8rem;
-      color: #1a6c8f;
+      font-size: 0.85rem;
+      color: #1d6f9c;
     }
 
     .company-meta {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.9rem;
-      margin: 0.8rem 0;
+      gap: 1rem;
+      margin: 0.7rem 0;
       font-size: 0.85rem;
-      color: #4a5b6e;
+      color: #4f6579;
     }
 
     .company-meta span {
@@ -298,12 +340,12 @@
     }
 
     .reason-card {
-      background: #f8fafd;
+      background: #f9fbfd;
       padding: 0.8rem 1rem;
       border-radius: 1.2rem;
       margin: 1rem 0;
       font-size: 0.85rem;
-      border-left: 3px solid #2c7da0;
+      border-left: 3px solid #1d6f9c;
       color: #2c4559;
     }
 
@@ -316,20 +358,20 @@
 
     .contact-link {
       background: #f0f4f9;
-      padding: 0.4rem 0.9rem;
+      padding: 0.45rem 1rem;
       border-radius: 2rem;
       text-decoration: none;
       font-size: 0.8rem;
       font-weight: 500;
       color: #1e4a6e;
-      transition: all 0.15s;
+      transition: all 0.2s;
       display: inline-flex;
       align-items: center;
       gap: 5px;
     }
 
     .contact-link:hover {
-      background: #e3eaf1;
+      background: #e4ecf3;
       transform: translateY(-1px);
     }
 
@@ -344,27 +386,26 @@
       background: white;
       border: 1.5px solid #cbdde9;
       border-radius: 2rem;
-      padding: 0.6rem 1rem;
+      padding: 0.65rem 1rem;
       font-weight: 600;
       font-size: 0.8rem;
       cursor: pointer;
       transition: all 0.2s;
       flex: 1;
       text-align: center;
-      color: #1e4663;
+      color: #2c5a77;
     }
 
     .btn-outline:hover {
       background: #f1f7fc;
       border-color: #9bb7cd;
-      transform: translateY(-1px);
     }
 
     .btn-solid {
       background: #22668d;
       border: none;
       border-radius: 2rem;
-      padding: 0.6rem 1rem;
+      padding: 0.65rem 1rem;
       font-weight: 600;
       font-size: 0.8rem;
       cursor: pointer;
@@ -373,11 +414,9 @@
       text-align: center;
       color: white;
     }
-
     .btn-solid:hover {
       background: #0f4b6e;
       transform: translateY(-1px);
-      box-shadow: 0 5px 10px rgba(0,0,0,0.05);
     }
 
     .generated-message-box {
@@ -392,24 +431,9 @@
       word-break: break-word;
     }
 
-    .loader {
-      display: inline-block;
-      width: 16px;
-      height: 16px;
-      border: 2px solid white;
-      border-radius: 50%;
-      border-top-color: transparent;
-      animation: spin 0.6s linear infinite;
-      margin-right: 5px;
-    }
-
-    @keyframes spin {
-      to { transform: rotate(360deg);}
-    }
-
     footer {
       margin-top: 4rem;
-      padding: 1.5rem 0;
+      padding: 1.8rem 0;
       border-top: 1px solid #e4edf2;
       text-align: center;
       font-size: 0.8rem;
@@ -423,46 +447,48 @@
     }
     body.rtl .reason-card {
       border-left: none;
-      border-right: 3px solid #2c7da0;
+      border-right: 3px solid #1d6f9c;
     }
     body.rtl .best-match {
       border-left: none;
-      border-right: 5px solid #f5b042;
+      border-right: 6px solid #f4b642;
     }
-    body.rtl .lang-switch {
-      direction: ltr;
+    body.rtl .input-icon i {
+      left: auto;
+      right: 1rem;
+    }
+    body.rtl .input-icon input,
+    body.rtl .input-icon textarea {
+      padding-left: 1rem;
+      padding-right: 2.8rem;
     }
 
     @media (max-width: 768px) {
-      .container {
-        padding: 0 1.2rem;
-      }
-      .hero-title {
-        font-size: 2rem;
-      }
-      .form-card {
-        padding: 1.5rem;
-      }
+      .container { padding: 0 1.2rem; }
+      .hero-title { font-size: 2rem; }
+      .form-card { padding: 1.5rem; }
     }
   </style>
 </head>
 <body>
-<header class="site-header">
-  <div class="container header-inner">
+<nav class="navbar">
+  <div class="container nav-inner">
     <div class="logo">
-      <h2>ECONCONCOURS.MA <span>Smart Job Matcher</span></h2>
+      <h1>Econcours.ma</h1>
+      <span>Smart Job Matcher</span>
     </div>
     <div class="lang-switch">
-      <button class="lang-btn" data-lang="fr">🇫🇷 FR</button>
-      <button class="lang-btn" data-lang="ar">🇲🇦 عربي</button>
+      <button class="lang-btn" data-lang="fr">FR</button>
+      <button class="lang-btn" data-lang="ar">عربي</button>
     </div>
   </div>
-</header>
+</nav>
 
 <div class="container">
-  <div class="hero-section">
+  <div class="hero">
+    <div class="hero-badge">✨ AI-Powered Matching</div>
     <h1 class="hero-title" id="mainTitle">Find Companies That Match Your Profile</h1>
-    <p class="hero-desc" id="mainDesc">AI-powered matching • Connect with top Moroccan companies • Ready-to-send professional messages</p>
+    <p class="hero-desc" id="mainDesc">Connect with top Moroccan companies and send professional messages instantly.</p>
   </div>
 
   <div class="form-card">
@@ -470,51 +496,65 @@
       <div class="form-grid">
         <div class="input-group">
           <label id="labelFullName">👤 Full Name</label>
-          <input type="text" id="fullName" placeholder="Karim Benjelloun" required>
+          <div class="input-icon">
+            <i>👤</i>
+            <input type="text" id="fullName" placeholder="Karim Benjelloun" required>
+          </div>
         </div>
         <div class="input-group">
-          <label id="labelDiploma">🎓 Diploma / Degree</label>
-          <input type="text" id="diploma" placeholder="Master in Marketing, Bac+3 ..." required>
+          <label id="labelDiploma">🎓 Diploma</label>
+          <div class="input-icon">
+            <i>🎓</i>
+            <input type="text" id="diploma" placeholder="Master in Marketing, Bac+3" required>
+          </div>
         </div>
         <div class="input-group">
           <label id="labelCity">📍 City</label>
-          <input type="text" id="city" placeholder="Casablanca, Rabat, Tangier" required>
+          <div class="input-icon">
+            <i>📍</i>
+            <input type="text" id="city" placeholder="Casablanca, Rabat, Tangier" required>
+          </div>
         </div>
         <div class="input-group">
           <label id="labelSkills">⚙️ Skills (comma separated)</label>
-          <textarea id="skills" placeholder="JavaScript, Project Management, Communication, Excel, Social Media" required></textarea>
+          <div class="input-icon">
+            <i>⚙️</i>
+            <textarea id="skills" placeholder="JavaScript, Project Management, Communication, Excel" required></textarea>
+          </div>
         </div>
       </div>
-      <button type="submit" class="btn-primary" id="matchBtnText">🔍 Find my best matches →</button>
+      <button type="submit" class="btn-primary" id="matchBtnText">
+        <span>🔍</span> Find my best matches
+      </button>
     </form>
   </div>
 
   <div id="resultsSection" style="display: none;">
     <div class="results-header">
       <div class="results-title" id="resultTitle">✨ Recommended Companies</div>
-      <div class="results-badge" id="resultCount"></div>
+      <div class="results-count" id="resultCount"></div>
     </div>
     <div id="cardsContainer" class="cards-grid"></div>
   </div>
 
   <footer>
-    <p id="footerText">Smart Job Matcher — Connect with opportunities across Morocco. © ECONCONCOURS.MA</p>
+    <p id="footerText">Smart Job Matcher — AI-driven career matching © Econcours.ma</p>
   </footer>
 </div>
 
 <script>
-  // ---------- translations (same functionality, improved design) ----------
+  // ---------- TRANSLATIONS (FR / AR) ----------
   const translations = {
     fr: {
       mainTitle: "Trouvez les entreprises qui correspondent à votre profil",
-      mainDesc: "Matching intelligent • Connectez-vous aux meilleures entreprises marocaines • Messages professionnels prêts à envoyer",
+      mainDesc: "Connectez-vous aux meilleures entreprises marocaines et envoyez des messages professionnels instantanément.",
       labelFullName: "👤 Nom complet",
       labelDiploma: "🎓 Diplôme",
       labelCity: "📍 Ville",
       labelSkills: "⚙️ Compétences (séparez par des virgules)",
-      matchBtn: "🔍 Trouver mes meilleures correspondances →",
+      matchBtn: "🔍 Trouver mes meilleures correspondances",
       resultTitle: "✨ Entreprises recommandées",
-      footer: "Smart Job Matcher — Connectez-vous aux opportunités au Maroc. © ECONCONCOURS.MA",
+      footer: "Smart Job Matcher — matching intelligent © Econcours.ma",
       noMatch: "⚠️ Aucune correspondance trouvée. Élargissez vos compétences ou votre ville.",
       matchPercent: "% match",
       sector: "Secteur",
@@ -527,21 +567,21 @@
       loading: "Génération...",
       readyMsgTitle: "💬 Message prêt à envoyer",
       emailBody: (user, company, skillsStr) => {
-        return `📧 Objet : Candidature spontanée - Poste adapté\n\nBonjour l'équipe de ${company.name},\n\nJe me permets de vous adresser ma candidature suite à la recommandation du service Smart Job Matcher d'ECONCONCOURS.MA.\n\n👤 Je m'appelle ${user.fullName}, titulaire d'un(e) ${user.diploma}. Basé(e) à ${user.city}, je maîtrise : ${skillsStr}.\n\n🔎 Votre entreprise (secteur : ${company.sector}) recherche des profils avec des compétences comme ${company.required_skills.slice(0,3).join(', ')}. Notre matching indique une forte compatibilité.\n\n📞 Très motivé, je serais ravi d'échanger. Merci pour votre attention.\n\nCordialement,\n${user.fullName}`
+        return `📧 Objet : Candidature spontanée - Poste adapté\n\nBonjour l'équipe de ${company.name},\n\nJe me permets de vous adresser ma candidature suite à la recommandation du service Smart Job Matcher d'Econcours.ma.\n\n👤 Je m'appelle ${user.fullName}, titulaire d'un(e) ${user.diploma}. Basé(e) à ${user.city}, je maîtrise : ${skillsStr}.\n\n🔎 Votre entreprise (secteur : ${company.sector}) recherche des profils avec des compétences comme ${company.required_skills.slice(0,3).join(', ')}. Notre matching indique une forte compatibilité.\n\n📞 Très motivé, je serais ravi d'échanger. Merci pour votre attention.\n\nCordialement,\n${user.fullName}`
       },
       fillAllFields: "Veuillez remplir tous les champs.",
       atLeastOneSkill: "Ajoutez au moins une compétence."
     },
     ar: {
       mainTitle: "ابحث عن الشركات التي تناسب ملفك الشخصي",
-      mainDesc: "مطابقة ذكية • تواصل مع أفضل الشركات المغربية • رسائل مهنية جاهزة للإرسال",
+      mainDesc: "تواصل مع أفضل الشركات المغربية وأرسل رسائل مهنية فورية.",
       labelFullName: "👤 الاسم الكامل",
       labelDiploma: "🎓 الشهادة",
       labelCity: "📍 المدينة",
       labelSkills: "⚙️ المهارات (افصل بينها بفواصل)",
-      matchBtn: "🔍 ابحث عن أفضل التطابقات ←",
+      matchBtn: "🔍 ابحث عن أفضل التطابقات",
       resultTitle: "✨ الشركات الموصى بها",
-      footer: "سمارت ماتشر — تواصل مع الفرص في المغرب. © ECONCONCOURS.MA",
+      footer: "سمارت ماتشر — مطابقة ذكية © Econcours.ma",
       noMatch: "⚠️ لم يتم العثور على تطابقات. وسّع مهاراتك أو مدينتك.",
       matchPercent: "% تطابق",
       sector: "القطاع",
@@ -554,7 +594,7 @@
       loading: "جاري الإنشاء...",
       readyMsgTitle: "💬 الرسالة جاهزة",
       emailBody: (user, company, skillsStr) => {
-        return `📧 الموضوع: طلب توظيف تلقائي\n\nفريق ${company.name}،\n\nأتقدم لكم بطلبي بعد توصية من سمارت ماتشر التابعة لـ ECONCONCOURS.MA.\n\n👤 أنا ${user.fullName}، حاصل على ${user.diploma}. مقيم في ${user.city}، أمتلك مهارات: ${skillsStr}.\n\n🔎 تعمل شركتكم في قطاع ${company.sector} وتبحث عن مهارات مثل ${company.required_skills.slice(0,3).join(', ')}. أظهر المطابقة توافقاً كبيراً.\n\n📞 متحمس للمساهمة، أتطلع إلى ردكم الكريم.\n\nمع الاحترام،\n${user.fullName}`
+        return `📧 الموضوع: طلب توظيف تلقائي\n\nفريق ${company.name}،\n\nأتقدم لكم بطلبي بعد توصية من سمارت ماتشر التابعة لـ Econcours.ma.\n\n👤 أنا ${user.fullName}، حاصل على ${user.diploma}. مقيم في ${user.city}، أمتلك مهارات: ${skillsStr}.\n\n🔎 تعمل شركتكم في قطاع ${company.sector} وتبحث عن مهارات مثل ${company.required_skills.slice(0,3).join(', ')}. أظهر المطابقة توافقاً كبيراً.\n\n📞 متحمس للمساهمة، أتطلع إلى ردكم الكريم.\n\nمع الاحترام،\n${user.fullName}`
       },
       fillAllFields: "يرجى ملء جميع الحقول.",
       atLeastOneSkill: "أدخل مهارة واحدة على الأقل."
@@ -565,13 +605,13 @@
   let companiesData = [];
   let currentMatches = [];
   let lastProfile = null;
+  let isLoading = false;
 
-  // DOM elements
+  // DOM
   const form = document.getElementById('matchForm');
   const resultsSection = document.getElementById('resultsSection');
   const cardsContainer = document.getElementById('cardsContainer');
   const resultCountSpan = document.getElementById('resultCount');
-  const resultTitleSpan = document.getElementById('resultTitle');
 
   function applyLanguage() {
     const t = translations[currentLang];
@@ -581,7 +621,7 @@
     document.getElementById('labelDiploma').innerHTML = t.labelDiploma;
     document.getElementById('labelCity').innerHTML = t.labelCity;
     document.getElementById('labelSkills').innerHTML = t.labelSkills;
-    document.getElementById('matchBtnText').innerHTML = t.matchBtn;
+    document.getElementById('matchBtnText').innerHTML = `<span>🔍</span> ${t.matchBtn}`;
     document.getElementById('resultTitle').innerHTML = t.resultTitle;
     document.getElementById('footerText').innerHTML = t.footer;
     document.querySelectorAll('.lang-btn').forEach(btn => {
@@ -605,7 +645,7 @@
   function computeDetails(userSkills, companySkills) {
     if(!companySkills.length) return {score:0, matched:[]};
     const lowerReq = companySkills.map(s=>s.toLowerCase());
-    const matched = userSkills.filter(s=> lowerReq.includes(s));
+    const matched = userSkills.filter(skill => lowerReq.includes(skill));
     let score = (matched.length/companySkills.length)*100;
     return {score: Math.min(100, Math.round(score)), matched};
   }
@@ -678,7 +718,7 @@
     });
     cardsContainer.innerHTML = html;
 
-    // attach events
+    // Attach events
     document.querySelectorAll('.gen-email-btn').forEach(btn => {
       btn.addEventListener('click', (e) => {
         const co = JSON.parse(btn.getAttribute('data-company'));
@@ -686,7 +726,7 @@
         const card = btn.closest('.company-card');
         const msgDiv = card.querySelector('.generated-message-box');
         const original = btn.innerHTML;
-        btn.innerHTML = `<span class="loader"></span> ${t.loading}`;
+        btn.innerHTML = `<span class="spinner" style="width:14px;height:14px;border-width:2px;margin-right:6px;"></span> ${t.loading}`;
         btn.disabled = true;
         setTimeout(() => {
           const emailMsg = generateEmail(usr, co);
@@ -731,12 +771,21 @@
     if(!skillsArr.length) { alert(t.atLeastOneSkill); return; }
     const profile = { fullName, diploma, city, skillsArray: skillsArr };
     if(!companiesData.length) { alert("Loading data, please retry"); return; }
-    const matches = getTopMatches(city, skillsArr, companiesData);
-    currentMatches = matches;
-    lastProfile = profile;
-    renderResults(matches, profile);
+
+    // Show loading animation in results area (clean)
     resultsSection.style.display = 'block';
-    resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    cardsContainer.innerHTML = `<div class="loading-overlay"><div class="spinner"></div></div>`;
+    resultCountSpan.innerText = '...';
+    
+    // small delay for smooth UX
+    setTimeout(() => {
+      const matches = getTopMatches(city, skillsArr, companiesData);
+      currentMatches = matches;
+      lastProfile = profile;
+      renderResults(matches, profile);
+      resultsSection.style.display = 'block';
+      resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 300);
   }
 
   async function loadCompanies() {
