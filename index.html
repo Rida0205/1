@@ -124,6 +124,14 @@
             background: #334155;
             color: white;
         }
+        .typing-indicator {
+            background: #334155;
+            color: #94a3b8;
+            font-style: italic;
+            padding: 8px 14px;
+            border-radius: 16px;
+            width: fit-content;
+        }
         .chat-input {
             display: flex;
             gap: 12px;
@@ -247,9 +255,10 @@
     const chatBox = document.getElementById('chatBox');
     const userQuestion = document.getElementById('userQuestion');
 
-    // IMPORTANT: Remplacez par VOTRE clé API Groq
-    // ⚠️ ATTENTION: Cette clé sera visible dans le code source ⚠️
+    // ⚠️ ATTENTION: Cette clé API sera visible dans le code source.
+    // Modèle utilisé: llama-3.3-70b-versatile (le meilleur actuellement disponible sur Groq)
     const GROQ_API_KEY = "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";
+    const MODEL_NAME = "llama-3.3-70b-versatile"; // ← modèle actif et supporté
 
     async function askAI() {
         const question = userQuestion.value.trim();
@@ -270,7 +279,7 @@
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    model: 'mixtral-8x7b-32768',
+                    model: MODEL_NAME,
                     messages: [
                         {
                             role: 'system',
@@ -292,7 +301,11 @@
             const data = await response.json();
             
             if (data.error) {
-                throw new Error(data.error.message || 'Erreur API');
+                throw new Error(data.error.message || 'Erreur API Groq');
+            }
+
+            if (!response.ok) {
+                throw new Error(`HTTP ${response.status}: ${JSON.stringify(data)}`);
             }
 
             const reply = data.choices[0].message.content;
@@ -300,8 +313,19 @@
             addMessage(reply, false);
 
         } catch (error) {
+            console.error("Erreur API Groq:", error);
             removeTypingIndicator(typingMsg);
-            addMessage(`❌ Désolé, une erreur s'est produite: ${error.message}`, false);
+            
+            let errorMessage = error.message;
+            if (errorMessage.includes("decommissioned")) {
+                errorMessage = "Le modèle a été changé. Rafraîchissez la page pour utiliser le nouveau modèle supporté (llama-3.3-70b).";
+            } else if (errorMessage.includes("CORS")) {
+                errorMessage = "Erreur CORS. L'API Groq ne peut pas être appelée directement depuis le navigateur. Utilisez un proxy ou backend Node.js.";
+            } else if (errorMessage.includes("API key")) {
+                errorMessage = "Clé API invalide ou expirée. Veuillez mettre à jour votre clé Groq API.";
+            }
+            
+            addMessage(`❌ Désolé, une erreur s'est produite: ${errorMessage}`, false);
         }
     }
 
@@ -315,7 +339,7 @@
 
     function addTypingIndicator() {
         const typingDiv = document.createElement('div');
-        typingDiv.className = 'chat-message ai-msg';
+        typingDiv.className = 'typing-indicator';
         typingDiv.id = 'typingIndicator';
         typingDiv.textContent = '🤔 L\'assistant réfléchit...';
         chatBox.appendChild(typingDiv);
@@ -324,7 +348,7 @@
     }
 
     function removeTypingIndicator(typingMsg) {
-        if (typingMsg) typingMsg.remove();
+        if (typingMsg && typingMsg.remove) typingMsg.remove();
         const existing = document.getElementById('typingIndicator');
         if (existing) existing.remove();
     }
