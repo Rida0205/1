@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>MP.econcours.ma | Cours - Marchés Publics</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary-dark: #0a2540;
+            --primary: #1a3a5c;
+            --gold: #c9a03d;
+            --gold-light: #e2c28b;
+            --white: #ffffff;
+            --gray-light: #f8fafc;
+            --gray: #eef2f8;
+            --text-dark: #1e2f3e;
+            --text-gray: #5a6e7c;
+            --shadow: 0 10px 30px -12px rgba(0,0,0,0.1);
+            --shadow-sm: 0 4px 12px rgba(0,0,0,0.05);
+            --radius: 24px;
+        }
+        body { font-family: 'Roboto', sans-serif; color: var(--text-dark); background: var(--gray-light); }
+        h1, h2, h3, .logo, .nav-links a { font-family: 'Poppins', sans-serif; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+        
+        .navbar { background: var(--white); box-shadow: var(--shadow-sm); position: sticky; top: 0; z-index: 1000; }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; padding: 16px 24px; max-width: 1400px; margin: 0 auto; flex-wrap: wrap; gap: 16px; }
+        .logo { font-size: 1.5rem; font-weight: 700; }
+        .logo .mp { color: var(--primary-dark); }
+        .logo .econcours { color: var(--gold); }
+        .nav-links { display: flex; gap: 28px; flex-wrap: wrap; }
+        .nav-links a { text-decoration: none; font-weight: 500; color: var(--text-dark); transition: color 0.2s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+        .nav-links i { margin-right: 6px; }
+        
+        .page-header { background: linear-gradient(135deg, var(--primary-dark), var(--primary)); color: white; padding: 60px 0 40px; text-align: center; }
+        .page-header h1 { font-size: 2.5rem; margin-bottom: 12px; }
+        .page-header p { opacity: 0.9; max-width: 700px; margin: 0 auto; }
+        
+        .section-title { font-size: 1.8rem; color: var(--primary-dark); margin: 48px 0 24px; border-left: 4px solid var(--gold); padding-left: 20px; }
+        
+        .cours-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 32px; margin-bottom: 60px; }
+        .cours-card { background: white; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-sm); transition: all 0.3s; border: 1px solid var(--gray); }
+        .cours-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+        .cours-header { background: linear-gradient(135deg, var(--primary-light), var(--primary)); padding: 24px; color: white; }
+        .cours-header h3 { font-size: 1.3rem; margin-bottom: 8px; }
+        .cours-header .badge { display: inline-block; background: rgba(255,255,255,0.2); padding: 4px 12px; border-radius: 20px; font-size: 0.7rem; }
+        .cours-body { padding: 24px; }
+        .cours-body p { color: var(--text-gray); margin-bottom: 16px; line-height: 1.6; }
+        .cours-body .btn-cours { display: inline-flex; align-items: center; gap: 8px; background: transparent; border: 1px solid var(--gold); color: var(--gold); padding: 8px 20px; border-radius: 40px; text-decoration: none; font-weight: 600; font-size: 0.85rem; transition: 0.2s; }
+        .cours-body .btn-cours:hover { background: var(--gold); color: white; }
+        
+        .pdf-download { background: var(--gray-light); border-radius: var(--radius); padding: 32px; text-align: center; margin: 40px 0; border: 1px solid var(--gray); }
+        .pdf-download i { font-size: 2.5rem; color: var(--gold); margin-bottom: 16px; }
+        .pdf-download h3 { margin-bottom: 8px; }
+        .pdf-download p { color: var(--text-gray); margin-bottom: 20px; }
+        
+        footer { background: var(--primary-dark); color: rgba(255,255,255,0.7); padding: 48px 24px 32px; margin-top: 60px; }
+        .footer-container { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
+        .footer-col h4 { color: white; margin-bottom: 16px; }
+        .footer-col a { display: block; color: rgba(255,255,255,0.6); text-decoration: none; margin-bottom: 10px; font-size: 0.85rem; }
+        .footer-col a:hover { color: var(--gold); }
+        .footer-bottom { text-align: center; padding-top: 32px; margin-top: 32px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.8rem; }
+        
+        @media (max-width: 768px) { .page-header h1 { font-size: 1.8rem; } .cours-grid { grid-template-columns: 1fr; } .nav-links { gap: 16px; font-size: 0.85rem; } }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <div class="nav-container">
+        <div class="logo"><span class="mp">MP</span><span>.</span><span class="econcours">econcours.ma</span></div>
+        <div class="nav-links">
+            <a href="index.html"><i class="fas fa-home"></i> Accueil</a>
+            <a href="cours.html" class="active"><i class="fas fa-book"></i> Cours</a>
+            <a href="outils.html"><i class="fas fa-calculator"></i> Outils</a>
+            <a href="apropos.html"><i class="fas fa-info-circle"></i> À propos</a>
+            <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+        </div>
+    </div>
+</div>
+
+<div class="page-header">
+    <h1>📚 Formation complète</h1>
+    <p>Maîtrisez les marchés publics étape par étape</p>
+</div>
+
+<div class="container">
+    <h2 class="section-title">📖 Introduction aux marchés publics</h2>
+    <div class="cours-grid">
+        <div class="cours-card"><div class="cours-header"><h3>🔹 Qu'est-ce qu'un marché public ?</h3><span class="badge">Débutant</span></div><div class="cours-body"><p>Définition, principes fondamentaux, acteurs et types de marchés publics au Maroc.</p><a href="#" class="btn-cours">Lire la suite <i class="fas fa-arrow-right"></i></a></div></div>
+        <div class="cours-card"><div class="cours-header"><h3>🔹 Les principes généraux</h3><span class="badge">Débutant</span></div><div class="cours-body"><p>Liberté d'accès, égalité de traitement, transparence, et application pratique.</p><a href="#" class="btn-cours">Lire la suite <i class="fas fa-arrow-right"></i></a></div></div>
+        <div class="cours-card"><div class="cours-header"><h3>🔹 Le cadre juridique marocain</h3><span class="badge">Débutant</span></div><div class="cours-body"><p>Décret 2-22-431, textes d'application, et jurisprudence récente.</p><a href="#" class="btn-cours">Lire la suite <i class="fas fa-arrow-right"></i></a></div></div>
+    </div>
+
+    <h2 class="section-title">📋 Procédures de passation</h2>
+    <div class="cours-grid">
+        <div class="cours-card"><div class="cours-header"><h3>🔸 Appel d'offres ouvert</h3><span class="badge">Intermédiaire</span></div><div class="cours-body"><p>Procédure, seuils, publicité, délais et étapes clés.</p><a href="#" class="btn-cours">Lire la suite <i class="fas fa-arrow-right"></i></a></div></div>
+        <div class="cours-card"><div class="cours-header"><h3>🔸 Appel d'offres restreint</h3><span class="badge">Intermédiaire</span></div><div class="cours-body"><p>Cas d'utilisation, sélection des candidats, mise en concurrence.</p><a href="#" class="btn-cours">Lire la suite <i class="fas fa-arrow-right"></i></a></div></div>
+        <div class="cours-card"><div class="cours-header"><h3>🔸 Procédure négociée</h3><span class="badge">Avancé</span></div><div class="cours-body"><p>Conditions, justification, et modalités de mise en œuvre.</p><a href="#" class="btn-cours">Lire la suite <i class="fas fa-arrow-right"></i></a></div></div>
+        <div class="cours-card"><div class="cours-header"><h3>🔸 Dialogue compétitif</h3><span class="badge">Avancé</span></div><div class="cours-body"><p>Pour projets complexes, étapes et particularités.</p><a href="#" class="btn-cours">Lire la suite <i class="fas fa-arrow-right"></i></a></div></div>
+    </div>
+
+    <h2 class="section-title">📊 Analyse des offres & attribution</h2>
+    <div class="cours-grid">
+        <div class="cours-card"><div class="cours-header"><h3>🔹 Critères d'évaluation</h3><span class="badge">Intermédiaire</span></div><div class="cours-body"><p>Critères financiers et techniques, pondération, notation.</p><a href="#" class="btn-cours">Lire la suite <i class="fas fa-arrow-right"></i></a></div></div>
+        <div class="cours-card"><div class="cours-header"><h3>🔹 Prix de référence</h3><span class="badge">Essentiel</span></div><div class="cours-body"><p>Méthode officielle de calcul, élimination des offres anormales.</p><a href="#" class="btn-cours">Lire la suite <i class="fas fa-arrow-right"></i></a></div></div>
+        <div class="cours-card"><div class="cours-header"><h3>🔹 Offres anormalement basses</h3><span class="badge">Avancé</span></div><div class="cours-body"><p>Détection, justification, rejet ou acceptation.</p><a href="#" class="btn-cours">Lire la suite <i class="fas fa-arrow-right"></i></a></div></div>
+    </div>
+
+    <h2 class="section-title">⚖️ Aspects juridiques & exécution</h2>
+    <div class="cours-grid">
+        <div class="cours-card"><div class="cours-header"><h3>🔸 Garanties et cautions</h3><span class="badge">Essentiel</span></div><div class="cours-body"><p>Garantie provisoire, garantie définitive, caution bancaire.</p><a href="#" class="btn-cours">Lire la suite <i class="fas fa-arrow-right"></i></a></div></div>
+        <div class="cours-card"><div class="cours-header"><h3>🔸 Avenants et modifications</h3><span class="badge">Avancé</span></div><div class="cours-body"><p>Conditions, limites, et procédure de modification.</p><a href="#" class="btn-cours">Lire la suite <i class="fas fa-arrow-right"></i></a></div></div>
+        <div class="cours-card"><div class="cours-header"><h3>🔸 Pénalités et litiges</h3><span class="badge">Avancé</span></div><div class="cours-body"><p>Pénalités de retard, résiliation, règlement des différends.</p><a href="#" class="btn-cours">Lire la suite <i class="fas fa-arrow-right"></i></a></div></div>
+    </div>
+
+    <div class="pdf-download">
+        <i class="fas fa-file-pdf"></i>
+        <h3>📥 Télécharger le guide complet</h3>
+        <p>Guide PDF récapitulatif des procédures et calculs (version gratuite)</p>
+        <a href="#" class="btn btn-primary" style="background: var(--gold); color: var(--primary-dark);"><i class="fas fa-download"></i> Télécharger gratuitement</a>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-container">
+        <div class="footer-col"><h4>MP.econcours.ma</h4><a href="index.html">Accueil</a><a href="cours.html">Cours</a><a href="outils.html">Outils</a></div>
+        <div class="footer-col"><h4>Ressources</h4><a href="#">Décret 2-22-431</a><a href="#">FAQ</a><a href="contact.html">Contact</a></div>
+        <div class="footer-col"><h4>Partenaire</h4><a href="https://econcours.ma" target="_blank">econcours.ma</a></div>
+        <div class="footer-col"><h4>Suivez-nous</h4><a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a><a href="#"><i class="fab fa-twitter"></i> Twitter</a></div>
+    </div>
+    <div class="footer-bottom"><p>🇲🇦 Plateforme basée sur la réglementation marocaine des marchés publics | © 2026</p></div>
+</footer>
+</body>
+</html>
