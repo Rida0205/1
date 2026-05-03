@@ -1,0 +1,28 @@
+{
+    "cours": [
+        {
+            "titre": "🔹 Comprendre l'appel d'offres (AO)",
+            "description": "Définition, types (ouvert, restreint, concours), conditions de participation."
+        },
+        {
+            "titre": "🔹 Préparation du dossier de soumission",
+            "description": "Pièces administratives, pièces techniques, cautions provisoires."
+        },
+        {
+            "titre": "🔹 Garanties : provisoire et définitive",
+            "description": "Montants, durée, caution bancaire, mise en jeu."
+        },
+        {
+            "titre": "🔹 Évaluation des offres et attribution",
+            "description": "Critères d'évaluation, méthode du prix de référence, élimination des offres anormales."
+        },
+        {
+            "titre": "🔹 Exécution du marché et pénalités",
+            "description": "Avenants, retards, pénalités de retard, règlement des litiges."
+        },
+        {
+            "titre": "🔹 Aspects juridiques",
+            "description": "Décret 2-22-431, principes généraux, cadre légal marocain."
+        }
+    ]
+}
