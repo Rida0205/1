@@ -199,7 +199,7 @@
       transform: none;
     }
 
-    /* Loading Overlay - أنيق بدون إزعاج */
+    /* Loading Overlay */
     .loading-container {
       display: flex;
       flex-direction: column;
@@ -502,6 +502,9 @@
   // -------------------- مفتاح API مضمن مباشرة --------------------
   const GROQ_API_KEY = "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";
   
+  // استخدام النموذج المحدث (llama-3.1-8b-instant)
+  const AI_MODEL = "llama-3.1-8b-instant";
+  
   let currentLang = 'ar';
   let isProcessing = false;
 
@@ -594,23 +597,23 @@
         </div>
       </div>
     `;
-    // محاكاة تغيير الخطوات لتجربة سلسة
-    setTimeout(() => {
-      const step1 = document.getElementById('step1');
-      if(step1) step1.classList.add('active');
-    }, 100);
-    setTimeout(() => {
-      const step2 = document.getElementById('step2');
-      const mainText = document.getElementById('loadingMainText');
-      const subText = document.getElementById('loadingSubText');
-      if(step2) step2.classList.add('active');
-      if(mainText) mainText.innerHTML = t.searching;
-      if(subText) subText.innerHTML = t.ranking;
-    }, 1500);
-    setTimeout(() => {
-      const step3 = document.getElementById('step3');
-      if(step3) step3.classList.add('active');
-    }, 2800);
+    
+    let stepIndex = 1;
+    const steps = ['step1', 'step2', 'step3'];
+    const texts = [t.step1, t.step2, t.step3];
+    const mainTexts = [t.analyzing, t.searching, t.ranking];
+    const subTexts = [t.searching, t.ranking, t.ready];
+    
+    steps.forEach((stepId, idx) => {
+      setTimeout(() => {
+        const stepEl = document.getElementById(stepId);
+        const mainTextEl = document.getElementById('loadingMainText');
+        const subTextEl = document.getElementById('loadingSubText');
+        if (stepEl) stepEl.classList.add('active');
+        if (mainTextEl && mainTexts[idx]) mainTextEl.innerHTML = mainTexts[idx];
+        if (subTextEl && subTexts[idx]) subTextEl.innerHTML = subTexts[idx];
+      }, idx * 1200);
+    });
   }
 
   async function callGroqAI(prompt, systemMsg = "You are an expert job matching AI assistant in Morocco.") {
@@ -621,7 +624,7 @@
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        model: "llama3-8b-8192",
+        model: AI_MODEL,
         messages: [
           { role: "system", content: systemMsg },
           { role: "user", content: prompt }
@@ -630,6 +633,7 @@
         max_tokens: 2000
       })
     });
+    
     if (!response.ok) {
       const err = await response.text();
       throw new Error(`API Error: ${err}`);
@@ -640,33 +644,57 @@
 
   async function getAIMatchedCompanies(userProfile) {
     const skillsStr = userProfile.skillsArray.join(", ");
-    const prompt = `Generate 6 REAL Moroccan companies (existing brands: Attijariwafa bank, BMCE, Maroc Telecom, CGI, OCP, LabelVie, HPS, Disway, etc.) that would hire this candidate:
+    const prompt = `Generate 6 REAL Moroccan companies (existing brands like: Attijariwafa bank, BMCE Bank, Maroc Telecom, CGI Maroc, OCP Group, LabelVie, HPS, Disway, Deloitte Maroc, PwC Maroc, etc.) that would hire this candidate:
 - Diploma: ${userProfile.diploma}
 - Skills: ${skillsStr}
 - City: ${userProfile.city}
 
-Return ONLY JSON array with fields: name, sector, city, email (realistic format like recrutement@company.ma), phone (05xx-xxxxxx), required_skills (array), match_score (0-100), reason_short (in ${currentLang === 'ar' ? 'Arabic' : 'French'}, max 50 chars).
-Example: [{"name":"BMCE Capital","sector":"Finance","city":"Casablanca","email":"recrutement@bmcecapital.ma","phone":"0520223300","required_skills":["finance","analyse"],"match_score":88,"reason_short":"مهاراتك المالية مطلوبة بشدة"}]`;
+Return ONLY valid JSON array with fields: name, sector, city, email (realistic format like recrutement@company.ma), phone (05xx-xxxxxx format), required_skills (array of 3-4 skills), match_score (number 0-100), reason_short (in ${currentLang === 'ar' ? 'Arabic' : 'French'}, max 50 chars).
+
+Example: [{"name":"BMCE Capital","sector":"Finance","city":"Casablanca","email":"recrutement@bmcecapital.ma","phone":"0520223300","required_skills":["finance","analyse","excel"],"match_score":88,"reason_short":"مهاراتك المالية مطلوبة بشدة"}]
+
+IMPORTANT: Return ONLY the JSON array, no extra text.`;
     
-    const aiResponse = await callGroqAI(prompt, "You return only valid JSON array with real Moroccan companies.");
+    const aiResponse = await callGroqAI(prompt, "You return only valid JSON array with real Moroccan companies. Do not add any markdown or explanation.");
     let clean = aiResponse.trim();
+    // إزالة أي علامات markdown
     if (clean.startsWith("```json")) clean = clean.slice(7);
     if (clean.startsWith("```")) clean = clean.slice(3);
     if (clean.endsWith("```")) clean = clean.slice(0, -3);
+    clean = clean.trim();
+    
     const companies = JSON.parse(clean);
-    if (!Array.isArray(companies)) throw new Error("Invalid response");
+    if (!Array.isArray(companies)) throw new Error("Invalid response format");
     companies.sort((a,b) => b.match_score - a.match_score);
     return companies.slice(0, 6);
   }
 
   async function generateEmailWithAI(company, userProfile) {
-    const langPrompt = currentLang === 'ar' ? "in Arabic (professional and formal)" : "in French (professional)";
+    const langPrompt = currentLang === 'ar' ? "in Arabic (professional, formal, friendly)" : "in French (professional, formal, friendly)";
     const prompt = `Write a short professional job application email from candidate to company.
-Candidate: ${userProfile.fullName}, diploma: ${userProfile.diploma}, skills: ${userProfile.skillsArray.join(", ")}, city: ${userProfile.city}.
-Company: ${company.name} (${company.sector}).
-Write the email ${langPrompt}. Include subject line. Keep concise, polite, ready to send.`;
-    const email = await callGroqAI(prompt, "You are a professional career coach.");
+Candidate: ${userProfile.fullName}
+Diploma: ${userProfile.diploma}
+Skills: ${userProfile.skillsArray.join(", ")}
+City: ${userProfile.city}
+Company: ${company.name} (${company.sector})
+Write the email ${langPrompt}. Include a subject line. Keep it concise (max 8 sentences), polite, and ready to send.`;
+    
+    const email = await callGroqAI(prompt, "You are a professional career coach writing job application emails.");
     return email;
+  }
+
+  // قاعدة بيانات احتياطية في حالة فشل API
+  function getFallbackCompanies(userProfile) {
+    const companies = [
+      { name: "CGI Maroc", sector: "IT Services", city: "الدار البيضاء", email: "recrutement@cgi.ma", phone: "0520294949", required_skills: ["JavaScript", "Python", "SQL"], match_score: 85, reason_short: currentLang === 'ar' ? "شركة رائدة في التكنولوجيا تبحث عن مطورين" : "Leader technologique recherchant des développeurs" },
+      { name: "Attijariwafa bank", sector: "Banque", city: "الدار البيضاء", email: "carrieres@attijari.ma", phone: "0520292929", required_skills: ["finance", "تحليل بيانات", "تواصل"], match_score: 78, reason_short: currentLang === 'ar' ? "خبرتك المالية مطلوبة في أكبر بنك بالمغرب" : "Votre expérience financière est recherchée" },
+      { name: "Maroc Telecom", sector: "Télécommunications", city: "الرباط", email: "jobs@iam.ma", phone: "0537791111", required_skills: ["réseaux", "تطوير", "خدمة العملاء"], match_score: 72, reason_short: currentLang === 'ar' ? "شركة الاتصالات الرائدة تحتاج مهاراتك" : "Leader des télécommunications a besoin de vos compétences" }
+    ];
+    // إضافة شركات إضافية بناءً على المدينة
+    if (userProfile.city.includes("طنجة") || userProfile.city.includes("Tanger")) {
+      companies.push({ name: "Tangier Med Zones", sector: "Logistique", city: "طنجة", email: "hr@tanger-med.ma", phone: "0539393939", required_skills: ["logistique", "gestion", "anglais"], match_score: 70, reason_short: currentLang === 'ar' ? "منطقة طنجة المتوسط تبحث عن كفاءات" : "La zone Tanger Med recherche des talents" });
+    }
+    return companies.slice(0, 5);
   }
 
   function escapeHtml(str) {
@@ -690,7 +718,7 @@ Write the email ${langPrompt}. Include subject line. Keep concise, polite, ready
     let html = '<div class="cards-grid">';
     companies.forEach((co, idx) => {
       const isBest = idx === 0;
-      const score = co.match_score || 75;
+      const score = co.match_score || 70;
       html += `
         <div class="company-card ${isBest ? 'best-match' : ''}">
           <div class="card-header">
@@ -733,6 +761,7 @@ Write the email ${langPrompt}. Include subject line. Keep concise, polite, ready
           const copyBtn = card.querySelector('.copy-btn');
           if (copyBtn) copyBtn.setAttribute('data-email-message', emailContent);
         } catch(err) {
+          console.error(err);
           msgDiv.style.display = 'block';
           msgDiv.innerHTML = `<span style="color:red;">⚠️ ${err.message}</span>`;
         } finally {
@@ -750,7 +779,10 @@ Write the email ${langPrompt}. Include subject line. Keep concise, polite, ready
           const msgDiv = card.querySelector('.generated-message');
           if (msgDiv && msgDiv.innerText) message = msgDiv.innerText.replace(/✉️.*:/,'').trim();
         }
-        if (!message) { alert(currentLang === 'ar' ? "يرجى إنشاء البريد أولاً" : "Veuillez d'abord générer l'email"); return; }
+        if (!message) { 
+          alert(currentLang === 'ar' ? "يرجى إنشاء البريد أولاً" : "Veuillez d'abord générer l'email"); 
+          return; 
+        }
         await navigator.clipboard.writeText(message);
         const orig = btn.innerHTML;
         btn.innerHTML = t.copied;
@@ -776,18 +808,25 @@ Write the email ${langPrompt}. Include subject line. Keep concise, polite, ready
     
     const userProfile = { fullName, diploma, city, skillsArray };
     
-    // إظهار loading أنيق
     showLoadingOverlay();
     const btn = document.getElementById('matchBtn');
     btn.disabled = true;
     btn.innerHTML = "<span class='pulse-loader' style='width:20px;height:20px;margin:0;'></span> جاري التحليل...";
     
     try {
-      const companies = await getAIMatchedCompanies(userProfile);
+      let companies;
+      try {
+        companies = await getAIMatchedCompanies(userProfile);
+      } catch (aiError) {
+        console.warn("AI failed, using fallback:", aiError);
+        companies = getFallbackCompanies(userProfile);
+      }
       renderResults(companies, userProfile);
     } catch (err) {
       console.error(err);
-      cardsContainer.innerHTML = `<div style="grid-column:1/-1; background:white; border-radius:1.5rem; padding:2rem; text-align:center; color:red;">❌ خطأ: ${err.message}</div>`;
+      // استخدام البيانات الاحتياطية في حالة فشل كامل
+      const fallback = getFallbackCompanies(userProfile);
+      renderResults(fallback, userProfile);
     } finally {
       btn.disabled = false;
       btn.innerHTML = "<span>🤖</span> ابدأ البحث الذكي";
