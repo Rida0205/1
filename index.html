@@ -191,6 +191,8 @@
       font-size: 1.1rem;
       color: #8fa0b0;
       pointer-events: none;
+      font-style: normal;
+      line-height: 1;
     }
 
     input:focus, textarea:focus {
@@ -495,28 +497,28 @@
     <form id="matchForm">
       <div class="form-grid">
         <div class="input-group">
-          <label id="labelFullName">👤 Full Name</label>
+          <label id="labelFullName">Full Name</label>
           <div class="input-icon">
             <i>👤</i>
             <input type="text" id="fullName" placeholder="Karim Benjelloun" required>
           </div>
         </div>
         <div class="input-group">
-          <label id="labelDiploma">🎓 Diploma</label>
+          <label id="labelDiploma">Diploma</label>
           <div class="input-icon">
             <i>🎓</i>
             <input type="text" id="diploma" placeholder="Master in Marketing, Bac+3" required>
           </div>
         </div>
         <div class="input-group">
-          <label id="labelCity">📍 City</label>
+          <label id="labelCity">City</label>
           <div class="input-icon">
             <i>📍</i>
             <input type="text" id="city" placeholder="Casablanca, Rabat, Tangier" required>
           </div>
         </div>
         <div class="input-group">
-          <label id="labelSkills">⚙️ Skills (comma separated)</label>
+          <label id="labelSkills">Skills (comma separated)</label>
           <div class="input-icon">
             <i>⚙️</i>
             <textarea id="skills" placeholder="JavaScript, Project Management, Communication, Excel" required></textarea>
@@ -548,11 +550,11 @@
     fr: {
       mainTitle: "Trouvez les entreprises qui correspondent à votre profil",
       mainDesc: "Connectez-vous aux meilleures entreprises marocaines et envoyez des messages professionnels instantanément.",
-      labelFullName: "👤 Nom complet",
-      labelDiploma: "🎓 Diplôme",
-      labelCity: "📍 Ville",
-      labelSkills: "⚙️ Compétences (séparez par des virgules)",
-      matchBtn: "🔍 Trouver mes meilleures correspondances",
+      labelFullName: "Nom complet",
+      labelDiploma: "Diplôme",
+      labelCity: "Ville",
+      labelSkills: "Compétences (séparez par des virgules)",
+      matchBtn: "Trouver mes meilleures correspondances",
       resultTitle: "✨ Entreprises recommandées",
       footer: "Smart Job Matcher — matching intelligent © Econcours.ma",
       noMatch: "⚠️ Aucune correspondance trouvée. Élargissez vos compétences ou votre ville.",
@@ -575,11 +577,11 @@
     ar: {
       mainTitle: "ابحث عن الشركات التي تناسب ملفك الشخصي",
       mainDesc: "تواصل مع أفضل الشركات المغربية وأرسل رسائل مهنية فورية.",
-      labelFullName: "👤 الاسم الكامل",
-      labelDiploma: "🎓 الشهادة",
-      labelCity: "📍 المدينة",
-      labelSkills: "⚙️ المهارات (افصل بينها بفواصل)",
-      matchBtn: "🔍 ابحث عن أفضل التطابقات",
+      labelFullName: "الاسم الكامل",
+      labelDiploma: "الشهادة",
+      labelCity: "المدينة",
+      labelSkills: "المهارات (افصل بينها بفواصل)",
+      matchBtn: "ابحث عن أفضل التطابقات",
       resultTitle: "✨ الشركات الموصى بها",
       footer: "سمارت ماتشر — مطابقة ذكية © Econcours.ma",
       noMatch: "⚠️ لم يتم العثور على تطابقات. وسّع مهاراتك أو مدينتك.",
@@ -726,7 +728,7 @@
         const card = btn.closest('.company-card');
         const msgDiv = card.querySelector('.generated-message-box');
         const original = btn.innerHTML;
-        btn.innerHTML = `<span class="spinner" style="width:14px;height:14px;border-width:2px;margin-right:6px;"></span> ${t.loading}`;
+        btn.innerHTML = `<span class="spinner" style="width:14px;height:14px;border-width:2px;margin-right:6px;display:inline-block;"></span> ${t.loading}`;
         btn.disabled = true;
         setTimeout(() => {
           const emailMsg = generateEmail(usr, co);
