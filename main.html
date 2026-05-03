@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>MP.econcours.ma | Formation Marchés Publics</title>
-    <meta name="description" content="Formation complète sur les marchés publics au Maroc : calcul du prix de référence, avance, garanties.">
+    <title>MP.econcours.ma | Plateforme</title>
+    <meta name="description" content="Plateforme de formation aux marchés publics au Maroc.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text x='50%' y='50%' text-anchor='middle' dy='.35em' font-size='80' fill='%232c7da0'>📘</text></svg>">
     <style>
-        /* RESET & BASE - Mobile First */
         * {
             margin: 0;
             padding: 0;
@@ -18,44 +17,45 @@
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: #f5f7fb;
+            background: #f8fafc;
             color: #1e2f3e;
             line-height: 1.5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
-        /* Typographie */
-        h1 { font-size: 1.8rem; font-weight: 700; }
-        h2 { font-size: 1.4rem; font-weight: 600; }
-        h3 { font-size: 1.1rem; font-weight: 600; }
-        @media (min-width: 768px) {
-            h1 { font-size: 2.2rem; }
-            h2 { font-size: 1.6rem; }
-        }
-
-        /* Navbar */
+        /* Navigation */
         .navbar {
             background: white;
             border-bottom: 1px solid #eef2f6;
+            padding: 14px 20px;
             position: sticky;
             top: 0;
             z-index: 100;
-            padding: 12px 20px;
         }
         .nav-container {
-            max-width: 1280px;
+            max-width: 1200px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 12px;
+            gap: 16px;
         }
         .logo {
             font-weight: 800;
             font-size: 1.3rem;
         }
-        .logo .mp { color: #0f3b5f; }
-        .logo .econcours { color: #2c7da0; }
+        .logo .mp {
+            background: linear-gradient(135deg, #0f3b5f, #2c7da0);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .logo .econcours {
+            color: #2c7da0;
+        }
         .nav-links {
             display: flex;
             gap: 24px;
@@ -63,296 +63,103 @@
         }
         .nav-links a {
             text-decoration: none;
-            font-weight: 500;
             color: #4a6a7e;
+            font-weight: 500;
             font-size: 0.9rem;
-            transition: 0.2s;
+            transition: color 0.2s;
         }
-        .nav-links a:hover { color: #2c7da0; }
-        .nav-links i { margin-right: 6px; }
+        .nav-links a:hover {
+            color: #2c7da0;
+        }
+        .nav-links i {
+            margin-right: 6px;
+        }
 
-        /* Hero Section */
+        /* Hero simple */
         .hero-simple {
             background: white;
-            padding: 32px 20px;
-            margin-bottom: 32px;
+            padding: 40px 20px;
+            text-align: center;
             border-bottom: 1px solid #eef2f6;
         }
         .hero-simple h1 {
+            font-size: 1.8rem;
             color: #144d6b;
             margin-bottom: 12px;
         }
         .hero-simple p {
             color: #5a7a92;
-            max-width: 650px;
-            font-size: 1rem;
-        }
-
-        /* Container principal */
-        .main-container {
-            max-width: 1280px;
+            max-width: 550px;
             margin: 0 auto;
-            padding: 0 20px 48px 20px;
+            font-size: 0.95rem;
         }
 
-        /* Layout deux colonnes - responsive */
-        .two-columns {
-            display: flex;
-            flex-direction: column;
+        /* Dashboard Cards */
+        .dashboard {
+            flex: 1;
+            max-width: 1000px;
+            margin: 48px auto;
+            padding: 0 20px;
+        }
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 32px;
         }
-        @media (min-width: 900px) {
-            .two-columns {
-                flex-direction: row;
-                align-items: flex-start;
-            }
-            .column-left {
-                flex: 1.2;
-                min-width: 0;
-            }
-            .column-right {
-                flex: 1.8;
-                min-width: 0;
-            }
-        }
-
-        /* Cartes */
-        .card {
+        .dashboard-card {
             background: white;
-            border-radius: 28px;
-            padding: 24px;
-            margin-bottom: 28px;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.04);
-            border: 1px solid #eef2f8;
-            transition: 0.2s;
-        }
-        .card-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 24px;
-            padding-bottom: 16px;
-            border-bottom: 2px solid rgba(44,125,160,0.15);
-        }
-        .card-header i {
-            font-size: 1.5rem;
-            color: #2c7da0;
-            background: #eef6fa;
-            padding: 10px;
-            border-radius: 16px;
-        }
-        .card-header h2 {
-            color: #144d6b;
-            margin: 0;
-        }
-
-        /* Liste des guides */
-        .guides-list {
-            list-style: none;
-        }
-        .guides-list li {
-            display: flex;
-            align-items: flex-start;
-            gap: 14px;
-            padding: 14px 12px;
-            margin-bottom: 8px;
-            border-radius: 20px;
-            transition: 0.2s;
-            cursor: pointer;
-        }
-        .guides-list li:hover {
-            background: #f8fafd;
-        }
-        .guides-list li i {
-            font-size: 1.2rem;
-            color: #2c7da0;
-            margin-top: 2px;
-        }
-        .lesson-title {
-            font-weight: 700;
-            color: #1f6392;
-            display: block;
-            margin-bottom: 4px;
-        }
-        .lesson-desc {
-            font-size: 0.85rem;
-            color: #6b8ba0;
-        }
-        .coming-soon {
-            background: #f8fafd;
-            border-radius: 20px;
-            padding: 16px;
+            border-radius: 32px;
+            padding: 40px 28px;
             text-align: center;
-            color: #8aaec2;
-            font-size: 0.85rem;
-            margin-top: 16px;
-            border: 1px dashed #cde1ef;
-        }
-
-        /* Calculateurs */
-        .calculators {
-            display: flex;
-            flex-direction: column;
-            gap: 28px;
-        }
-        .calc-box {
-            background: white;
-            border-radius: 28px;
-            padding: 24px;
+            transition: all 0.3s ease;
             border: 1px solid #eef2f8;
-            transition: 0.2s;
-        }
-        .calc-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 20px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid #eef2f8;
-        }
-        .calc-header i {
-            font-size: 1.5rem;
-            color: #2c7da0;
-        }
-        .calc-header h4 {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: #144d6b;
-        }
-        label {
-            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            text-decoration: none;
             display: block;
-            margin: 14px 0 6px;
-            font-size: 0.85rem;
-            color: #2c5a74;
         }
-        select, input {
-            width: 100%;
-            padding: 14px 16px;
-            border-radius: 20px;
-            border: 1.5px solid #e2e8f0;
-            font-size: 0.95rem;
-            font-family: inherit;
-            background: white;
-            transition: 0.2s;
+        .dashboard-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
+            border-color: #dce7f0;
         }
-        select:focus, input:focus {
-            outline: none;
-            border-color: #2c7da0;
-            box-shadow: 0 0 0 3px rgba(44,125,160,0.1);
-        }
-        button {
-            background: #2c7da0;
-            color: white;
-            border: none;
-            padding: 14px 24px;
-            border-radius: 40px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            margin-top: 16px;
-            cursor: pointer;
-            transition: all 0.2s;
-            width: 100%;
+        .card-icon {
+            width: 80px;
+            height: 80px;
+            background: #eef6fa;
+            border-radius: 60px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            margin: 0 auto 24px;
         }
-        button:hover {
-            background: #1f6392;
-            transform: translateY(-1px);
+        .card-icon i {
+            font-size: 2.5rem;
+            color: #2c7da0;
         }
-        .result {
-            background: #f8fafd;
-            padding: 16px;
-            border-radius: 20px;
-            margin-top: 16px;
-            font-weight: 500;
+        .dashboard-card h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #144d6b;
+            margin-bottom: 12px;
+        }
+        .dashboard-card p {
+            color: #6b8ba0;
             font-size: 0.9rem;
-            border-left: 4px solid #2c7da0;
+            margin-bottom: 20px;
         }
-        .info-note {
-            background: #fef8e7;
-            padding: 12px 16px;
-            border-radius: 20px;
-            font-size: 0.7rem;
-            color: #b68b40;
-            margin-top: 12px;
-        }
-        .offres-list {
-            margin-top: 12px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-        .offre-tag {
-            background: #eef3fc;
-            padding: 6px 14px;
-            border-radius: 30px;
-            font-size: 0.8rem;
-            font-weight: 500;
+        .card-arrow {
             display: inline-flex;
             align-items: center;
             gap: 8px;
+            color: #2c7da0;
+            font-weight: 600;
+            font-size: 0.85rem;
         }
-        .offre-tag.excluded {
-            background: #fee;
-            text-decoration: line-through;
-            color: #c00;
+        .dashboard-card:hover .card-arrow i {
+            transform: translateX(4px);
         }
-        .remove-offre {
-            cursor: pointer;
-            color: #c00;
-            font-weight: bold;
-        }
-        .add-offre {
-            display: flex;
-            gap: 10px;
-            margin-top: 12px;
-        }
-        .add-offre input {
-            flex: 2;
-            margin: 0;
-        }
-        .add-offre button {
-            width: auto;
-            margin: 0;
-            padding: 12px 20px;
-            background: #4a7c9c;
-        }
-        .row-buttons {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-        .row-buttons button {
-            flex: 1;
-        }
-        .checkbox-group {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin: 12px 0;
-            flex-wrap: wrap;
-        }
-        .checkbox-group input {
-            width: auto;
-            margin: 0;
-        }
-        .inline-group {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-        .inline-group input {
-            width: 100px;
-            margin: 0;
-        }
-        hr {
-            margin: 16px 0;
-            border: none;
-            border-top: 1px solid #eef2f8;
+        .card-arrow i {
+            transition: transform 0.2s;
         }
 
         /* Footer */
@@ -361,213 +168,62 @@
             border-top: 1px solid #eef2f8;
             text-align: center;
             padding: 32px 20px;
-            color: #5a7a92;
-            font-size: 0.85rem;
-            margin-top: 32px;
+            color: #7a9bb3;
+            font-size: 0.8rem;
+            margin-top: auto;
         }
         footer a {
             color: #2c7da0;
             text-decoration: none;
         }
 
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .card, .calc-box {
-            animation: fadeIn 0.3s ease forwards;
-        }
-
-        /* Responsive tweaks pour mobile */
-        @media (max-width: 480px) {
-            .navbar { padding: 12px 16px; }
-            .hero-simple { padding: 24px 16px; }
-            .main-container { padding: 0 16px 32px 16px; }
-            .card { padding: 20px; }
-            .calc-box { padding: 20px; }
-            button { padding: 12px 20px; }
-            input, select { padding: 12px 14px; }
+        @media (max-width: 640px) {
+            .hero-simple h1 { font-size: 1.5rem; }
+            .dashboard-card { padding: 28px 20px; }
+            .card-icon { width: 64px; height: 64px; }
+            .card-icon i { font-size: 2rem; }
+            .dashboard-card h2 { font-size: 1.3rem; }
         }
     </style>
 </head>
 <body>
 
-<!-- Navigation -->
 <div class="navbar">
     <div class="nav-container">
         <div class="logo">
             <span class="mp">MP</span><span>.</span><span class="econcours">econcours.ma</span>
         </div>
         <div class="nav-links">
-            <a href="#guides"><i class="fas fa-book"></i> Guides</a>
-            <a href="#calculateurs"><i class="fas fa-calculator"></i> Calculateurs</a>
             <a href="index.html"><i class="fas fa-home"></i> Accueil</a>
             <a href="https://econcours.ma" target="_blank"><i class="fas fa-briefcase"></i> econcours.ma</a>
         </div>
     </div>
 </div>
 
-<!-- Hero -->
 <div class="hero-simple">
-    <h1>📘 Formation Marchés Publics</h1>
-    <p>Guides pratiques et calculateurs interactifs : prix de référence, avances, garanties. Basé sur le décret marocain.</p>
+    <h1>📚 Bienvenue sur la plateforme</h1>
+    <p>Choisissez votre espace pour commencer</p>
 </div>
 
-<div class="main-container">
-    <div class="two-columns">
-        <!-- COLONNE GAUCHE : GUIDES -->
-        <div class="column-left" id="guides">
-            <div class="card">
-                <div class="card-header">
-                    <i class="fas fa-graduation-cap"></i>
-                    <h2>📖 Chapitres & guides</h2>
-                </div>
-                <ul class="guides-list">
-                    <li>
-                        <i class="fas fa-file-signature"></i>
-                        <div>
-                            <span class="lesson-title">🔹 Comprendre l'appel d'offres (AO)</span>
-                            <span class="lesson-desc">Définition, types (ouvert, restreint, concours).</span>
-                        </div>
-                    </li>
-                    <li>
-                        <i class="fas fa-folder-open"></i>
-                        <div>
-                            <span class="lesson-title">🔹 Préparation du dossier de soumission</span>
-                            <span class="lesson-desc">Pièces administratives et techniques.</span>
-                        </div>
-                    </li>
-                    <li>
-                        <i class="fas fa-shield-alt"></i>
-                        <div>
-                            <span class="lesson-title">🔹 Garanties : provisoire et définitive</span>
-                            <span class="lesson-desc">Montants, durée, caution bancaire.</span>
-                        </div>
-                    </li>
-                    <li>
-                        <i class="fas fa-chart-simple"></i>
-                        <div>
-                            <span class="lesson-title">🔹 Évaluation des offres et attribution</span>
-                            <span class="lesson-desc">Critères, annulation, recours.</span>
-                        </div>
-                    </li>
-                    <li>
-                        <i class="fas fa-gavel"></i>
-                        <div>
-                            <span class="lesson-title">🔹 Exécution du marché & pénalités</span>
-                            <span class="lesson-desc">Avenants, retards, règlement litiges.</span>
-                        </div>
-                    </li>
-                </ul>
-                <div class="coming-soon">
-                    <i class="fas fa-plus-circle"></i> D'autres chapitres seront ajoutés prochainement...
-                </div>
+<div class="dashboard">
+    <div class="cards-grid">
+        <a href="lessons.html" class="dashboard-card">
+            <div class="card-icon">
+                <i class="fas fa-book-open"></i>
             </div>
-        </div>
+            <h2>📖 Guides & cours</h2>
+            <p>Chapitres détaillés, explications des appels d'offres, garanties, évaluation des offres et plus encore.</p>
+            <span class="card-arrow">Accéder aux cours <i class="fas fa-arrow-right"></i></span>
+        </a>
 
-        <!-- COLONNE DROITE : CALCULATEURS -->
-        <div class="column-right" id="calculateurs">
-            <div class="calculators">
-                
-                <!-- Calculateur 1 : Prix de référence -->
-                <div class="calc-box">
-                    <div class="calc-header">
-                        <i class="fas fa-chart-line"></i>
-                        <h4>🎯 Prix de référence</h4>
-                    </div>
-                    <label>Estimation maître d'ouvrage (E) - DH</label>
-                    <input type="number" id="estimation" value="100000">
-                    
-                    <label>Type de marché</label>
-                    <select id="typeMarche">
-                        <option value="travaux">Travaux</option>
-                        <option value="fournitures">Fournitures & Services</option>
-                    </select>
-                    
-                    <label>Liste des offres (DH)</label>
-                    <div id="offresContainer" class="offres-list"></div>
-                    <div class="add-offre">
-                        <input type="number" id="newOffre" placeholder="Ajouter une offre">
-                        <button id="btnAddOffre"><i class="fas fa-plus"></i> Ajouter</button>
-                    </div>
-                    <div class="row-buttons">
-                        <button id="btnResetOffres"><i class="fas fa-trash-alt"></i> Réinitialiser</button>
-                        <button id="calcReference"><i class="fas fa-calculator"></i> Calculer</button>
-                    </div>
-                    <div class="result" id="resultRef">📊 En attente des offres...</div>
-                    <div class="info-note">📌 E±20% (travaux) ou E-25% (F&S) → P = (E+M)/2 → offre la plus proche</div>
-                </div>
-
-                <!-- Calculateur 2 : Avance -->
-                <div class="calc-box">
-                    <div class="calc-header">
-                        <i class="fas fa-coins"></i>
-                        <h4>💰 Avance (Décret)</h4>
-                    </div>
-                    <label>Montant total du marché (TTC) - DH</label>
-                    <input type="number" id="avanceMontantMarche" value="12000000">
-                    <label>Délai d'exécution (mois)</label>
-                    <input type="number" id="avanceDelai" value="6">
-                    
-                    <div class="inline-group">
-                        <label>Partie sous-traitée :</label>
-                        <input type="number" id="sousTraitancePourcent" step="5" value="0" style="width:80px;"> <span>%</span>
-                    </div>
-                    
-                    <label>Type de marché</label>
-                    <select id="avanceTypeMarche">
-                        <option value="normal">Marché normal</option>
-                        <option value="cadre">Marché-cadre</option>
-                        <option value="reconductible">Marché reconductible</option>
-                        <option value="tranche">Marché à tranches</option>
-                    </select>
-                    
-                    <label>Nombre de lots (même titulaire)</label>
-                    <input type="number" id="avanceNbLots" value="1">
-                    
-                    <button id="calcAvanceDetail"><i class="fas fa-calculator"></i> Calculer l'avance</button>
-                    <div class="result" id="resultAvanceDetail">💰 Avance : --- DH</div>
-                    
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="cautionFournie">
-                        <label style="margin:0">🔐 Caution bancaire fournie (obligatoire)</label>
-                    </div>
-                    
-                    <label>Pourcentage d'exécution (%)</label>
-                    <input type="number" id="pourcentageExecution" value="0" step="10">
-                    <button id="calcRemboursement"><i class="fas fa-sync-alt"></i> Simuler remboursement</button>
-                    <div class="result" id="resultRemboursement">💸 Suivi du remboursement : ---</div>
-                    <div class="info-note">📋 10% sur 10M DH + 5% sur reste (max 20M) | Remboursement complet à 80% d'exécution</div>
-                </div>
-
-                <!-- Calculateur 3 : Garantie provisoire -->
-                <div class="calc-box">
-                    <div class="calc-header">
-                        <i class="fas fa-lock"></i>
-                        <h4>🔐 Garantie provisoire</h4>
-                    </div>
-                    <label>Montant estimé du marché (DH)</label>
-                    <input type="number" id="montantMarcheG" placeholder="Ex: 500000">
-                    <button id="calcGarantieProvisoire"><i class="fas fa-calculator"></i> Calculer (2%)</button>
-                    <div class="result" id="resultGP">📌 Garantie provisoire : --- DH</div>
-                    <div class="info-note">* Selon article 46 : 1% à 3% du montant (par défaut 2%)</div>
-                </div>
-
-                <!-- Calculateur 4 : Garantie définitive -->
-                <div class="calc-box">
-                    <div class="calc-header">
-                        <i class="fas fa-shield-alt"></i>
-                        <h4>🛡️ Garantie définitive</h4>
-                    </div>
-                    <label>Montant du marché (HT) - DH</label>
-                    <input type="number" id="montantGD" placeholder="Ex: 1000000">
-                    <button id="calcGarantieDef"><i class="fas fa-calculator"></i> Calculer (5%)</button>
-                    <div class="result" id="resultGD">🛡️ Garantie définitive : --- DH</div>
-                </div>
-
+        <a href="calculators.html" class="dashboard-card">
+            <div class="card-icon">
+                <i class="fas fa-calculator"></i>
             </div>
-        </div>
+            <h2>🧮 Calculateurs</h2>
+            <p>Prix de référence, avances, garanties. Tous les calculs automatiques selon la méthode officielle.</p>
+            <span class="card-arrow">Accéder aux calculateurs <i class="fas fa-arrow-right"></i></span>
+        </a>
     </div>
 </div>
 
@@ -576,108 +232,5 @@
     <p>🔗 <a href="https://econcours.ma" target="_blank">econcours.ma</a> | Emploi & formation publique</p>
 </footer>
 
-<script>
-    // ========== PRIX DE RÉFÉRENCE ==========
-    let offres = [80000, 90000, 100000, 130000];
-    
-    function afficherOffres() {
-        const container = document.getElementById('offresContainer');
-        if (!container) return;
-        const estimation = parseFloat(document.getElementById('estimation').value) || 0;
-        const typeMarche = document.getElementById('typeMarche').value;
-        const seuilBas = typeMarche === 'travaux' ? 0.20 : 0.25;
-        const seuilHaut = 0.20;
-        let html = '';
-        offres.forEach((offre, index) => {
-            let isExcluded = false;
-            if (estimation > 0) {
-                if (offre > estimation * (1 + seuilHaut)) isExcluded = true;
-                else if (offre < estimation * (1 - seuilBas)) isExcluded = true;
-            }
-            html += `<span class="offre-tag ${isExcluded ? 'excluded' : ''}">${offre.toLocaleString()} DH<span class="remove-offre" onclick="supprimerOffre(${index})">✖</span></span>`;
-        });
-        if (offres.length === 0) html = '<span>Aucune offre. Ajoutez-en une.</span>';
-        container.innerHTML = html;
-    }
-    
-    function supprimerOffre(index) { offres.splice(index, 1); afficherOffres(); }
-    
-    document.getElementById('btnAddOffre')?.addEventListener('click', function() {
-        let v = parseFloat(document.getElementById('newOffre').value);
-        if (!isNaN(v) && v > 0) { offres.push(v); document.getElementById('newOffre').value = ''; afficherOffres(); }
-        else alert('Montant valide requis');
-    });
-    
-    document.getElementById('btnResetOffres')?.addEventListener('click', function() { offres = []; afficherOffres(); });
-    
-    document.getElementById('calcReference')?.addEventListener('click', function() {
-        let E = parseFloat(document.getElementById('estimation').value);
-        let type = document.getElementById('typeMarche').value;
-        if (isNaN(E) || E <= 0 || offres.length === 0) {
-            document.getElementById('resultRef').innerHTML = '❌ Estimation et offres requises.';
-            return;
-        }
-        let seuilHaut = 0.20;
-        let seuilBas = type === 'travaux' ? 0.20 : 0.25;
-        let filtrees = offres.filter(o => o <= E * (1 + seuilHaut) && o >= E * (1 - seuilBas));
-        if (filtrees.length === 0) {
-            document.getElementById('resultRef').innerHTML = '⚠️ Toutes les offres ont été exclues.';
-            return;
-        }
-        let M = filtrees.reduce((a,b)=>a+b,0) / filtrees.length;
-        let P = (E + M) / 2;
-        let gagnante = filtrees.reduce((a,b) => Math.abs(a-P) < Math.abs(b-P) ? a : b);
-        document.getElementById('resultRef').innerHTML = `📊 E = ${E.toLocaleString()} DH | M = ${M.toLocaleString()} DH<br>🎯 P = ${P.toLocaleString()} DH<br>🏆 Offre gagnante : ${gagnante.toLocaleString()} DH`;
-    });
-
-    // ========== AVANCE ==========
-    function calcAvance(montant, sousPercent = 0, lots = 1) {
-        let base = montant * lots * (1 - sousPercent/100);
-        if (base < 500000) return 0;
-        let av = base <= 10000000 ? base * 0.10 : (10000000 * 0.10) + ((base - 10000000) * 0.05);
-        return Math.min(av, 20000000);
-    }
-    
-    document.getElementById('calcAvanceDetail')?.addEventListener('click', function() {
-        let montant = parseFloat(document.getElementById('avanceMontantMarche').value);
-        let delai = parseFloat(document.getElementById('avanceDelai').value);
-        let sous = parseFloat(document.getElementById('sousTraitancePourcent').value) || 0;
-        let lots = parseInt(document.getElementById('avanceNbLots').value) || 1;
-        if (isNaN(montant) || montant <= 0) { document.getElementById('resultAvanceDetail').innerHTML = '❌ Montant invalide'; return; }
-        if (montant < 500000) { document.getElementById('resultAvanceDetail').innerHTML = '❌ Montant < 500 000 DH → Avance non accordée.'; return; }
-        if (delai < 4) { document.getElementById('resultAvanceDetail').innerHTML = '❌ Délai < 4 mois → Avance non accordée.'; return; }
-        let avance = calcAvance(montant, sous, lots);
-        let msg = sous > 0 ? `<br>📌 Sous-traitance ${sous}% exclue` : '';
-        document.getElementById('resultAvanceDetail').innerHTML = `💰 Avance : ${avance.toLocaleString()} DH${msg}<br>📋 Lots: ${lots}`;
-    });
-    
-    document.getElementById('calcRemboursement')?.addEventListener('click', function() {
-        let montant = parseFloat(document.getElementById('avanceMontantMarche').value);
-        let sous = parseFloat(document.getElementById('sousTraitancePourcent').value) || 0;
-        let lots = parseInt(document.getElementById('avanceNbLots').value) || 1;
-        let exec = parseFloat(document.getElementById('pourcentageExecution').value) || 0;
-        let avance = calcAvance(montant, sous, lots);
-        if (avance === 0) { document.getElementById('resultRemboursement').innerHTML = 'Avance non calculée.'; return; }
-        let remb = exec >= 80 ? avance : avance * (exec / 80);
-        remb = Math.min(remb, avance);
-        document.getElementById('resultRemboursement').innerHTML = `💸 Avance totale: ${avance.toLocaleString()} DH<br>📊 Exécution: ${exec}%<br>💳 Remboursé: ${remb.toLocaleString()} DH | Reste: ${(avance-remb).toLocaleString()} DH<br>${exec >= 80 ? '✅ Avance entièrement remboursée' : '⏳ Remboursement en cours'}`;
-    });
-
-    // ========== GARANTIES ==========
-    document.getElementById("calcGarantieProvisoire")?.addEventListener("click", function(){
-        let m = parseFloat(document.getElementById("montantMarcheG").value) || 0;
-        document.getElementById("resultGP").innerHTML = `📌 Garantie provisoire (2%) : ${(m*0.02).toFixed(2)} DH`;
-    });
-    
-    document.getElementById("calcGarantieDef")?.addEventListener("click", function(){
-        let m = parseFloat(document.getElementById("montantGD").value) || 0;
-        document.getElementById("resultGD").innerHTML = `🛡️ Garantie définitive (5%) : ${(m*0.05).toFixed(2)} DH`;
-    });
-
-    // Initialisation
-    afficherOffres();
-    document.getElementById('typeMarche')?.addEventListener('change', afficherOffres);
-    document.getElementById('estimation')?.addEventListener('input', afficherOffres);
-</script>
 </body>
 </html>
