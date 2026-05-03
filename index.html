@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MP.econcours.ma | Formation Marchés Publics</title>
     <meta name="description" content="Plateforme de formation et calcul pour les marchés publics au Maroc. Simplifiez vos appels d'offres avec nos outils interactifs.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
@@ -16,331 +16,284 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: #f8fafc;
-            color: #1e2f3e;
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+            background: #f0f4f9;
+            color: #1a2c3e;
             line-height: 1.5;
+            overflow-x: hidden;
         }
 
-        /* Navigation simple */
-        .navbar {
-            background: white;
-            border-bottom: 1px solid #eef2f6;
-            padding: 14px 20px;
-            position: sticky;
-            top: 0;
-            z-index: 100;
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #e0e7ef; }
+        ::-webkit-scrollbar-thumb { background: #2c7da0; border-radius: 10px; }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #0a2f44 0%, #1a5a7a 50%, #2c7da0 100%);
+            padding: 40px 24px;
         }
-        .nav-container {
+
+        /* Background animated waves */
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+        .hero-bg .wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 200px;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.08)" d="M0,192L48,197.3C96,203,192,213,288,208C384,203,480,181,576,176C672,171,768,181,864,197.3C960,213,1056,235,1152,234.7C1248,235,1344,213,1392,202.7L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"/></svg>') repeat-x;
+            background-size: cover;
+            animation: wave 15s linear infinite;
+            opacity: 0.4;
+        }
+        @keyframes wave {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .hero-content {
             max-width: 1200px;
             margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 16px;
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            animation: fadeInUp 0.8s ease forwards;
         }
-        .logo {
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .logo-large {
+            font-size: 3rem;
             font-weight: 800;
-            font-size: 1.3rem;
-        }
-        .logo .mp {
-            background: linear-gradient(135deg, #0f3b5f, #2c7da0);
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, #fff, #b8e4ff);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
-        }
-        .logo .econcours {
-            color: #2c7da0;
-        }
-        .nav-links {
-            display: flex;
-            gap: 24px;
-            flex-wrap: wrap;
-        }
-        .nav-links a {
-            text-decoration: none;
-            color: #4a6a7e;
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: color 0.2s;
-        }
-        .nav-links a:hover {
-            color: #2c7da0;
-        }
-        .nav-links i {
-            margin-right: 6px;
+            display: inline-block;
         }
 
-        /* Hero section - propre et claire */
-        .hero {
-            background: white;
-            padding: 48px 20px;
-            text-align: center;
-        }
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .hero-badge {
-            display: inline-block;
-            background: #eef6fa;
-            padding: 6px 16px;
-            border-radius: 40px;
-            font-size: 0.8rem;
-            color: #2c7da0;
-            font-weight: 500;
-            margin-bottom: 24px;
-        }
         .hero h1 {
-            font-size: 2rem;
+            font-size: 3rem;
             font-weight: 800;
-            color: #144d6b;
-            margin-bottom: 16px;
+            margin-bottom: 20px;
             line-height: 1.2;
         }
-        .hero h1 span {
-            background: linear-gradient(135deg, #2c7da0, #1a5a7a);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-        }
+
         .hero p {
-            font-size: 1rem;
-            color: #5a7a92;
-            max-width: 600px;
+            font-size: 1.2rem;
+            max-width: 700px;
             margin: 0 auto 32px;
+            opacity: 0.9;
         }
 
-        /* Features cards - simples et élégantes */
+        /* Feature cards */
         .features {
             display: flex;
             justify-content: center;
+            gap: 24px;
             flex-wrap: wrap;
-            gap: 20px;
-            margin: 40px 0 32px;
+            margin: 48px 0 56px;
         }
         .feature-card {
-            background: #f8fafc;
-            border-radius: 24px;
-            padding: 24px 20px;
-            width: 200px;
+            background: rgba(255,255,255,0.12);
+            backdrop-filter: blur(10px);
+            border-radius: 28px;
+            padding: 24px 28px;
+            width: 240px;
             text-align: center;
-            transition: all 0.2s;
-            border: 1px solid #eef2f8;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.2);
         }
         .feature-card:hover {
-            transform: translateY(-4px);
-            background: white;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+            transform: translateY(-8px);
+            background: rgba(255,255,255,0.2);
         }
         .feature-card i {
-            font-size: 2rem;
-            color: #2c7da0;
-            margin-bottom: 12px;
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+            color: #ffd966;
         }
         .feature-card h3 {
-            font-size: 1rem;
-            font-weight: 700;
-            color: #144d6b;
-            margin-bottom: 6px;
+            font-size: 1.2rem;
+            margin-bottom: 8px;
         }
         .feature-card p {
-            font-size: 0.8rem;
-            color: #7a9bb3;
+            font-size: 0.85rem;
+            opacity: 0.8;
+            margin: 0;
         }
 
         /* Buttons */
         .btn-group {
             display: flex;
+            gap: 20px;
             justify-content: center;
-            gap: 16px;
             flex-wrap: wrap;
-            margin-bottom: 40px;
         }
         .btn {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            padding: 12px 28px;
-            border-radius: 60px;
+            gap: 12px;
+            padding: 14px 36px;
+            border-radius: 50px;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 1rem;
             text-decoration: none;
-            transition: all 0.2s;
+            transition: all 0.3s ease;
             cursor: pointer;
+            border: none;
         }
         .btn-primary {
-            background: #2c7da0;
-            color: white;
-            box-shadow: 0 2px 8px rgba(44,125,160,0.2);
+            background: white;
+            color: #1a5a7a;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
         }
         .btn-primary:hover {
-            background: #1f6392;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(44,125,160,0.25);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            background: #f8fafc;
         }
         .btn-outline {
             background: transparent;
-            border: 1.5px solid #cde1ef;
-            color: #2c7da0;
+            border: 2px solid white;
+            color: white;
         }
         .btn-outline:hover {
-            background: #eef6fa;
-            transform: translateY(-2px);
+            background: rgba(255,255,255,0.15);
+            transform: translateY(-3px);
         }
 
-        /* Stats */
+        /* Stats section */
         .stats {
             display: flex;
             justify-content: center;
-            gap: 40px;
+            gap: 48px;
             flex-wrap: wrap;
-            padding-top: 32px;
-            border-top: 1px solid #eef2f8;
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.2);
         }
         .stat-item {
             text-align: center;
         }
         .stat-number {
-            font-size: 1.8rem;
+            font-size: 2rem;
             font-weight: 800;
-            color: #144d6b;
             display: block;
         }
         .stat-label {
-            font-size: 0.8rem;
-            color: #7a9bb3;
+            font-size: 0.85rem;
+            opacity: 0.8;
         }
 
-        /* About section */
-        .about {
+        /* Section À propos */
+        .about-section {
             background: white;
-            padding: 56px 20px;
-            border-top: 1px solid #eef2f8;
+            padding: 80px 24px;
+            text-align: center;
         }
         .about-container {
             max-width: 1000px;
             margin: 0 auto;
-            text-align: center;
         }
-        .about h2 {
-            font-size: 1.6rem;
+        .about-section h2 {
+            font-size: 2rem;
             color: #144d6b;
-            margin-bottom: 16px;
+            margin-bottom: 20px;
         }
-        .about-subtitle {
-            color: #5a7a92;
-            max-width: 650px;
-            margin: 0 auto 48px;
-            font-size: 0.95rem;
+        .about-section p {
+            color: #4a6a7e;
+            font-size: 1.05rem;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.7;
         }
         .about-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 24px;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 48px;
         }
         .about-card {
-            background: #f8fafc;
-            border-radius: 20px;
-            padding: 28px 16px;
+            background: #f8fafd;
+            border-radius: 24px;
+            padding: 28px;
+            width: 260px;
             text-align: center;
-            transition: 0.2s;
-            border: 1px solid #eef2f8;
+            transition: 0.3s;
         }
         .about-card:hover {
-            transform: translateY(-3px);
-            background: white;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.04);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.08);
         }
         .about-card i {
-            font-size: 1.8rem;
+            font-size: 2rem;
             color: #2c7da0;
-            margin-bottom: 12px;
+            margin-bottom: 16px;
         }
         .about-card h3 {
-            font-size: 1rem;
+            font-size: 1.2rem;
             color: #144d6b;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
         .about-card p {
-            font-size: 0.8rem;
-            color: #7a9bb3;
-        }
-
-        /* CTA */
-        .cta {
-            background: #eef6fa;
-            padding: 48px 20px;
-            text-align: center;
-        }
-        .cta h2 {
-            font-size: 1.5rem;
-            color: #144d6b;
-            margin-bottom: 12px;
-        }
-        .cta p {
-            color: #5a7a92;
-            margin-bottom: 28px;
+            font-size: 0.85rem;
+            color: #6b8ba0;
         }
 
         /* Footer */
         footer {
-            background: white;
-            border-top: 1px solid #eef2f8;
+            background: #0a2f44;
+            color: #b8d4e8;
             text-align: center;
-            padding: 32px 20px;
-            color: #7a9bb3;
-            font-size: 0.8rem;
+            padding: 40px 24px;
         }
         footer a {
-            color: #2c7da0;
+            color: #9ad0f5;
             text-decoration: none;
         }
 
-        /* Responsive */
-        @media (max-width: 640px) {
-            .hero h1 { font-size: 1.5rem; }
-            .feature-card { width: 160px; padding: 20px 16px; }
-            .btn { padding: 10px 20px; font-size: 0.85rem; }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .logo-large { font-size: 2rem; }
+            .feature-card { width: 100%; max-width: 220px; }
+            .btn { padding: 12px 24px; font-size: 0.9rem; }
             .stats { gap: 24px; }
-            .stat-number { font-size: 1.4rem; }
-            .about-grid { grid-template-columns: 1fr; }
-        }
-
-        @media (max-width: 480px) {
-            .navbar { padding: 12px 16px; }
-            .hero { padding: 32px 16px; }
-            .hero h1 { font-size: 1.3rem; }
-            .feature-card { width: 140px; padding: 16px 12px; }
-            .feature-card i { font-size: 1.5rem; }
-            .feature-card h3 { font-size: 0.85rem; }
         }
     </style>
 </head>
 <body>
 
-<!-- Navigation -->
-<div class="navbar">
-    <div class="nav-container">
-        <div class="logo">
-            <span class="mp">MP</span><span>.</span><span class="econcours">econcours.ma</span>
-        </div>
-        <div class="nav-links">
-            <a href="#about"><i class="fas fa-info-circle"></i> À propos</a>
-            <a href="https://econcours.ma" target="_blank"><i class="fas fa-briefcase"></i> econcours.ma</a>
-        </div>
+<div class="hero">
+    <div class="hero-bg">
+        <div class="wave"></div>
     </div>
-</div>
-
-<!-- Hero Section -->
-<section class="hero">
     <div class="hero-content">
-        <div class="hero-badge">
-            <i class="fas fa-graduation-cap"></i> Formation interactive
-        </div>
-        <h1>Maîtrisez les <span>Marchés Publics</span><br>au Maroc</h1>
-        <p>Simplifiez vos appels d'offres avec nos guides pratiques et calculateurs intelligents. Prix de référence, avances, garanties - calculés automatiquement.</p>
+        <div class="logo-large">MP.econcours.ma</div>
+        <h1>Formation interactive<br>aux Marchés Publics</h1>
+        <p>Simplifiez vos appels d'offres grâce à nos guides pratiques et nos calculateurs intelligents. Prix de référence, avances, garanties... Tout est calculé automatiquement.</p>
         
         <div class="features">
             <div class="feature-card">
@@ -350,24 +303,24 @@
             </div>
             <div class="feature-card">
                 <i class="fas fa-book-open"></i>
-                <h3>Guides</h3>
-                <p>Chapitres détaillés</p>
+                <h3>Guides pratiques</h3>
+                <p>Chapitres détaillés et explications</p>
             </div>
             <div class="feature-card">
                 <i class="fas fa-chart-line"></i>
                 <h3>Méthode officielle</h3>
-                <p>Basée sur décret marocain</p>
+                <p>Basée sur le décret marocain</p>
             </div>
             <div class="feature-card">
-                <i class="fas fa-gem"></i>
-                <h3>100% Gratuit</h3>
-                <p>Accessible à tous</p>
+                <i class="fas fa-graduation-cap"></i>
+                <h3>Formation continue</h3>
+                <p>Nouveaux chapitres régulièrement</p>
             </div>
         </div>
 
         <div class="btn-group">
             <a href="main.html" class="btn btn-primary">
-                <i class="fas fa-arrow-right"></i> Accéder à la plateforme
+                <i class="fas fa-arrow-right"></i> Découvrir la plateforme
             </a>
             <a href="#about" class="btn btn-outline">
                 <i class="fas fa-info-circle"></i> En savoir plus
@@ -393,53 +346,42 @@
             </div>
         </div>
     </div>
-</section>
+</div>
 
-<!-- About Section -->
-<section class="about" id="about">
+<section class="about-section" id="about">
     <div class="about-container">
         <h2>À propos du projet</h2>
-        <p class="about-subtitle">MP.econcours.ma est une plateforme éducative dédiée à la simplification des marchés publics au Maroc.</p>
+        <p>MP.econcours.ma est une plateforme éducative dédiée à la simplification des marchés publics au Maroc. Notre objectif est d'aider les entrepreneurs, les étudiants et les professionnels à maîtriser les règles et les calculs liés aux appels d'offres.</p>
         
         <div class="about-grid">
             <div class="about-card">
-                <i class="fas fa-users"></i>
+                <i class="fas fa-bullhorn"></i>
                 <h3>Pour qui ?</h3>
-                <p>Entrepreneurs, étudiants, fonctionnaires</p>
+                <p>Entrepreneurs, porteurs de projets, étudiants, fonctionnaires</p>
             </div>
             <div class="about-card">
                 <i class="fas fa-file-alt"></i>
                 <h3>Basé sur</h3>
-                <p>Décret n° 2-22-431</p>
+                <p>Décret n° 2-22-431 et réglementation marocaine</p>
             </div>
             <div class="about-card">
                 <i class="fas fa-hand-holding-heart"></i>
                 <h3>Gratuit</h3>
-                <p>Service éducatif accessible</p>
+                <p>Un service éducatif accessible à tous</p>
             </div>
             <div class="about-card">
                 <i class="fas fa-link"></i>
                 <h3>Partenaire</h3>
-                <p>econcours.ma</p>
+                <p>econcours.ma - Plateforme d'emploi public</p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- CTA Section -->
-<section class="cta">
-    <h2>Prêt à simplifier vos marchés publics ?</h2>
-    <p>Accédez à tous nos calculateurs et guides en un clic</p>
-    <a href="main.html" class="btn btn-primary">
-        <i class="fas fa-arrow-right"></i> Commencer maintenant
-    </a>
-</section>
-
-<!-- Footer -->
 <footer>
     <p>🇲🇦 MP.econcours.ma — Formation aux marchés publics au Maroc</p>
     <p>🔗 <a href="https://econcours.ma" target="_blank">econcours.ma</a> | Emploi & formation publique</p>
-    <p style="font-size:0.7rem; margin-top:12px;">Données à titre indicatif - Référez-vous au décret officiel</p>
+    <p style="font-size:0.7rem; margin-top:16px;">Données à titre indicatif - Référez-vous au décret officiel</p>
 </footer>
 
 <script>
