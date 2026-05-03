@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>MP.econcours.ma | Guides & cours</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text x='50%' y='50%' text-anchor='middle' dy='.35em' font-size='80' fill='%232c7da0'>📘</text></svg>">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #f8fafc;
+            color: #1e2f3e;
+            line-height: 1.5;
+        }
+
+        .navbar {
+            background: white;
+            border-bottom: 1px solid #eef2f6;
+            padding: 14px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .logo {
+            font-weight: 800;
+            font-size: 1.3rem;
+        }
+        .logo .mp {
+            background: linear-gradient(135deg, #0f3b5f, #2c7da0);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .logo .econcours { color: #2c7da0; }
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #4a6a7e;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        .nav-links a:hover { color: #2c7da0; }
+        .nav-links i { margin-right: 6px; }
+
+        .page-header {
+            background: white;
+            padding: 32px 20px;
+            text-align: center;
+            border-bottom: 1px solid #eef2f6;
+        }
+        .page-header h1 {
+            font-size: 1.8rem;
+            color: #144d6b;
+            margin-bottom: 8px;
+        }
+        .page-header p {
+            color: #5a7a92;
+            font-size: 0.95rem;
+        }
+
+        .lessons-container {
+            max-width: 900px;
+            margin: 48px auto;
+            padding: 0 20px;
+        }
+        .lesson-card {
+            background: white;
+            border-radius: 24px;
+            padding: 24px;
+            margin-bottom: 24px;
+            border: 1px solid #eef2f8;
+            transition: all 0.2s;
+        }
+        .lesson-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.05);
+        }
+        .lesson-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+        .lesson-icon {
+            width: 52px;
+            height: 52px;
+            background: #eef6fa;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .lesson-icon i {
+            font-size: 1.5rem;
+            color: #2c7da0;
+        }
+        .lesson-header h2 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #144d6b;
+        }
+        .lesson-card p {
+            color: #5a7a92;
+            font-size: 0.9rem;
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+        .lesson-tag {
+            display: inline-block;
+            background: #eef3fc;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            color: #2c7da0;
+            font-weight: 500;
+        }
+        .coming-soon {
+            text-align: center;
+            padding: 40px;
+            background: #f8fafd;
+            border-radius: 24px;
+            border: 1px dashed #cde1ef;
+            color: #8aaec2;
+        }
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: transparent;
+            border: 1px solid #cde1ef;
+            padding: 10px 20px;
+            border-radius: 40px;
+            color: #2c7da0;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.85rem;
+            margin-bottom: 24px;
+            transition: 0.2s;
+        }
+        .btn-back:hover {
+            background: #eef6fa;
+        }
+        footer {
+            background: white;
+            border-top: 1px solid #eef2f8;
+            text-align: center;
+            padding: 32px 20px;
+            color: #7a9bb3;
+            font-size: 0.8rem;
+            margin-top: 48px;
+        }
+        footer a { color: #2c7da0; text-decoration: none; }
+
+        @media (max-width: 640px) {
+            .page-header h1 { font-size: 1.5rem; }
+            .lesson-card { padding: 20px; }
+            .lesson-header h2 { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <div class="nav-container">
+        <div class="logo">
+            <span class="mp">MP</span><span>.</span><span class="econcours">econcours.ma</span>
+        </div>
+        <div class="nav-links">
+            <a href="main.html"><i class="fas fa-th-large"></i> Plateforme</a>
+            <a href="calculators.html"><i class="fas fa-calculator"></i> Calculateurs</a>
+            <a href="index.html"><i class="fas fa-home"></i> Accueil</a>
+        </div>
+    </div>
+</div>
+
+<div class="page-header">
+    <a href="main.html" class="btn-back"><i class="fas fa-arrow-left"></i> Retour à la plateforme</a>
+    <h1>📖 Guides & formations</h1>
+    <p>Comprendre les marchés publics étape par étape</p>
+</div>
+
+<div class="lessons-container">
+    <div class="lesson-card">
+        <div class="lesson-header">
+            <div class="lesson-icon"><i class="fas fa-file-signature"></i></div>
+            <h2>🔹 Comprendre l'appel d'offres (AO)</h2>
+        </div>
+        <p>Définition, types d'appels d'offres (ouvert, restreint, concours), conditions de participation et seuils de publicité.</p>
+        <span class="lesson-tag"><i class="fas fa-clock"></i> Disponible</span>
+    </div>
+
+    <div class="lesson-card">
+        <div class="lesson-header">
+            <div class="lesson-icon"><i class="fas fa-folder-open"></i></div>
+            <h2>🔹 Préparation du dossier de soumission</h2>
+        </div>
+        <p>Pièces administratives, pièces techniques, cautions provisoires, et conseils pour un dossier solide.</p>
+        <span class="lesson-tag"><i class="fas fa-clock"></i> Disponible</span>
+    </div>
+
+    <div class="lesson-card">
+        <div class="lesson-header">
+            <div class="lesson-icon"><i class="fas fa-shield-alt"></i></div>
+            <h2>🔹 Garanties : provisoire et définitive</h2>
+        </div>
+        <p>Montants, durée, caution bancaire, cas de restitution et mécanismes de mise en jeu.</p>
+        <span class="lesson-tag"><i class="fas fa-clock"></i> Disponible</span>
+    </div>
+
+    <div class="lesson-card">
+        <div class="lesson-header">
+            <div class="lesson-icon"><i class="fas fa-chart-simple"></i></div>
+            <h2>🔹 Évaluation des offres et attribution</h2>
+        </div>
+        <p>Critères d'évaluation, méthode du prix de référence, élimination des offres anormales, choix du titulaire.</p>
+        <span class="lesson-tag"><i class="fas fa-clock"></i> Disponible</span>
+    </div>
+
+    <div class="lesson-card">
+        <div class="lesson-header">
+            <div class="lesson-icon"><i class="fas fa-gavel"></i></div>
+            <h2>🔹 Exécution du marché & pénalités</h2>
+        </div>
+        <p>Avenants, retards, règlement des litiges, pénalités de retard et résiliation du marché.</p>
+        <span class="lesson-tag"><i class="fas fa-clock"></i> Disponible</span>
+    </div>
+
+    <div class="coming-soon">
+        <i class="fas fa-plus-circle"></i> D'autres chapitres seront ajoutés prochainement...
+    </div>
+</div>
+
+<footer>
+    <p>🇲🇦 MP.econcours.ma — Formation aux marchés publics au Maroc</p>
+    <p>🔗 <a href="https://econcours.ma" target="_blank">econcours.ma</a> | Emploi & formation publique</p>
+</footer>
+
+</body>
+</html>
