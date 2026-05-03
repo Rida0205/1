@@ -4,35 +4,78 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Smart Job Matcher | ECONCONCOURS.MA</title>
-  <!-- Simple, clean, modern CSS only (no external frameworks) -->
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: system-ui, 'Segoe UI', 'Inter', -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+      font-family: system-ui, 'Segoe UI', 'Inter', -apple-system, 'Roboto', sans-serif;
     }
 
     body {
       background: linear-gradient(145deg, #f4f7fc 0%, #eef2f5 100%);
       min-height: 100vh;
       padding: 2rem 1.5rem;
+      transition: all 0.2s ease;
     }
 
-    /* main container */
+    /* RTL Support */
+    body.rtl {
+      direction: rtl;
+      text-align: right;
+    }
+    body.rtl .card-header,
+    body.rtl .btn-group,
+    body.rtl .contact-row,
+    body.rtl .form-grid {
+      direction: rtl;
+    }
+    body.rtl .reason {
+      border-left: none;
+      border-right: 3px solid #2C4E80;
+    }
+    body.rtl .best-match {
+      border-left: none;
+      border-right: 6px solid #f4b942;
+    }
+
     .app-container {
       max-width: 1400px;
       margin: 0 auto;
     }
 
-    /* header & landing card */
+    /* Language Switcher */
+    .lang-switch {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 1rem;
+      gap: 0.8rem;
+    }
+    .lang-btn {
+      background: white;
+      color: #1E2F5E;
+      border: 1px solid #cbd5e1;
+      padding: 0.5rem 1.2rem;
+      border-radius: 2rem;
+      font-weight: 600;
+      font-size: 0.85rem;
+      box-shadow: none;
+    }
+    .lang-btn.active {
+      background: #1E2F5E;
+      color: white;
+      border-color: #1E2F5E;
+    }
+    .lang-btn:hover {
+      transform: translateY(-1px);
+    }
+
     .hero {
       background: white;
       border-radius: 2rem;
-      padding: 2rem 2rem 2rem 2rem;
+      padding: 2rem;
       margin-bottom: 2.5rem;
       box-shadow: 0 20px 35px -12px rgba(0,0,0,0.08);
-      transition: all 0.2s ease;
       border: 1px solid rgba(0,0,0,0.03);
     }
 
@@ -55,7 +98,6 @@
       line-height: 1.4;
     }
 
-    /* form style */
     .form-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -76,7 +118,7 @@
       letter-spacing: 0.3px;
     }
 
-    input, textarea, select {
+    input, textarea {
       padding: 0.85rem 1rem;
       border-radius: 1.2rem;
       border: 1.5px solid #e2e8f0;
@@ -126,7 +168,6 @@
       background: #1e4a3b;
     }
 
-    /* results section */
     .results-section {
       margin-top: 2rem;
     }
@@ -139,15 +180,15 @@
       display: flex;
       align-items: center;
       gap: 0.75rem;
+      flex-wrap: wrap;
     }
 
     .cards-container {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
       gap: 1.8rem;
     }
 
-    /* company card */
     .company-card {
       background: white;
       border-radius: 1.8rem;
@@ -167,6 +208,10 @@
       border-left: 6px solid #f4b942;
       background: #fffef7;
       box-shadow: 0 12px 24px -8px rgba(244,185,66,0.2);
+    }
+    body.rtl .best-match {
+      border-left: none;
+      border-right: 6px solid #f4b942;
     }
 
     .card-header {
@@ -209,6 +254,10 @@
       font-size: 0.85rem;
       color: #2c3e66;
       border-left: 3px solid #2C4E80;
+    }
+    body.rtl .reason {
+      border-left: none;
+      border-right: 3px solid #2C4E80;
     }
 
     .contact-row {
@@ -265,7 +314,6 @@
       line-height: 1.45;
       border: 1px solid #ffe6b3;
       color: #3a2c1a;
-      position: relative;
       word-break: break-word;
     }
 
@@ -312,91 +360,178 @@
 </head>
 <body>
 <div class="app-container">
+  <div class="lang-switch">
+    <button class="lang-btn" data-lang="fr">🇫🇷 Français</button>
+    <button class="lang-btn" data-lang="ar">🇲🇦 العربية</button>
+  </div>
   <div class="hero">
-    <h1>🎯 Find Companies That Match Your Profile</h1>
-    <p>Décrochez votre prochaine opportunité au Maroc. Remplissez vos compétences et laissez notre algorithme intelligent vous mettre en relation avec les meilleures entreprises.</p>
+    <h1 id="mainTitle">🎯 Find Companies That Match Your Profile</h1>
+    <p id="mainDesc">Décrochez votre prochaine opportunité au Maroc. Remplissez vos compétences et laissez notre algorithme intelligent vous mettre en relation avec les meilleures entreprises.</p>
     <form id="matchForm">
       <div class="form-grid">
         <div class="input-group">
-          <label>📛 Nom complet</label>
+          <label id="labelFullName">📛 Nom complet</label>
           <input type="text" id="fullName" placeholder="Ex: Karim Benjelloun" required>
         </div>
         <div class="input-group">
-          <label>🎓 Diplôme</label>
+          <label id="labelDiploma">🎓 Diplôme</label>
           <input type="text" id="diploma" placeholder="Master en Marketing, Bac+3 ..." required>
         </div>
         <div class="input-group">
-          <label>📍 Ville</label>
+          <label id="labelCity">📍 Ville</label>
           <input type="text" id="city" placeholder="Casablanca, Rabat, Tanger..." required>
         </div>
         <div class="input-group">
-          <label>🧠 Compétences (séparez par des virgules)</label>
+          <label id="labelSkills">🧠 Compétences (séparez par des virgules)</label>
           <textarea id="skills" placeholder="Ex: JavaScript, Gestion de projet, Communication, Excel, Réseaux sociaux" required></textarea>
         </div>
       </div>
-      <button type="submit" class="match-btn">🔍 Trouver mes meilleures entreprises</button>
+      <button type="submit" class="match-btn" id="matchBtnText">🔍 Trouver mes meilleures entreprises</button>
     </form>
   </div>
 
   <div class="results-section" id="resultsSection" style="display: none;">
     <div class="section-title">
-      <span>✨ Entreprises recommandées</span> <span id="resultCount"></span>
+      <span id="resultTitle">✨ Entreprises recommandées</span> <span id="resultCount"></span>
     </div>
     <div id="cardsContainer" class="cards-container"></div>
   </div>
   <footer>
-    <p>🔗 Smart Job Matcher — ECONCONCOURS.MA | Trouvez votre futur employeur</p>
+    <p id="footerText">🔗 Smart Job Matcher — ECONCONCOURS.MA | Trouvez votre futur employeur</p>
   </footer>
 </div>
 
 <script>
-  // ---------- GLOBAL STATE ----------
-  let companiesData = [];          // will store array of companies from json
-  let currentMatchedCompanies = []; // store last results for potential reuse? not mandatory
-  let lastUserProfile = null;
+  // ---------- TRANSLATIONS (French & Arabic) ----------
+  const translations = {
+    fr: {
+      mainTitle: "🎯 Trouvez les entreprises qui correspondent à votre profil",
+      mainDesc: "Décrochez votre prochaine opportunité au Maroc. Remplissez vos compétences et laissez notre algorithme intelligent vous mettre en relation avec les meilleures entreprises.",
+      labelFullName: "📛 Nom complet",
+      labelDiploma: "🎓 Diplôme",
+      labelCity: "📍 Ville",
+      labelSkills: "🧠 Compétences (séparez par des virgules)",
+      matchBtn: "🔍 Trouver mes meilleures entreprises",
+      resultTitle: "✨ Entreprises recommandées",
+      footer: "🔗 Smart Job Matcher — ECONCONCOURS.MA | Trouvez votre futur employeur",
+      noMatch: "⚠️ Aucune correspondance trouvée. Élargissez vos compétences ou ville.",
+      matchPercent: "% match",
+      sector: "📁 Secteur :",
+      whyMatch: "🔍 Pourquoi ?",
+      sameCityPrefix: "✓ Même ville",
+      differentCity: "Ville différente mais profil prometteur.",
+      skillsCommon: "compétence(s) commune(s) :",
+      generateEmail: "✉️ Générer Email",
+      copyEmail: "📋 Copier Email",
+      copied: "✅ Copié !",
+      generateFirst: "Veuillez d'abord générer l'email avec 'Générer Email'",
+      loading: "Génération...",
+      readyMsgTitle: "💬 Message prêt à envoyer :",
+      emailSubject: "Candidature spontanée - Poste adapté à mon profil",
+      emailBody: (user, company, skillsStr) => {
+        return `📧 **Objet : Candidature spontanée - Poste adapté à mon profil**\n\nBonjour l'équipe de ${company.name},\n\nJe me permets de vous adresser ma candidature suite à la recommandation du service Smart Job Matcher d'ECONCONCOURS.MA.\n\n👤 Je m'appelle ${user.fullName}, titulaire d'un(e) ${user.diploma}. Basé(e) à ${user.city}, je maîtrise plusieurs compétences clés : ${skillsStr}.\n\n🔎 Votre entreprise évolue dans le secteur « ${company.sector} » et recherche des profils avec des compétences comme ${company.required_skills.slice(0, 3).join(', ')}. Notre matching indique une forte compatibilité avec votre besoin.\n\n📞 Je suis très motivé(e) à l'idée de contribuer à vos projets. Restant à votre disposition pour un échange, je vous remercie par avance pour l’attention portée à ma candidature.\n\nCordialement,\n${user.fullName}`
+      },
+      fillAllFields: "Veuillez remplir tous les champs du formulaire.",
+      atLeastOneSkill: "Veuillez renseigner au moins une compétence (ex: marketing, javascript)"
+    },
+    ar: {
+      mainTitle: "🎯 ابحث عن الشركات التي تناسب ملفك الشخصي",
+      mainDesc: "احصل على فرصتك القادمة في المغرب. املأ مهاراتك ودع خوارزميتنا الذكية تربطك بأفضل الشركات.",
+      labelFullName: "📛 الاسم الكامل",
+      labelDiploma: "🎓 الشهادة",
+      labelCity: "📍 المدينة",
+      labelSkills: "🧠 المهارات (افصل بينها بفواصل)",
+      matchBtn: "🔍 ابحث عن أفضل الشركات المناسبة",
+      resultTitle: "✨ الشركات الموصى بها",
+      footer: "🔗 سمارت ماتشر — ECONCONCOURS.MA | ابحث عن صاحب العمل المستقبلي",
+      noMatch: "⚠️ لم يتم العثور على تطابقات. وسّع مهاراتك أو المدينة.",
+      matchPercent: "% تطابق",
+      sector: "📁 القطاع:",
+      whyMatch: "🔍 لماذا؟",
+      sameCityPrefix: "✓ نفس المدينة",
+      differentCity: "مدينة مختلفة لكن الملف واعد.",
+      skillsCommon: "مهارة(مهارات) مشتركة:",
+      generateEmail: "✉️ إنشاء البريد الإلكتروني",
+      copyEmail: "📋 نسخ البريد",
+      copied: "✅ تم النسخ!",
+      generateFirst: "يرجى إنشاء البريد الإلكتروني أولاً عبر زر 'إنشاء البريد الإلكتروني'",
+      loading: "جاري الإنشاء...",
+      readyMsgTitle: "💬 الرسالة جاهزة للإرسال:",
+      emailSubject: "طلب توظيف تلقائي - ملفي الشخصي مناسب",
+      emailBody: (user, company, skillsStr) => {
+        return `📧 **الموضوع: طلب توظيف تلقائي - ملفي الشخصي مناسب**\n\nسعادة فريق ${company.name}،\n\nأتقدم لكم بطلبي هذا بعد توصية من خدمة سمارت ماتشر التابعة لـ ECONCONCOURS.MA.\n\n👤 أنا ${user.fullName}، حاصل على ${user.diploma}. مقيم في ${user.city}، وأمتلك مهارات رئيسية: ${skillsStr}.\n\n🔎 تعمل شركتكم في قطاع « ${company.sector} » وتبحث عن ملفات بمهارات مثل ${company.required_skills.slice(0, 3).join(', ')}. أظهر نظام المطابقة توافقاً كبيراً مع احتياجاتكم.\n\n📞 أنا متحمس للمساهمة في مشاريعكم. أتطلع إلى ردكم الكريم، وشكراً لاهتمامكم.\n\nمع فائق الاحترام،\n${user.fullName}`
+      },
+      fillAllFields: "يرجى ملء جميع الحقول.",
+      atLeastOneSkill: "يرجى إدخال مهارة واحدة على الأقل (مثال: تسويق، جافا سكريبت)"
+    }
+  };
+
+  let currentLang = 'fr'; // default
+  let companiesData = [];
+  let currentMatchedCompanies = [];
 
   // DOM elements
   const form = document.getElementById('matchForm');
   const resultsSection = document.getElementById('resultsSection');
   const cardsContainer = document.getElementById('cardsContainer');
   const resultCountSpan = document.getElementById('resultCount');
+  const resultTitleSpan = document.getElementById('resultTitle');
 
-  // Helper: normalize skills: string -> array of trimmed lowercased keywords
+  // Apply language to static UI elements
+  function applyLanguage() {
+    const t = translations[currentLang];
+    document.getElementById('mainTitle').innerHTML = t.mainTitle;
+    document.getElementById('mainDesc').innerHTML = t.mainDesc;
+    document.getElementById('labelFullName').innerHTML = t.labelFullName;
+    document.getElementById('labelDiploma').innerHTML = t.labelDiploma;
+    document.getElementById('labelCity').innerHTML = t.labelCity;
+    document.getElementById('labelSkills').innerHTML = t.labelSkills;
+    document.getElementById('matchBtnText').innerHTML = t.matchBtn;
+    document.getElementById('resultTitle').innerHTML = t.resultTitle;
+    document.getElementById('footerText').innerHTML = t.footer;
+    const langBtns = document.querySelectorAll('.lang-btn');
+    langBtns.forEach(btn => {
+      if (btn.getAttribute('data-lang') === currentLang) btn.classList.add('active');
+      else btn.classList.remove('active');
+    });
+    // Update RTL class on body
+    if (currentLang === 'ar') {
+      document.body.classList.add('rtl');
+      document.body.style.direction = 'rtl';
+    } else {
+      document.body.classList.remove('rtl');
+      document.body.style.direction = 'ltr';
+    }
+    // If we have results displayed, re-render them with new language
+    if (resultsSection.style.display === 'block' && currentMatchedCompanies.length > 0) {
+      const lastProfile = window._lastUserProfile;
+      if (lastProfile) renderResults(currentMatchedCompanies, lastProfile);
+    } else if (resultsSection.style.display === 'block' && currentMatchedCompanies.length === 0) {
+      cardsContainer.innerHTML = `<div style="grid-column:1/-1; text-align:center; background:white; border-radius:2rem; padding:2rem;">${t.noMatch}</div>`;
+    }
+  }
+
   function parseSkills(skillsStr) {
     if (!skillsStr) return [];
     return skillsStr.split(',').map(s => s.trim().toLowerCase()).filter(s => s.length > 0);
   }
 
-  // Compute match percentage between user skills (array) and company required_skills (array)
-  // Also return matchingSkillList for explanation
   function computeMatchDetails(userSkillsArray, companySkillsArray) {
     if (!companySkillsArray || companySkillsArray.length === 0) return { score: 0, matched: [] };
     if (userSkillsArray.length === 0) return { score: 0, matched: [] };
     const lowerCompanySkills = companySkillsArray.map(s => s.toLowerCase());
     const matched = userSkillsArray.filter(skill => lowerCompanySkills.includes(skill));
-    // score = (matched count / total required skills) * 100, capped at 100
     let score = (matched.length / companySkillsArray.length) * 100;
     score = Math.min(100, Math.round(score));
     return { score, matched };
   }
 
-  // Get top 5 companies: prioritize same city, then highest match score.
   function getTopMatches(userCity, userSkillsArray, allCompanies) {
-    // enrich each company with matchScore, matchedSkills, cityBonus flag
     const enriched = allCompanies.map(company => {
       const { score, matched } = computeMatchDetails(userSkillsArray, company.required_skills);
       const sameCity = (company.city && userCity && company.city.toLowerCase() === userCity.toLowerCase());
-      // final sorting key: sameCity (true first) then score desc
-      return {
-        ...company,
-        matchScore: score,
-        matchedSkills: matched,
-        sameCity: sameCity,
-        // additional raw city for display
-      };
+      return { ...company, matchScore: score, matchedSkills: matched, sameCity };
     });
-
-    // sort by: sameCity (desc), then matchScore desc
     enriched.sort((a, b) => {
       if (a.sameCity !== b.sameCity) return a.sameCity ? -1 : 1;
       return b.matchScore - a.matchScore;
@@ -404,123 +539,12 @@
     return enriched.slice(0, 5);
   }
 
-  // Generate AI-like professional email in French, based on user profile + company
-  function generateProfessionalEmail(user, company) {
-    // user = { fullName, diploma, city, skillsArray }
-    // company = { name, sector, city, email, phone, required_skills }
+  function generateProfessionalEmail(user, company, lang) {
+    const t = translations[lang];
     const skillsString = user.skillsArray.slice(0, 4).join(', ');
-    const date = new Date().toLocaleDateString('fr-FR');
-    // professional & short ready to send
-    return `📧 **Objet : Candidature spontanée - Poste adapté à mon profil**\n\n` +
-      `Bonjour l'équipe de ${company.name},\n\n` +
-      `Je me permets de vous adresser ma candidature suite à la recommandation du service Smart Job Matcher d'ECONCONCOURS.MA.\n\n` +
-      `👤 Je m'appelle ${user.fullName}, titulaire d'un(e) ${user.diploma}. Basé(e) à ${user.city}, je maîtrise plusieurs compétences clés : ${skillsString}${user.skillsArray.length > 4 ? '...' : ''}.\n\n` +
-      `🔎 Votre entreprise évolue dans le secteur « ${company.sector} » et recherche des profils avec des compétences comme ${company.required_skills.slice(0, 3).join(', ')}. Notre matching indique une forte compatibilité avec votre besoin.\n\n` +
-      `📞 Je suis très motivé(e) à l'idée de contribuer à vos projets. Restant à votre disposition pour un échange, je vous remercie par avance pour l’attention portée à ma candidature.\n\n` +
-      `Cordialement,\n${user.fullName}\n📱 Tél: [votre numéro] | ✉️ ${user.fullName.toLowerCase().replace(/\s/g, '.')}@exemple.com`;
+    return t.emailBody(user, company, skillsString);
   }
 
-  // Render results to cards
-  function renderResults(companies, userProfile) {
-    if (!companies.length) {
-      cardsContainer.innerHTML = `<div style="grid-column:1/-1; text-align:center; background:white; border-radius:2rem; padding:2rem;">⚠️ Aucune correspondance trouvée. Élargissez vos compétences ou ville.</div>`;
-      resultsSection.style.display = 'block';
-      resultCountSpan.innerText = `(0 correspondance)`;
-      return;
-    }
-    resultCountSpan.innerText = `(${companies.length} meilleures correspondances)`;
-    let html = '';
-    companies.forEach((company, idx) => {
-      const isBest = idx === 0 && company.matchScore > 0; // first is best match (due to sorting)
-      const matchReason = company.sameCity 
-        ? `✓ Même ville (${company.city}) + ${company.matchedSkills.length} compétence(s) commune(s) : ${company.matchedSkills.slice(0,3).join(', ') || 'aucune'}`
-        : `✔️ Compétences correspondantes : ${company.matchedSkills.slice(0,3).join(', ') || 'compétences partagées'}. Ville différente mais profil prometteur.`;
-      
-      const cardClass = `company-card ${isBest ? 'best-match' : ''}`;
-      html += `
-        <div class="${cardClass}" data-company-idx="${idx}" data-company-name="${escapeHtml(company.name)}">
-          <div class="card-header">
-            <span class="company-name">${escapeHtml(company.name)}</span>
-            <span class="match-badge">🎯 ${company.matchScore}% match</span>
-          </div>
-          <div class="sector">📁 Secteur : ${escapeHtml(company.sector)}</div>
-          <div class="city-info">📍 ${escapeHtml(company.city)}</div>
-          <div class="reason"><strong>🔍 Pourquoi ?</strong> ${escapeHtml(matchReason)}</div>
-          <div class="contact-row">
-            <a href="mailto:${escapeHtml(company.email)}" class="contact-link">📧 ${escapeHtml(company.email)}</a>
-            <a href="tel:${escapeHtml(company.phone)}" class="contact-link">📞 ${escapeHtml(company.phone)}</a>
-          </div>
-          <div class="btn-group">
-            <button class="btn-email-gen" data-company='${JSON.stringify(company)}' data-user='${JSON.stringify(userProfile)}'>✉️ Générer Email</button>
-            <button class="btn-copy" data-email-message="">📋 Copier Email</button>
-          </div>
-          <div class="generated-message-area" id="msg-${idx}" style="display: none;"></div>
-        </div>
-      `;
-    });
-    cardsContainer.innerHTML = html;
-    resultsSection.style.display = 'block';
-
-    // attach dynamic events after render: generate email logic and copy (delegation)
-    document.querySelectorAll('.btn-email-gen').forEach(btn => {
-      btn.addEventListener('click', async (e) => {
-        e.stopPropagation();
-        const companyData = JSON.parse(btn.getAttribute('data-company'));
-        const userData = JSON.parse(btn.getAttribute('data-user'));
-        const card = btn.closest('.company-card');
-        const msgDiv = card.querySelector('.generated-message-area');
-        // show loading state
-        const originalText = btn.innerHTML;
-        btn.innerHTML = `<span class="loader"></span> Génération...`;
-        btn.disabled = true;
-        // simulate small delay for realistic "AI" generation (still instant but gives feel)
-        setTimeout(() => {
-          const emailMessage = generateProfessionalEmail(userData, companyData);
-          msgDiv.style.display = 'block';
-          msgDiv.innerHTML = `<div class="generated-message"><strong>💬 Message prêt à envoyer :</strong><br><br>${escapeHtml(emailMessage).replace(/\n/g, '<br>')}</div>`;
-          btn.innerHTML = originalText;
-          btn.disabled = false;
-          // update the sibling copy button's data attribute with the raw message for copying
-          const copyBtn = card.querySelector('.btn-copy');
-          if (copyBtn) {
-            copyBtn.setAttribute('data-email-message', emailMessage);
-          }
-        }, 300);
-      });
-    });
-
-    // COPY button logic delegates
-    document.querySelectorAll('.btn-copy').forEach(copyBtn => {
-      copyBtn.addEventListener('click', async (e) => {
-        const card = copyBtn.closest('.company-card');
-        const msgArea = card.querySelector('.generated-message-area');
-        let messageToCopy = copyBtn.getAttribute('data-email-message');
-        if (!messageToCopy && msgArea) {
-          // maybe generated earlier, extract from inner text without html
-          const msgTextDiv = msgArea.querySelector('.generated-message');
-          if (msgTextDiv) {
-            let raw = msgTextDiv.innerText;
-            if (raw.startsWith('💬 Message prêt à envoyer :')) raw = raw.replace('💬 Message prêt à envoyer :', '').trim();
-            messageToCopy = raw;
-          }
-        }
-        if (!messageToCopy) {
-          alert("Veuillez d'abord générer l'email avec 'Générer Email'");
-          return;
-        }
-        try {
-          await navigator.clipboard.writeText(messageToCopy);
-          const originalText = copyBtn.innerHTML;
-          copyBtn.innerHTML = '✅ Copié !';
-          setTimeout(() => { copyBtn.innerHTML = originalText; }, 1500);
-        } catch (err) {
-          alert("Impossible de copier, mais vous pouvez sélectionner manuellement.");
-        }
-      });
-    });
-  }
-
-  // simple escape
   function escapeHtml(str) {
     if (!str) return '';
     return str.replace(/[&<>]/g, function(m) {
@@ -528,68 +552,141 @@
       if(m === '<') return '&lt;';
       if(m === '>') return '&gt;';
       return m;
-    }).replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, function(c) {
-      return c;
     });
   }
 
-  // Handle form submission
+  function renderResults(companies, userProfile) {
+    const t = translations[currentLang];
+    if (!companies.length) {
+      cardsContainer.innerHTML = `<div style="grid-column:1/-1; text-align:center; background:white; border-radius:2rem; padding:2rem;">${t.noMatch}</div>`;
+      resultsSection.style.display = 'block';
+      resultCountSpan.innerText = `(0)`;
+      return;
+    }
+    resultCountSpan.innerText = `(${companies.length})`;
+    let html = '';
+    companies.forEach((company, idx) => {
+      const isBest = idx === 0 && company.matchScore > 0;
+      const sameCityText = company.sameCity ? `${t.sameCityPrefix} (${company.city}) + ` : '';
+      const matchedList = company.matchedSkills.slice(0,3).join(', ') || (currentLang === 'fr' ? 'aucune' : 'لا شيء');
+      const matchReason = company.sameCity 
+        ? `${sameCityText}${company.matchedSkills.length} ${t.skillsCommon} ${matchedList}`
+        : `✔️ ${t.skillsCommon} ${matchedList}. ${t.differentCity}`;
+      const cardClass = `company-card ${isBest ? 'best-match' : ''}`;
+      html += `
+        <div class="${cardClass}" data-company-idx="${idx}">
+          <div class="card-header">
+            <span class="company-name">${escapeHtml(company.name)}</span>
+            <span class="match-badge">🎯 ${company.matchScore}${t.matchPercent}</span>
+          </div>
+          <div class="sector">${t.sector} ${escapeHtml(company.sector)}</div>
+          <div class="city-info">📍 ${escapeHtml(company.city)}</div>
+          <div class="reason"><strong>${t.whyMatch}</strong> ${escapeHtml(matchReason)}</div>
+          <div class="contact-row">
+            <a href="mailto:${escapeHtml(company.email)}" class="contact-link">📧 ${escapeHtml(company.email)}</a>
+            <a href="tel:${escapeHtml(company.phone)}" class="contact-link">📞 ${escapeHtml(company.phone)}</a>
+          </div>
+          <div class="btn-group">
+            <button class="btn-email-gen" data-company='${JSON.stringify(company)}' data-user='${JSON.stringify(userProfile)}'>${t.generateEmail}</button>
+            <button class="btn-copy" data-email-message="">${t.copyEmail}</button>
+          </div>
+          <div class="generated-message-area" id="msg-${idx}" style="display: none;"></div>
+        </div>
+      `;
+    });
+    cardsContainer.innerHTML = html;
+
+    // Attach generate events
+    document.querySelectorAll('.btn-email-gen').forEach(btn => {
+      btn.addEventListener('click', async (e) => {
+        const companyData = JSON.parse(btn.getAttribute('data-company'));
+        const userData = JSON.parse(btn.getAttribute('data-user'));
+        const card = btn.closest('.company-card');
+        const msgDiv = card.querySelector('.generated-message-area');
+        const originalText = btn.innerHTML;
+        btn.innerHTML = `<span class="loader"></span> ${t.loading}`;
+        btn.disabled = true;
+        setTimeout(() => {
+          const emailMessage = generateProfessionalEmail(userData, companyData, currentLang);
+          msgDiv.style.display = 'block';
+          msgDiv.innerHTML = `<div class="generated-message"><strong>${t.readyMsgTitle}</strong><br><br>${escapeHtml(emailMessage).replace(/\n/g, '<br>')}</div>`;
+          btn.innerHTML = originalText;
+          btn.disabled = false;
+          const copyBtn = card.querySelector('.btn-copy');
+          if (copyBtn) copyBtn.setAttribute('data-email-message', emailMessage);
+        }, 300);
+      });
+    });
+
+    document.querySelectorAll('.btn-copy').forEach(copyBtn => {
+      copyBtn.addEventListener('click', async () => {
+        const card = copyBtn.closest('.company-card');
+        let messageToCopy = copyBtn.getAttribute('data-email-message');
+        if (!messageToCopy) {
+          const msgArea = card.querySelector('.generated-message-area');
+          if (msgArea) {
+            const msgTextDiv = msgArea.querySelector('.generated-message');
+            if (msgTextDiv) {
+              let raw = msgTextDiv.innerText;
+              if (raw.includes(t.readyMsgTitle)) raw = raw.replace(t.readyMsgTitle, '').trim();
+              messageToCopy = raw;
+            }
+          }
+        }
+        if (!messageToCopy) {
+          alert(t.generateFirst);
+          return;
+        }
+        try {
+          await navigator.clipboard.writeText(messageToCopy);
+          const originalText = copyBtn.innerHTML;
+          copyBtn.innerHTML = t.copied;
+          setTimeout(() => { copyBtn.innerHTML = originalText; }, 1500);
+        } catch (err) { alert("لا يمكن النسخ / Impossible de copier"); }
+      });
+    });
+  }
+
   async function handleMatch(event) {
     event.preventDefault();
-    // get user inputs
     const fullName = document.getElementById('fullName').value.trim();
     const diploma = document.getElementById('diploma').value.trim();
     const city = document.getElementById('city').value.trim();
     const skillsRaw = document.getElementById('skills').value.trim();
+    const t = translations[currentLang];
     if (!fullName || !diploma || !city || !skillsRaw) {
-      alert("Veuillez remplir tous les champs du formulaire.");
+      alert(t.fillAllFields);
       return;
     }
     const userSkillsArray = parseSkills(skillsRaw);
     if (userSkillsArray.length === 0) {
-      alert("Veuillez renseigner au moins une compétence (ex: marketing, javascript)");
+      alert(t.atLeastOneSkill);
       return;
     }
-    const userProfile = {
-      fullName: fullName,
-      diploma: diploma,
-      city: city,
-      skillsArray: userSkillsArray,
-    };
+    const userProfile = { fullName, diploma, city, skillsArray: userSkillsArray };
     if (!companiesData.length) {
-      alert("Les données des entreprises ne sont pas encore chargées. Réessayez.");
+      alert("Chargement des données, veuillez réessayer / بيانات الشركات قيد التحميل");
       return;
     }
-    // Compute top matches
     const topMatches = getTopMatches(city, userSkillsArray, companiesData);
     currentMatchedCompanies = topMatches;
-    lastUserProfile = userProfile;
+    window._lastUserProfile = userProfile;
     renderResults(topMatches, userProfile);
-    // scroll to results
     resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
-  // Load companies.json (local file)
   async function loadCompanies() {
     try {
-      // In GitHub pages static, fetch local companies.json
       const response = await fetch('./companies.json');
-      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      if (!response.ok) throw new Error();
       const data = await response.json();
-      if (Array.isArray(data) && data.length) {
-        companiesData = data;
-      } else {
-        console.warn("No valid companies array, using fallback dataset");
-        loadFallbackCompanies();
-      }
+      if (Array.isArray(data) && data.length) companiesData = data;
+      else loadFallbackCompanies();
     } catch (err) {
-      console.error("Failed to load companies.json, loading fallback data", err);
       loadFallbackCompanies();
     }
-    // after loading, enable form if needed (already active)
   }
 
-  // Fallback: 15 realistic Moroccan companies dataset (in case file missing)
   function loadFallbackCompanies() {
     companiesData = [
       { name: "BMCE Capital", sector: "Finance & Banque", city: "Casablanca", email: "recrutement@bmcecapital.ma", phone: "0520223300", required_skills: ["finance", "analyse financière", "excel", "gestion de risque"] },
@@ -598,11 +695,11 @@
       { name: "Label'Vie", sector: "Grande Distribution", city: "Casablanca", email: "recrutement@labelvie.ma", phone: "0520224600", required_skills: ["logistique", "management", "relation client", "commerce"] },
       { name: "Attijariwafa bank", sector: "Banque", city: "Casablanca", email: "emploi@attijari.ma", phone: "0520292929", required_skills: ["finance", "gestion", "analyse crédit", "relation client"] },
       { name: "ONCF", sector: "Transport", city: "Rabat", email: "candidature@oncf.ma", phone: "0537777777", required_skills: ["gestion projet", "logistique", "génie civil", "sécurité"] },
-      { name: "HPS (High Tech Payment)", sector: "Fintech", city: "Casablanca", email: "jobs@hps-worldwide.com", phone: "0520224800", required_skills: ["java", "spring", "base de données", "microservices"] },
+      { name: "HPS", sector: "Fintech", city: "Casablanca", email: "jobs@hps-worldwide.com", phone: "0520224800", required_skills: ["java", "spring", "base de données", "microservices"] },
       { name: "Lesieur Cristal", sector: "Agroalimentaire", city: "Casablanca", email: "rh@lesieur.ma", phone: "0520232323", required_skills: ["marketing", "vente", "logistique", "négociation"] },
       { name: "Promamec", sector: "Automobile", city: "Tanger", email: "recrutement@promamec.com", phone: "0539333300", required_skills: ["mécanique", "qualité", "production", "lean"] },
       { name: "Delta Holding", sector: "Immobilier", city: "Rabat", email: "contact@deltaholding.ma", phone: "0537272727", required_skills: ["droit immobilier", "commercial", "négociation", "gestion"] },
-      { name: "Yazaki Maroc", sector: "Câblage automobile", city: "Tanger", email: "hr.yazaki@yazaki.com", phone: "0539393939", required_skills: ["anglais", "gestion de production", "qualité", "informatique"] },
+      { name: "Yazaki Maroc", sector: "Câblage auto", city: "Tanger", email: "hr.yazaki@yazaki.com", phone: "0539393939", required_skills: ["anglais", "gestion de production", "qualité", "informatique"] },
       { name: "M2M Group", sector: "Conseil & Digital", city: "Casablanca", email: "careers@m2mgroup.ma", phone: "0520252525", required_skills: ["digital marketing", "SEO", "social media", "stratégie"] },
       { name: "Nareva", sector: "Énergie", city: "Casablanca", email: "recrutement@nareva.ma", phone: "0520220606", required_skills: ["ingénierie", "gestion de projet", "électricité", "environnement"] },
       { name: "Disway", sector: "Distribution IT", city: "Casablanca", email: "jobs@disway.ma", phone: "0520299800", required_skills: ["vente", "informatique", "réseaux", "négociation"] },
@@ -610,10 +707,18 @@
     ];
   }
 
-  // attach event
+  // language switch
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const lang = btn.getAttribute('data-lang');
+      if (lang === currentLang) return;
+      currentLang = lang;
+      applyLanguage();
+    });
+  });
+
   form.addEventListener('submit', handleMatch);
-  // load data
-  loadCompanies();
+  loadCompanies().then(() => applyLanguage());
 </script>
 </body>
 </html>
