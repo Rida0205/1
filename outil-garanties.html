@@ -48,4 +48,90 @@
         input { width: 100%; padding: 14px 16px; border-radius: 16px; border: 1.5px solid var(--gray); font-size: 0.95rem; font-family: inherit; }
         input:focus { outline: none; border-color: var(--gold); }
         
-        .btn { display: inline-flex; align-items: center; gap: 10
+        .btn { display: inline-flex; align-items: center; gap: 10px; background: var(--primary); color: white; border: none; padding: 12px 28px; border-radius: 60px; font-weight: 600; cursor: pointer; transition: all 0.2s; margin-right: 12px; margin-top: 8px; }
+        .btn:hover { background: #2c5282; transform: translateY(-2px); }
+        .btn-gold { background: var(--gold); color: var(--primary-dark); }
+        .btn-gold:hover { background: #b88a2a; }
+        
+        .result { background: var(--gray-light); padding: 20px; border-radius: 20px; margin-top: 24px; border-left: 4px solid var(--gold); font-weight: 500; line-height: 1.6; }
+        
+        .info-note { background: #fef8e7; padding: 12px 16px; border-radius: 16px; font-size: 0.7rem; color: #b68b40; margin-top: 20px; }
+        
+        footer { background: var(--primary-dark); color: rgba(255,255,255,0.7); padding: 48px 24px 32px; margin-top: 60px; }
+        .footer-container { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
+        .footer-col h4 { color: white; margin-bottom: 16px; }
+        .footer-col a { display: block; color: rgba(255,255,255,0.6); text-decoration: none; margin-bottom: 10px; font-size: 0.85rem; }
+        .footer-col a:hover { color: var(--gold); }
+        .footer-bottom { text-align: center; padding-top: 32px; margin-top: 32px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.8rem; }
+        
+        @media (max-width: 768px) { .tool-container { padding: 24px; margin: 30px 20px; } .btn { margin-bottom: 10px; } }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <div class="nav-container">
+        <div class="logo"><span class="mp">MP</span><span>.</span><span class="econcours">econcours.ma</span></div>
+        <div class="nav-links">
+            <a href="index.html"><i class="fas fa-home"></i> Accueil</a>
+            <a href="cours.html"><i class="fas fa-book"></i> Cours</a>
+            <a href="outils.html"><i class="fas fa-calculator"></i> Outils</a>
+            <a href="apropos.html"><i class="fas fa-info-circle"></i> À propos</a>
+            <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+        </div>
+    </div>
+</div>
+
+<div class="page-header">
+    <h1>🛡️ Garanties</h1>
+    <p>Garantie provisoire et garantie définitive</p>
+    <a href="outils.html"><i class="fas fa-arrow-left"></i> Retour aux outils</a>
+</div>
+
+<div class="tool-container">
+    <div class="tool-icon"><i class="fas fa-shield-alt"></i></div>
+    <h2>Calcul des garanties</h2>
+    <p>Garantie provisoire (dépôt de soumission) et garantie définitive (retenue de garantie)</p>
+    
+    <label>Montant du marché (DH)</label>
+    <input type="number" id="montant" placeholder="Ex: 1000000">
+    
+    <div style="margin-top: 24px;">
+        <button id="btnProvisoire" class="btn"><i class="fas fa-lock"></i> Garantie provisoire (2%)</button>
+        <button id="btnDefinitive" class="btn btn-gold"><i class="fas fa-shield-alt"></i> Garantie définitive (5%)</button>
+    </div>
+    
+    <div class="result" id="result">📌 Cliquez sur un bouton ci-dessus</div>
+    
+    <div class="info-note">
+        📌 <strong>Garantie provisoire (article 46 du décret) :</strong><br>
+        • Généralement 2% du montant estimé du marché<br>
+        • Pourrait être entre 1% et 3% selon le règlement de consultation<br><br>
+        📌 <strong>Garantie définitive :</strong><br>
+        • 5% du montant total du marché (hors taxes)<br>
+        • Retenue sur les acomptes ou caution bancaire
+    </div>
+</div>
+
+<footer>
+    <div class="footer-container">
+        <div class="footer-col"><h4>MP.econcours.ma</h4><a href="index.html">Accueil</a><a href="cours.html">Cours</a><a href="outils.html">Outils</a></div>
+        <div class="footer-col"><h4>Ressources</h4><a href="#">Décret 2-22-431</a><a href="#">FAQ</a></div>
+        <div class="footer-col"><h4>À propos</h4><a href="apropos.html">Notre projet</a><a href="contact.html">Contact</a></div>
+        <div class="footer-col"><h4>Partenaire</h4><a href="https://econcours.ma" target="_blank">econcours.ma</a></div>
+    </div>
+    <div class="footer-bottom"><p>🇲🇦 Plateforme basée sur la réglementation marocaine | © 2026</p></div>
+</footer>
+
+<script>
+    document.getElementById('btnProvisoire')?.addEventListener('click', function() {
+        let m = parseFloat(document.getElementById('montant').value) || 0;
+        document.getElementById('result').innerHTML = `📌 <strong>Garantie provisoire</strong><br><br>💰 Montant : ${(m*0.02).toFixed(2)} DH<br><br>⚠️ Vérifiez le règlement de l'appel d'offres (généralement 1% à 3% du montant estimé)`;
+    });
+    document.getElementById('btnDefinitive')?.addEventListener('click', function() {
+        let m = parseFloat(document.getElementById('montant').value) || 0;
+        document.getElementById('result').innerHTML = `🛡️ <strong>Garantie définitive</strong><br><br>💰 Montant : ${(m*0.05).toFixed(2)} DH<br><br>📌 Soit 5% du montant total du marché (retenue de garantie ou caution bancaire)`;
+    });
+</script>
+</body>
+</html>
