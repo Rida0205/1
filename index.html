@@ -3,92 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>MP.econcours.ma | Marchés Publics</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <title>MP.econcours.ma | Plateforme intelligente des marchés publics</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Roboto', sans-serif; background: #f8fafc; color: #1e2f3e; line-height: 1.5; }
+        :root {
+            --primary-dark: #0a2540;
+            --primary: #1a3a5c;
+            --gold: #c9a03d;
+            --gold-light: #e2c28b;
+            --white: #ffffff;
+            --gray-light: #f8fafc;
+            --gray: #eef2f8;
+            --text-dark: #1e2f3e;
+            --text-gray: #5a6e7c;
+            --shadow: 0 10px 30px -12px rgba(0,0,0,0.1);
+            --shadow-sm: 0 4px 12px rgba(0,0,0,0.05);
+            --radius: 24px;
+        }
+        body { font-family: 'Inter', sans-serif; background: var(--gray-light); color: var(--text-dark); }
+        h1, h2, h3, h4, .logo, .nav-links a, .btn { font-family: 'Poppins', sans-serif; }
         .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
         
-        .navbar { background: white; box-shadow: 0 2px 12px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 100; padding: 16px 0; }
-        .nav-flex { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+        /* Navbar */
+        .navbar { background: var(--white); box-shadow: var(--shadow-sm); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; padding: 16px 24px; max-width: 1400px; margin: 0 auto; flex-wrap: wrap; gap: 16px; }
         .logo { font-size: 1.5rem; font-weight: 700; }
-        .logo .mp { color: #1a3a5c; }
-        .logo .econcours { color: #c9a03d; }
+        .logo .mp { color: var(--primary-dark); }
+        .logo .econcours { color: var(--gold); }
         .nav-links { display: flex; gap: 28px; flex-wrap: wrap; }
-        .nav-links a { text-decoration: none; font-weight: 500; color: #4a6a7e; transition: 0.2s; }
-        .nav-links a:hover { color: #c9a03d; }
+        .nav-links a { text-decoration: none; font-weight: 500; color: var(--text-dark); transition: color 0.2s; }
+        .nav-links a:hover { color: var(--gold); }
         
-        .hero { background: linear-gradient(135deg, #1a3a5c, #0a2540); color: white; padding: 60px 0; text-align: center; margin-bottom: 48px; border-radius: 0 0 32px 32px; }
-        .hero h1 { font-size: 2.2rem; font-weight: 700; margin-bottom: 16px; }
-        .hero p { max-width: 600px; margin: 0 auto; opacity: 0.9; }
+        /* Hero */
+        .hero { background: linear-gradient(135deg, var(--primary-dark), var(--primary)); position: relative; overflow: hidden; padding: 80px 0 60px; text-align: center; color: white; }
+        .hero h1 { font-size: 2.8rem; font-weight: 700; margin-bottom: 16px; }
+        .hero p { font-size: 1.1rem; max-width: 650px; margin: 0 auto; opacity: 0.9; }
         
-        .section-title { font-size: 1.6rem; font-weight: 700; color: #1a3a5c; margin: 48px 0 24px; border-left: 4px solid #c9a03d; padding-left: 16px; }
+        /* Section titles */
+        .section-title { font-size: 1.8rem; font-weight: 700; color: var(--primary-dark); margin: 60px 0 32px; border-left: 4px solid var(--gold); padding-left: 20px; }
         
+        /* Layout deux colonnes */
         .two-columns { display: flex; flex-direction: column; gap: 48px; }
         @media (min-width: 900px) { .two-columns { flex-direction: row; align-items: flex-start; } .col-left { flex: 1.2; } .col-right { flex: 1.8; } }
         
-        .card { background: white; border-radius: 24px; padding: 24px; margin-bottom: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; }
-        .card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; border-bottom: 1px solid #e2e8f0; padding-bottom: 12px; }
-        .card-header i { font-size: 1.5rem; color: #c9a03d; }
-        .card-header h2 { font-size: 1.3rem; color: #1a3a5c; }
+        /* Cards */
+        .card { background: white; border-radius: var(--radius); padding: 28px; box-shadow: var(--shadow-sm); border: 1px solid var(--gray); transition: all 0.3s; }
+        .card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; border-bottom: 1px solid var(--gray); padding-bottom: 16px; }
+        .card-header i { font-size: 1.5rem; color: var(--gold); background: rgba(201,160,61,0.1); padding: 10px; border-radius: 16px; }
+        .card-header h2 { font-size: 1.3rem; color: var(--primary); }
         
+        /* Liste des cours */
         .cours-list { list-style: none; }
-        .cours-list li { display: flex; align-items: flex-start; gap: 14px; padding: 14px 0; border-bottom: 1px solid #eef2f8; }
-        .cours-list li i { color: #c9a03d; margin-top: 3px; }
-        .cours-title { font-weight: 700; color: #1a3a5c; display: block; margin-bottom: 4px; }
-        .cours-desc { font-size: 0.85rem; color: #6b8ba0; }
+        .cours-list li { display: flex; gap: 14px; padding: 16px 0; border-bottom: 1px solid var(--gray); }
+        .cours-list li i { color: var(--gold); margin-top: 3px; font-size: 1.1rem; }
+        .cours-title { font-weight: 700; color: var(--primary); display: block; margin-bottom: 4px; }
+        .cours-desc { font-size: 0.85rem; color: var(--text-gray); }
         
-        .calc-box { background: white; border-radius: 24px; padding: 24px; margin-bottom: 32px; border: 1px solid #e2e8f0; }
-        .calc-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; border-bottom: 1px solid #e2e8f0; padding-bottom: 12px; }
-        .calc-header i { font-size: 1.5rem; color: #c9a03d; }
-        .calc-header h3 { font-size: 1.2rem; color: #1a3a5c; }
-        label { font-weight: 600; display: block; margin: 16px 0 6px; font-size: 0.85rem; color: #1a3a5c; }
-        input, select { width: 100%; padding: 12px 16px; border-radius: 16px; border: 1px solid #cbd5e1; font-size: 0.9rem; font-family: inherit; }
-        input:focus, select:focus { outline: none; border-color: #c9a03d; }
-        button { background: #1a3a5c; color: white; border: none; padding: 12px 20px; border-radius: 40px; font-weight: 600; cursor: pointer; margin-top: 16px; width: 100%; transition: 0.2s; }
-        button:hover { background: #0a2540; transform: translateY(-1px); }
-        .result { background: #f1f5f9; padding: 16px; border-radius: 16px; margin-top: 16px; border-left: 4px solid #c9a03d; font-size: 0.9rem; }
-        .info-note { background: #fefce8; padding: 12px; border-radius: 16px; font-size: 0.7rem; color: #854d0e; margin-top: 16px; }
-        .inline-group { display: flex; gap: 10px; align-items: center; margin: 10px 0; }
+        /* Calculateurs */
+        .calc-box { background: white; border-radius: var(--radius); padding: 24px; margin-bottom: 28px; border: 1px solid var(--gray); transition: 0.2s; }
+        .calc-box:hover { box-shadow: var(--shadow-sm); }
+        .calc-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; border-bottom: 1px solid var(--gray); padding-bottom: 12px; }
+        .calc-header i { font-size: 1.4rem; color: var(--gold); }
+        .calc-header h3 { font-size: 1.2rem; font-weight: 700; color: var(--primary); }
+        label { font-weight: 600; display: block; margin: 16px 0 6px; font-size: 0.85rem; color: var(--text-dark); }
+        input, select { width: 100%; padding: 12px 16px; border-radius: 16px; border: 1.5px solid var(--gray); font-size: 0.9rem; font-family: inherit; background: white; }
+        input:focus, select:focus { outline: none; border-color: var(--gold); }
+        button { background: var(--primary); color: white; border: none; padding: 12px 20px; border-radius: 40px; font-weight: 600; cursor: pointer; margin-top: 16px; width: 100%; transition: 0.2s; }
+        button:hover { background: var(--primary-dark); transform: translateY(-2px); }
+        .result { background: var(--gray-light); padding: 16px; border-radius: 16px; margin-top: 16px; border-left: 4px solid var(--gold); font-size: 0.9rem; }
+        .info-note { background: #fef8e7; padding: 12px; border-radius: 16px; font-size: 0.7rem; color: #b68b40; margin-top: 16px; border-left: 3px solid var(--gold); }
+        .inline-group { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin: 10px 0; }
         .inline-group input { width: 100px; margin: 0; }
-        
         .offres-list { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
-        .offre-tag { background: #eef2f8; padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; display: inline-flex; align-items: center; gap: 8px; }
+        .offre-tag { background: var(--gray); padding: 6px 14px; border-radius: 30px; font-size: 0.8rem; display: inline-flex; align-items: center; gap: 8px; }
         .offre-tag.excluded { background: #ffe0e0; text-decoration: line-through; color: #c00; }
         .add-offre { display: flex; gap: 10px; margin: 12px 0; }
         .add-offre input { flex: 2; margin: 0; }
-        .add-offre button { width: auto; margin: 0; padding: 10px 18px; background: #c9a03d; }
+        .add-offre button { width: auto; margin: 0; padding: 10px 18px; background: var(--gold); color: var(--primary-dark); }
+        .row-buttons { display: flex; gap: 12px; margin-top: 8px; }
+        .row-buttons button { flex: 1; }
         
-        footer { text-align: center; padding: 32px 24px; margin-top: 60px; border-top: 1px solid #e2e8f0; color: #6b8ba0; font-size: 0.8rem; }
-        .loader { text-align: center; padding: 40px; color: #c9a03d; }
+        /* Footer */
+        footer { background: var(--primary-dark); color: rgba(255,255,255,0.7); text-align: center; padding: 32px 24px; margin-top: 60px; }
+        footer p { margin: 4px 0; font-size: 0.8rem; }
         
-        @media (max-width: 768px) { .hero h1 { font-size: 1.5rem; } .section-title { font-size: 1.3rem; } }
+        /* Loader */
+        .loader { text-align: center; padding: 40px; color: var(--gold); }
+        
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 1.8rem; }
+            .section-title { font-size: 1.4rem; }
+            .two-columns { flex-direction: column; }
+        }
     </style>
 </head>
 <body>
 
 <div class="navbar">
-    <div class="container nav-flex">
-        <div class="logo"><span class="mp">MP</span>.<span class="econcours">econcours.ma</span></div>
+    <div class="nav-container">
+        <div class="logo"><span class="mp">MP</span><span>.</span><span class="econcours">econcours.ma</span></div>
         <div class="nav-links">
-            <a href="#accueil">Accueil</a>
-            <a href="#cours">Cours</a>
-            <a href="#outils">Outils</a>
+            <a href="#cours">📖 Cours</a>
+            <a href="#outils">🧮 Outils</a>
             <a href="https://econcours.ma" target="_blank">econcours.ma</a>
         </div>
     </div>
 </div>
 
-<div class="hero" id="accueil">
+<div class="hero">
     <div class="container">
-        <h1>📘 Marchés Publics au Maroc<br>Formation + Calculateurs</h1>
+        <h1>Marchés Publics au Maroc<br>Formation + Calculateurs</h1>
         <p>Apprenez et calculez selon le décret 2-22-431</p>
     </div>
 </div>
 
 <div class="container two-columns">
+    
     <!-- COLONNE GAUCHE : COURS -->
     <div class="col-left" id="cours">
         <div class="card">
@@ -97,7 +129,7 @@
                 <h2>📖 Cours & Guides</h2>
             </div>
             <div id="coursContainer">
-                <div class="loader"><i class="fas fa-spinner fa-pulse"></i> Chargement des cours...</div>
+                <div class="loader"><i class="fas fa-spinner fa-pulse"></i> Chargement...</div>
             </div>
         </div>
     </div>
@@ -106,7 +138,7 @@
     <div class="col-right" id="outils">
         <h2 class="section-title">🧮 Outils de calcul</h2>
         
-        <!-- Outil 1: Prix de référence -->
+        <!-- Prix de référence -->
         <div class="calc-box">
             <div class="calc-header"><i class="fas fa-chart-line"></i><h3>🎯 Prix de référence</h3></div>
             <label>Estimation (E) - DH</label>
@@ -122,13 +154,15 @@
                 <input type="number" id="prixRefNewOffre" placeholder="Ajouter une offre">
                 <button id="prixRefAddOffre">+ Ajouter</button>
             </div>
-            <button id="prixRefReset" style="background:#94a3b8;">Réinitialiser</button>
-            <button id="prixRefCalculer">Calculer</button>
+            <div class="row-buttons">
+                <button id="prixRefReset" style="background:#94a3b8;">Réinitialiser</button>
+                <button id="prixRefCalculer">Calculer</button>
+            </div>
             <div class="result" id="prixRefResult">📊 En attente...</div>
-            <div class="info-note">Offres excessives (+20%) éliminées. Offres anormales (selon seuil) éliminées. P = (E + M)/2 → offre la plus proche</div>
+            <div class="info-note">Offres excessives (+20%) et anormalement basses (selon seuil) éliminées. P = (E+M)/2 → offre la plus proche.</div>
         </div>
 
-        <!-- Outil 2: Avance -->
+        <!-- Avance -->
         <div class="calc-box">
             <div class="calc-header"><i class="fas fa-coins"></i><h3>💰 Avance</h3></div>
             <label>Montant du marché (TTC) - DH</label>
@@ -136,40 +170,44 @@
             <label>Délai (mois)</label>
             <input type="number" id="avanceDelai" value="6">
             <div class="inline-group">
-                <input type="number" id="avanceSousTraitance" placeholder="% sous-traitée" value="0" step="5">
+                <input type="number" id="avanceSousTraitance" placeholder="%" value="0" step="5" style="width:80px;">
                 <span>% sous-traitée</span>
             </div>
             <button id="avanceCalculer">Calculer l'avance</button>
             <div class="result" id="avanceResult">💰 Avance : --- DH</div>
-            <div class="info-note">Conditions: ≥500k DH et délai ≥4 mois. Calcul: 10% sur 10M +5% reste. Plafond 20M DH.</div>
+            <div class="info-note">Conditions: ≥500k DH et délai ≥4 mois. 10% sur 10M +5% reste. Plafond 20M DH.</div>
         </div>
 
-        <!-- Outil 3: Garanties -->
+        <!-- Garanties -->
         <div class="calc-box">
             <div class="calc-header"><i class="fas fa-shield-alt"></i><h3>🛡️ Garanties</h3></div>
             <label>Montant du marché (DH)</label>
             <input type="number" id="garantieMontant" placeholder="Ex: 1000000">
-            <button id="garantieProvisoire">Garantie provisoire (2%)</button>
-            <button id="garantieDefinitive" style="margin-top:8px;">Garantie définitive (5%)</button>
+            <div class="row-buttons">
+                <button id="garantieProvisoire">Garantie provisoire (2%)</button>
+                <button id="garantieDefinitive">Garantie définitive (5%)</button>
+            </div>
             <div class="result" id="garantieResult">📌 ---</div>
         </div>
 
-        <!-- Outil 4: Pénalités -->
+        <!-- Pénalités -->
         <div class="calc-box">
             <div class="calc-header"><i class="fas fa-clock"></i><h3>⏱️ Pénalités de retard</h3></div>
-            <label>Montant du marché (DH)</label>
+            <label>Montant (DH)</label>
             <input type="number" id="penaliteMontant" value="1000000">
-            <label>Taux journalier (%)</label>
-            <input type="number" id="penaliteTaux" value="0.5" step="0.1">
-            <label>Jours de retard</label>
-            <input type="number" id="penaliteJours" value="10">
+            <div class="inline-group">
+                <input type="number" id="penaliteTaux" value="0.5" step="0.1" style="width:100px;">
+                <span>%/jour</span>
+                <input type="number" id="penaliteJours" value="10" style="width:100px;">
+                <span>jours</span>
+            </div>
             <label>Plafond (%)</label>
             <input type="number" id="penalitePlafond" value="10">
             <button id="penaliteCalculer">Calculer</button>
             <div class="result" id="penaliteResult">⏱️ --- DH</div>
         </div>
 
-        <!-- Outil 5: Offres anormales -->
+        <!-- Offres anormales -->
         <div class="calc-box">
             <div class="calc-header"><i class="fas fa-exclamation-triangle"></i><h3>⚠️ Offres anormales</h3></div>
             <label>Estimation (E) - DH</label>
@@ -185,8 +223,10 @@
                 <input type="number" id="anormalesNewOffre" placeholder="Ajouter une offre">
                 <button id="anormalesAddOffre">+ Ajouter</button>
             </div>
-            <button id="anormalesReset" style="background:#94a3b8;">Réinitialiser</button>
-            <button id="anormalesVerifier">Vérifier</button>
+            <div class="row-buttons">
+                <button id="anormalesReset" style="background:#94a3b8;">Réinitialiser</button>
+                <button id="anormalesVerifier">Vérifier</button>
+            </div>
             <div class="result" id="anormalesResult">📊 ---</div>
         </div>
     </div>
@@ -201,71 +241,60 @@
     // ========== CHARGEMENT DES COURS DEPUIS JSON ==========
     fetch('cours.json')
         .then(response => {
-            if (!response.ok) throw new Error('Fichier cours.json introuvable');
+            if (!response.ok) throw new Error('cours.json introuvable');
             return response.json();
         })
         .then(data => {
             let html = '<ul class="cours-list">';
             for (let c of data.cours) {
-                html += `
-                    <li>
-                        <i class="fas fa-book-open"></i>
-                        <div>
-                            <span class="cours-title">${c.titre}</span>
-                            <span class="cours-desc">${c.description}</span>
-                        </div>
-                    </li>
-                `;
+                html += `<li><i class="fas fa-book-open"></i><div><span class="cours-title">${c.titre}</span><span class="cours-desc">${c.description}</span></div></li>`;
             }
-            html += '</ul><div class="info-note" style="margin-top:20px;">📚 D\'autres chapitres seront ajoutés prochainement...</div>';
+            html += '</ul><div class="info-note" style="margin-top:16px;">📚 D\'autres chapitres seront ajoutés prochainement...</div>';
             document.getElementById('coursContainer').innerHTML = html;
         })
         .catch(error => {
-            document.getElementById('coursContainer').innerHTML = `<div style="color:#c00;padding:20px;">❌ Erreur: ${error.message}<br>Vérifiez que cours.json existe au même emplacement.</div>`;
+            document.getElementById('coursContainer').innerHTML = `<div style="color:#c00;padding:20px;">❌ Erreur: ${error.message}</div>`;
         });
 
     // ========== PRIX DE RÉFÉRENCE ==========
     let prixRefOffres = [80000, 90000, 100000, 130000];
-    function afficherPrixRefOffres() {
-        const container = document.getElementById('prixRefOffresContainer');
-        if (!container) return;
-        const E = parseFloat(document.getElementById('prixRefE').value) || 0;
-        const type = parseFloat(document.getElementById('prixRefType').value);
+    function afficherPrixRef() {
+        let E = parseFloat(document.getElementById('prixRefE').value) || 0;
+        let type = parseFloat(document.getElementById('prixRefType').value);
         let html = '';
-        prixRefOffres.forEach((offre, index) => {
-            let excluded = false;
-            if (E > 0 && (offre > E * 1.2 || offre < E * (1 - type))) excluded = true;
-            html += `<span class="offre-tag ${excluded ? 'excluded' : ''}">${offre.toLocaleString()} DH<span onclick="supprimerPrixRefOffre(${index})" style="cursor:pointer;color:#c00;margin-left:6px;">✖</span></span>`;
+        prixRefOffres.forEach((o, i) => {
+            let excluded = E > 0 && (o > E*1.2 || o < E*(1-type));
+            html += `<span class="offre-tag ${excluded ? 'excluded' : ''}">${o.toLocaleString()} DH<span onclick="prixRefSupprimer(${i})" style="cursor:pointer;color:#c00;margin-left:6px;">✖</span></span>`;
         });
-        if (prixRefOffres.length === 0) html = '<span>Aucune offre.</span>';
-        container.innerHTML = html;
+        if (!prixRefOffres.length) html = '<span>Aucune offre.</span>';
+        document.getElementById('prixRefOffresContainer').innerHTML = html;
     }
-    function supprimerPrixRefOffre(index) { prixRefOffres.splice(index, 1); afficherPrixRefOffres(); }
+    function prixRefSupprimer(i) { prixRefOffres.splice(i,1); afficherPrixRef(); }
     document.getElementById('prixRefAddOffre')?.addEventListener('click', () => {
         let v = parseFloat(document.getElementById('prixRefNewOffre').value);
-        if (!isNaN(v) && v > 0) { prixRefOffres.push(v); document.getElementById('prixRefNewOffre').value = ''; afficherPrixRefOffres(); }
-        else alert('Montant valide requis');
+        if (!isNaN(v) && v>0) { prixRefOffres.push(v); document.getElementById('prixRefNewOffre').value = ''; afficherPrixRef(); }
+        else alert('Montant valide');
     });
-    document.getElementById('prixRefReset')?.addEventListener('click', () => { prixRefOffres = []; afficherPrixRefOffres(); });
+    document.getElementById('prixRefReset')?.addEventListener('click', () => { prixRefOffres = []; afficherPrixRef(); });
     document.getElementById('prixRefCalculer')?.addEventListener('click', () => {
         let E = parseFloat(document.getElementById('prixRefE').value);
         let type = parseFloat(document.getElementById('prixRefType').value);
-        if (isNaN(E) || prixRefOffres.length === 0) { document.getElementById('prixRefResult').innerHTML = '❌ Estimation et offres requises.'; return; }
-        let filtrees = prixRefOffres.filter(o => o <= E * 1.2 && o >= E * (1 - type));
-        if (filtrees.length === 0) { document.getElementById('prixRefResult').innerHTML = '⚠️ Toutes les offres exclues.'; return; }
-        let M = filtrees.reduce((a,b)=>a+b,0) / filtrees.length;
-        let P = (E + M) / 2;
-        let gagnante = filtrees.reduce((a,b) => Math.abs(a-P) < Math.abs(b-P) ? a : b);
+        if (isNaN(E) || !prixRefOffres.length) { document.getElementById('prixRefResult').innerHTML = '❌ Estimation et offres requises.'; return; }
+        let filtrees = prixRefOffres.filter(o => o <= E*1.2 && o >= E*(1-type));
+        if (!filtrees.length) { document.getElementById('prixRefResult').innerHTML = '⚠️ Toutes les offres exclues.'; return; }
+        let M = filtrees.reduce((a,b)=>a+b,0)/filtrees.length;
+        let P = (E+M)/2;
+        let gagnante = filtrees.reduce((a,b)=>Math.abs(a-P)<Math.abs(b-P)?a:b);
         document.getElementById('prixRefResult').innerHTML = `📊 P = ${P.toLocaleString()} DH<br>🏆 Offre gagnante = ${gagnante.toLocaleString()} DH`;
     });
 
     // ========== AVANCE ==========
     document.getElementById('avanceCalculer')?.addEventListener('click', () => {
-        let montant = parseFloat(document.getElementById('avanceMontant').value);
-        let delai = parseFloat(document.getElementById('avanceDelai').value);
-        let sous = parseFloat(document.getElementById('avanceSousTraitance').value) || 0;
-        if (montant < 500000 || delai < 4) { document.getElementById('avanceResult').innerHTML = '❌ Avance non accordée (montant<500k ou délai<4 mois)'; return; }
-        let base = montant * (1 - sous/100);
+        let m = parseFloat(document.getElementById('avanceMontant').value);
+        let d = parseFloat(document.getElementById('avanceDelai').value);
+        let s = parseFloat(document.getElementById('avanceSousTraitance').value) || 0;
+        if (m < 500000 || d < 4) { document.getElementById('avanceResult').innerHTML = '❌ Avance non accordée (montant<500k ou délai<4 mois)'; return; }
+        let base = m * (1 - s/100);
         let avance = base <= 10000000 ? base * 0.10 : (10000000 * 0.10) + ((base - 10000000) * 0.05);
         avance = Math.min(avance, 20000000);
         document.getElementById('avanceResult').innerHTML = `💰 Avance = ${avance.toLocaleString()} DH`;
@@ -283,51 +312,47 @@
 
     // ========== PÉNALITÉS ==========
     document.getElementById('penaliteCalculer')?.addEventListener('click', () => {
-        let montant = parseFloat(document.getElementById('penaliteMontant').value) || 0;
-        let taux = parseFloat(document.getElementById('penaliteTaux').value) || 0;
-        let jours = parseFloat(document.getElementById('penaliteJours').value) || 0;
-        let plafond = parseFloat(document.getElementById('penalitePlafond').value) || 0;
-        let penalites = montant * (taux/100) * jours;
-        let max = montant * (plafond/100);
+        let m = parseFloat(document.getElementById('penaliteMontant').value) || 0;
+        let t = parseFloat(document.getElementById('penaliteTaux').value) || 0;
+        let j = parseFloat(document.getElementById('penaliteJours').value) || 0;
+        let p = parseFloat(document.getElementById('penalitePlafond').value) || 0;
+        let penalites = m * (t/100) * j;
+        let max = m * (p/100);
         let final = Math.min(penalites, max);
         document.getElementById('penaliteResult').innerHTML = `⏱️ Pénalités = ${final.toLocaleString()} DH (max ${max.toLocaleString()} DH)`;
     });
 
     // ========== OFFRES ANORMALES ==========
     let anormalesOffres = [65000, 80000, 95000, 110000];
-    function afficherAnormalesOffres() {
-        const container = document.getElementById('anormalesOffresContainer');
-        if (!container) return;
+    function afficherAnormales() {
         let html = '';
-        anormalesOffres.forEach((offre, index) => {
-            html += `<span class="offre-tag">${offre.toLocaleString()} DH<span onclick="supprimerAnormalesOffre(${index})" style="cursor:pointer;color:#c00;margin-left:6px;">✖</span></span>`;
+        anormalesOffres.forEach((o, i) => {
+            html += `<span class="offre-tag">${o.toLocaleString()} DH<span onclick="anormalesSupprimer(${i})" style="cursor:pointer;color:#c00;margin-left:6px;">✖</span></span>`;
         });
-        if (anormalesOffres.length === 0) html = '<span>Aucune offre.</span>';
-        container.innerHTML = html;
+        if (!anormalesOffres.length) html = '<span>Aucune offre.</span>';
+        document.getElementById('anormalesOffresContainer').innerHTML = html;
     }
-    function supprimerAnormalesOffre(index) { anormalesOffres.splice(index, 1); afficherAnormalesOffres(); }
+    function anormalesSupprimer(i) { anormalesOffres.splice(i,1); afficherAnormales(); }
     document.getElementById('anormalesAddOffre')?.addEventListener('click', () => {
         let v = parseFloat(document.getElementById('anormalesNewOffre').value);
-        if (!isNaN(v) && v > 0) { anormalesOffres.push(v); document.getElementById('anormalesNewOffre').value = ''; afficherAnormalesOffres(); }
-        else alert('Montant valide requis');
+        if (!isNaN(v) && v>0) { anormalesOffres.push(v); document.getElementById('anormalesNewOffre').value = ''; afficherAnormales(); }
+        else alert('Montant valide');
     });
-    document.getElementById('anormalesReset')?.addEventListener('click', () => { anormalesOffres = []; afficherAnormalesOffres(); });
+    document.getElementById('anormalesReset')?.addEventListener('click', () => { anormalesOffres = []; afficherAnormales(); });
     document.getElementById('anormalesVerifier')?.addEventListener('click', () => {
         let E = parseFloat(document.getElementById('anormalesE').value);
         let type = parseFloat(document.getElementById('anormalesType').value);
         let seuil = E * (1 - type);
-        if (isNaN(E) || anormalesOffres.length === 0) { document.getElementById('anormalesResult').innerHTML = '❌ Estimation et offres requises.'; return; }
+        if (isNaN(E) || !anormalesOffres.length) { document.getElementById('anormalesResult').innerHTML = '❌ Estimation et offres requises.'; return; }
         let normales = anormalesOffres.filter(o => o >= seuil);
         let anormales = anormalesOffres.filter(o => o < seuil);
-        document.getElementById('anormalesResult').innerHTML = `Seuil: ${seuil.toLocaleString()} DH<br>✅ Normales: ${normales.length > 0 ? normales.map(o=>o.toLocaleString()).join(', ') : 'aucune'}<br>⚠️ Anormales: ${anormales.length > 0 ? anormales.map(o=>o.toLocaleString()).join(', ') : 'aucune'}`;
+        document.getElementById('anormalesResult').innerHTML = `Seuil: ${seuil.toLocaleString()} DH<br>✅ Normales: ${normales.length?normales.map(o=>o.toLocaleString()).join(', '):'aucune'}<br>⚠️ Anormales: ${anormales.length?anormales.map(o=>o.toLocaleString()).join(', '):'aucune'}`;
     });
 
-    afficherPrixRefOffres();
-    afficherAnormalesOffres();
-    document.getElementById('prixRefE')?.addEventListener('input', afficherPrixRefOffres);
-    document.getElementById('prixRefType')?.addEventListener('change', afficherPrixRefOffres);
-    document.getElementById('anormalesE')?.addEventListener('input', afficherAnormalesOffres);
-    document.getElementById('anormalesType')?.addEventListener('change', afficherAnormalesOffres);
+    afficherPrixRef();
+    afficherAnormales();
+    document.getElementById('prixRefE')?.addEventListener('input', afficherPrixRef);
+    document.getElementById('prixRefType')?.addEventListener('change', afficherPrixRef);
 </script>
 </body>
 </html>
