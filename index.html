@@ -2,208 +2,530 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>MP.econcours.ma | Marchés Publics</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: #f5f7fb; color: #1e293b; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f8fafd;
+            overflow-x: hidden;
+        }
+
+        /* ========== LANDING PAGE ========== */
+        .landing {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0a2540 0%, #1a3a5c 50%, #0f2b4f 100%);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .landing.hide {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .landing-content {
+            text-align: center;
+            color: white;
+            padding: 40px;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .landing-logo {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .landing-logo .mp {
+            background: linear-gradient(135deg, #fff, #e2c28b);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .landing-logo .econcours {
+            color: #c9a03d;
+        }
+
+        .landing h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .landing p {
+            font-size: 1.1rem;
+            opacity: 0.85;
+            max-width: 550px;
+            margin: 0 auto 32px;
+        }
+
+        .btn-landing {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: #c9a03d;
+            color: #0a2540;
+            border: none;
+            padding: 16px 40px;
+            border-radius: 60px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .btn-landing:hover {
+            background: #e2c28b;
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .floating-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .shape {
+            position: absolute;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
+            animation: float 20s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(180deg); }
+        }
+
+        /* ========== MAIN APP (Dashboard) ========== */
+        .main-app {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .main-app.show {
+            display: block;
+            opacity: 1;
+        }
+
         /* Navbar */
-        .navbar { background: white; padding: 16px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 100; }
-        .nav-flex { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
-        .logo { font-size: 1.4rem; font-weight: 800; }
-        .logo span:first-child { color: #1e3a8a; }
-        .logo span:last-child { color: #c9a03d; }
-        .nav-links a { text-decoration: none; color: #475569; margin-left: 24px; font-weight: 500; }
+        .navbar {
+            background: white;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 16px 0;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .nav-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+        }
+
+        .logo .mp { color: #1a3a5c; }
+        .logo .econcours { color: #c9a03d; }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 500;
+            color: #475569;
+            transition: color 0.2s;
+        }
+
         .nav-links a:hover { color: #c9a03d; }
-        
-        /* Hero */
-        .hero { background: linear-gradient(135deg, #1e3a8a, #0f2b4f); color: white; padding: 60px 0; text-align: center; margin-bottom: 48px; }
-        .hero h1 { font-size: 2rem; margin-bottom: 12px; }
-        .hero p { opacity: 0.9; }
-        
-        /* Sections */
-        .section-title { font-size: 1.5rem; font-weight: 700; color: #1e3a8a; margin: 40px 0 24px; border-left: 4px solid #c9a03d; padding-left: 16px; }
-        
-        /* Grilles */
-        .cours-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; margin-bottom: 48px; }
-        .cours-card { background: white; padding: 20px; border-radius: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; }
-        .cours-card h3 { font-size: 1.1rem; margin-bottom: 8px; color: #1e3a8a; }
-        .cours-card p { color: #64748b; font-size: 0.85rem; }
-        
-        /* Calculateurs */
-        .calc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 24px; margin-bottom: 48px; }
-        .calc-card { background: white; border-radius: 20px; padding: 20px; border: 1px solid #e2e8f0; }
-        .calc-card h3 { font-size: 1.1rem; margin-bottom: 16px; color: #1e3a8a; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; }
-        label { font-size: 0.8rem; font-weight: 600; display: block; margin: 12px 0 4px; }
-        input, select { width: 100%; padding: 10px 12px; border-radius: 12px; border: 1px solid #cbd5e1; font-size: 0.85rem; }
-        button { background: #1e3a8a; color: white; border: none; padding: 10px 16px; border-radius: 30px; font-weight: 600; cursor: pointer; margin-top: 12px; width: 100%; }
-        button:hover { background: #0f2b4f; }
-        .result { background: #f1f5f9; padding: 12px; border-radius: 12px; margin-top: 12px; font-size: 0.8rem; border-left: 3px solid #c9a03d; }
-        .info-note { font-size: 0.7rem; color: #94a3b8; margin-top: 8px; text-align: center; }
-        .badge { display: inline-block; background: #e0e7ff; color: #1e3a8a; padding: 4px 8px; border-radius: 20px; font-size: 0.7rem; font-weight: 600; margin-bottom: 8px; }
-        
-        footer { text-align: center; padding: 32px 0; border-top: 1px solid #e2e8f0; margin-top: 40px; color: #64748b; font-size: 0.75rem; }
-        
-        @media (max-width: 768px) { .hero h1 { font-size: 1.4rem; } .cours-grid, .calc-grid { grid-template-columns: 1fr; } .nav-links a { margin-left: 16px; font-size: 0.85rem; } }
+
+        /* Hero Section */
+        .hero-dash {
+            background: linear-gradient(135deg, #1a3a5c, #0a2540);
+            border-radius: 32px;
+            margin: 32px 0 48px;
+            padding: 60px 40px;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-dash h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .hero-dash p {
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Dashboard Cards */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+            margin: 60px 0;
+        }
+
+        .dashboard-card {
+            background: white;
+            border-radius: 32px;
+            padding: 48px 32px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 1px solid #e2e8f0;
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dashboard-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 40px -12px rgba(0,0,0,0.15);
+            border-color: #c9a03d;
+        }
+
+        .card-icon {
+            width: 90px;
+            height: 90px;
+            background: rgba(201,160,61,0.1);
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+        }
+
+        .card-icon i {
+            font-size: 2.8rem;
+            color: #c9a03d;
+        }
+
+        .dashboard-card h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1a3a5c;
+            margin-bottom: 12px;
+        }
+
+        .dashboard-card p {
+            color: #64748b;
+            margin-bottom: 24px;
+        }
+
+        .card-arrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #c9a03d;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 32px 0;
+            border-top: 1px solid #e2e8f0;
+            margin-top: 60px;
+            color: #64748b;
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 768px) {
+            .landing h1 { font-size: 1.8rem; }
+            .hero-dash h1 { font-size: 1.4rem; }
+            .hero-dash { padding: 40px 24px; }
+            .dashboard-card { padding: 32px 24px; }
+        }
     </style>
 </head>
 <body>
 
-<div class="navbar">
-    <div class="container nav-flex">
-        <div class="logo"><span>MP</span><span>.econcours.ma</span></div>
-        <div class="nav-links">
-            <a href="#">Accueil</a>
-            <a href="https://econcours.ma" target="_blank">econcours.ma</a>
+<!-- LANDING PAGE -->
+<div class="landing" id="landing">
+    <div class="floating-shapes">
+        <div class="shape" style="width: 300px; height: 300px; top: -100px; right: -100px;"></div>
+        <div class="shape" style="width: 200px; height: 200px; bottom: -50px; left: -50px; animation-duration: 25s;"></div>
+        <div class="shape" style="width: 150px; height: 150px; top: 30%; right: 10%; animation-duration: 15s;"></div>
+    </div>
+    <div class="landing-content">
+        <div class="landing-logo">
+            <span class="mp">MP</span><span>.</span><span class="econcours">econcours.ma</span>
+        </div>
+        <h1>Marchés Publics<br>au Maroc</h1>
+        <p>Plateforme intelligente de formation et d'outils de calcul. Basée sur le décret 2-22-431.</p>
+        <button class="btn-landing" id="enterBtn">
+            <i class="fas fa-arrow-right"></i> Découvrir la plateforme
+        </button>
+    </div>
+</div>
+
+<!-- MAIN APP (Dashboard) -->
+<div class="main-app" id="mainApp">
+    <div class="navbar">
+        <div class="container nav-flex">
+            <div class="logo"><span class="mp">MP</span><span>.</span><span class="econcours">econcours.ma</span></div>
+            <div class="nav-links">
+                <a href="https://econcours.ma" target="_blank">econcours.ma</a>
+            </div>
         </div>
     </div>
-</div>
 
-<div class="hero">
     <div class="container">
-        <h1>📘 Marchés Publics au Maroc<br>Formation + Outils de calcul</h1>
-        <p>Basé sur le décret 2-22-431</p>
+        <div class="hero-dash">
+            <h1>📘 Bienvenue sur MP.econcours.ma</h1>
+            <p>Votre plateforme de référence pour maîtriser les marchés publics au Maroc</p>
+        </div>
+
+        <div class="dashboard-grid">
+            <!-- Carte vers les cours -->
+            <a href="#" class="dashboard-card" id="coursBtn">
+                <div class="card-icon"><i class="fas fa-graduation-cap"></i></div>
+                <h2>📖 Cours & Guides</h2>
+                <p>Apprenez les règles, procédures et bonnes pratiques des marchés publics</p>
+                <span class="card-arrow">Accéder aux cours <i class="fas fa-arrow-right"></i></span>
+            </a>
+
+            <!-- Carte vers les outils -->
+            <a href="#" class="dashboard-card" id="outilsBtn">
+                <div class="card-icon"><i class="fas fa-calculator"></i></div>
+                <h2>🧮 Outils de calcul</h2>
+                <p>Calculateurs automatiques: prix de référence, avances, garanties, pénalités</p>
+                <span class="card-arrow">Accéder aux outils <i class="fas fa-arrow-right"></i></span>
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        <p>🇲🇦 Plateforme basée sur la réglementation marocaine des marchés publics</p>
+        <p>© 2026 MP.econcours.ma - Tous droits réservés</p>
+    </footer>
+</div>
+
+<!-- MODAL COURS (popup élégant) -->
+<div id="coursModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); backdrop-filter: blur(5px); z-index: 3000; align-items: center; justify-content: center;">
+    <div style="background: white; max-width: 600px; width: 90%; border-radius: 32px; padding: 32px; max-height: 80vh; overflow-y: auto;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+            <h2 style="color: #1a3a5c;">📚 Nos cours</h2>
+            <button id="closeCoursModal" style="background: none; border: none; font-size: 1.5rem; cursor: pointer;">&times;</button>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+            <div style="padding: 16px; background: #f8fafd; border-radius: 20px;"><strong>🔹 Comprendre l'appel d'offres</strong><br><small>Définition, types (ouvert, restreint, concours).</small></div>
+            <div style="padding: 16px; background: #f8fafd; border-radius: 20px;"><strong>🔹 Préparation du dossier de soumission</strong><br><small>Pièces administratives et techniques.</small></div>
+            <div style="padding: 16px; background: #f8fafd; border-radius: 20px;"><strong>🔹 Garanties : provisoire et définitive</strong><br><small>Montants, durée, caution bancaire.</small></div>
+            <div style="padding: 16px; background: #f8fafd; border-radius: 20px;"><strong>🔹 Évaluation des offres et attribution</strong><br><small>Critères, annulation, recours.</small></div>
+            <div style="padding: 16px; background: #f8fafd; border-radius: 20px;"><strong>🔹 Exécution du marché & pénalités</strong><br><small>Avenants, retards, règlement litiges.</small></div>
+            <div style="padding: 16px; background: #f8fafd; border-radius: 20px;"><strong>🔹 Aspects juridiques</strong><br><small>Décret 2-22-431, principes généraux.</small></div>
+        </div>
+        <div class="info-note" style="margin-top: 20px; padding: 12px; background: #fefce8; border-radius: 16px; font-size: 0.7rem; text-align: center;">📚 D'autres chapitres seront ajoutés prochainement...</div>
     </div>
 </div>
 
-<div class="container">
-    <!-- ========== COURS ========== -->
-    <h2 class="section-title">📚 Cours & Guides</h2>
-    <div class="cours-grid">
-        <div class="cours-card"><div class="badge">Débutant</div><h3>🔹 Comprendre l'appel d'offres</h3><p>Définition, types (ouvert, restreint, concours).</p></div>
-        <div class="cours-card"><div class="badge">Débutant</div><h3>🔹 Préparation du dossier</h3><p>Pièces administratives et techniques.</p></div>
-        <div class="cours-card"><div class="badge">Essentiel</div><h3>🔹 Garanties provisoire et définitive</h3><p>Montants, durée, caution bancaire.</p></div>
-        <div class="cours-card"><div class="badge">Intermédiaire</div><h3>🔹 Évaluation des offres</h3><p>Critères, attribution, prix de référence.</p></div>
-        <div class="cours-card"><div class="badge">Intermédiaire</div><h3>🔹 Exécution du marché</h3><p>Avenants, retards, pénalités.</p></div>
-        <div class="cours-card"><div class="badge">Avancé</div><h3>🔹 Aspects juridiques</h3><p>Décret 2-22-431, cadre légal.</p></div>
-    </div>
-
-    <!-- ========== OUTILS ========== -->
-    <h2 class="section-title">🧮 Outils de calcul</h2>
-    <div class="calc-grid">
+<!-- MODAL OUTILS (popup élégant) -->
+<div id="outilsModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); backdrop-filter: blur(5px); z-index: 3000; align-items: center; justify-content: center; overflow-y: auto;">
+    <div style="background: white; max-width: 800px; width: 90%; border-radius: 32px; padding: 32px; max-height: 85vh; overflow-y: auto;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+            <h2 style="color: #1a3a5c;">🧮 Outils de calcul</h2>
+            <button id="closeOutilsModal" style="background: none; border: none; font-size: 1.5rem; cursor: pointer;">&times;</button>
+        </div>
         
         <!-- Prix de référence -->
-        <div class="calc-card">
-            <h3>🎯 Prix de référence</h3>
-            <label>Estimation (DH)</label>
-            <input type="number" id="E" value="100000">
-            <label>Offres (DH)</label>
-            <input type="text" id="offres" value="80000, 90000, 100000, 130000" placeholder="séparées par des virgules">
-            <button onclick="calcPrixRef()">Calculer</button>
-            <div class="result" id="resultPrix">📊 ---</div>
-            <div class="info-note">P = (E + moyenne offres retenues) / 2 → offre la plus proche</div>
+        <div style="background: #f8fafd; border-radius: 24px; padding: 20px; margin-bottom: 20px;">
+            <h3 style="color: #1a3a5c; margin-bottom: 16px;">🎯 Prix de référence</h3>
+            <label style="font-weight: 600; font-size: 0.8rem;">Estimation (E) - DH</label>
+            <input type="number" id="prixE" style="width: 100%; padding: 10px; border-radius: 12px; border: 1px solid #cbd5e1; margin-bottom: 12px;">
+            <label style="font-weight: 600; font-size: 0.8rem;">Offres (séparées par des virgules)</label>
+            <input type="text" id="prixOffres" value="80000, 90000, 100000, 130000" style="width: 100%; padding: 10px; border-radius: 12px; border: 1px solid #cbd5e1; margin-bottom: 12px;">
+            <button onclick="calculPrixReference()" style="background: #1a3a5c; color: white; border: none; padding: 10px 20px; border-radius: 30px; cursor: pointer; width: 100%;">Calculer</button>
+            <div id="prixResult" style="background: white; padding: 12px; border-radius: 12px; margin-top: 12px; border-left: 3px solid #c9a03d;">📊 ---</div>
         </div>
 
         <!-- Avance -->
-        <div class="calc-card">
-            <h3>💰 Avance</h3>
-            <label>Montant marché (DH)</label>
-            <input type="number" id="avanceM" value="12000000">
-            <label>Délai (mois)</label>
-            <input type="number" id="delai" value="6">
-            <button onclick="calcAvance()">Calculer</button>
-            <div class="result" id="resultAvance">💰 --- DH</div>
-            <div class="info-note">10% sur 10M +5% reste | plafond 20M | conditions: ≥500k et délai≥4 mois</div>
+        <div style="background: #f8fafd; border-radius: 24px; padding: 20px; margin-bottom: 20px;">
+            <h3 style="color: #1a3a5c; margin-bottom: 16px;">💰 Avance</h3>
+            <label style="font-weight: 600; font-size: 0.8rem;">Montant marché (DH)</label>
+            <input type="number" id="avanceM" value="12000000" style="width: 100%; padding: 10px; border-radius: 12px; border: 1px solid #cbd5e1; margin-bottom: 12px;">
+            <label style="font-weight: 600; font-size: 0.8rem;">Délai (mois)</label>
+            <input type="number" id="avanceDelai" value="6" style="width: 100%; padding: 10px; border-radius: 12px; border: 1px solid #cbd5e1; margin-bottom: 12px;">
+            <button onclick="calculAvance()" style="background: #1a3a5c; color: white; border: none; padding: 10px 20px; border-radius: 30px; cursor: pointer; width: 100%;">Calculer</button>
+            <div id="avanceResult" style="background: white; padding: 12px; border-radius: 12px; margin-top: 12px; border-left: 3px solid #c9a03d;">💰 ---</div>
         </div>
 
-        <!-- Garantie provisoire -->
-        <div class="calc-card">
-            <h3>🔐 Garantie provisoire</h3>
-            <label>Montant estimé (DH)</label>
-            <input type="number" id="gpMontant" placeholder="Ex: 1000000">
-            <button onclick="calcGP()">Calculer (2%)</button>
-            <div class="result" id="resultGP">📌 ---</div>
-        </div>
-
-        <!-- Garantie définitive -->
-        <div class="calc-card">
-            <h3>🛡️ Garantie définitive</h3>
-            <label>Montant marché (DH)</label>
-            <input type="number" id="gdMontant" placeholder="Ex: 1000000">
-            <button onclick="calcGD()">Calculer (5%)</button>
-            <div class="result" id="resultGD">📌 ---</div>
+        <!-- Garanties -->
+        <div style="background: #f8fafd; border-radius: 24px; padding: 20px; margin-bottom: 20px;">
+            <h3 style="color: #1a3a5c; margin-bottom: 16px;">🛡️ Garanties</h3>
+            <label style="font-weight: 600; font-size: 0.8rem;">Montant marché (DH)</label>
+            <input type="number" id="garantieM" placeholder="Ex: 1000000" style="width: 100%; padding: 10px; border-radius: 12px; border: 1px solid #cbd5e1; margin-bottom: 12px;">
+            <button onclick="calculGarantieProvisoire()" style="background: #1a3a5c; color: white; border: none; padding: 10px 20px; border-radius: 30px; cursor: pointer; width: 100%; margin-bottom: 8px;">Garantie provisoire (2%)</button>
+            <button onclick="calculGarantieDefinitive()" style="background: #1a3a5c; color: white; border: none; padding: 10px 20px; border-radius: 30px; cursor: pointer; width: 100%;">Garantie définitive (5%)</button>
+            <div id="garantieResult" style="background: white; padding: 12px; border-radius: 12px; margin-top: 12px; border-left: 3px solid #c9a03d;">📌 ---</div>
         </div>
 
         <!-- Pénalités -->
-        <div class="calc-card">
-            <h3>⏱️ Pénalités de retard</h3>
-            <label>Montant (DH)</label>
-            <input type="number" id="penM" value="1000000">
-            <label>Jours de retard</label>
-            <input type="number" id="jours" value="10">
-            <button onclick="calcPenalites()">Calculer</button>
-            <div class="result" id="resultPen">⏱️ --- DH</div>
-            <div class="info-note">0.5% par jour, plafond 10%</div>
+        <div style="background: #f8fafd; border-radius: 24px; padding: 20px; margin-bottom: 20px;">
+            <h3 style="color: #1a3a5c; margin-bottom: 16px;">⏱️ Pénalités de retard</h3>
+            <label style="font-weight: 600; font-size: 0.8rem;">Montant (DH)</label>
+            <input type="number" id="penaliteM" value="1000000" style="width: 100%; padding: 10px; border-radius: 12px; border: 1px solid #cbd5e1; margin-bottom: 12px;">
+            <label style="font-weight: 600; font-size: 0.8rem;">Jours de retard</label>
+            <input type="number" id="penaliteJ" value="10" style="width: 100%; padding: 10px; border-radius: 12px; border: 1px solid #cbd5e1; margin-bottom: 12px;">
+            <button onclick="calculPenalites()" style="background: #1a3a5c; color: white; border: none; padding: 10px 20px; border-radius: 30px; cursor: pointer; width: 100%;">Calculer</button>
+            <div id="penaliteResult" style="background: white; padding: 12px; border-radius: 12px; margin-top: 12px; border-left: 3px solid #c9a03d;">⏱️ ---</div>
         </div>
 
         <!-- Offres anormales -->
-        <div class="calc-card">
-            <h3>⚠️ Offres anormales</h3>
-            <label>Estimation (DH)</label>
-            <input type="number" id="anE" value="100000">
-            <label>Offres (DH)</label>
-            <input type="text" id="anOffres" value="65000, 80000, 95000">
-            <button onclick="calcAnormales()">Vérifier</button>
-            <div class="result" id="resultAn">📊 ---</div>
-            <div class="info-note">Seuil: -20% pour travaux, -25% pour fournitures/services</div>
+        <div style="background: #f8fafd; border-radius: 24px; padding: 20px;">
+            <h3 style="color: #1a3a5c; margin-bottom: 16px;">⚠️ Offres anormales</h3>
+            <label style="font-weight: 600; font-size: 0.8rem;">Estimation (DH)</label>
+            <input type="number" id="anE" value="100000" style="width: 100%; padding: 10px; border-radius: 12px; border: 1px solid #cbd5e1; margin-bottom: 12px;">
+            <label style="font-weight: 600; font-size: 0.8rem;">Offres (séparées par des virgules)</label>
+            <input type="text" id="anOffres" value="65000, 80000, 95000, 110000" style="width: 100%; padding: 10px; border-radius: 12px; border: 1px solid #cbd5e1; margin-bottom: 12px;">
+            <button onclick="calculAnormales()" style="background: #1a3a5c; color: white; border: none; padding: 10px 20px; border-radius: 30px; cursor: pointer; width: 100%;">Vérifier</button>
+            <div id="anResult" style="background: white; padding: 12px; border-radius: 12px; margin-top: 12px; border-left: 3px solid #c9a03d;">📊 ---</div>
         </div>
     </div>
 </div>
 
-<footer>
-    <p>🇲🇦 Plateforme basée sur la réglementation marocaine des marchés publics</p>
-    <p>© 2026 MP.econcours.ma - Tous droits réservés</p>
-</footer>
-
 <script>
-    function calcPrixRef() {
-        let E = parseFloat(document.getElementById('E').value);
-        let offresStr = document.getElementById('offres').value;
+    // Transition Landing -> Main
+    document.getElementById('enterBtn').addEventListener('click', function() {
+        document.getElementById('landing').classList.add('hide');
+        setTimeout(() => {
+            document.getElementById('mainApp').classList.add('show');
+        }, 800);
+    });
+
+    // Ouvrir modal Cours
+    document.getElementById('coursBtn').addEventListener('click', function(e) {
+        e.preventDefault();
+        document.getElementById('coursModal').style.display = 'flex';
+    });
+    document.getElementById('closeCoursModal').addEventListener('click', function() {
+        document.getElementById('coursModal').style.display = 'none';
+    });
+
+    // Ouvrir modal Outils
+    document.getElementById('outilsBtn').addEventListener('click', function(e) {
+        e.preventDefault();
+        document.getElementById('outilsModal').style.display = 'flex';
+    });
+    document.getElementById('closeOutilsModal').addEventListener('click', function() {
+        document.getElementById('outilsModal').style.display = 'none';
+    });
+
+    // Fermer modals en cliquant à l'extérieur
+    window.onclick = function(event) {
+        if (event.target === document.getElementById('coursModal')) {
+            document.getElementById('coursModal').style.display = 'none';
+        }
+        if (event.target === document.getElementById('outilsModal')) {
+            document.getElementById('outilsModal').style.display = 'none';
+        }
+    }
+
+    // ========== FONCTIONS DES CALCULATEURS ==========
+    function calculPrixReference() {
+        let E = parseFloat(document.getElementById('prixE').value);
+        let offresStr = document.getElementById('prixOffres').value;
         let offres = offresStr.split(',').map(v => parseFloat(v.trim())).filter(v => !isNaN(v));
-        if (isNaN(E) || offres.length === 0) { document.getElementById('resultPrix').innerHTML = '❌ Données invalides'; return; }
-        let seuil = E * 0.8;
-        let filtrees = offres.filter(o => o >= seuil && o <= E * 1.2);
-        if (filtrees.length === 0) { document.getElementById('resultPrix').innerHTML = '⚠️ Toutes offres exclues'; return; }
+        if (isNaN(E) || offres.length === 0) { document.getElementById('prixResult').innerHTML = '❌ Données invalides'; return; }
+        let filtrees = offres.filter(o => o >= E * 0.8 && o <= E * 1.2);
+        if (filtrees.length === 0) { document.getElementById('prixResult').innerHTML = '⚠️ Toutes offres exclues'; return; }
         let M = filtrees.reduce((a,b)=>a+b,0)/filtrees.length;
         let P = (E + M)/2;
         let gagnante = filtrees.reduce((a,b)=> Math.abs(a-P) < Math.abs(b-P) ? a : b);
-        document.getElementById('resultPrix').innerHTML = `P = ${P.toLocaleString()} DH<br>🏆 Offre gagnante = ${gagnante.toLocaleString()} DH`;
+        document.getElementById('prixResult').innerHTML = `P = ${P.toLocaleString()} DH<br>🏆 Offre gagnante = ${gagnante.toLocaleString()} DH`;
     }
-    function calcAvance() {
+
+    function calculAvance() {
         let m = parseFloat(document.getElementById('avanceM').value);
-        let d = parseFloat(document.getElementById('delai').value);
-        if (m < 500000 || d < 4) { document.getElementById('resultAvance').innerHTML = '❌ Non accordée (montant<500k ou délai<4 mois)'; return; }
+        let d = parseFloat(document.getElementById('avanceDelai').value);
+        if (m < 500000 || d < 4) { document.getElementById('avanceResult').innerHTML = '❌ Non accordée (montant<500k ou délai<4 mois)'; return; }
         let av = m <= 10000000 ? m * 0.10 : (10000000 * 0.10) + ((m - 10000000) * 0.05);
         av = Math.min(av, 20000000);
-        document.getElementById('resultAvance').innerHTML = `💰 ${av.toLocaleString()} DH`;
+        document.getElementById('avanceResult').innerHTML = `💰 ${av.toLocaleString()} DH`;
     }
-    function calcGP() {
-        let m = parseFloat(document.getElementById('gpMontant').value) || 0;
-        document.getElementById('resultGP').innerHTML = `📌 ${(m*0.02).toLocaleString()} DH`;
+
+    function calculGarantieProvisoire() {
+        let m = parseFloat(document.getElementById('garantieM').value) || 0;
+        document.getElementById('garantieResult').innerHTML = `📌 Garantie provisoire = ${(m*0.02).toLocaleString()} DH`;
     }
-    function calcGD() {
-        let m = parseFloat(document.getElementById('gdMontant').value) || 0;
-        document.getElementById('resultGD').innerHTML = `🛡️ ${(m*0.05).toLocaleString()} DH`;
+    function calculGarantieDefinitive() {
+        let m = parseFloat(document.getElementById('garantieM').value) || 0;
+        document.getElementById('garantieResult').innerHTML = `🛡️ Garantie définitive = ${(m*0.05).toLocaleString()} DH`;
     }
-    function calcPenalites() {
-        let m = parseFloat(document.getElementById('penM').value) || 0;
-        let j = parseFloat(document.getElementById('jours').value) || 0;
+
+    function calculPenalites() {
+        let m = parseFloat(document.getElementById('penaliteM').value) || 0;
+        let j = parseFloat(document.getElementById('penaliteJ').value) || 0;
         let penalites = m * 0.005 * j;
         let max = m * 0.10;
         let final = Math.min(penalites, max);
-        document.getElementById('resultPen').innerHTML = `⏱️ ${final.toLocaleString()} DH (max ${max.toLocaleString()})`;
+        document.getElementById('penaliteResult').innerHTML = `⏱️ ${final.toLocaleString()} DH (max ${max.toLocaleString()})`;
     }
-    function calcAnormales() {
+
+    function calculAnormales() {
         let E = parseFloat(document.getElementById('anE').value);
         let offresStr = document.getElementById('anOffres').value;
         let offres = offresStr.split(',').map(v => parseFloat(v.trim())).filter(v => !isNaN(v));
         let seuil = E * 0.80;
         let anormales = offres.filter(o => o < seuil);
-        document.getElementById('resultAn').innerHTML = `Seuil: ${seuil.toLocaleString()} DH<br>⚠️ Anormales: ${anormales.length ? anormales.map(o=>o.toLocaleString()).join(', ') : 'aucune'}`;
+        document.getElementById('anResult').innerHTML = `Seuil: ${seuil.toLocaleString()} DH<br>⚠️ Anormales: ${anormales.length ? anormales.map(o=>o.toLocaleString()).join(', ') : 'aucune'}`;
     }
 </script>
 </body>
