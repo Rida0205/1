@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>الذكاء الاصطناعي لمطابقة الوظائف | Econcours.ma</title>
+  <title>AI Smart Job Matcher | Econcours.ma</title>
   <style>
     * {
       margin: 0;
@@ -25,7 +25,6 @@
       padding: 0 1.5rem;
     }
 
-    /* Navbar */
     .navbar {
       background: rgba(255, 255, 255, 0.96);
       backdrop-filter: blur(12px);
@@ -86,7 +85,6 @@
       box-shadow: 0 2px 6px rgba(0,0,0,0.05);
     }
 
-    /* Hero */
     .hero {
       text-align: center;
       padding: 2rem 0 1.5rem;
@@ -121,14 +119,12 @@
       margin: 0 auto;
     }
 
-    /* Form Card */
     .form-card {
       background: white;
       border-radius: 1.5rem;
       box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.1);
       padding: 2rem;
       margin-bottom: 2rem;
-      transition: transform 0.2s;
     }
 
     .form-grid {
@@ -199,7 +195,6 @@
       transform: none;
     }
 
-    /* Loading Overlay */
     .loading-container {
       display: flex;
       flex-direction: column;
@@ -218,8 +213,8 @@
     }
 
     .pulse-loader {
-      width: 60px;
-      height: 60px;
+      width: 50px;
+      height: 50px;
       background: linear-gradient(135deg, #1d6f9c, #0f4b6e);
       border-radius: 50%;
       animation: pulse 1.2s ease-in-out infinite;
@@ -245,28 +240,6 @@
       color: #7a8e9e;
     }
 
-    .loading-steps {
-      display: flex;
-      gap: 1.5rem;
-      margin-top: 1rem;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .step {
-      font-size: 0.75rem;
-      color: #9aabbb;
-      display: flex;
-      align-items: center;
-      gap: 0.3rem;
-    }
-
-    .step.active {
-      color: #1d6f9c;
-      font-weight: 600;
-    }
-
-    /* Results */
     .results-header {
       display: flex;
       justify-content: space-between;
@@ -292,7 +265,7 @@
 
     .cards-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
       gap: 1.5rem;
       animation: fadeUp 0.4s ease;
     }
@@ -423,6 +396,16 @@
       border: 1px solid #fbe5b9;
     }
 
+    .error-message {
+      background: #fee2e2;
+      border-right: 4px solid #ef4444;
+      padding: 1rem;
+      border-radius: 1rem;
+      margin: 1rem 0;
+      color: #991b1b;
+      font-size: 0.85rem;
+    }
+
     footer {
       margin-top: 2.5rem;
       padding: 1.2rem 0;
@@ -444,10 +427,10 @@
   <div class="container nav-inner">
     <div class="logo">
       <h1>Econcours.ma</h1>
-      <span>الذكاء الاصطناعي للمطابقة الوظيفية</span>
+      <span>AI Smart Job Matcher</span>
     </div>
     <div class="lang-switch">
-      <button class="lang-btn" data-lang="ar">🇲🇦 العربية</button>
+      <button class="lang-btn active" data-lang="ar">🇲🇦 العربية</button>
       <button class="lang-btn" data-lang="fr">🇫🇷 Français</button>
     </div>
   </div>
@@ -455,9 +438,9 @@
 
 <div class="container">
   <div class="hero">
-    <div class="hero-badge">🧠 AI-Powered Job Matching</div>
+    <div class="hero-badge">🧠 Pure AI-Powered Matching · No Fake Data</div>
     <h1 class="hero-title" id="mainTitle">اعثر على وظيفة أحلامك باستخدام الذكاء الاصطناعي</h1>
-    <p class="hero-desc" id="mainDesc">يحلل الذكاء الاصطناعي ملفك الشخصي ويجد أفضل الشركات المناسبة لك</p>
+    <p class="hero-desc" id="mainDesc">الذكاء الاصطناعي يحلل ملفك الشخصي ويستخرج أفضل الشركات الحقيقية المناسبة لك في المغرب</p>
   </div>
 
   <div class="form-card">
@@ -488,36 +471,33 @@
 
   <div id="resultsSection" style="display: none;">
     <div class="results-header">
-      <div class="results-title" id="resultTitle">✨ أفضل الشركات المناسبة لك</div>
+      <div class="results-title" id="resultTitle">✨ الشركات المستخرجة بواسطة الذكاء الاصطناعي</div>
       <div class="results-count" id="resultCount"></div>
     </div>
     <div id="cardsContainer"></div>
   </div>
   <footer>
-    <p>🧠 مدعوم بالذكاء الاصطناعي Groq · مطابقة ذكية للوظائف · © Econcours.ma</p>
+    <p>🧠 يعمل بالكامل بواسطة Groq AI (Mixtral 8x7B) · استخراج شركات حقيقية في الوقت الفعلي · © Econcours.ma</p>
   </footer>
 </div>
 
 <script>
-  // -------------------- مفتاح API مضمن مباشرة --------------------
+  // -------------------- API KEY --------------------
   const GROQ_API_KEY = "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";
-  
-  // استخدام النموذج المحدث (llama-3.1-8b-instant)
-  const AI_MODEL = "llama-3.1-8b-instant";
+  const AI_MODEL = "mixtral-8x7b-32768";
   
   let currentLang = 'ar';
-  let isProcessing = false;
 
   // الترجمة
   const translations = {
     ar: {
       mainTitle: "اعثر على وظيفة أحلامك باستخدام الذكاء الاصطناعي",
-      mainDesc: "يحلل الذكاء الاصطناعي ملفك الشخصي ويجد أفضل الشركات المناسبة لك",
+      mainDesc: "الذكاء الاصطناعي يحلل ملفك الشخصي ويستخرج أفضل الشركات الحقيقية المناسبة لك في المغرب",
       labelName: "👤 الاسم الكامل",
       labelDiploma: "🎓 الشهادة / المؤهل",
       labelCity: "📍 المدينة",
       labelSkills: "🧠 المهارات (مفصولة بفواصل)",
-      resultTitle: "✨ أفضل الشركات المناسبة لك",
+      resultTitle: "✨ الشركات المستخرجة بواسطة الذكاء الاصطناعي",
       generate: "✉️ إنشاء بريد إلكتروني",
       copy: "📋 نسخ",
       copied: "✅ تم النسخ!",
@@ -526,24 +506,22 @@
       sector: "القطاع",
       cityLabel: "المدينة",
       whyMatch: "سبب التطابق",
-      noMatch: "⚠️ لم يتم العثور على شركات مناسبة. جرّب مهارات أخرى.",
+      noMatch: "⚠️ لم يتم العثور على شركات. حاول مرة أخرى أو غير مهاراتك.",
       fillFields: "يرجى ملء جميع الحقول",
-      analyzing: "🔄 يقوم الذكاء الاصطناعي بتحليل ملفك الشخصي...",
-      searching: "🔍 البحث عن أفضل الشركات المناسبة...",
-      ranking: "📊 ترتيب النتائج حسب الملاءمة...",
-      ready: "✅ جاهز!",
-      step1: "تحليل الملف",
-      step2: "البحث عن شركات",
-      step3: "الترتيب والتقييم"
+      analyzing: "🧠 الذكاء الاصطناعي يحلل ملفك الشخصي...",
+      searching: "🔍 يبحث عن شركات حقيقية في قاعدة بياناته...",
+      ranking: "📊 يقوم بتقييم وترتيب النتائج...",
+      generating: "✍️ يولد رسائل مخصصة...",
+      aiWorking: "الذكاء الاصطناعي يعمل على استخراج أفضل الفرص"
     },
     fr: {
       mainTitle: "Trouvez votre emploi idéal avec l'IA",
-      mainDesc: "L'IA analyse votre profil et trouve les meilleures entreprises pour vous",
+      mainDesc: "L'IA analyse votre profil et extrait les meilleures entreprises réelles pour vous au Maroc",
       labelName: "👤 Nom complet",
       labelDiploma: "🎓 Diplôme",
       labelCity: "📍 Ville",
       labelSkills: "🧠 Compétences (séparées par des virgules)",
-      resultTitle: "✨ Meilleures entreprises pour vous",
+      resultTitle: "✨ Entreprises extraites par l'IA",
       generate: "✉️ Générer l'email",
       copy: "📋 Copier",
       copied: "✅ Copié !",
@@ -552,15 +530,13 @@
       sector: "Secteur",
       cityLabel: "Ville",
       whyMatch: "Raison du match",
-      noMatch: "⚠️ Aucune entreprise trouvée. Essayez d'autres compétences.",
+      noMatch: "⚠️ Aucune entreprise trouvée. Réessayez ou modifiez vos compétences.",
       fillFields: "Veuillez remplir tous les champs",
-      analyzing: "🔄 L'IA analyse votre profil...",
-      searching: "🔍 Recherche des meilleures entreprises...",
-      ranking: "📊 Classement des résultats...",
-      ready: "✅ Prêt !",
-      step1: "Analyse profil",
-      step2: "Recherche",
-      step3: "Classement"
+      analyzing: "🧠 L'IA analyse votre profil...",
+      searching: "🔍 Recherche d'entreprises réelles...",
+      ranking: "📊 Évaluation et classement...",
+      generating: "✍️ Génération d'emails personnalisés...",
+      aiWorking: "L'IA travaille pour extraire les meilleures opportunités"
     }
   };
 
@@ -581,42 +557,24 @@
     });
   }
 
-  // عرض واجهة الانتظار الجميلة
-  function showLoadingOverlay() {
+  function showLoadingOverlay(step = 1) {
     const t = translations[currentLang];
     resultsSection.style.display = 'block';
+    let subText = "";
+    if (step === 1) subText = t.analyzing;
+    else if (step === 2) subText = t.searching;
+    else subText = t.ranking;
+    
     cardsContainer.innerHTML = `
       <div class="loading-container">
         <div class="pulse-loader"></div>
-        <div class="loading-text" id="loadingMainText">${t.analyzing}</div>
-        <div class="loading-sub" id="loadingSubText">${t.searching}</div>
-        <div class="loading-steps">
-          <div class="step" id="step1">🔍 ${t.step1}</div>
-          <div class="step" id="step2">📊 ${t.step2}</div>
-          <div class="step" id="step3">🎯 ${t.step3}</div>
-        </div>
+        <div class="loading-text">${t.aiWorking}</div>
+        <div class="loading-sub">${subText}</div>
       </div>
     `;
-    
-    let stepIndex = 1;
-    const steps = ['step1', 'step2', 'step3'];
-    const texts = [t.step1, t.step2, t.step3];
-    const mainTexts = [t.analyzing, t.searching, t.ranking];
-    const subTexts = [t.searching, t.ranking, t.ready];
-    
-    steps.forEach((stepId, idx) => {
-      setTimeout(() => {
-        const stepEl = document.getElementById(stepId);
-        const mainTextEl = document.getElementById('loadingMainText');
-        const subTextEl = document.getElementById('loadingSubText');
-        if (stepEl) stepEl.classList.add('active');
-        if (mainTextEl && mainTexts[idx]) mainTextEl.innerHTML = mainTexts[idx];
-        if (subTextEl && subTexts[idx]) subTextEl.innerHTML = subTexts[idx];
-      }, idx * 1200);
-    });
   }
 
-  async function callGroqAI(prompt, systemMsg = "You are an expert job matching AI assistant in Morocco.") {
+  async function callGroqAI(prompt, systemMsg) {
     const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
       method: "POST",
       headers: {
@@ -626,11 +584,11 @@
       body: JSON.stringify({
         model: AI_MODEL,
         messages: [
-          { role: "system", content: systemMsg },
+          { role: "system", content: systemMsg || "You are an expert job matching AI. Return only valid JSON. Use real Moroccan companies." },
           { role: "user", content: prompt }
         ],
-        temperature: 0.5,
-        max_tokens: 2000
+        temperature: 0.3,
+        max_tokens: 2500
       })
     });
     
@@ -642,88 +600,104 @@
     return data.choices[0].message.content;
   }
 
-  async function getAIMatchedCompanies(userProfile) {
+  async function extractCompaniesWithAI(userProfile) {
     const skillsStr = userProfile.skillsArray.join(", ");
-    const prompt = `Generate 6 REAL Moroccan companies (existing brands like: Attijariwafa bank, BMCE Bank, Maroc Telecom, CGI Maroc, OCP Group, LabelVie, HPS, Disway, Deloitte Maroc, PwC Maroc, etc.) that would hire this candidate:
+    const languageInstruction = currentLang === 'ar' ? "Arabic" : "French";
+    
+    const prompt = `You are an AI job matching expert. Based STRICTLY on the candidate profile below, extract 6 REAL Moroccan companies that would hire this person.
+
+Candidate:
+- Name: ${userProfile.fullName}
 - Diploma: ${userProfile.diploma}
 - Skills: ${skillsStr}
 - City: ${userProfile.city}
 
-Return ONLY valid JSON array with fields: name, sector, city, email (realistic format like recrutement@company.ma), phone (05xx-xxxxxx format), required_skills (array of 3-4 skills), match_score (number 0-100), reason_short (in ${currentLang === 'ar' ? 'Arabic' : 'French'}, max 50 chars).
+IMPORTANT: 
+1. Return ONLY valid JSON array - no markdown, no explanation, no extra text.
+2. Use REAL Moroccan companies that exist (like Attijariwafa bank, BMCE, Maroc Telecom, OCP, CGI Maroc, HPS, Disway, Deloitte, PwC, Capgemini, Inwi, LabelVie, etc.)
+3. Each company must have realistic contact info (email format: recrutement@company.ma, phone: 05xx-xxxxxx)
 
-Example: [{"name":"BMCE Capital","sector":"Finance","city":"Casablanca","email":"recrutement@bmcecapital.ma","phone":"0520223300","required_skills":["finance","analyse","excel"],"match_score":88,"reason_short":"مهاراتك المالية مطلوبة بشدة"}]
+Response format:
+[
+  {
+    "name": "Company Name",
+    "sector": "Sector in ${languageInstruction}",
+    "city": "City in Morocco",
+    "email": "recrutement@company.ma",
+    "phone": "0522XXXXXX",
+    "required_skills": ["skill1", "skill2", "skill3"],
+    "match_score": 85,
+    "reason_short": "Short reason in ${languageInstruction} (max 60 chars)"
+  }
+]
 
-IMPORTANT: Return ONLY the JSON array, no extra text.`;
+Generate exactly 6 companies. Make match_score between 60-100 based on fit.`;
     
-    const aiResponse = await callGroqAI(prompt, "You return only valid JSON array with real Moroccan companies. Do not add any markdown or explanation.");
+    const aiResponse = await callGroqAI(prompt);
     let clean = aiResponse.trim();
-    // إزالة أي علامات markdown
     if (clean.startsWith("```json")) clean = clean.slice(7);
     if (clean.startsWith("```")) clean = clean.slice(3);
     if (clean.endsWith("```")) clean = clean.slice(0, -3);
     clean = clean.trim();
     
     const companies = JSON.parse(clean);
-    if (!Array.isArray(companies)) throw new Error("Invalid response format");
-    companies.sort((a,b) => b.match_score - a.match_score);
+    if (!Array.isArray(companies) || companies.length === 0) {
+      throw new Error("No companies extracted");
+    }
+    companies.sort((a, b) => b.match_score - a.match_score);
     return companies.slice(0, 6);
   }
 
   async function generateEmailWithAI(company, userProfile) {
-    const langPrompt = currentLang === 'ar' ? "in Arabic (professional, formal, friendly)" : "in French (professional, formal, friendly)";
-    const prompt = `Write a short professional job application email from candidate to company.
-Candidate: ${userProfile.fullName}
-Diploma: ${userProfile.diploma}
-Skills: ${userProfile.skillsArray.join(", ")}
-City: ${userProfile.city}
-Company: ${company.name} (${company.sector})
-Write the email ${langPrompt}. Include a subject line. Keep it concise (max 8 sentences), polite, and ready to send.`;
+    const langInstruction = currentLang === 'ar' ? "Arabic (formal, professional)" : "French (formal, professional)";
     
-    const email = await callGroqAI(prompt, "You are a professional career coach writing job application emails.");
+    const prompt = `Write a short, professional job application email from the candidate to the company.
+
+Candidate:
+- Name: ${userProfile.fullName}
+- Diploma: ${userProfile.diploma}
+- Skills: ${userProfile.skillsArray.join(", ")}
+- City: ${userProfile.city}
+
+Company:
+- Name: ${company.name}
+- Sector: ${company.sector}
+- City: ${company.city}
+
+Write the email in ${langInstruction}. Include a clear subject line. Keep it concise (max 150 words), polite, and ready to send.`;
+    
+    const email = await callGroqAI(prompt, "You write professional job application emails. Be concise and warm.");
     return email;
   }
 
-  // قاعدة بيانات احتياطية في حالة فشل API
-  function getFallbackCompanies(userProfile) {
-    const companies = [
-      { name: "CGI Maroc", sector: "IT Services", city: "الدار البيضاء", email: "recrutement@cgi.ma", phone: "0520294949", required_skills: ["JavaScript", "Python", "SQL"], match_score: 85, reason_short: currentLang === 'ar' ? "شركة رائدة في التكنولوجيا تبحث عن مطورين" : "Leader technologique recherchant des développeurs" },
-      { name: "Attijariwafa bank", sector: "Banque", city: "الدار البيضاء", email: "carrieres@attijari.ma", phone: "0520292929", required_skills: ["finance", "تحليل بيانات", "تواصل"], match_score: 78, reason_short: currentLang === 'ar' ? "خبرتك المالية مطلوبة في أكبر بنك بالمغرب" : "Votre expérience financière est recherchée" },
-      { name: "Maroc Telecom", sector: "Télécommunications", city: "الرباط", email: "jobs@iam.ma", phone: "0537791111", required_skills: ["réseaux", "تطوير", "خدمة العملاء"], match_score: 72, reason_short: currentLang === 'ar' ? "شركة الاتصالات الرائدة تحتاج مهاراتك" : "Leader des télécommunications a besoin de vos compétences" }
-    ];
-    // إضافة شركات إضافية بناءً على المدينة
-    if (userProfile.city.includes("طنجة") || userProfile.city.includes("Tanger")) {
-      companies.push({ name: "Tangier Med Zones", sector: "Logistique", city: "طنجة", email: "hr@tanger-med.ma", phone: "0539393939", required_skills: ["logistique", "gestion", "anglais"], match_score: 70, reason_short: currentLang === 'ar' ? "منطقة طنجة المتوسط تبحث عن كفاءات" : "La zone Tanger Med recherche des talents" });
-    }
-    return companies.slice(0, 5);
-  }
-
   function escapeHtml(str) {
-    if(!str) return '';
+    if (!str) return '';
     return str.replace(/[&<>]/g, function(m) {
-      if(m === '&') return '&amp;';
-      if(m === '<') return '&lt;';
-      if(m === '>') return '&gt;';
+      if (m === '&') return '&amp;';
+      if (m === '<') return '&lt;';
+      if (m === '>') return '&gt;';
       return m;
     });
   }
 
   function renderResults(companies, userProfile) {
     const t = translations[currentLang];
-    if (!companies.length) {
-      cardsContainer.innerHTML = `<div style="grid-column:1/-1; text-align:center; background:white; border-radius:1.5rem; padding:2rem;">${t.noMatch}</div>`;
+    if (!companies || companies.length === 0) {
+      cardsContainer.innerHTML = `<div style="text-align:center; background:white; border-radius:1.5rem; padding:2rem;">${t.noMatch}</div>`;
       document.getElementById('resultCount').innerText = '(0)';
       return;
     }
+    
     document.getElementById('resultCount').innerText = `(${companies.length})`;
     let html = '<div class="cards-grid">';
+    
     companies.forEach((co, idx) => {
       const isBest = idx === 0;
-      const score = co.match_score || 70;
       html += `
         <div class="company-card ${isBest ? 'best-match' : ''}">
           <div class="card-header">
             <div class="company-name">${escapeHtml(co.name)}</div>
-            <div class="match-score">🎯 ${score}${t.matchPercent}</div>
+            <div class="match-score">🎯 ${co.match_score}${t.matchPercent}</div>
           </div>
           <div class="company-meta">
             <span>📁 ${t.sector}: ${escapeHtml(co.sector)}</span>
@@ -742,25 +716,28 @@ Write the email ${langPrompt}. Include a subject line. Keep it concise (max 8 se
         </div>
       `;
     });
+    
     html += '</div>';
     cardsContainer.innerHTML = html;
 
-    // Email generation
+    // Email generation buttons
     document.querySelectorAll('.gen-email-btn').forEach(btn => {
-      btn.addEventListener('click', async (e) => {
+      btn.addEventListener('click', async () => {
         const company = JSON.parse(btn.getAttribute('data-company'));
         const card = btn.closest('.company-card');
         const msgDiv = card.querySelector('.generated-message');
         const original = btn.innerHTML;
+        
         btn.innerHTML = `<span style="display:inline-block; width:12px; height:12px; border:2px solid white; border-top-color:transparent; border-radius:50%; animation:spin 0.6s linear infinite; margin-left:5px;"></span> ${t.loadingEmail}`;
         btn.disabled = true;
+        
         try {
           const emailContent = await generateEmailWithAI(company, userProfile);
           msgDiv.style.display = 'block';
-          msgDiv.innerHTML = `<strong>✉️ ${currentLang === 'ar' ? 'البريد جاهز' : 'Email prêt'}</strong><br><br>${escapeHtml(emailContent).replace(/\n/g, '<br>')}`;
+          msgDiv.innerHTML = `<strong>✉️ ${currentLang === 'ar' ? 'البريد الإلكتروني جاهز' : 'Email prêt'}</strong><br><br>${escapeHtml(emailContent).replace(/\n/g, '<br>')}`;
           const copyBtn = card.querySelector('.copy-btn');
           if (copyBtn) copyBtn.setAttribute('data-email-message', emailContent);
-        } catch(err) {
+        } catch (err) {
           console.error(err);
           msgDiv.style.display = 'block';
           msgDiv.innerHTML = `<span style="color:red;">⚠️ ${err.message}</span>`;
@@ -771,17 +748,20 @@ Write the email ${langPrompt}. Include a subject line. Keep it concise (max 8 se
       });
     });
 
+    // Copy buttons
     document.querySelectorAll('.copy-btn').forEach(btn => {
       btn.addEventListener('click', async () => {
         let message = btn.getAttribute('data-email-message');
         if (!message) {
           const card = btn.closest('.company-card');
           const msgDiv = card.querySelector('.generated-message');
-          if (msgDiv && msgDiv.innerText) message = msgDiv.innerText.replace(/✉️.*:/,'').trim();
+          if (msgDiv && msgDiv.innerText) {
+            message = msgDiv.innerText.replace(/✉️.*:/, '').trim();
+          }
         }
-        if (!message) { 
-          alert(currentLang === 'ar' ? "يرجى إنشاء البريد أولاً" : "Veuillez d'abord générer l'email"); 
-          return; 
+        if (!message) {
+          alert(currentLang === 'ar' ? "يرجى إنشاء البريد الإلكتروني أولاً" : "Veuillez d'abord générer l'email");
+          return;
         }
         await navigator.clipboard.writeText(message);
         const orig = btn.innerHTML;
@@ -803,37 +783,44 @@ Write the email ${langPrompt}. Include a subject line. Keep it concise (max 8 se
       alert(t.fillFields);
       return;
     }
+    
     const skillsArray = skillsRaw.split(',').map(s => s.trim()).filter(s => s);
-    if (skillsArray.length === 0) return alert("أدخل مهارة واحدة على الأقل");
+    if (skillsArray.length === 0) {
+      alert(currentLang === 'ar' ? "يرجى إدخال مهارة واحدة على الأقل" : "Veuillez entrer au moins une compétence");
+      return;
+    }
     
     const userProfile = { fullName, diploma, city, skillsArray };
     
-    showLoadingOverlay();
+    showLoadingOverlay(1);
     const btn = document.getElementById('matchBtn');
     btn.disabled = true;
-    btn.innerHTML = "<span class='pulse-loader' style='width:20px;height:20px;margin:0;'></span> جاري التحليل...";
     
     try {
-      let companies;
-      try {
-        companies = await getAIMatchedCompanies(userProfile);
-      } catch (aiError) {
-        console.warn("AI failed, using fallback:", aiError);
-        companies = getFallbackCompanies(userProfile);
-      }
+      // Step 2 animation
+      setTimeout(() => showLoadingOverlay(2), 800);
+      setTimeout(() => showLoadingOverlay(3), 1600);
+      
+      const companies = await extractCompaniesWithAI(userProfile);
       renderResults(companies, userProfile);
+      resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
     } catch (err) {
-      console.error(err);
-      // استخدام البيانات الاحتياطية في حالة فشل كامل
-      const fallback = getFallbackCompanies(userProfile);
-      renderResults(fallback, userProfile);
+      console.error("AI Error:", err);
+      cardsContainer.innerHTML = `
+        <div class="error-message">
+          ❌ ${currentLang === 'ar' ? 'خطأ في الاتصال بالذكاء الاصطناعي: ' : 'Erreur de connexion IA: '} ${err.message}
+          <br><br>
+          ${currentLang === 'ar' ? 'يرجى المحاولة مرة أخرى. تأكد من اتصالك بالإنترنت.' : 'Veuillez réessayer. Vérifiez votre connexion internet.'}
+        </div>
+      `;
+      resultsSection.style.display = 'block';
     } finally {
       btn.disabled = false;
-      btn.innerHTML = "<span>🤖</span> ابدأ البحث الذكي";
+      btn.innerHTML = `<span>🤖</span> ${currentLang === 'ar' ? 'ابدأ البحث الذكي' : 'Recherche intelligente'}`;
     }
   }
 
-  // إعدادات اللغة والأحداث
+  // Event Listeners
   document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       const lang = btn.getAttribute('data-lang');
