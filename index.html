@@ -4,48 +4,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>MP.econcours.ma | Marchés Publics</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: #f8fafc; color: #1e293b; line-height: 1.5; }
+        body { font-family: 'Roboto', sans-serif; background: #f8fafc; color: #1e2f3e; line-height: 1.5; }
         .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
         
-        .navbar { background: white; border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 100; padding: 16px 0; }
+        .navbar { background: white; box-shadow: 0 2px 12px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 100; padding: 16px 0; }
         .nav-flex { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
-        .logo { font-size: 1.4rem; font-weight: 800; }
-        .logo .mp { color: #0f172a; }
-        .logo .econcours { color: #2563eb; }
-        .nav-links { display: flex; gap: 24px; flex-wrap: wrap; }
-        .nav-links a { text-decoration: none; color: #475569; font-weight: 500; transition: color 0.2s; }
-        .nav-links a:hover { color: #2563eb; }
+        .logo { font-size: 1.5rem; font-weight: 700; }
+        .logo .mp { color: #1a3a5c; }
+        .logo .econcours { color: #c9a03d; }
+        .nav-links { display: flex; gap: 28px; flex-wrap: wrap; }
+        .nav-links a { text-decoration: none; font-weight: 500; color: #4a6a7e; transition: 0.2s; }
+        .nav-links a:hover { color: #c9a03d; }
         
-        .hero { background: linear-gradient(135deg, #0f172a, #1e3a8a); color: white; padding: 60px 0; text-align: center; border-radius: 0 0 32px 32px; margin-bottom: 48px; }
-        .hero h1 { font-size: 2.2rem; margin-bottom: 16px; }
+        .hero { background: linear-gradient(135deg, #1a3a5c, #0a2540); color: white; padding: 60px 0; text-align: center; margin-bottom: 48px; border-radius: 0 0 32px 32px; }
+        .hero h1 { font-size: 2.2rem; font-weight: 700; margin-bottom: 16px; }
         .hero p { max-width: 600px; margin: 0 auto; opacity: 0.9; }
         
-        .section-title { font-size: 1.6rem; font-weight: 700; color: #0f172a; margin: 48px 0 24px; border-left: 4px solid #2563eb; padding-left: 16px; }
+        .section-title { font-size: 1.6rem; font-weight: 700; color: #1a3a5c; margin: 48px 0 24px; border-left: 4px solid #c9a03d; padding-left: 16px; }
         
-        .cours-grid, .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-bottom: 48px; }
-        .card { background: white; border-radius: 24px; padding: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); transition: 0.2s; border: 1px solid #e2e8f0; }
-        .card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(0,0,0,0.1); }
-        .card h3 { font-size: 1.2rem; margin-bottom: 12px; color: #0f172a; }
-        .card p { color: #64748b; font-size: 0.9rem; margin-bottom: 16px; }
-        .badge { display: inline-block; background: #e0f2fe; color: #0369a1; padding: 4px 12px; border-radius: 20px; font-size: 0.7rem; font-weight: 600; margin-bottom: 12px; }
-        .btn-card { display: inline-flex; align-items: center; gap: 8px; color: #2563eb; text-decoration: none; font-weight: 600; font-size: 0.85rem; }
+        .two-columns { display: flex; flex-direction: column; gap: 48px; }
+        @media (min-width: 900px) { .two-columns { flex-direction: row; align-items: flex-start; } .col-left { flex: 1.2; } .col-right { flex: 1.8; } }
+        
+        .card { background: white; border-radius: 24px; padding: 24px; margin-bottom: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; }
+        .card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; border-bottom: 1px solid #e2e8f0; padding-bottom: 12px; }
+        .card-header i { font-size: 1.5rem; color: #c9a03d; }
+        .card-header h2 { font-size: 1.3rem; color: #1a3a5c; }
+        
+        .cours-list { list-style: none; }
+        .cours-list li { display: flex; align-items: flex-start; gap: 14px; padding: 14px 0; border-bottom: 1px solid #eef2f8; }
+        .cours-list li i { color: #c9a03d; margin-top: 3px; }
+        .cours-title { font-weight: 700; color: #1a3a5c; display: block; margin-bottom: 4px; }
+        .cours-desc { font-size: 0.85rem; color: #6b8ba0; }
         
         .calc-box { background: white; border-radius: 24px; padding: 24px; margin-bottom: 32px; border: 1px solid #e2e8f0; }
         .calc-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; border-bottom: 1px solid #e2e8f0; padding-bottom: 12px; }
-        .calc-header i { font-size: 1.5rem; color: #2563eb; }
-        label { font-weight: 600; display: block; margin: 16px 0 6px; font-size: 0.85rem; }
-        input, select { width: 100%; padding: 12px 16px; border-radius: 16px; border: 1px solid #cbd5e1; font-size: 0.9rem; }
-        button { background: #1e3a8a; color: white; border: none; padding: 12px 24px; border-radius: 40px; font-weight: 600; cursor: pointer; margin-top: 16px; width: 100%; }
-        button:hover { background: #2563eb; }
-        .result { background: #f1f5f9; padding: 16px; border-radius: 16px; margin-top: 16px; border-left: 4px solid #2563eb; font-size: 0.9rem; }
+        .calc-header i { font-size: 1.5rem; color: #c9a03d; }
+        .calc-header h3 { font-size: 1.2rem; color: #1a3a5c; }
+        label { font-weight: 600; display: block; margin: 16px 0 6px; font-size: 0.85rem; color: #1a3a5c; }
+        input, select { width: 100%; padding: 12px 16px; border-radius: 16px; border: 1px solid #cbd5e1; font-size: 0.9rem; font-family: inherit; }
+        input:focus, select:focus { outline: none; border-color: #c9a03d; }
+        button { background: #1a3a5c; color: white; border: none; padding: 12px 20px; border-radius: 40px; font-weight: 600; cursor: pointer; margin-top: 16px; width: 100%; transition: 0.2s; }
+        button:hover { background: #0a2540; transform: translateY(-1px); }
+        .result { background: #f1f5f9; padding: 16px; border-radius: 16px; margin-top: 16px; border-left: 4px solid #c9a03d; font-size: 0.9rem; }
         .info-note { background: #fefce8; padding: 12px; border-radius: 16px; font-size: 0.7rem; color: #854d0e; margin-top: 16px; }
+        .inline-group { display: flex; gap: 10px; align-items: center; margin: 10px 0; }
+        .inline-group input { width: 100px; margin: 0; }
         
-        footer { text-align: center; padding: 32px 24px; margin-top: 60px; border-top: 1px solid #e2e8f0; color: #64748b; font-size: 0.8rem; }
-        @media (max-width: 768px) { .hero h1 { font-size: 1.6rem; } .section-title { font-size: 1.3rem; } }
+        .offres-list { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
+        .offre-tag { background: #eef2f8; padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; display: inline-flex; align-items: center; gap: 8px; }
+        .offre-tag.excluded { background: #ffe0e0; text-decoration: line-through; color: #c00; }
+        .add-offre { display: flex; gap: 10px; margin: 12px 0; }
+        .add-offre input { flex: 2; margin: 0; }
+        .add-offre button { width: auto; margin: 0; padding: 10px 18px; background: #c9a03d; }
+        
+        footer { text-align: center; padding: 32px 24px; margin-top: 60px; border-top: 1px solid #e2e8f0; color: #6b8ba0; font-size: 0.8rem; }
+        .loader { text-align: center; padding: 40px; color: #c9a03d; }
+        
+        @media (max-width: 768px) { .hero h1 { font-size: 1.5rem; } .section-title { font-size: 1.3rem; } }
     </style>
 </head>
 <body>
@@ -69,18 +88,107 @@
     </div>
 </div>
 
-<div class="container">
-    <!-- SECTION COURS -->
-    <h2 class="section-title" id="cours">📚 Cours & Guides</h2>
-    <div id="coursContainer" class="cours-grid">
-        <!-- Les cours seront chargés automatiquement ici -->
-        <div style="text-align:center; padding:40px;">Chargement des cours...</div>
+<div class="container two-columns">
+    <!-- COLONNE GAUCHE : COURS -->
+    <div class="col-left" id="cours">
+        <div class="card">
+            <div class="card-header">
+                <i class="fas fa-graduation-cap"></i>
+                <h2>📖 Cours & Guides</h2>
+            </div>
+            <div id="coursContainer">
+                <div class="loader"><i class="fas fa-spinner fa-pulse"></i> Chargement des cours...</div>
+            </div>
+        </div>
     </div>
 
-    <!-- SECTION OUTILS -->
-    <h2 class="section-title" id="outils">🧮 Outils de calcul</h2>
-    <div id="outilsContainer">
-        <!-- Les outils seront chargés ici -->
+    <!-- COLONNE DROITE : OUTILS -->
+    <div class="col-right" id="outils">
+        <h2 class="section-title">🧮 Outils de calcul</h2>
+        
+        <!-- Outil 1: Prix de référence -->
+        <div class="calc-box">
+            <div class="calc-header"><i class="fas fa-chart-line"></i><h3>🎯 Prix de référence</h3></div>
+            <label>Estimation (E) - DH</label>
+            <input type="number" id="prixRefE" value="100000">
+            <label>Type de marché</label>
+            <select id="prixRefType">
+                <option value="0.20">Travaux (-20%)</option>
+                <option value="0.25">Fournitures & Services (-25%)</option>
+            </select>
+            <label>Offres (DH)</label>
+            <div id="prixRefOffresContainer" class="offres-list"></div>
+            <div class="add-offre">
+                <input type="number" id="prixRefNewOffre" placeholder="Ajouter une offre">
+                <button id="prixRefAddOffre">+ Ajouter</button>
+            </div>
+            <button id="prixRefReset" style="background:#94a3b8;">Réinitialiser</button>
+            <button id="prixRefCalculer">Calculer</button>
+            <div class="result" id="prixRefResult">📊 En attente...</div>
+            <div class="info-note">Offres excessives (+20%) éliminées. Offres anormales (selon seuil) éliminées. P = (E + M)/2 → offre la plus proche</div>
+        </div>
+
+        <!-- Outil 2: Avance -->
+        <div class="calc-box">
+            <div class="calc-header"><i class="fas fa-coins"></i><h3>💰 Avance</h3></div>
+            <label>Montant du marché (TTC) - DH</label>
+            <input type="number" id="avanceMontant" value="12000000">
+            <label>Délai (mois)</label>
+            <input type="number" id="avanceDelai" value="6">
+            <div class="inline-group">
+                <input type="number" id="avanceSousTraitance" placeholder="% sous-traitée" value="0" step="5">
+                <span>% sous-traitée</span>
+            </div>
+            <button id="avanceCalculer">Calculer l'avance</button>
+            <div class="result" id="avanceResult">💰 Avance : --- DH</div>
+            <div class="info-note">Conditions: ≥500k DH et délai ≥4 mois. Calcul: 10% sur 10M +5% reste. Plafond 20M DH.</div>
+        </div>
+
+        <!-- Outil 3: Garanties -->
+        <div class="calc-box">
+            <div class="calc-header"><i class="fas fa-shield-alt"></i><h3>🛡️ Garanties</h3></div>
+            <label>Montant du marché (DH)</label>
+            <input type="number" id="garantieMontant" placeholder="Ex: 1000000">
+            <button id="garantieProvisoire">Garantie provisoire (2%)</button>
+            <button id="garantieDefinitive" style="margin-top:8px;">Garantie définitive (5%)</button>
+            <div class="result" id="garantieResult">📌 ---</div>
+        </div>
+
+        <!-- Outil 4: Pénalités -->
+        <div class="calc-box">
+            <div class="calc-header"><i class="fas fa-clock"></i><h3>⏱️ Pénalités de retard</h3></div>
+            <label>Montant du marché (DH)</label>
+            <input type="number" id="penaliteMontant" value="1000000">
+            <label>Taux journalier (%)</label>
+            <input type="number" id="penaliteTaux" value="0.5" step="0.1">
+            <label>Jours de retard</label>
+            <input type="number" id="penaliteJours" value="10">
+            <label>Plafond (%)</label>
+            <input type="number" id="penalitePlafond" value="10">
+            <button id="penaliteCalculer">Calculer</button>
+            <div class="result" id="penaliteResult">⏱️ --- DH</div>
+        </div>
+
+        <!-- Outil 5: Offres anormales -->
+        <div class="calc-box">
+            <div class="calc-header"><i class="fas fa-exclamation-triangle"></i><h3>⚠️ Offres anormales</h3></div>
+            <label>Estimation (E) - DH</label>
+            <input type="number" id="anormalesE" value="100000">
+            <label>Type de marché</label>
+            <select id="anormalesType">
+                <option value="0.20">Travaux (-20%)</option>
+                <option value="0.25">Fournitures & Services (-25%)</option>
+            </select>
+            <label>Offres (DH)</label>
+            <div id="anormalesOffresContainer" class="offres-list"></div>
+            <div class="add-offre">
+                <input type="number" id="anormalesNewOffre" placeholder="Ajouter une offre">
+                <button id="anormalesAddOffre">+ Ajouter</button>
+            </div>
+            <button id="anormalesReset" style="background:#94a3b8;">Réinitialiser</button>
+            <button id="anormalesVerifier">Vérifier</button>
+            <div class="result" id="anormalesResult">📊 ---</div>
+        </div>
     </div>
 </div>
 
@@ -90,179 +198,136 @@
 </footer>
 
 <script>
-    // Données intégrées (vous pouvez les modifier facilement)
-    const siteData = {
-        cours: [
-            { titre: "🔹 Comprendre l'appel d'offres", description: "Définition, types (ouvert, restreint), conditions de participation.", badge: "Débutant" },
-            { titre: "🔹 Préparation du dossier", description: "Pièces administratives, techniques, cautions provisoires.", badge: "Débutant" },
-            { titre: "🔹 Garanties provisoire et définitive", description: "Montants, durée, caution bancaire.", badge: "Essentiel" },
-            { titre: "🔹 Évaluation des offres", description: "Critères d'attribution, méthode du prix de référence.", badge: "Intermédiaire" },
-            { titre: "🔹 Exécution et pénalités", description: "Avenants, retards, litiges.", badge: "Intermédiaire" },
-            { titre: "🔹 Aspects juridiques", description: "Cadre légal, décret 2-22-431.", badge: "Avancé" }
-        ],
-        outils: [
-            { id: "prixRef", titre: "🎯 Prix de référence", desc: "E + offres → P = (E+M)/2 → offre gagnante" },
-            { id: "avance", titre: "💰 Avance", desc: "10% / 5% / plafond 20M DH" },
-            { id: "garanties", titre: "🛡️ Garanties", desc: "Provisoire (2%) et définitive (5%)" },
-            { id: "penalites", titre: "⏱️ Pénalités", desc: "Retard, taux, plafond" },
-            { id: "anormales", titre: "⚠️ Offres anormales", desc: "Seuils -20% / -25%" }
-        ]
-    };
+    // ========== CHARGEMENT DES COURS DEPUIS JSON ==========
+    fetch('cours.json')
+        .then(response => {
+            if (!response.ok) throw new Error('Fichier cours.json introuvable');
+            return response.json();
+        })
+        .then(data => {
+            let html = '<ul class="cours-list">';
+            for (let c of data.cours) {
+                html += `
+                    <li>
+                        <i class="fas fa-book-open"></i>
+                        <div>
+                            <span class="cours-title">${c.titre}</span>
+                            <span class="cours-desc">${c.description}</span>
+                        </div>
+                    </li>
+                `;
+            }
+            html += '</ul><div class="info-note" style="margin-top:20px;">📚 D\'autres chapitres seront ajoutés prochainement...</div>';
+            document.getElementById('coursContainer').innerHTML = html;
+        })
+        .catch(error => {
+            document.getElementById('coursContainer').innerHTML = `<div style="color:#c00;padding:20px;">❌ Erreur: ${error.message}<br>Vérifiez que cours.json existe au même emplacement.</div>`;
+        });
 
-    // Charger les cours
-    function loadCours() {
+    // ========== PRIX DE RÉFÉRENCE ==========
+    let prixRefOffres = [80000, 90000, 100000, 130000];
+    function afficherPrixRefOffres() {
+        const container = document.getElementById('prixRefOffresContainer');
+        if (!container) return;
+        const E = parseFloat(document.getElementById('prixRefE').value) || 0;
+        const type = parseFloat(document.getElementById('prixRefType').value);
         let html = '';
-        for (let c of siteData.cours) {
-            html += `
-                <div class="card">
-                    <div class="badge">${c.badge}</div>
-                    <h3>${c.titre}</h3>
-                    <p>${c.description}</p>
-                    <a href="#" class="btn-card">Lire la suite <i class="fas fa-arrow-right"></i></a>
-                </div>
-            `;
-        }
-        document.getElementById('coursContainer').innerHTML = html;
+        prixRefOffres.forEach((offre, index) => {
+            let excluded = false;
+            if (E > 0 && (offre > E * 1.2 || offre < E * (1 - type))) excluded = true;
+            html += `<span class="offre-tag ${excluded ? 'excluded' : ''}">${offre.toLocaleString()} DH<span onclick="supprimerPrixRefOffre(${index})" style="cursor:pointer;color:#c00;margin-left:6px;">✖</span></span>`;
+        });
+        if (prixRefOffres.length === 0) html = '<span>Aucune offre.</span>';
+        container.innerHTML = html;
     }
+    function supprimerPrixRefOffre(index) { prixRefOffres.splice(index, 1); afficherPrixRefOffres(); }
+    document.getElementById('prixRefAddOffre')?.addEventListener('click', () => {
+        let v = parseFloat(document.getElementById('prixRefNewOffre').value);
+        if (!isNaN(v) && v > 0) { prixRefOffres.push(v); document.getElementById('prixRefNewOffre').value = ''; afficherPrixRefOffres(); }
+        else alert('Montant valide requis');
+    });
+    document.getElementById('prixRefReset')?.addEventListener('click', () => { prixRefOffres = []; afficherPrixRefOffres(); });
+    document.getElementById('prixRefCalculer')?.addEventListener('click', () => {
+        let E = parseFloat(document.getElementById('prixRefE').value);
+        let type = parseFloat(document.getElementById('prixRefType').value);
+        if (isNaN(E) || prixRefOffres.length === 0) { document.getElementById('prixRefResult').innerHTML = '❌ Estimation et offres requises.'; return; }
+        let filtrees = prixRefOffres.filter(o => o <= E * 1.2 && o >= E * (1 - type));
+        if (filtrees.length === 0) { document.getElementById('prixRefResult').innerHTML = '⚠️ Toutes les offres exclues.'; return; }
+        let M = filtrees.reduce((a,b)=>a+b,0) / filtrees.length;
+        let P = (E + M) / 2;
+        let gagnante = filtrees.reduce((a,b) => Math.abs(a-P) < Math.abs(b-P) ? a : b);
+        document.getElementById('prixRefResult').innerHTML = `📊 P = ${P.toLocaleString()} DH<br>🏆 Offre gagnante = ${gagnante.toLocaleString()} DH`;
+    });
 
-    // Charger les outils avec leurs calculateurs intégrés
-    function loadOutils() {
-        document.getElementById('outilsContainer').innerHTML = `
-            <!-- Prix de référence -->
-            <div class="calc-box" id="calc-prixRef">
-                <div class="calc-header"><i class="fas fa-chart-line"></i><h3>🎯 Prix de référence</h3></div>
-                <label>Estimation (E) - DH</label>
-                <input type="number" id="E" value="100000">
-                <label>Type de marché</label>
-                <select id="typeMarche">
-                    <option value="0.20">Travaux (-20%)</option>
-                    <option value="0.25">Fournitures & Services (-25%)</option>
-                </select>
-                <label>Offres (séparées par des virgules)</label>
-                <input type="text" id="offresInput" value="80000, 90000, 100000, 130000">
-                <button onclick="calculPrixReference()">Calculer</button>
-                <div class="result" id="resultPrixRef">📊 En attente...</div>
-                <div class="info-note">🚫 Offres excessives (>+20%) éliminées. Offres anormalement basses (&lt; seuil) éliminées. P = (E+M)/2 → offre la plus proche.</div>
-            </div>
-
-            <!-- Avance -->
-            <div class="calc-box" id="calc-avance">
-                <div class="calc-header"><i class="fas fa-coins"></i><h3>💰 Avance</h3></div>
-                <label>Montant du marché TTC (DH)</label>
-                <input type="number" id="avanceMontant" value="12000000">
-                <label>Délai (mois)</label>
-                <input type="number" id="delai" value="6">
-                <div class="inline-group" style="display:flex; gap:10px; margin:10px 0;">
-                    <input type="number" id="sousTraitance" placeholder="% sous-traitée" value="0" style="width:100px;">
-                    <span>%</span>
-                </div>
-                <button onclick="calculAvance()">Calculer</button>
-                <div class="result" id="resultAvance">💰 --- DH</div>
-                <div class="info-note">Conditions: ≥500k DH et délai ≥4 mois. Calcul: 10% sur 10M +5% reste. Plafond 20M.</div>
-            </div>
-
-            <!-- Garanties -->
-            <div class="calc-box" id="calc-garanties">
-                <div class="calc-header"><i class="fas fa-shield-alt"></i><h3>🛡️ Garanties</h3></div>
-                <label>Montant du marché (DH)</label>
-                <input type="number" id="garantieMontant" placeholder="Ex: 1000000">
-                <button onclick="calculGarantieProvisoire()">Garantie provisoire (2%)</button>
-                <button onclick="calculGarantieDefinitive()" style="margin-top:8px;">Garantie définitive (5%)</button>
-                <div class="result" id="resultGaranties">📌 ---</div>
-            </div>
-
-            <!-- Pénalités -->
-            <div class="calc-box" id="calc-penalites">
-                <div class="calc-header"><i class="fas fa-clock"></i><h3>⏱️ Pénalités de retard</h3></div>
-                <label>Montant du marché (DH)</label>
-                <input type="number" id="penaliteMontant" value="1000000">
-                <label>Taux journalier (%)</label>
-                <input type="number" id="taux" value="0.5" step="0.1">
-                <label>Jours de retard</label>
-                <input type="number" id="jours" value="10">
-                <label>Plafond (%)</label>
-                <input type="number" id="plafond" value="10">
-                <button onclick="calculPenalites()">Calculer</button>
-                <div class="result" id="resultPenalites">⏱️ --- DH</div>
-            </div>
-
-            <!-- Offres anormales -->
-            <div class="calc-box" id="calc-anormales">
-                <div class="calc-header"><i class="fas fa-exclamation-triangle"></i><h3>⚠️ Offres anormales</h3></div>
-                <label>Estimation (E) - DH</label>
-                <input type="number" id="Eanormales" value="100000">
-                <label>Type de marché</label>
-                <select id="typeAnormales">
-                    <option value="0.20">Travaux (-20%)</option>
-                    <option value="0.25">Fournitures & Services (-25%)</option>
-                </select>
-                <label>Offres (séparées par des virgules)</label>
-                <input type="text" id="offresAnormales" value="65000, 80000, 95000, 110000">
-                <button onclick="verifierAnormales()">Vérifier</button>
-                <div class="result" id="resultAnormales">📊 ---</div>
-            </div>
-        `;
-    }
-
-    // Fonctions des calculateurs
-    function calculPrixReference() {
-        let E = parseFloat(document.getElementById('E').value);
-        let type = parseFloat(document.getElementById('typeMarche').value);
-        let offresInput = document.getElementById('offresInput').value;
-        let offres = offresInput.split(',').map(v => parseFloat(v.trim())).filter(v => !isNaN(v));
-        if (isNaN(E) || offres.length === 0) { document.getElementById('resultPrixRef').innerHTML = '❌ Données invalides'; return; }
-        let filtrees = offres.filter(o => o <= E * 1.2 && o >= E * (1 - type));
-        if (filtrees.length === 0) { document.getElementById('resultPrixRef').innerHTML = '⚠️ Toutes les offres exclues'; return; }
-        let M = filtrees.reduce((a,b)=>a+b,0)/filtrees.length;
-        let P = (E + M)/2;
-        let gagnante = filtrees.reduce((a,b)=> Math.abs(a-P) < Math.abs(b-P) ? a : b);
-        document.getElementById('resultPrixRef').innerHTML = `Prix de référence = ${P.toLocaleString()} DH<br>🏆 Offre gagnante = ${gagnante.toLocaleString()} DH`;
-    }
-
-    function calculAvance() {
+    // ========== AVANCE ==========
+    document.getElementById('avanceCalculer')?.addEventListener('click', () => {
         let montant = parseFloat(document.getElementById('avanceMontant').value);
-        let delai = parseFloat(document.getElementById('delai').value);
-        let sous = parseFloat(document.getElementById('sousTraitance').value) || 0;
-        if (montant < 500000 || delai < 4) { document.getElementById('resultAvance').innerHTML = '❌ Avance non accordée (montant<500k ou délai<4 mois)'; return; }
+        let delai = parseFloat(document.getElementById('avanceDelai').value);
+        let sous = parseFloat(document.getElementById('avanceSousTraitance').value) || 0;
+        if (montant < 500000 || delai < 4) { document.getElementById('avanceResult').innerHTML = '❌ Avance non accordée (montant<500k ou délai<4 mois)'; return; }
         let base = montant * (1 - sous/100);
         let avance = base <= 10000000 ? base * 0.10 : (10000000 * 0.10) + ((base - 10000000) * 0.05);
         avance = Math.min(avance, 20000000);
-        document.getElementById('resultAvance').innerHTML = `💰 Avance = ${avance.toLocaleString()} DH`;
-    }
+        document.getElementById('avanceResult').innerHTML = `💰 Avance = ${avance.toLocaleString()} DH`;
+    });
 
-    function calculGarantieProvisoire() {
+    // ========== GARANTIES ==========
+    document.getElementById('garantieProvisoire')?.addEventListener('click', () => {
         let m = parseFloat(document.getElementById('garantieMontant').value) || 0;
-        document.getElementById('resultGaranties').innerHTML = `📌 Garantie provisoire (2%) = ${(m*0.02).toLocaleString()} DH`;
-    }
-    function calculGarantieDefinitive() {
+        document.getElementById('garantieResult').innerHTML = `📌 Garantie provisoire (2%) = ${(m*0.02).toLocaleString()} DH`;
+    });
+    document.getElementById('garantieDefinitive')?.addEventListener('click', () => {
         let m = parseFloat(document.getElementById('garantieMontant').value) || 0;
-        document.getElementById('resultGaranties').innerHTML = `🛡️ Garantie définitive (5%) = ${(m*0.05).toLocaleString()} DH`;
-    }
+        document.getElementById('garantieResult').innerHTML = `🛡️ Garantie définitive (5%) = ${(m*0.05).toLocaleString()} DH`;
+    });
 
-    function calculPenalites() {
+    // ========== PÉNALITÉS ==========
+    document.getElementById('penaliteCalculer')?.addEventListener('click', () => {
         let montant = parseFloat(document.getElementById('penaliteMontant').value) || 0;
-        let taux = parseFloat(document.getElementById('taux').value) || 0;
-        let jours = parseFloat(document.getElementById('jours').value) || 0;
-        let plafond = parseFloat(document.getElementById('plafond').value) || 0;
+        let taux = parseFloat(document.getElementById('penaliteTaux').value) || 0;
+        let jours = parseFloat(document.getElementById('penaliteJours').value) || 0;
+        let plafond = parseFloat(document.getElementById('penalitePlafond').value) || 0;
         let penalites = montant * (taux/100) * jours;
         let max = montant * (plafond/100);
         let final = Math.min(penalites, max);
-        document.getElementById('resultPenalites').innerHTML = `⏱️ Pénalités = ${final.toLocaleString()} DH (max ${max.toLocaleString()} DH)`;
-    }
+        document.getElementById('penaliteResult').innerHTML = `⏱️ Pénalités = ${final.toLocaleString()} DH (max ${max.toLocaleString()} DH)`;
+    });
 
-    function verifierAnormales() {
-        let E = parseFloat(document.getElementById('Eanormales').value);
-        let type = parseFloat(document.getElementById('typeAnormales').value);
-        let offresInput = document.getElementById('offresAnormales').value;
-        let offres = offresInput.split(',').map(v => parseFloat(v.trim())).filter(v => !isNaN(v));
+    // ========== OFFRES ANORMALES ==========
+    let anormalesOffres = [65000, 80000, 95000, 110000];
+    function afficherAnormalesOffres() {
+        const container = document.getElementById('anormalesOffresContainer');
+        if (!container) return;
+        let html = '';
+        anormalesOffres.forEach((offre, index) => {
+            html += `<span class="offre-tag">${offre.toLocaleString()} DH<span onclick="supprimerAnormalesOffre(${index})" style="cursor:pointer;color:#c00;margin-left:6px;">✖</span></span>`;
+        });
+        if (anormalesOffres.length === 0) html = '<span>Aucune offre.</span>';
+        container.innerHTML = html;
+    }
+    function supprimerAnormalesOffre(index) { anormalesOffres.splice(index, 1); afficherAnormalesOffres(); }
+    document.getElementById('anormalesAddOffre')?.addEventListener('click', () => {
+        let v = parseFloat(document.getElementById('anormalesNewOffre').value);
+        if (!isNaN(v) && v > 0) { anormalesOffres.push(v); document.getElementById('anormalesNewOffre').value = ''; afficherAnormalesOffres(); }
+        else alert('Montant valide requis');
+    });
+    document.getElementById('anormalesReset')?.addEventListener('click', () => { anormalesOffres = []; afficherAnormalesOffres(); });
+    document.getElementById('anormalesVerifier')?.addEventListener('click', () => {
+        let E = parseFloat(document.getElementById('anormalesE').value);
+        let type = parseFloat(document.getElementById('anormalesType').value);
         let seuil = E * (1 - type);
-        let anormales = offres.filter(o => o < seuil);
-        let normales = offres.filter(o => o >= seuil);
-        document.getElementById('resultAnormales').innerHTML = `Seuil: ${seuil.toLocaleString()} DH<br>✅ Normales: ${normales.length > 0 ? normales.map(o=>o.toLocaleString()).join(', ') : 'aucune'}<br>⚠️ Anormales: ${anormales.length > 0 ? anormales.map(o=>o.toLocaleString()).join(', ') : 'aucune'}`;
-    }
+        if (isNaN(E) || anormalesOffres.length === 0) { document.getElementById('anormalesResult').innerHTML = '❌ Estimation et offres requises.'; return; }
+        let normales = anormalesOffres.filter(o => o >= seuil);
+        let anormales = anormalesOffres.filter(o => o < seuil);
+        document.getElementById('anormalesResult').innerHTML = `Seuil: ${seuil.toLocaleString()} DH<br>✅ Normales: ${normales.length > 0 ? normales.map(o=>o.toLocaleString()).join(', ') : 'aucune'}<br>⚠️ Anormales: ${anormales.length > 0 ? anormales.map(o=>o.toLocaleString()).join(', ') : 'aucune'}`;
+    });
 
-    loadCours();
-    loadOutils();
+    afficherPrixRefOffres();
+    afficherAnormalesOffres();
+    document.getElementById('prixRefE')?.addEventListener('input', afficherPrixRefOffres);
+    document.getElementById('prixRefType')?.addEventListener('change', afficherPrixRefOffres);
+    document.getElementById('anormalesE')?.addEventListener('input', afficherAnormalesOffres);
+    document.getElementById('anormalesType')?.addEventListener('change', afficherAnormalesOffres);
 </script>
 </body>
 </html>
