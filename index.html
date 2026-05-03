@@ -3,446 +3,230 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>MP.econcours.ma | Marchés Publics</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>MP.econcours.ma | Assistant IA</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
-            font-family: 'Inter', sans-serif;
-            background: #ffffff;
-            color: #1e1e2f;
-            line-height: 1.5;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0f172a;
+            color: #f1f5f9;
         }
-
-        /* Container */
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 32px;
-        }
-
-        /* Navbar - style Figma */
         .navbar {
-            position: sticky;
-            top: 0;
-            background: rgba(255, 255, 255, 0.96);
-            backdrop-filter: blur(8px);
-            border-bottom: 1px solid #e8e8f0;
-            z-index: 100;
-            padding: 16px 0;
-        }
-
-        .nav-flex {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .logo {
-            font-size: 1.4rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-        }
-
-        .logo .mp {
-            color: #1a1a2e;
-        }
-
-        .logo .econcours {
-            color: #7c3aed;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 32px;
-            align-items: center;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #5a5a6e;
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: color 0.2s;
-        }
-
-        .nav-links a:hover {
-            color: #7c3aed;
-        }
-
-        .btn-outline-nav {
-            background: transparent;
-            border: 1px solid #e0e0ec;
-            padding: 8px 20px;
-            border-radius: 40px;
-            color: #1a1a2e;
-            font-weight: 600;
-            transition: all 0.2s;
-        }
-
-        .btn-outline-nav:hover {
-            border-color: #7c3aed;
-            color: #7c3aed;
-        }
-
-        /* Hero Section */
-        .hero {
+            background: #1e293b;
+            padding: 16px 24px;
             text-align: center;
-            padding: 80px 0 60px;
+            border-bottom: 1px solid #334155;
         }
-
-        .hero h1 {
-            font-size: 3rem;
-            font-weight: 800;
-            letter-spacing: -1px;
-            background: linear-gradient(135deg, #1a1a2e, #7c3aed);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-            margin-bottom: 20px;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: #5a5a6e;
-            max-width: 600px;
-            margin: 0 auto 32px;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-        }
-
-        .btn-primary {
-            background: #7c3aed;
-            color: white;
-            border: none;
-            padding: 14px 32px;
-            border-radius: 40px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .btn-primary:hover {
-            background: #6d28d9;
-            transform: translateY(-2px);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            border: 1px solid #e0e0ec;
-            color: #1a1a2e;
-            padding: 14px 32px;
-            border-radius: 40px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .btn-secondary:hover {
-            border-color: #7c3aed;
-            color: #7c3aed;
-        }
-
-        /* Section Titles */
-        .section-title {
-            font-size: 1.8rem;
+        .logo {
+            font-size: 1.5rem;
             font-weight: 700;
-            margin: 60px 0 32px;
-            letter-spacing: -0.5px;
         }
-
-        /* Grids */
-        .cours-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 24px;
-            margin-bottom: 60px;
-        }
-
-        .cours-card {
-            background: white;
-            border: 1px solid #e8e8f0;
-            border-radius: 24px;
+        .logo .mp { color: #c9a03d; }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
             padding: 24px;
-            transition: all 0.2s;
         }
-
-        .cours-card:hover {
-            border-color: #7c3aed;
-            transform: translateY(-4px);
-            box-shadow: 0 20px 30px -15px rgba(0,0,0,0.05);
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
         }
-
-        .cours-card h3 {
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 8px;
+        .card {
+            background: #1e293b;
+            border-radius: 20px;
+            padding: 24px;
+            border: 1px solid #334155;
         }
-
-        .cours-card p {
-            font-size: 0.85rem;
-            color: #5a5a6e;
-            line-height: 1.4;
-        }
-
-        .cours-badge {
-            display: inline-block;
-            background: #f3f4f6;
-            color: #5a5a6e;
-            padding: 4px 12px;
-            border-radius: 30px;
-            font-size: 0.7rem;
-            font-weight: 600;
+        .card h2 {
+            font-size: 1.3rem;
             margin-bottom: 16px;
+            color: #c9a03d;
         }
-
-        /* Outils */
-        .outils-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 24px;
-            margin-bottom: 60px;
+        .cours-list {
+            list-style: none;
         }
-
-        .outil-card {
-            background: white;
-            border: 1px solid #e8e8f0;
-            border-radius: 24px;
-            padding: 24px;
-            transition: all 0.2s;
-        }
-
-        .outil-card:hover {
-            border-color: #7c3aed;
-        }
-
-        .outil-card h3 {
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 20px;
+        .cours-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #334155;
             display: flex;
+            gap: 12px;
             align-items: center;
-            gap: 10px;
         }
-
+        .cours-list li i {
+            color: #c9a03d;
+            width: 24px;
+        }
         label {
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             font-weight: 600;
             display: block;
-            margin: 12px 0 6px;
-            color: #5a5a6e;
+            margin: 16px 0 6px;
+            color: #94a3b8;
         }
-
         input {
             width: 100%;
-            padding: 12px 14px;
-            border-radius: 16px;
-            border: 1px solid #e0e0ec;
-            font-size: 0.85rem;
-            font-family: inherit;
-            background: white;
-        }
-
-        input:focus {
-            outline: none;
-            border-color: #7c3aed;
-        }
-
-        button.calc-btn {
-            background: #1a1a2e;
-            color: white;
-            border: none;
             padding: 12px 16px;
-            border-radius: 40px;
+            border-radius: 12px;
+            border: 1px solid #334155;
+            background: #0f172a;
+            color: white;
+            font-size: 0.9rem;
+        }
+        button {
+            background: #c9a03d;
+            color: #0f172a;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 30px;
             font-weight: 600;
-            font-size: 0.8rem;
             cursor: pointer;
             margin-top: 16px;
             width: 100%;
-            transition: all 0.2s;
+            transition: 0.2s;
         }
-
-        button.calc-btn:hover {
-            background: #7c3aed;
+        button:hover {
+            background: #b88a2a;
         }
-
         .result {
-            background: #f8f9fc;
-            padding: 14px;
+            background: #0f172a;
+            padding: 16px;
             border-radius: 16px;
-            margin-top: 14px;
-            font-size: 0.8rem;
-            border-left: 3px solid #7c3aed;
+            margin-top: 16px;
+            font-size: 0.85rem;
+            border-left: 3px solid #c9a03d;
         }
-
-        .info-note {
-            font-size: 0.65rem;
-            color: #8a8a9e;
-            margin-top: 10px;
-            text-align: center;
+        .chat-box {
+            background: #1e293b;
+            border-radius: 20px;
+            padding: 20px;
+            height: 300px;
+            overflow-y: auto;
+            margin-top: 24px;
         }
-
-        /* Footer */
+        .chat-message {
+            margin-bottom: 12px;
+            padding: 10px 14px;
+            border-radius: 16px;
+            max-width: 85%;
+        }
+        .user-msg {
+            background: #c9a03d;
+            color: #0f172a;
+            margin-left: auto;
+            text-align: right;
+        }
+        .ai-msg {
+            background: #334155;
+            color: white;
+        }
+        .chat-input {
+            display: flex;
+            gap: 12px;
+            margin-top: 16px;
+        }
+        .chat-input input {
+            flex: 1;
+            margin: 0;
+        }
+        .chat-input button {
+            width: auto;
+            margin: 0;
+            padding: 12px 24px;
+        }
         footer {
-            border-top: 1px solid #e8e8f0;
             text-align: center;
-            padding: 40px 0;
-            color: #8a8a9e;
-            font-size: 0.75rem;
-            margin-top: 40px;
+            padding: 32px;
+            color: #64748b;
+            font-size: 0.7rem;
         }
-
-        /* Responsive */
         @media (max-width: 768px) {
-            .container { padding: 0 20px; }
-            .hero h1 { font-size: 2rem; }
-            .section-title { font-size: 1.4rem; }
-            .cours-grid, .outils-grid { grid-template-columns: 1fr; }
+            .grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
 <div class="navbar">
-    <div class="container">
-        <div class="nav-flex">
-            <div class="logo">
-                <span class="mp">MP</span><span>.</span><span class="econcours">econcours.ma</span>
-            </div>
-            <div class="nav-links">
-                <a href="#">Accueil</a>
-                <a href="#cours">Cours</a>
-                <a href="#outils">Outils</a>
-                <a href="https://econcours.ma" target="_blank" class="btn-outline-nav">econcours.ma</a>
-            </div>
+    <div class="logo">
+        <span class="mp">MP</span><span>.econcours.ma</span>
+    </div>
+</div>
+
+<div class="container">
+    <div class="grid">
+        <!-- Colonne gauche : Cours -->
+        <div class="card">
+            <h2>📚 Cours & Guides</h2>
+            <ul class="cours-list">
+                <li><i class="fas fa-book-open"></i> 🔹 Comprendre l'appel d'offres</li>
+                <li><i class="fas fa-file-alt"></i> 🔹 Préparation du dossier</li>
+                <li><i class="fas fa-shield-alt"></i> 🔹 Garanties et cautions</li>
+                <li><i class="fas fa-chart-line"></i> 🔹 Prix de référence</li>
+                <li><i class="fas fa-gavel"></i> 🔹 Exécution et pénalités</li>
+                <li><i class="fas fa-balance-scale"></i> 🔹 Aspects juridiques</li>
+            </ul>
         </div>
-    </div>
-</div>
 
-<div class="hero" id="accueil">
-    <div class="container">
-        <h1>Marchés Publics<br>au Maroc</h1>
-        <p>Formation complète et outils de calcul intelligents. Basé sur le décret 2-22-431.</p>
-        <div class="hero-buttons">
-            <button class="btn-primary" onclick="document.getElementById('cours').scrollIntoView({behavior:'smooth'})">Commencer</button>
-            <button class="btn-secondary" onclick="document.getElementById('outils').scrollIntoView({behavior:'smooth'})">Outils de calcul</button>
-        </div>
-    </div>
-</div>
-
-<div class="container" id="cours">
-    <h2 class="section-title">📚 Cours & Guides</h2>
-    <div class="cours-grid">
-        <div class="cours-card"><span class="cours-badge">Débutant</span><h3>🔹 Comprendre l'appel d'offres</h3><p>Définition, types (ouvert, restreint, concours), conditions de participation.</p></div>
-        <div class="cours-card"><span class="cours-badge">Débutant</span><h3>🔹 Préparation du dossier</h3><p>Pièces administratives, pièces techniques, cautions provisoires.</p></div>
-        <div class="cours-card"><span class="cours-badge">Essentiel</span><h3>🔹 Garanties</h3><p>Garantie provisoire, garantie définitive, caution bancaire.</p></div>
-        <div class="cours-card"><span class="cours-badge">Intermédiaire</span><h3>🔹 Évaluation des offres</h3><p>Critères, attribution, méthode du prix de référence.</p></div>
-        <div class="cours-card"><span class="cours-badge">Intermédiaire</span><h3>🔹 Exécution du marché</h3><p>Avenants, retards, pénalités, résiliation.</p></div>
-        <div class="cours-card"><span class="cours-badge">Avancé</span><h3>🔹 Aspects juridiques</h3><p>Décret 2-22-431, principes généraux, cadre légal.</p></div>
-    </div>
-</div>
-
-<div class="container" id="outils">
-    <h2 class="section-title">🧮 Outils de calcul</h2>
-    <div class="outils-grid">
-        
-        <!-- Prix de référence -->
-        <div class="outil-card">
-            <h3><i class="fas fa-chart-line" style="color:#7c3aed;"></i> Prix de référence</h3>
-            <label>Estimation (DH)</label>
+        <!-- Colonne droite : Calculateurs -->
+        <div class="card">
+            <h2>🧮 Calculateurs</h2>
+            
+            <label>Prix de référence - Estimation (DH)</label>
             <input type="number" id="prixE" value="100000">
             <label>Offres (séparées par virgules)</label>
             <input type="text" id="prixOffres" value="80000, 90000, 100000, 130000">
-            <button class="calc-btn" onclick="calculPrix()">Calculer</button>
+            <button onclick="calculPrix()">Calculer</button>
             <div class="result" id="prixResult">📊 ---</div>
-            <div class="info-note">P = (E + moyenne offres retenues) / 2 → offre la plus proche</div>
-        </div>
 
-        <!-- Avance -->
-        <div class="outil-card">
-            <h3><i class="fas fa-coins" style="color:#7c3aed;"></i> Avance</h3>
-            <label>Montant marché (DH)</label>
+            <label>Avance - Montant marché (DH)</label>
             <input type="number" id="avanceM" value="12000000">
             <label>Délai (mois)</label>
             <input type="number" id="avanceDelai" value="6">
-            <button class="calc-btn" onclick="calculAvance()">Calculer</button>
+            <button onclick="calculAvance()">Calculer avance</button>
             <div class="result" id="avanceResult">💰 ---</div>
-            <div class="info-note">10% sur 10M +5% reste | plafond 20M | conditions: ≥500k et délai≥4 mois</div>
         </div>
+    </div>
 
-        <!-- Garantie provisoire -->
-        <div class="outil-card">
-            <h3><i class="fas fa-lock" style="color:#7c3aed;"></i> Garantie provisoire</h3>
-            <label>Montant estimé (DH)</label>
-            <input type="number" id="gpM" placeholder="Ex: 1000000">
-            <button class="calc-btn" onclick="calculGP()">Calculer (2%)</button>
-            <div class="result" id="gpResult">📌 ---</div>
+    <!-- Assistant IA -->
+    <div class="card" style="margin-top: 24px;">
+        <h2>🤖 Assistant IA - Posez vos questions</h2>
+        <div class="chat-box" id="chatBox">
+            <div class="chat-message ai-msg">👋 Bonjour ! Je suis votre assistant pour les marchés publics au Maroc. Posez-moi vos questions sur le décret 2-22-431, les appels d'offres, les garanties, etc.</div>
         </div>
-
-        <!-- Garantie définitive -->
-        <div class="outil-card">
-            <h3><i class="fas fa-shield-alt" style="color:#7c3aed;"></i> Garantie définitive</h3>
-            <label>Montant marché (DH)</label>
-            <input type="number" id="gdM" placeholder="Ex: 1000000">
-            <button class="calc-btn" onclick="calculGD()">Calculer (5%)</button>
-            <div class="result" id="gdResult">📌 ---</div>
-        </div>
-
-        <!-- Pénalités -->
-        <div class="outil-card">
-            <h3><i class="fas fa-clock" style="color:#7c3aed;"></i> Pénalités de retard</h3>
-            <label>Montant (DH)</label>
-            <input type="number" id="penM" value="1000000">
-            <label>Jours de retard</label>
-            <input type="number" id="penJours" value="10">
-            <button class="calc-btn" onclick="calculPenalites()">Calculer</button>
-            <div class="result" id="penResult">⏱️ ---</div>
-            <div class="info-note">0.5% par jour, plafond 10% du montant</div>
-        </div>
-
-        <!-- Offres anormales -->
-        <div class="outil-card">
-            <h3><i class="fas fa-exclamation-triangle" style="color:#7c3aed;"></i> Offres anormales</h3>
-            <label>Estimation (DH)</label>
-            <input type="number" id="anE" value="100000">
-            <label>Offres (séparées par virgules)</label>
-            <input type="text" id="anOffres" value="65000, 80000, 95000">
-            <button class="calc-btn" onclick="calculAnormales()">Vérifier</button>
-            <div class="result" id="anResult">📊 ---</div>
-            <div class="info-note">Seuil: -20% pour travaux, -25% pour fournitures</div>
+        <div class="chat-input">
+            <input type="text" id="userQuestion" placeholder="Ex: Comment calculer le prix de référence ?" onkeypress="if(event.key==='Enter') askAI()">
+            <button onclick="askAI()">Envoyer</button>
         </div>
     </div>
 </div>
 
 <footer>
-    <p>🇲🇦 Plateforme basée sur la réglementation marocaine des marchés publics</p>
+    <p>🇲🇦 Plateforme basée sur la réglementation marocaine des marchés publics (Décret 2-22-431)</p>
     <p>© 2026 MP.econcours.ma - Tous droits réservés</p>
 </footer>
 
 <script>
-    // Calculateurs
+    // ========== CALCULATEURS ==========
     function calculPrix() {
         let E = parseFloat(document.getElementById('prixE').value);
         let offresStr = document.getElementById('prixOffres').value;
         let offres = offresStr.split(',').map(v => parseFloat(v.trim())).filter(v => !isNaN(v));
-        if (isNaN(E) || !offres.length) { document.getElementById('prixResult').innerHTML = '❌ Données invalides'; return; }
+        if (isNaN(E) || offres.length === 0) {
+            document.getElementById('prixResult').innerHTML = '❌ Données invalides';
+            return;
+        }
         let filtrees = offres.filter(o => o >= E * 0.8 && o <= E * 1.2);
-        if (!filtrees.length) { document.getElementById('prixResult').innerHTML = '⚠️ Toutes offres exclues'; return; }
-        let M = filtrees.reduce((a,b)=>a+b,0)/filtrees.length;
-        let P = (E + M)/2;
+        if (filtrees.length === 0) {
+            document.getElementById('prixResult').innerHTML = '⚠️ Toutes les offres ont été exclues';
+            return;
+        }
+        let M = filtrees.reduce((a,b)=>a+b,0) / filtrees.length;
+        let P = (E + M) / 2;
         let gagnante = filtrees.reduce((a,b)=> Math.abs(a-P) < Math.abs(b-P) ? a : b);
         document.getElementById('prixResult').innerHTML = `📊 P = ${P.toLocaleString()} DH<br>🏆 Offre gagnante = ${gagnante.toLocaleString()} DH`;
     }
@@ -450,39 +234,103 @@
     function calculAvance() {
         let m = parseFloat(document.getElementById('avanceM').value);
         let d = parseFloat(document.getElementById('avanceDelai').value);
-        if (m < 500000 || d < 4) { document.getElementById('avanceResult').innerHTML = '❌ Non accordée (montant<500k ou délai<4 mois)'; return; }
+        if (m < 500000 || d < 4) {
+            document.getElementById('avanceResult').innerHTML = '❌ Avance non accordée (montant<500k DH ou délai<4 mois)';
+            return;
+        }
         let av = m <= 10000000 ? m * 0.10 : (10000000 * 0.10) + ((m - 10000000) * 0.05);
         av = Math.min(av, 20000000);
         document.getElementById('avanceResult').innerHTML = `💰 ${av.toLocaleString()} DH`;
     }
 
-    function calculGP() {
-        let m = parseFloat(document.getElementById('gpM').value) || 0;
-        document.getElementById('gpResult').innerHTML = `📌 ${(m*0.02).toLocaleString()} DH`;
+    // ========== ASSISTANT IA ==========
+    const chatBox = document.getElementById('chatBox');
+    const userQuestion = document.getElementById('userQuestion');
+
+    // IMPORTANT: Remplacez par VOTRE clé API Groq
+    // ⚠️ ATTENTION: Cette clé sera visible dans le code source ⚠️
+    const GROQ_API_KEY = "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";
+
+    async function askAI() {
+        const question = userQuestion.value.trim();
+        if (!question) return;
+
+        // Afficher la question de l'utilisateur
+        addMessage(question, true);
+        userQuestion.value = '';
+        
+        // Afficher un indicateur de frappe
+        const typingMsg = addTypingIndicator();
+
+        try {
+            const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${GROQ_API_KEY}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    model: 'mixtral-8x7b-32768',
+                    messages: [
+                        {
+                            role: 'system',
+                            content: `Tu es un expert des marchés publics au Maroc. Tu connais parfaitement le décret 2-22-431. 
+                            Tu réponds de manière précise, professionnelle et concise. 
+                            Tu aides à comprendre les appels d'offres, les garanties, le prix de référence, les avances, les pénalités.
+                            Si tu ne sais pas, tu dis honnêtement que tu ne sais pas.`
+                        },
+                        {
+                            role: 'user',
+                            content: question
+                        }
+                    ],
+                    temperature: 0.7,
+                    max_tokens: 1024
+                })
+            });
+
+            const data = await response.json();
+            
+            if (data.error) {
+                throw new Error(data.error.message || 'Erreur API');
+            }
+
+            const reply = data.choices[0].message.content;
+            removeTypingIndicator(typingMsg);
+            addMessage(reply, false);
+
+        } catch (error) {
+            removeTypingIndicator(typingMsg);
+            addMessage(`❌ Désolé, une erreur s'est produite: ${error.message}`, false);
+        }
     }
 
-    function calculGD() {
-        let m = parseFloat(document.getElementById('gdM').value) || 0;
-        document.getElementById('gdResult').innerHTML = `🛡️ ${(m*0.05).toLocaleString()} DH`;
+    function addMessage(text, isUser) {
+        const msgDiv = document.createElement('div');
+        msgDiv.className = `chat-message ${isUser ? 'user-msg' : 'ai-msg'}`;
+        msgDiv.textContent = text;
+        chatBox.appendChild(msgDiv);
+        chatBox.scrollTop = chatBox.scrollHeight;
     }
 
-    function calculPenalites() {
-        let m = parseFloat(document.getElementById('penM').value) || 0;
-        let j = parseFloat(document.getElementById('penJours').value) || 0;
-        let penalites = m * 0.005 * j;
-        let max = m * 0.10;
-        let final = Math.min(penalites, max);
-        document.getElementById('penResult').innerHTML = `⏱️ ${final.toLocaleString()} DH (max ${max.toLocaleString()})`;
+    function addTypingIndicator() {
+        const typingDiv = document.createElement('div');
+        typingDiv.className = 'chat-message ai-msg';
+        typingDiv.id = 'typingIndicator';
+        typingDiv.textContent = '🤔 L\'assistant réfléchit...';
+        chatBox.appendChild(typingDiv);
+        chatBox.scrollTop = chatBox.scrollHeight;
+        return typingDiv;
     }
 
-    function calculAnormales() {
-        let E = parseFloat(document.getElementById('anE').value);
-        let offresStr = document.getElementById('anOffres').value;
-        let offres = offresStr.split(',').map(v => parseFloat(v.trim())).filter(v => !isNaN(v));
-        let seuil = E * 0.80;
-        let anormales = offres.filter(o => o < seuil);
-        document.getElementById('anResult').innerHTML = `Seuil: ${seuil.toLocaleString()} DH<br>⚠️ Anormales: ${anormales.length ? anormales.map(o=>o.toLocaleString()).join(', ') : 'aucune'}`;
+    function removeTypingIndicator(typingMsg) {
+        if (typingMsg) typingMsg.remove();
+        const existing = document.getElementById('typingIndicator');
+        if (existing) existing.remove();
     }
 </script>
+
+<!-- Ajout Font Awesome pour les icônes -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </body>
 </html>
