@@ -8,26 +8,26 @@
     :root {
       --bg: #f8fafc;
       --surface: #ffffff;
-      --border: #e2e8f0;
+      --border: #e8ecf1;
       --text: #0f172a;
-      --text-secondary: #64748b;
+      --text-secondary: #5b6170;
       --primary: #4f46e5;
       --primary-hover: #4338ca;
       --primary-light: #eef2ff;
-      --accent: #7c3aed;
+      --primary-soft: #f5f3ff;
       --success: #10b981;
-      --warning: #f59e0b;
       --error: #ef4444;
       --error-bg: #fef2f2;
       --radius-sm: 0.75rem;
       --radius: 1rem;
-      --radius-lg: 1.5rem;
-      --radius-xl: 2rem;
-      --shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
-      --shadow-md: 0 8px 30px rgba(0,0,0,0.06);
-      --shadow-lg: 0 20px 50px rgba(0,0,0,0.08);
+      --radius-lg: 1.25rem;
+      --radius-xl: 1.75rem;
+      --shadow-xs: 0 1px 2px rgba(0,0,0,0.03);
+      --shadow-sm: 0 4px 12px rgba(0,0,0,0.04);
+      --shadow-md: 0 12px 32px rgba(0,0,0,0.06);
+      --shadow-lg: 0 24px 56px rgba(0,0,0,0.08);
       --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-      --max-width: 1200px;
+      --max-width: 1120px;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -39,14 +39,16 @@
       color: var(--text);
       -webkit-font-smoothing: antialiased;
       line-height: 1.5;
+      display: flex;
+      flex-direction: column;
     }
 
     /* Navigation */
     .nav {
-      background: rgba(255,255,255,0.9);
-      backdrop-filter: blur(12px);
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
-      padding: 0.9rem 1.5rem;
+      padding: 0.85rem 2rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -55,37 +57,37 @@
       z-index: 100;
     }
 
-    .nav-logo {
+    .nav-brand {
       display: flex;
       align-items: center;
       gap: 0.5rem;
       font-weight: 700;
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       letter-spacing: -0.3px;
       cursor: pointer;
-      text-decoration: none;
       color: var(--text);
+      text-decoration: none;
     }
 
-    .nav-logo .dot {
-      width: 8px; height: 8px;
+    .nav-brand .brand-dot {
+      width: 7px; height: 7px;
       background: var(--primary);
       border-radius: 50%;
     }
 
-    .nav-btn {
+    .nav-action {
       font-size: 0.85rem;
       font-weight: 500;
       color: var(--text-secondary);
       background: var(--surface);
       border: 1px solid var(--border);
-      padding: 0.5rem 1.2rem;
+      padding: 0.5rem 1.25rem;
       border-radius: 2rem;
       cursor: pointer;
       transition: var(--transition);
     }
 
-    .nav-btn:hover {
+    .nav-action:hover {
       background: var(--primary-light);
       color: var(--primary);
       border-color: var(--primary);
@@ -93,21 +95,21 @@
 
     /* Main */
     .main-container {
+      flex: 1;
       max-width: var(--max-width);
+      width: 100%;
       margin: 0 auto;
-      padding: 2rem 1.5rem 3rem;
+      padding: 2.5rem 1.5rem 4rem;
     }
 
     .page {
       display: none;
-      animation: fadeIn 0.3s ease;
+      animation: fadeSlide 0.3s ease;
     }
 
-    .page.active {
-      display: block;
-    }
+    .page.active { display: block; }
 
-    @keyframes fadeIn {
+    @keyframes fadeSlide {
       from { opacity: 0; transform: translateY(8px); }
       to { opacity: 1; transform: translateY(0); }
     }
@@ -115,19 +117,19 @@
     /* Hero */
     .hero {
       text-align: center;
-      margin-bottom: 2.5rem;
+      margin-bottom: 3rem;
     }
 
     .hero h1 {
-      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-size: clamp(1.9rem, 4.5vw, 2.6rem);
       font-weight: 800;
       letter-spacing: -0.8px;
-      line-height: 1.2;
-      margin-bottom: 0.5rem;
+      line-height: 1.15;
+      margin-bottom: 0.6rem;
     }
 
-    .hero .highlight {
-      background: linear-gradient(135deg, var(--primary), var(--accent));
+    .hero .gradient-text {
+      background: linear-gradient(135deg, var(--primary), #7c3aed);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -136,38 +138,26 @@
     .hero p {
       color: var(--text-secondary);
       font-size: 1.05rem;
-      max-width: 550px;
+      max-width: 520px;
       margin: 0 auto;
     }
 
-    /* Catégories */
-    .category-section {
-      margin-bottom: 2.5rem;
-    }
-
-    .category-title {
-      font-size: 1.3rem;
+    /* Section */
+    .section-title {
+      font-size: 1.15rem;
       font-weight: 700;
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 1.25rem;
     }
 
-    .category-icon {
-      width: 36px; height: 36px;
-      border-radius: var(--radius-sm);
-      background: var(--primary-light);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.1rem;
-    }
-
+    /* Grille services */
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
       gap: 1rem;
+      margin-bottom: 1rem;
     }
 
     .service-card {
@@ -175,21 +165,32 @@
       border: 1px solid var(--border);
       border-radius: var(--radius-lg);
       padding: 1.5rem;
-      box-shadow: var(--shadow-sm);
+      box-shadow: var(--shadow-xs);
       transition: var(--transition);
       display: flex;
       flex-direction: column;
       gap: 0.75rem;
       cursor: pointer;
+      position: relative;
     }
 
     .service-card:hover {
       box-shadow: var(--shadow-md);
       transform: translateY(-2px);
-      border-color: #c7d2fe;
+      border-color: #d4d0fa;
     }
 
-    .service-card h4 {
+    .service-icon {
+      width: 44px; height: 44px;
+      border-radius: var(--radius-sm);
+      background: var(--primary-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+    }
+
+    .service-card h3 {
       font-size: 1rem;
       font-weight: 700;
       letter-spacing: -0.2px;
@@ -198,44 +199,43 @@
     .service-card p {
       color: var(--text-secondary);
       font-size: 0.85rem;
+      line-height: 1.45;
       flex: 1;
     }
 
-    .service-card .service-icon-sm {
-      font-size: 1.5rem;
-    }
-
-    /* Boutons */
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 0.5rem;
-      padding: 0.75rem 1.5rem;
+      gap: 0.4rem;
+      padding: 0.7rem 1.4rem;
       border-radius: 2.5rem;
       font-weight: 600;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       cursor: pointer;
       transition: var(--transition);
       border: none;
       letter-spacing: -0.2px;
       white-space: nowrap;
+      font-family: inherit;
     }
 
     .btn-primary {
       background: var(--primary);
       color: #fff;
-      box-shadow: 0 4px 14px rgba(79,70,229,0.25);
+      box-shadow: 0 4px 14px rgba(79,70,229,0.22);
     }
 
     .btn-primary:hover:not(:disabled) {
       background: var(--primary-hover);
-      box-shadow: 0 8px 22px rgba(79,70,229,0.35);
+      box-shadow: 0 8px 22px rgba(79,70,229,0.32);
+      transform: translateY(-1px);
     }
 
     .btn-primary:disabled {
-      opacity: 0.5;
+      opacity: 0.45;
       cursor: not-allowed;
+      box-shadow: none;
     }
 
     .btn-outline {
@@ -249,21 +249,21 @@
     .btn-ghost {
       background: transparent;
       color: var(--primary);
-      padding: 0.5rem 1rem;
-      font-size: 0.85rem;
+      padding: 0.45rem 0.9rem;
+      font-size: 0.84rem;
     }
 
     .btn-ghost:hover { background: var(--primary-light); }
 
     .btn-full { width: 100%; }
-    .btn-small { padding: 0.5rem 1.1rem; font-size: 0.82rem; }
+    .btn-small { padding: 0.5rem 1rem; font-size: 0.8rem; }
 
-    /* Service page */
+    /* Page service */
     .service-header {
       display: flex;
       align-items: center;
       gap: 1rem;
-      margin-bottom: 1.5rem;
+      margin-bottom: 2rem;
     }
 
     .back-btn {
@@ -275,15 +275,16 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       transition: var(--transition);
       flex-shrink: 0;
+      color: var(--text);
     }
 
     .back-btn:hover { background: #f1f5f9; }
 
-    .service-title {
-      font-size: 1.4rem;
+    .service-page-title {
+      font-size: 1.35rem;
       font-weight: 700;
     }
 
@@ -294,9 +295,16 @@
       border-radius: var(--radius-xl);
       padding: 2rem;
       box-shadow: var(--shadow-sm);
+      max-width: 620px;
     }
 
     .form-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .form-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 1rem;
@@ -305,16 +313,14 @@
     .form-group {
       display: flex;
       flex-direction: column;
-      gap: 0.4rem;
+      gap: 0.35rem;
     }
 
-    .form-group.full { grid-column: 1 / -1; }
-
     .form-group label {
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.05em;
       color: var(--text-secondary);
     }
 
@@ -324,7 +330,7 @@
       border: 1px solid var(--border);
       border-radius: var(--radius-sm);
       padding: 0.75rem 1rem;
-      font-size: 0.95rem;
+      font-size: 0.93rem;
       font-family: inherit;
       transition: var(--transition);
       outline: none;
@@ -334,26 +340,30 @@
     .form-group input:focus,
     .form-group textarea:focus {
       border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(79,70,229,0.1);
+      box-shadow: 0 0 0 3px rgba(79,70,229,0.08);
     }
 
-    .form-group input.error,
-    .form-group textarea.error {
+    .form-group input.input-error,
+    .form-group textarea.input-error {
       border-color: var(--error);
       background: var(--error-bg);
     }
 
-    textarea { resize: vertical; min-height: 80px; }
+    textarea { resize: vertical; min-height: 85px; }
 
     .style-row {
       display: flex;
       align-items: center;
       gap: 1rem;
       flex-wrap: wrap;
-      margin-top: 0.25rem;
+      margin: 0.25rem 0;
     }
 
-    .style-row span { font-weight: 600; font-size: 0.85rem; }
+    .style-label {
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: var(--text);
+    }
 
     .radio-group {
       display: flex;
@@ -366,20 +376,21 @@
       align-items: center;
       gap: 0.35rem;
       font-weight: 500;
-      text-transform: none;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       cursor: pointer;
+      text-transform: none;
+      letter-spacing: 0;
     }
 
-    .error-message {
+    .form-error {
       color: var(--error);
-      font-size: 0.85rem;
+      font-size: 0.84rem;
       font-weight: 500;
       display: none;
-      margin-top: 0.5rem;
+      margin-top: 0.25rem;
     }
 
-    .error-message.visible { display: block; }
+    .form-error.visible { display: block; }
 
     /* Loader */
     .loader-inline {
@@ -409,9 +420,10 @@
       border-radius: var(--radius-xl);
       padding: 1.75rem;
       box-shadow: var(--shadow-sm);
-      margin-top: 1.5rem;
+      margin-top: 1.75rem;
       display: none;
-      animation: fadeIn 0.35s ease;
+      animation: fadeSlide 0.35s ease;
+      max-width: 620px;
     }
 
     .result-card.visible { display: block; }
@@ -419,9 +431,7 @@
     .result-header {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 0.75rem;
+      gap: 0.5rem;
       margin-bottom: 1rem;
     }
 
@@ -429,11 +439,11 @@
       background: var(--primary-light);
       color: var(--primary);
       font-weight: 700;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       padding: 0.3rem 1rem;
       border-radius: 2rem;
       text-transform: uppercase;
-      letter-spacing: 0.03em;
+      letter-spacing: 0.04em;
     }
 
     .result-body {
@@ -444,8 +454,8 @@
       line-height: 1.7;
       white-space: pre-wrap;
       word-break: break-word;
-      font-size: 0.95rem;
-      max-height: 400px;
+      font-size: 0.93rem;
+      max-height: 380px;
       overflow-y: auto;
     }
 
@@ -456,115 +466,77 @@
       flex-wrap: wrap;
     }
 
-    /* Interview */
-    .interview-chat {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      max-height: 400px;
-      overflow-y: auto;
-      margin-bottom: 1rem;
-    }
-
-    .chat-bubble {
-      padding: 0.9rem 1.2rem;
-      border-radius: var(--radius-lg);
-      max-width: 80%;
-      line-height: 1.5;
-    }
-
-    .chat-bubble.ai {
-      background: var(--primary-light);
-      align-self: flex-start;
-      border-bottom-left-radius: 0.25rem;
-    }
-
-    .chat-bubble.user {
-      background: #e2e8f0;
-      align-self: flex-end;
-      border-bottom-right-radius: 0.25rem;
-    }
-
-    .interview-input-row {
-      display: flex;
-      gap: 0.75rem;
-      margin-top: 0.5rem;
-    }
-
-    .interview-input-row input {
-      flex: 1;
-    }
-
-    .score-display {
-      background: var(--primary-light);
-      padding: 1rem;
-      border-radius: var(--radius);
-      text-align: center;
-      font-weight: 700;
-      font-size: 1.1rem;
-      margin-top: 1rem;
-    }
-
     /* Suggestions */
     .suggestions {
-      margin-top: 1.75rem;
+      margin-top: 2rem;
+      max-width: 620px;
     }
 
     .suggestions p {
       font-weight: 600;
       color: var(--text-secondary);
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       margin-bottom: 0.75rem;
     }
 
-    .suggestions-grid {
+    .suggestions-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.65rem;
+      gap: 0.6rem;
     }
 
+    /* Pied de page */
     .footer-note {
       text-align: center;
       color: #94a3b8;
-      font-size: 0.8rem;
-      margin-top: 2.5rem;
+      font-size: 0.78rem;
+      margin-top: 3rem;
+      padding-bottom: 1rem;
     }
 
+    /* Responsive */
     @media (max-width: 768px) {
-      .form-grid { grid-template-columns: 1fr; }
-      .form-card { padding: 1.25rem; }
+      .nav { padding: 0.7rem 1rem; }
+      .main-container { padding: 1.5rem 1rem 3rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .form-card, .result-card { padding: 1.25rem; }
+      .service-header { margin-bottom: 1.25rem; }
+    }
+
+    @media (max-width: 480px) {
       .services-grid { grid-template-columns: 1fr; }
-      .chat-bubble { max-width: 90%; }
+      .hero h1 { font-size: 1.6rem; }
     }
   </style>
 </head>
 <body>
   <nav class="nav">
-    <a class="nav-logo" id="homeLogo">ai.econcours.ma<span class="dot"></span></a>
-    <button class="nav-btn" id="navHome">🏠 Accueil</button>
+    <a class="nav-brand" id="brandLink">ai.econcours.ma<span class="brand-dot"></span></a>
+    <button class="nav-action" id="navHomeBtn">Accueil</button>
   </nav>
 
-  <div class="main-container">
-    <!-- PAGE ACCUEIL -->
+  <main class="main-container">
+    <!-- ========== PAGE ACCUEIL ========== -->
     <div class="page active" id="pageHome">
       <div class="hero">
-        <h1>Votre <span class="highlight">carrière</span>, propulsée par l'IA</h1>
-        <p>Une plateforme complète pour créer des candidatures parfaites et vous préparer aux entretiens.</p>
+        <h1>Votre <span class="gradient-text">carrière</span> propulsée par l'IA</h1>
+        <p>Créez des candidatures parfaites et préparez vos entretiens avec un assistant intelligent.</p>
       </div>
 
-      <div id="categoriesContainer"></div>
-      <div class="footer-note">Propulsé par IA · Groq</div>
+      <div class="section-title">Services</div>
+      <div class="services-grid" id="servicesGrid"></div>
+      <div class="footer-note">Propulsé par Groq · Intelligence artificielle</div>
     </div>
 
-    <!-- PAGE SERVICE -->
+    <!-- ========== PAGE SERVICE ========== -->
     <div class="page" id="pageService">
       <div class="service-header">
         <button class="back-btn" id="backBtn">←</button>
-        <h2 class="service-title" id="serviceTitle">Service</h2>
+        <h2 class="service-page-title" id="serviceTitle">Service</h2>
       </div>
       <div id="serviceContent"></div>
     </div>
-  </div>
+  </main>
 
   <script>
     (function() {
@@ -572,49 +544,19 @@
       const GROQ_URL = "https://api.groq.com/openai/v1/chat/completions";
       const MODEL = "llama-3.3-70b-versatile";
 
-      // Structure des catégories et services
-      const CATEGORIES = [
-        {
-          id: 'candidature',
-          title: '📝 Candidature',
-          icon: '📝',
-          services: [
-            { id: 'email', title: 'Email de candidature', desc: 'Rédigez un email professionnel percutant.', icon: '📧', category: 'candidature' },
-            { id: 'lettre', title: 'Lettre de motivation', desc: 'Créez une lettre complète et convaincante.', icon: '📄', category: 'candidature' },
-            { id: 'resume', title: 'Résumé CV', desc: 'Un profil professionnel qui se démarque.', icon: '👤', category: 'candidature' },
-          ]
-        },
-        {
-          id: 'preparation',
-          title: '🎯 Préparation',
-          icon: '🎯',
-          services: [
-            { id: 'interview', title: 'Simulation d\'entretien', desc: 'L\'IA vous pose des questions et évalue vos réponses.', icon: '🎤', category: 'preparation' },
-            { id: 'answers', title: 'Générateur de réponses', desc: 'Des réponses parfaites aux questions fréquentes.', icon: '💡', category: 'preparation' },
-          ]
-        },
-        {
-          id: 'profil',
-          title: '👔 Profil',
-          icon: '👔',
-          services: [
-            { id: 'linkedin', title: 'Bio LinkedIn', desc: 'Une biographie professionnelle optimisée.', icon: '🔗', category: 'profil' },
-            { id: 'headline', title: 'Titre professionnel', desc: 'Un titre accrocheur pour votre profil.', icon: '✨', category: 'profil' },
-            { id: 'objective', title: 'Objectif de carrière', desc: 'Définissez votre projet professionnel.', icon: '🎯', category: 'profil' },
-          ]
-        },
-        {
-          id: 'amelioration',
-          title: '🔧 Amélioration',
-          icon: '🔧',
-          services: [
-            { id: 'skills', title: 'Améliorer compétences', desc: 'Optimisez la présentation de vos compétences.', icon: '⚡', category: 'amelioration' },
-            { id: 'rewrite', title: 'Corriger et réécrire', desc: 'Améliorez un texte existant.', icon: '✍️', category: 'amelioration' },
-          ]
-        }
+      // Services (icônes uniques, pas de doublons)
+      const SERVICES = [
+        { id: 'email',       title: 'Email de candidature',    desc: 'Rédigez un email professionnel percutant pour contacter un recruteur.',               icon: '📧' },
+        { id: 'lettre',      title: 'Lettre de motivation',    desc: 'Créez une lettre de motivation complète, structurée et convaincante.',                  icon: '📄' },
+        { id: 'resume',      title: 'Résumé professionnel',    desc: 'Générez un profil CV percutant qui met en valeur votre parcours et vos atouts.',        icon: '👤' },
+        { id: 'skills',      title: 'Améliorer compétences',   desc: 'Optimisez la présentation de vos compétences pour un CV moderne et impactant.',          icon: '⚡' },
+        { id: 'interview',   title: 'Simulation d\'entretien', desc: 'L\'IA vous pose des questions de recruteur et évalue vos réponses en temps réel.',      icon: '🎤' },
+        { id: 'answers',     title: 'Réponses d\'entretien',   desc: 'Obtenez des réponses parfaites aux questions les plus fréquentes en entretien.',        icon: '💡' },
+        { id: 'linkedin',    title: 'Bio LinkedIn',            desc: 'Rédigez une biographie professionnelle optimisée pour votre profil LinkedIn.',           icon: '🔗' },
+        { id: 'headline',    title: 'Titre professionnel',     desc: 'Créez un titre accrocheur qui attire l\'attention des recruteurs sur LinkedIn et CV.',   icon: '✨' },
+        { id: 'objective',   title: 'Objectif de carrière',    desc: 'Définissez un objectif professionnel clair et motivant pour votre projet.',              icon: '🎯' },
+        { id: 'rewrite',     title: 'Corriger et réécrire',    desc: 'Améliorez un texte existant : correction, reformulation et optimisation du style.',      icon: '✍️' },
       ];
-
-      const ALL_SERVICES = CATEGORIES.flatMap(c => c.services);
 
       let currentService = null;
 
@@ -623,7 +565,7 @@
       const pageService = document.getElementById('pageService');
       const serviceTitle = document.getElementById('serviceTitle');
       const serviceContent = document.getElementById('serviceContent');
-      const categoriesContainer = document.getElementById('categoriesContainer');
+      const servicesGrid = document.getElementById('servicesGrid');
 
       // Navigation
       function showHome() {
@@ -633,7 +575,7 @@
       }
 
       function showService(serviceId) {
-        const service = ALL_SERVICES.find(s => s.id === serviceId);
+        const service = SERVICES.find(s => s.id === serviceId);
         if (!service) return;
         currentService = service;
         serviceTitle.textContent = `${service.icon} ${service.title}`;
@@ -643,33 +585,18 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
 
-      // Rendu page d'accueil
-      function renderHome() {
-        let html = '';
-        CATEGORIES.forEach(cat => {
-          html += `
-            <div class="category-section">
-              <div class="category-title">
-                <span class="category-icon">${cat.icon}</span>
-                ${cat.title}
-              </div>
-              <div class="services-grid">
-                ${cat.services.map(svc => `
-                  <div class="service-card" data-service="${svc.id}">
-                    <div class="service-icon-sm">${svc.icon}</div>
-                    <h4>${svc.title}</h4>
-                    <p>${svc.desc}</p>
-                    <button class="btn btn-primary btn-small" data-service="${svc.id}">Lancer</button>
-                  </div>
-                `).join('')}
-              </div>
-            </div>
-          `;
-        });
-        categoriesContainer.innerHTML = html;
+      // Rendu grille accueil
+      function renderHomeServices() {
+        servicesGrid.innerHTML = SERVICES.map(svc => `
+          <div class="service-card" data-service="${svc.id}">
+            <div class="service-icon">${svc.icon}</div>
+            <h3>${svc.title}</h3>
+            <p>${svc.desc}</p>
+            <button class="btn btn-primary btn-small" data-service="${svc.id}">Commencer</button>
+          </div>
+        `).join('');
 
-        // Événements
-        categoriesContainer.querySelectorAll('[data-service]').forEach(el => {
+        servicesGrid.querySelectorAll('[data-service]').forEach(el => {
           el.addEventListener('click', (e) => {
             const id = el.dataset.service;
             if (id) showService(id);
@@ -677,9 +604,9 @@
         });
       }
 
-      // API Groq
+      // API
       async function callGroq(systemPrompt, userPrompt) {
-        const response = await fetch(GROQ_URL, {
+        const resp = await fetch(GROQ_URL, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -695,436 +622,314 @@
             max_tokens: 800,
           })
         });
-        if (!response.ok) throw new Error(`Erreur API (${response.status})`);
-        const data = await response.json();
+        if (!resp.ok) throw new Error(`API ${resp.status}`);
+        const data = await resp.json();
         return data.choices[0].message.content.trim();
       }
 
       // Rendu page service
       function renderServicePage(service) {
         if (service.id === 'interview') {
-          renderInterviewPage();
+          renderInterview();
         } else if (service.id === 'rewrite') {
-          renderRewritePage();
+          renderRewrite();
         } else if (service.id === 'answers') {
-          renderAnswersPage();
+          renderAnswers();
         } else {
-          renderStandardService(service);
+          renderStandardForm(service);
         }
       }
 
-      // Service standard (formulaire + résultat)
-      function renderStandardService(service) {
+      // Formulaire standard
+      function renderStandardForm(service) {
         serviceContent.innerHTML = `
           <div class="form-card">
             <div class="form-grid">
-              <div class="form-group">
-                <label>Nom complet *</label>
-                <input type="text" id="inputName" placeholder="Votre nom complet">
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Nom complet</label>
+                  <input type="text" id="fName" placeholder="Votre nom complet">
+                </div>
+                <div class="form-group">
+                  <label>Ville</label>
+                  <input type="text" id="fCity" placeholder="Votre ville">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Diplôme</label>
+                  <input type="text" id="fDegree" placeholder="Votre diplôme (optionnel)">
+                </div>
+                <div class="form-group">
+                  <label>Poste visé</label>
+                  <input type="text" id="fJob" placeholder="Poste recherché">
+                </div>
               </div>
               <div class="form-group">
-                <label>Ville *</label>
-                <input type="text" id="inputCity" placeholder="Votre ville">
-              </div>
-              <div class="form-group">
-                <label>Diplôme</label>
-                <input type="text" id="inputDegree" placeholder="Votre diplôme">
-              </div>
-              <div class="form-group">
-                <label>Type de poste *</label>
-                <input type="text" id="inputJob" placeholder="Poste recherché">
-              </div>
-              <div class="form-group full">
-                <label>Compétences *</label>
-                <textarea id="inputSkills" rows="2" placeholder="Vos compétences (séparées par des virgules)"></textarea>
+                <label>Compétences</label>
+                <textarea id="fSkills" rows="2" placeholder="Vos compétences (séparées par des virgules)"></textarea>
               </div>
             </div>
             <div class="style-row">
-              <span>Style :</span>
+              <span class="style-label">Style :</span>
               <div class="radio-group">
-                <label><input type="radio" name="svcStyle" value="Formel" checked> Formel</label>
-                <label><input type="radio" name="svcStyle" value="Normal"> Normal</label>
-                <label><input type="radio" name="svcStyle" value="Très professionnel"> Très pro</label>
+                <label><input type="radio" name="styleOpt" value="Formel" checked> Formel</label>
+                <label><input type="radio" name="styleOpt" value="Normal"> Normal</label>
+                <label><input type="radio" name="styleOpt" value="Très professionnel"> Très pro</label>
               </div>
             </div>
-            <div class="error-message" id="errorMessage">⚠️ Veuillez remplir tous les champs obligatoires</div>
-            <button class="btn btn-primary btn-full" id="generateBtn" style="margin-top:1rem;" disabled>✨ Générer</button>
+            <div class="form-error" id="formError">Veuillez remplir tous les champs obligatoires.</div>
+            <button class="btn btn-primary btn-full" id="genBtn" style="margin-top:1rem;" disabled>Générer</button>
           </div>
-          <div id="serviceLoader" class="loader-inline" style="display:none;"><div class="spinner"></div> Génération...</div>
+          <div id="loaderBox" class="loader-inline" style="display:none;"><div class="spinner"></div> Génération en cours...</div>
           <div class="result-card" id="resultCard">
             <div class="result-header"><span class="result-badge" id="resultBadge">Résultat</span></div>
             <div class="result-body" id="resultBody"></div>
             <div class="result-actions">
-              <button class="btn btn-outline" id="copyBtn">📋 Copier</button>
-              <button class="btn btn-ghost" id="regenerateBtn">🔄 Regénérer</button>
+              <button class="btn btn-outline" id="copyBtn">Copier</button>
+              <button class="btn btn-ghost" id="regenBtn">Regénérer</button>
             </div>
           </div>
-          <div class="suggestions" id="suggestionsBox" style="display:none;">
-            <p>💡 Explorer d'autres services :</p>
-            <div class="suggestions-grid" id="suggestionsGrid"></div>
+          <div class="suggestions" id="suggestBox" style="display:none;">
+            <p>Continuer avec un autre service :</p>
+            <div class="suggestions-row" id="suggestRow"></div>
           </div>
         `;
 
-        setupStandardService(service);
-      }
-
-      function setupStandardService(service) {
-        const inputName = document.getElementById('inputName');
-        const inputCity = document.getElementById('inputCity');
-        const inputJob = document.getElementById('inputJob');
-        const inputSkills = document.getElementById('inputSkills');
-        const generateBtn = document.getElementById('generateBtn');
-        const errorMsg = document.getElementById('errorMessage');
-        const loader = document.getElementById('serviceLoader');
+        const fName = document.getElementById('fName');
+        const fCity = document.getElementById('fCity');
+        const fJob = document.getElementById('fJob');
+        const fSkills = document.getElementById('fSkills');
+        const genBtn = document.getElementById('genBtn');
+        const formError = document.getElementById('formError');
+        const loaderBox = document.getElementById('loaderBox');
         const resultCard = document.getElementById('resultCard');
         const resultBody = document.getElementById('resultBody');
         const resultBadge = document.getElementById('resultBadge');
-        const suggestionsBox = document.getElementById('suggestionsBox');
-        const suggestionsGrid = document.getElementById('suggestionsGrid');
+        const suggestBox = document.getElementById('suggestBox');
+        const suggestRow = document.getElementById('suggestRow');
         let lastContent = '';
 
         function checkForm() {
-          const valid = inputName.value.trim() && inputCity.value.trim() && inputJob.value.trim() && inputSkills.value.trim();
-          generateBtn.disabled = !valid;
-          if (valid) errorMsg.classList.remove('visible');
+          const ok = fName.value.trim() && fCity.value.trim() && fJob.value.trim() && fSkills.value.trim();
+          genBtn.disabled = !ok;
+          if (ok) formError.classList.remove('visible');
         }
 
-        [inputName, inputCity, inputJob, inputSkills].forEach(el => el.addEventListener('input', checkForm));
+        [fName, fCity, fJob, fSkills].forEach(el => el.addEventListener('input', checkForm));
 
-        generateBtn.addEventListener('click', async () => {
-          const name = inputName.value.trim();
-          const city = inputCity.value.trim();
-          const job = inputJob.value.trim();
-          const skills = inputSkills.value.trim();
-          if (!name || !city || !job || !skills) {
-            errorMsg.classList.add('visible');
+        genBtn.addEventListener('click', async () => {
+          if (!fName.value.trim() || !fCity.value.trim() || !fJob.value.trim() || !fSkills.value.trim()) {
+            formError.classList.add('visible');
             return;
           }
-          errorMsg.classList.remove('visible');
-          loader.style.display = 'flex';
+          formError.classList.remove('visible');
+          loaderBox.style.display = 'flex';
           resultCard.classList.remove('visible');
-          suggestionsBox.style.display = 'none';
+          suggestBox.style.display = 'none';
 
-          const style = document.querySelector('input[name="svcStyle"]:checked')?.value || 'Formel';
-          const degree = document.getElementById('inputDegree').value.trim() || 'Non spécifié';
-          const user = { fullName: name, city, degree, jobType: job, skills, style };
+          const style = document.querySelector('input[name="styleOpt"]:checked')?.value || 'Formel';
+          const user = {
+            name: fName.value.trim(), city: fCity.value.trim(),
+            degree: fDegree.value.trim() || 'Non spécifié',
+            job: fJob.value.trim(), skills: fSkills.value.trim(), style
+          };
+
+          const prompts = {
+            email: `Rédige un email de candidature professionnel. Candidat: ${user.name}, compétences: ${user.skills}, diplôme: ${user.degree}, ville: ${user.city}, poste: ${user.job}. Style: ${user.style}.`,
+            lettre: `Rédige une lettre de motivation complète. Candidat: ${user.name}, compétences: ${user.skills}, diplôme: ${user.degree}, ville: ${user.city}, poste: ${user.job}. Style: ${user.style}.`,
+            resume: `Rédige un résumé professionnel CV (3-4 lignes). ${user.name}, compétences: ${user.skills}, poste: ${user.job}.`,
+            skills: `Optimise ces compétences pour CV: "${user.skills}". Regroupe par catégories.`,
+            linkedin: `Rédige une bio LinkedIn professionnelle. ${user.name}, compétences: ${user.skills}, poste: ${user.job}. Style: ${user.style}.`,
+            headline: `Crée un titre professionnel accrocheur. ${user.name}, poste: ${user.job}, compétences: ${user.skills}.`,
+            objective: `Rédige un objectif de carrière. ${user.name}, poste: ${user.job}, compétences: ${user.skills}.`,
+          };
 
           try {
-            const prompts = {
-              email: `Rédige un email de candidature professionnel. Candidat: ${user.fullName}. Compétences: ${user.skills}. Diplôme: ${user.degree}. Ville: ${user.city}. Poste: ${user.jobType}. Style: ${user.style}.`,
-              lettre: `Rédige une lettre de motivation complète. Candidat: ${user.fullName}. Compétences: ${user.skills}. Diplôme: ${user.degree}. Ville: ${user.city}. Poste: ${user.jobType}. Style: ${user.style}.`,
-              resume: `Rédige un résumé professionnel CV (3-4 lignes). Candidat: ${user.fullName}. Compétences: ${user.skills}. Diplôme: ${user.degree}. Poste: ${user.jobType}.`,
-              skills: `Optimise ces compétences pour CV : "${user.skills}". Regroupe par catégories.`,
-              linkedin: `Rédige une bio LinkedIn professionnelle. Candidat: ${user.fullName}. Compétences: ${user.skills}. Poste: ${user.jobType}. Style: ${user.style}.`,
-              headline: `Crée un titre professionnel accrocheur pour LinkedIn/CV. Candidat: ${user.fullName}. Poste: ${user.jobType}. Compétences: ${user.skills}.`,
-              objective: `Rédige un objectif de carrière professionnel. Candidat: ${user.fullName}. Poste visé: ${user.jobType}. Compétences: ${user.skills}.`,
-            };
-            const prompt = prompts[service.id] || `Génère un contenu pour : ${service.title}. Candidat: ${user.fullName}. Compétences: ${user.skills}.`;
-            
-            const content = await callGroq("Tu es un expert en recrutement. Réponds uniquement en français.", prompt);
+            const content = await callGroq("Expert recrutement. Réponds uniquement en français.", prompts[service.id] || `Génère: ${service.title}. Candidat: ${user.name}.`);
             lastContent = content;
             resultBadge.textContent = service.title;
             resultBody.textContent = content;
             resultCard.classList.add('visible');
-            showSuggestions(service.id, suggestionsGrid, suggestionsBox);
-          } catch (e) {
-            resultBody.textContent = "Erreur lors de la génération.";
+            showSuggestions(service.id, suggestRow, suggestBox);
+          } catch {
+            resultBody.textContent = "Erreur de génération. Vérifiez la clé API.";
             resultCard.classList.add('visible');
           } finally {
-            loader.style.display = 'none';
+            loaderBox.style.display = 'none';
           }
         });
 
         document.getElementById('copyBtn').addEventListener('click', () => {
-          if (lastContent) navigator.clipboard.writeText(lastContent).then(() => alert('✅ Copié !'));
+          if (lastContent) navigator.clipboard.writeText(lastContent).then(() => alert('Copié !'));
         });
-        document.getElementById('regenerateBtn').addEventListener('click', () => generateBtn.click());
+        document.getElementById('regenBtn').addEventListener('click', () => genBtn.click());
       }
 
-      // Service Réécriture
-      function renderRewritePage() {
+      // Réécriture
+      function renderRewrite() {
         serviceContent.innerHTML = `
           <div class="form-card">
-            <div class="form-group full">
-              <label>Texte à améliorer *</label>
-              <textarea id="rewriteInput" rows="5" placeholder="Collez votre texte ici..."></textarea>
+            <div class="form-group">
+              <label>Texte à améliorer</label>
+              <textarea id="rwInput" rows="5" placeholder="Collez votre texte ici..."></textarea>
             </div>
             <div class="style-row">
-              <span>Style :</span>
+              <span class="style-label">Style :</span>
               <div class="radio-group">
-                <label><input type="radio" name="rewriteStyle" value="Formel" checked> Formel</label>
-                <label><input type="radio" name="rewriteStyle" value="Normal"> Normal</label>
-                <label><input type="radio" name="rewriteStyle" value="Très professionnel"> Très pro</label>
+                <label><input type="radio" name="rwStyle" value="Formel" checked> Formel</label>
+                <label><input type="radio" name="rwStyle" value="Normal"> Normal</label>
+                <label><input type="radio" name="rwStyle" value="Très professionnel"> Très pro</label>
               </div>
             </div>
-            <div class="error-message" id="errorMessage">⚠️ Veuillez entrer un texte</div>
-            <button class="btn btn-primary btn-full" id="rewriteBtn" style="margin-top:1rem;" disabled>✨ Améliorer</button>
+            <div class="form-error" id="rwError">Veuillez entrer un texte.</div>
+            <button class="btn btn-primary btn-full" id="rwBtn" style="margin-top:1rem;" disabled>Améliorer le texte</button>
           </div>
-          <div id="serviceLoader" class="loader-inline" style="display:none;"><div class="spinner"></div> Amélioration...</div>
-          <div class="result-card" id="resultCard">
-            <div class="result-header"><span class="result-badge">✍️ Texte amélioré</span></div>
-            <div class="result-body" id="resultBody"></div>
+          <div id="rwLoader" class="loader-inline" style="display:none;"><div class="spinner"></div> Amélioration...</div>
+          <div class="result-card" id="rwResult">
+            <div class="result-header"><span class="result-badge">Texte amélioré</span></div>
+            <div class="result-body" id="rwBody"></div>
             <div class="result-actions">
-              <button class="btn btn-outline" id="copyBtn">📋 Copier</button>
-              <button class="btn btn-ghost" id="regenerateBtn">🔄 Regénérer</button>
+              <button class="btn btn-outline" id="rwCopy">Copier</button>
+              <button class="btn btn-ghost" id="rwRegen">Regénérer</button>
             </div>
           </div>
         `;
 
-        const input = document.getElementById('rewriteInput');
-        const btn = document.getElementById('rewriteBtn');
-        const errorMsg = document.getElementById('errorMessage');
-        const loader = document.getElementById('serviceLoader');
-        const resultCard = document.getElementById('resultCard');
-        const resultBody = document.getElementById('resultBody');
-        let lastContent = '';
+        const input = document.getElementById('rwInput');
+        const btn = document.getElementById('rwBtn');
+        const error = document.getElementById('rwError');
+        const loader = document.getElementById('rwLoader');
+        const result = document.getElementById('rwResult');
+        const body = document.getElementById('rwBody');
+        let txt = '';
 
-        input.addEventListener('input', () => {
-          btn.disabled = !input.value.trim();
-          if (input.value.trim()) errorMsg.classList.remove('visible');
-        });
-
+        input.addEventListener('input', () => { btn.disabled = !input.value.trim(); if(input.value.trim()) error.classList.remove('visible'); });
         btn.addEventListener('click', async () => {
-          if (!input.value.trim()) { errorMsg.classList.add('visible'); return; }
-          errorMsg.classList.remove('visible');
-          loader.style.display = 'flex';
-          resultCard.classList.remove('visible');
-          const style = document.querySelector('input[name="rewriteStyle"]:checked')?.value || 'Formel';
+          if(!input.value.trim()){error.classList.add('visible');return;}
+          error.classList.remove('visible'); loader.style.display='flex'; result.classList.remove('visible');
+          const style = document.querySelector('input[name="rwStyle"]:checked')?.value || 'Formel';
           try {
-            const content = await callGroq("Tu es un expert en rédaction. Réponds uniquement en français.", `Corrige et améliore ce texte en français. Style: ${style}. Ne change pas le sens. Texte: "${input.value.trim()}"`);
-            lastContent = content;
-            resultBody.textContent = content;
-            resultCard.classList.add('visible');
-          } catch (e) {
-            resultBody.textContent = "Erreur.";
-            resultCard.classList.add('visible');
-          } finally {
-            loader.style.display = 'none';
-          }
+            txt = await callGroq("Expert rédaction. Réponds uniquement en français.", `Corrige et améliore ce texte. Style: ${style}. Texte: "${input.value.trim()}"`);
+            body.textContent = txt; result.classList.add('visible');
+          } catch { body.textContent='Erreur.'; result.classList.add('visible'); }
+          finally { loader.style.display='none'; }
         });
-
-        document.getElementById('copyBtn').addEventListener('click', () => {
-          if (lastContent) navigator.clipboard.writeText(lastContent).then(() => alert('✅ Copié !'));
-        });
-        document.getElementById('regenerateBtn').addEventListener('click', () => btn.click());
+        document.getElementById('rwCopy').addEventListener('click', () => { if(txt) navigator.clipboard.writeText(txt).then(()=>alert('Copié !')); });
+        document.getElementById('rwRegen').addEventListener('click', () => btn.click());
       }
 
-      // Service réponses d'entretien
-      function renderAnswersPage() {
+      // Réponses entretien
+      function renderAnswers() {
         serviceContent.innerHTML = `
           <div class="form-card">
-            <div class="form-group full">
-              <label>Question d'entretien *</label>
-              <input type="text" id="questionInput" placeholder="Ex: Pourquoi voulez-vous travailler chez nous ?">
-            </div>
-            <div class="form-group full">
-              <label>Contexte (optionnel)</label>
-              <textarea id="contextInput" rows="2" placeholder="Poste, entreprise, vos compétences..."></textarea>
-            </div>
-            <div class="error-message" id="errorMessage">⚠️ Veuillez entrer une question</div>
-            <button class="btn btn-primary btn-full" id="answerBtn" style="margin-top:1rem;" disabled>💡 Générer une réponse</button>
+            <div class="form-group"><label>Question d'entretien</label><input type="text" id="qInput" placeholder="Ex: Pourquoi vous et pas un autre ?"></div>
+            <div class="form-group"><label>Contexte (optionnel)</label><textarea id="ctxInput" rows="2" placeholder="Poste, entreprise, vos atouts..."></textarea></div>
+            <div class="form-error" id="qError">Veuillez entrer une question.</div>
+            <button class="btn btn-primary btn-full" id="qBtn" style="margin-top:1rem;" disabled>Générer une réponse</button>
           </div>
-          <div id="serviceLoader" class="loader-inline" style="display:none;"><div class="spinner"></div> Génération...</div>
-          <div class="result-card" id="resultCard">
-            <div class="result-header"><span class="result-badge">💡 Réponse suggérée</span></div>
-            <div class="result-body" id="resultBody"></div>
-            <div class="result-actions">
-              <button class="btn btn-outline" id="copyBtn">📋 Copier</button>
-              <button class="btn btn-ghost" id="regenerateBtn">🔄 Autre réponse</button>
-            </div>
+          <div id="qLoader" class="loader-inline" style="display:none;"><div class="spinner"></div> Génération...</div>
+          <div class="result-card" id="qResult">
+            <div class="result-header"><span class="result-badge">Réponse suggérée</span></div>
+            <div class="result-body" id="qBody"></div>
+            <div class="result-actions"><button class="btn btn-outline" id="qCopy">Copier</button><button class="btn btn-ghost" id="qRegen">Autre réponse</button></div>
           </div>
         `;
-
-        const qInput = document.getElementById('questionInput');
-        const ctxInput = document.getElementById('contextInput');
-        const btn = document.getElementById('answerBtn');
-        const errorMsg = document.getElementById('errorMessage');
-        const loader = document.getElementById('serviceLoader');
-        const resultCard = document.getElementById('resultCard');
-        const resultBody = document.getElementById('resultBody');
-        let lastContent = '';
-
-        qInput.addEventListener('input', () => {
-          btn.disabled = !qInput.value.trim();
-          if (qInput.value.trim()) errorMsg.classList.remove('visible');
-        });
-
+        const qInput = document.getElementById('qInput'), ctxInput = document.getElementById('ctxInput'), btn = document.getElementById('qBtn'), error = document.getElementById('qError');
+        const loader = document.getElementById('qLoader'), result = document.getElementById('qResult'), body = document.getElementById('qBody');
+        let txt = '';
+        qInput.addEventListener('input', () => { btn.disabled = !qInput.value.trim(); if(qInput.value.trim()) error.classList.remove('visible'); });
         btn.addEventListener('click', async () => {
-          if (!qInput.value.trim()) { errorMsg.classList.add('visible'); return; }
-          errorMsg.classList.remove('visible');
-          loader.style.display = 'flex';
-          resultCard.classList.remove('visible');
+          if(!qInput.value.trim()){error.classList.add('visible');return;}
+          error.classList.remove('visible'); loader.style.display='flex'; result.classList.remove('visible');
           try {
-            const prompt = `Question d'entretien: "${qInput.value.trim()}". Contexte candidat: "${ctxInput.value.trim() || 'Non spécifié'}". Rédige une réponse professionnelle en français.`;
-            const content = await callGroq("Tu es un coach en entretien. Réponds uniquement en français.", prompt);
-            lastContent = content;
-            resultBody.textContent = content;
-            resultCard.classList.add('visible');
-          } catch (e) {
-            resultBody.textContent = "Erreur.";
-            resultCard.classList.add('visible');
-          } finally {
-            loader.style.display = 'none';
-          }
+            txt = await callGroq("Coach entretien. Réponds uniquement en français.", `Question: "${qInput.value.trim()}". Contexte: "${ctxInput.value.trim()||'Non spécifié'}". Rédige une réponse professionnelle.`);
+            body.textContent = txt; result.classList.add('visible');
+          } catch { body.textContent='Erreur.'; result.classList.add('visible'); }
+          finally { loader.style.display='none'; }
         });
-
-        document.getElementById('copyBtn').addEventListener('click', () => {
-          if (lastContent) navigator.clipboard.writeText(lastContent).then(() => alert('✅ Copié !'));
-        });
-        document.getElementById('regenerateBtn').addEventListener('click', () => btn.click());
+        document.getElementById('qCopy').addEventListener('click', () => { if(txt) navigator.clipboard.writeText(txt).then(()=>alert('Copié !')); });
+        document.getElementById('qRegen').addEventListener('click', () => btn.click());
       }
 
-      // Interview simulation
-      function renderInterviewPage() {
+      // Interview
+      function renderInterview() {
         serviceContent.innerHTML = `
           <div class="form-card">
-            <div class="form-group">
-              <label>Poste visé *</label>
-              <input type="text" id="interviewJob" placeholder="Poste pour lequel vous passez l'entretien">
+            <div class="form-row">
+              <div class="form-group"><label>Poste visé</label><input type="text" id="ivJob" placeholder="Poste pour l'entretien"></div>
+              <div class="form-group"><label>Entreprise (optionnel)</label><input type="text" id="ivCompany" placeholder="Nom de l'entreprise"></div>
             </div>
-            <div class="form-group">
-              <label>Entreprise (optionnel)</label>
-              <input type="text" id="interviewCompany" placeholder="Nom de l'entreprise">
-            </div>
-            <div class="error-message" id="errorMessage">⚠️ Veuillez indiquer le poste</div>
-            <button class="btn btn-primary btn-full" id="startInterviewBtn" disabled>🎤 Démarrer la simulation</button>
+            <div class="form-error" id="ivError">Veuillez indiquer le poste.</div>
+            <button class="btn btn-primary btn-full" id="ivStart" style="margin-top:1rem;" disabled>Démarrer la simulation</button>
           </div>
-          <div class="result-card" id="interviewCard" style="display:none;">
-            <div class="result-header"><span class="result-badge">🎤 Simulation d'entretien</span></div>
-            <div class="interview-chat" id="interviewChat"></div>
-            <div class="interview-input-row" id="interviewInputRow">
-              <input type="text" id="userAnswer" placeholder="Votre réponse...">
-              <button class="btn btn-primary" id="sendAnswerBtn">Envoyer</button>
-            </div>
-            <div class="score-display" id="scoreDisplay" style="display:none;"></div>
-            <button class="btn btn-outline btn-full" id="restartInterviewBtn" style="display:none; margin-top:1rem;">🔄 Recommencer</button>
+          <div class="result-card" id="ivCard" style="display:none;">
+            <div class="result-header"><span class="result-badge">Simulation d'entretien</span></div>
+            <div id="ivChat" style="display:flex;flex-direction:column;gap:0.75rem;max-height:350px;overflow-y:auto;margin-bottom:1rem;"></div>
+            <div id="ivInputRow" style="display:flex;gap:0.5rem;"><input type="text" id="ivAnswer" placeholder="Votre réponse..." style="flex:1;"><button class="btn btn-primary" id="ivSend">Envoyer</button></div>
+            <div id="ivScore" style="display:none;background:var(--primary-light);padding:1rem;border-radius:1rem;text-align:center;font-weight:600;margin-top:1rem;"></div>
+            <button class="btn btn-outline btn-full" id="ivRestart" style="display:none;margin-top:0.75rem;">Recommencer</button>
           </div>
         `;
+        const jobInp = document.getElementById('ivJob'), compInp = document.getElementById('ivCompany'), startBtn = document.getElementById('ivStart'), err = document.getElementById('ivError');
+        const card = document.getElementById('ivCard'), chat = document.getElementById('ivChat'), inputRow = document.getElementById('ivInputRow');
+        const answerInp = document.getElementById('ivAnswer'), sendBtn = document.getElementById('ivSend'), scoreDiv = document.getElementById('ivScore'), restartBtn = document.getElementById('ivRestart');
+        let questions = [], answers = [], idx = 0;
+        const TOTAL = 4;
 
-        const jobInput = document.getElementById('interviewJob');
-        const companyInput = document.getElementById('interviewCompany');
-        const startBtn = document.getElementById('startInterviewBtn');
-        const errorMsg = document.getElementById('errorMessage');
-        const interviewCard = document.getElementById('interviewCard');
-        const chatDiv = document.getElementById('interviewChat');
-        const answerInput = document.getElementById('userAnswer');
-        const sendBtn = document.getElementById('sendAnswerBtn');
-        const scoreDisplay = document.getElementById('scoreDisplay');
-        const restartBtn = document.getElementById('restartInterviewBtn');
-        const inputRow = document.getElementById('interviewInputRow');
-
-        let questions = [];
-        let answers = [];
-        let currentQ = 0;
-        const TOTAL_QUESTIONS = 4;
-
-        jobInput.addEventListener('input', () => {
-          startBtn.disabled = !jobInput.value.trim();
-          if (jobInput.value.trim()) errorMsg.classList.remove('visible');
-        });
-
+        jobInp.addEventListener('input', () => { startBtn.disabled = !jobInp.value.trim(); if(jobInp.value.trim()) err.classList.remove('visible'); });
         startBtn.addEventListener('click', async () => {
-          if (!jobInput.value.trim()) { errorMsg.classList.add('visible'); return; }
-          errorMsg.classList.remove('visible');
-          interviewCard.style.display = 'block';
-          chatDiv.innerHTML = '<div class="loader-inline"><div class="spinner"></div> Préparation des questions...</div>';
-          inputRow.style.display = 'none';
-          scoreDisplay.style.display = 'none';
-          restartBtn.style.display = 'none';
-          answers = [];
-          currentQ = 0;
-
-          const job = jobInput.value.trim();
-          const company = companyInput.value.trim() || 'une entreprise';
-          
+          if(!jobInp.value.trim()){err.classList.add('visible');return;}
+          err.classList.remove('visible'); card.style.display='block'; chat.innerHTML='<div class="loader-inline"><div class="spinner"></div> Préparation...</div>';
+          inputRow.style.display='none'; scoreDiv.style.display='none'; restartBtn.style.display='none'; answers=[]; idx=0;
           try {
-            const qPrompt = `Génère exactement ${TOTAL_QUESTIONS} questions d'entretien en français pour un poste de "${job}" chez "${company}". Retourne uniquement les questions numérotées, une par ligne. Varie les types (compétences, motivation, expérience, comportement).`;
-            const qText = await callGroq("Tu es un recruteur expert. Réponds uniquement en français.", qPrompt);
-            questions = qText.split('\n').filter(q => q.trim() && /\d/.test(q)).map(q => q.replace(/^\d+[\.\)]\s*/, '').trim());
-            if (questions.length < 2) questions = ["Parlez-moi de vous.", "Pourquoi ce poste ?", "Vos principales qualités ?", "Où vous voyez-vous dans 3 ans ?"];
-            if (questions.length > TOTAL_QUESTIONS) questions = questions.slice(0, TOTAL_QUESTIONS);
-            
-            chatDiv.innerHTML = '';
-            addChatBubble('ai', `Bonjour ! Je vais vous poser ${questions.length} questions pour le poste de <strong>${job}</strong> chez <strong>${company}</strong>. Répondez naturellement.`);
-            setTimeout(() => {
-              addChatBubble('ai', `Question 1/${questions.length} : ${questions[0]}`);
-              inputRow.style.display = 'flex';
-              answerInput.focus();
-            }, 800);
-          } catch (e) {
-            chatDiv.innerHTML = '<p>Erreur lors de la génération des questions.</p>';
-          }
+            const qs = await callGroq("Recruteur. Réponds uniquement en français.", `Génère ${TOTAL} questions d'entretien pour ${jobInp.value.trim()} chez ${compInp.value.trim()||'une entreprise'}. Numérote-les.`);
+            questions = qs.split('\n').filter(l=>l.trim()&&/\d/.test(l)).map(l=>l.replace(/^\d+[\.\)]\s*/,'')).slice(0,TOTAL);
+            if(questions.length<2) questions = ["Parlez-moi de vous.","Pourquoi ce poste ?","Vos qualités ?","Votre plus grand défi ?"];
+            chat.innerHTML='';
+            bubble('ai',`Bonjour ! Simulation pour <strong>${jobInp.value.trim()}</strong>. ${questions.length} questions.`);
+            setTimeout(()=>{ bubble('ai',`1/${questions.length} : ${questions[0]}`); inputRow.style.display='flex'; answerInp.focus(); },700);
+          } catch { chat.innerHTML='<p>Erreur génération questions.</p>'; }
         });
 
         sendBtn.addEventListener('click', async () => {
-          const answer = answerInput.value.trim();
-          if (!answer) return;
-          addChatBubble('user', answer);
-          answers.push({ question: questions[currentQ], answer });
-          answerInput.value = '';
-          currentQ++;
-
-          if (currentQ < questions.length) {
-            addChatBubble('ai', `Question ${currentQ + 1}/${questions.length} : ${questions[currentQ]}`);
-          } else {
-            inputRow.style.display = 'none';
-            addChatBubble('ai', "Merci ! J'évalue vos réponses...");
-            
+          const ans = answerInp.value.trim(); if(!ans) return;
+          bubble('user', ans); answers.push({q:questions[idx], a:ans}); answerInp.value=''; idx++;
+          if(idx < questions.length) { bubble('ai', `${idx+1}/${questions.length} : ${questions[idx]}`); }
+          else {
+            inputRow.style.display='none'; bubble('ai','Évaluation en cours...');
             try {
-              const evalPrompt = `Évalue ces réponses d'entretien pour un poste. Donne un score sur 10 et un feedback constructif en français. Questions et réponses: ${JSON.stringify(answers)}`;
-              const feedback = await callGroq("Tu es un coach en entretien. Réponds uniquement en français.", evalPrompt);
-              scoreDisplay.innerHTML = `📊 Évaluation :<br>${feedback}`;
-              scoreDisplay.style.display = 'block';
-            } catch (e) {
-              scoreDisplay.innerHTML = "Évaluation non disponible.";
-              scoreDisplay.style.display = 'block';
-            }
-            restartBtn.style.display = 'block';
+              const fb = await callGroq("Coach. Réponds uniquement en français.", `Évalue ces réponses d'entretien. Score/10 et feedback. ${JSON.stringify(answers)}`);
+              scoreDiv.innerHTML = `📊 ${fb}`; scoreDiv.style.display='block';
+            } catch { scoreDiv.innerHTML='Évaluation indisponible.'; scoreDiv.style.display='block'; }
+            restartBtn.style.display='block';
           }
-          chatDiv.scrollTop = chatDiv.scrollHeight;
+          chat.scrollTop = chat.scrollHeight;
         });
+        answerInp.addEventListener('keypress', e => { if(e.key==='Enter') sendBtn.click(); });
+        restartBtn.addEventListener('click', ()=>{ card.style.display='none'; startBtn.click(); });
 
-        answerInput.addEventListener('keypress', (e) => {
-          if (e.key === 'Enter') sendBtn.click();
-        });
-
-        restartBtn.addEventListener('click', () => {
-          interviewCard.style.display = 'none';
-          chatDiv.innerHTML = '';
-          scoreDisplay.style.display = 'none';
-          restartBtn.style.display = 'none';
-          startBtn.click();
-        });
-
-        function addChatBubble(type, text) {
-          const div = document.createElement('div');
-          div.className = `chat-bubble ${type}`;
-          div.innerHTML = text;
-          chatDiv.appendChild(div);
-          chatDiv.scrollTop = chatDiv.scrollHeight;
+        function bubble(type, text) {
+          const d = document.createElement('div');
+          d.style.cssText = `padding:0.7rem 1rem;border-radius:1rem;max-width:82%;line-height:1.5;font-size:0.9rem;`;
+          d.style.background = type==='ai' ? 'var(--primary-light)' : '#e2e8f0';
+          d.style.alignSelf = type==='ai' ? 'flex-start' : 'flex-end';
+          d.innerHTML = text; chat.appendChild(d); chat.scrollTop = chat.scrollHeight;
         }
       }
 
-      function showSuggestions(excludeId, grid, box) {
-        const others = ALL_SERVICES.filter(s => s.id !== excludeId).slice(0, 4);
-        grid.innerHTML = others.map(s => `<button class="btn btn-outline btn-small suggest-btn" data-service="${s.id}">${s.icon} ${s.title}</button>`).join('');
+      function showSuggestions(excludeId, row, box) {
+        const others = SERVICES.filter(s => s.id !== excludeId).slice(0, 4);
+        row.innerHTML = others.map(s => `<button class="btn btn-outline btn-small sug-btn" data-sid="${s.id}">${s.icon} ${s.title}</button>`).join('');
         box.style.display = 'block';
-        grid.querySelectorAll('.suggest-btn').forEach(btn => {
-          btn.addEventListener('click', () => {
-            const id = btn.dataset.service;
-            if (id) showService(id);
-          });
-        });
+        row.querySelectorAll('.sug-btn').forEach(b => b.addEventListener('click', () => showService(b.dataset.sid)));
       }
 
-      // Événements globaux
-      document.getElementById('homeLogo').addEventListener('click', (e) => { e.preventDefault(); showHome(); });
-      document.getElementById('navHome').addEventListener('click', showHome);
+      // Events
+      document.getElementById('brandLink').addEventListener('click', e => { e.preventDefault(); showHome(); });
+      document.getElementById('navHomeBtn').addEventListener('click', showHome);
       document.getElementById('backBtn').addEventListener('click', showHome);
-
-      // Initialisation
-      renderHome();
-
+      renderHomeServices();
     })();
   </script>
 </body>
