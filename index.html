@@ -3,406 +3,682 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-  <title>ai.econcours.ma | Assistant de candidature IA</title>
+  <title>ai.econcours.ma | Services de candidature IA</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    :root {
+      --bg: #f5f7fa;
+      --surface: #ffffff;
+      --border: #e8ecf1;
+      --text: #1a1f36;
+      --text-secondary: #5b6170;
+      --primary: #4f46e5;
+      --primary-hover: #4338ca;
+      --primary-light: #eef2ff;
+      --success: #059669;
+      --warning: #d97706;
+      --radius-sm: 0.75rem;
+      --radius: 1rem;
+      --radius-lg: 1.5rem;
+      --radius-xl: 2rem;
+      --shadow-xs: 0 1px 2px rgba(0,0,0,0.04);
+      --shadow-sm: 0 4px 12px rgba(0,0,0,0.04);
+      --shadow-md: 0 12px 30px rgba(0,0,0,0.06);
+      --shadow-lg: 0 20px 50px rgba(0,0,0,0.08);
+      --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-      background: #f5f7fb;
-      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      min-height: 100vh;
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
       display: flex;
       flex-direction: column;
+    }
+
+    /* Navigation */
+    .nav {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 2rem;
+      display: flex;
       align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      padding: 1.5rem;
-      margin: 0;
-      color: #0f172a;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+      background: rgba(255,255,255,0.9);
     }
 
-    .main-container {
-      max-width: 1000px;
-      width: 100%;
-      background: #ffffff;
-      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.08);
-      border-radius: 2.5rem;
-      padding: 2rem 2rem 2.5rem;
-      border: 1px solid rgba(203, 213, 225, 0.4);
-      transition: all 0.2s ease;
-    }
-
-    h1 {
-      font-size: 2.2rem;
-      font-weight: 600;
-      letter-spacing: -0.5px;
+    .nav-logo {
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      margin-bottom: 0.25rem;
-      color: #0f172a;
+      font-weight: 700;
+      font-size: 1.3rem;
+      letter-spacing: -0.3px;
+      color: var(--text);
+      text-decoration: none;
     }
 
-    .subtitle {
-      color: #475569;
+    .nav-logo .dot {
+      width: 8px; height: 8px;
+      background: var(--primary);
+      border-radius: 50%;
+    }
+
+    .nav-link {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      cursor: pointer;
+      background: none;
+      border: 1px solid var(--border);
+      padding: 0.5rem 1.2rem;
+      border-radius: 2rem;
+      transition: var(--transition);
+    }
+
+    .nav-link:hover {
+      background: var(--primary-light);
+      color: var(--primary);
+      border-color: var(--primary);
+    }
+
+    /* Conteneur principal */
+    .main {
+      flex: 1;
+      max-width: 1100px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    /* Pages */
+    .page {
+      display: none;
+      animation: fadeSlide 0.35s ease;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    @keyframes fadeSlide {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Hero section */
+    .hero {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      letter-spacing: -1px;
+      line-height: 1.15;
+      margin-bottom: 0.75rem;
+      color: var(--text);
+    }
+
+    .hero .highlight {
+      background: linear-gradient(135deg, var(--primary), #7c3aed);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      max-width: 550px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+
+    /* Grille de services */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .service-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2rem 1.5rem;
+      box-shadow: var(--shadow-xs);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      cursor: default;
+    }
+
+    .service-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+      border-color: #c7d2fe;
+    }
+
+    .service-icon {
+      width: 50px; height: 50px;
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      background: var(--primary-light);
+      color: var(--primary);
+    }
+
+    .service-card h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: -0.2px;
+    }
+
+    .service-card p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      line-height: 1.5;
+      flex: 1;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 2.5rem;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: var(--transition);
+      border: none;
+      letter-spacing: -0.2px;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(79,70,229,0.3);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-hover);
+      box-shadow: 0 8px 22px rgba(79,70,229,0.35);
+    }
+
+    .btn-outline {
+      background: var(--surface);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-outline:hover {
+      background: #f1f5f9;
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--primary);
+      padding: 0.5rem 1rem;
+      font-size: 0.85rem;
+    }
+
+    .btn-ghost:hover {
+      background: var(--primary-light);
+    }
+
+    .btn-full {
+      width: 100%;
+    }
+
+    /* Page service (formulaire + résultat) */
+    .service-page-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
       margin-bottom: 2rem;
-      font-size: 1rem;
-      border-left: 4px solid #3b82f6;
-      padding-left: 1rem;
-      font-weight: 400;
     }
 
-    .form-grid {
+    .back-btn {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.2rem;
+      transition: var(--transition);
+    }
+
+    .back-btn:hover {
+      background: #f1f5f9;
+    }
+
+    .service-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .form-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 2rem;
+      box-shadow: var(--shadow-sm);
       display: flex;
       flex-direction: column;
       gap: 1.25rem;
-      margin-bottom: 1.75rem;
+      max-width: 600px;
     }
 
-    .row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    .input-group {
-      flex: 1 1 200px;
+    .form-group {
       display: flex;
       flex-direction: column;
       gap: 0.4rem;
     }
 
-    label {
-      font-size: 0.85rem;
-      font-weight: 600;
+    .form-group label {
+      font-size: 0.8rem;
+      font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.03em;
-      color: #334155;
+      letter-spacing: 0.05em;
+      color: var(--text-secondary);
     }
 
-    input, textarea, select {
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      border-radius: 1rem;
+    .form-group input,
+    .form-group textarea {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
       padding: 0.8rem 1rem;
       font-size: 0.95rem;
       font-family: inherit;
-      transition: 0.2s;
+      transition: var(--transition);
       outline: none;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+      background: #fff;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(79,70,229,0.1);
+    }
+
+    textarea {
       resize: vertical;
+      min-height: 80px;
     }
 
-    input:focus, textarea:focus, select:focus {
-      border-color: #3b82f6;
-      box-shadow: 0 0 0 3px rgba(59,130,246,0.15);
-    }
-
-    .style-selector {
+    .style-row {
       display: flex;
       align-items: center;
       gap: 1rem;
       flex-wrap: wrap;
     }
 
+    .style-row span {
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+
     .radio-group {
       display: flex;
-      gap: 1.5rem;
-      align-items: center;
+      gap: 1.25rem;
     }
 
     .radio-group label {
       display: flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.35rem;
       font-weight: 500;
       text-transform: none;
       font-size: 0.9rem;
       cursor: pointer;
     }
 
-    button {
-      background: #1e293b;
-      color: white;
-      border: none;
-      padding: 0.9rem 2rem;
-      border-radius: 2.5rem;
-      font-weight: 600;
-      font-size: 1rem;
-      display: inline-flex;
+    /* Résultat */
+    .result-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 2rem;
+      box-shadow: var(--shadow-sm);
+      margin-top: 1.5rem;
+      display: none;
+      animation: fadeSlide 0.4s ease;
+    }
+
+    .result-card.visible {
+      display: block;
+    }
+
+    .result-header {
+      display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      cursor: pointer;
-      transition: all 0.25s;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-      letter-spacing: -0.2px;
-      border: 1px solid #1e293b;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+      gap: 0.75rem;
     }
 
-    button:hover {
-      background: #0f172a;
-      box-shadow: 0 10px 20px -8px rgba(15,23,42,0.3);
-      transform: translateY(-1px);
+    .result-badge {
+      background: var(--primary-light);
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding: 0.3rem 1rem;
+      border-radius: 2rem;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
     }
 
-    button.secondary {
-      background: white;
-      color: #1e293b;
-      border: 1px solid #cbd5e1;
-      box-shadow: none;
+    .result-body {
+      background: #f8fafc;
+      border: 1px solid #f1f5f9;
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      line-height: 1.7;
+      white-space: pre-wrap;
+      word-break: break-word;
+      font-size: 0.95rem;
+      max-height: 350px;
+      overflow-y: auto;
     }
 
-    button.secondary:hover {
-      background: #f1f5f9;
-      border-color: #94a3b8;
+    .result-actions {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 1.25rem;
+      flex-wrap: wrap;
     }
 
-    .generate-btn {
-      width: 100%;
-      margin: 0.5rem 0 1.5rem;
-      background: #2563eb;
-      border: 1px solid #2563eb;
-      font-size: 1.1rem;
-      padding: 1rem;
+    .suggestions {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
     }
 
-    .generate-btn:hover {
-      background: #1d4ed8;
+    .suggestions p {
+      font-weight: 600;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
     }
 
-    .loading-spinner {
+    .suggestions-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .loader-inline {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 0.7rem;
-      padding: 2rem;
-      color: #2563eb;
+      padding: 2.5rem;
+      color: var(--primary);
       font-weight: 500;
     }
 
     .spinner {
-      width: 20px;
-      height: 20px;
-      border: 2px solid #cbd5e1;
-      border-top: 2px solid #2563eb;
+      width: 22px; height: 22px;
+      border: 2.5px solid #e2e8f0;
+      border-top: 2.5px solid var(--primary);
       border-radius: 50%;
-      animation: spin 0.7s linear infinite;
+      animation: spin 0.6s linear infinite;
     }
 
     @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+      to { transform: rotate(360deg); }
     }
 
-    .results-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-      margin-top: 1.5rem;
-    }
-
-    .card {
-      background: #ffffff;
-      border: 1px solid #e9eef3;
-      border-radius: 1.5rem;
-      padding: 1.5rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
-      transition: 0.2s;
-      display: flex;
-      flex-direction: column;
-      gap: 0.8rem;
-    }
-
-    .card-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-
-    .card-title {
-      font-weight: 700;
-      font-size: 1.1rem;
-      text-transform: uppercase;
-      letter-spacing: 0.02em;
-      color: #2563eb;
-      background: #eff6ff;
-      padding: 0.25rem 1rem;
-      border-radius: 2rem;
-    }
-
-    .card-content {
-      background: #f8fafc;
-      padding: 1rem;
-      border-radius: 1rem;
-      font-size: 0.95rem;
-      line-height: 1.6;
-      white-space: pre-wrap;
-      word-break: break-word;
-      color: #1e293b;
-      border: 1px solid #f1f5f9;
-      max-height: 300px;
-      overflow-y: auto;
-    }
-
-    .card-actions {
-      display: flex;
-      gap: 0.7rem;
-      flex-wrap: wrap;
-      margin-top: 0.3rem;
-    }
-
-    .btn-small {
-      padding: 0.5rem 1.2rem;
-      font-size: 0.8rem;
-      border-radius: 2rem;
-    }
-
-    hr {
-      margin: 1.5rem 0 0.5rem;
-      border: 0.5px solid #e2e8f0;
-    }
-
-    .version-btn {
+    .footer-note {
       text-align: center;
-      margin-top: 1rem;
+      color: #94a3b8;
+      font-size: 0.8rem;
+      margin-top: 3rem;
     }
 
-    @media (max-width: 600px) {
-      body {
-        padding: 0.8rem;
-      }
-      .main-container {
-        padding: 1.5rem;
-      }
+    @media (max-width: 640px) {
+      .hero h1 { font-size: 1.8rem; }
+      .services-grid { grid-template-columns: 1fr; }
+      .form-card { padding: 1.25rem; }
+      .nav { padding: 0.75rem 1rem; }
     }
   </style>
 </head>
 <body>
-  <div class="main-container">
-    <h1>🤖 ai.econcours.ma</h1>
-    <div class="subtitle">Assistant de carrière · Générez des candidatures professionnelles en français</div>
+  <!-- Navigation -->
+  <nav class="nav">
+    <a class="nav-logo" id="homeLink">ai.econcours.ma<span class="dot"></span></a>
+    <button class="nav-link" id="navHomeBtn">🏠 Accueil</button>
+  </nav>
 
-    <!-- Formulaire -->
-    <div class="form-grid">
-      <div class="row">
-        <div class="input-group">
+  <!-- Contenu principal -->
+  <main class="main">
+    <!-- PAGE ACCUEIL (services) -->
+    <div class="page active" id="page-home">
+      <div class="hero">
+        <h1>Votre <span class="highlight">carrière</span> mérite les meilleurs mots</h1>
+        <p>Générez des contenus de candidature professionnels en français, un service à la fois.</p>
+      </div>
+
+      <div class="services-grid">
+        <!-- Service 1 : Email -->
+        <div class="service-card">
+          <div class="service-icon">📧</div>
+          <h3>Email de candidature</h3>
+          <p>Rédigez un email professionnel percutant pour contacter un recruteur.</p>
+          <button class="btn btn-primary" data-service="email">Commencer</button>
+        </div>
+
+        <!-- Service 2 : Lettre de motivation -->
+        <div class="service-card">
+          <div class="service-icon">📄</div>
+          <h3>Lettre de motivation</h3>
+          <p>Créez une lettre complète, structurée et convaincante.</p>
+          <button class="btn btn-primary" data-service="lettre">Commencer</button>
+        </div>
+
+        <!-- Service 3 : Résumé CV -->
+        <div class="service-card">
+          <div class="service-icon">👤</div>
+          <h3>Résumé professionnel</h3>
+          <p>Un profil CV percutant qui met en valeur votre parcours.</p>
+          <button class="btn btn-primary" data-service="resume">Commencer</button>
+        </div>
+
+        <!-- Service 4 : Compétences -->
+        <div class="service-card">
+          <div class="service-icon">⚡</div>
+          <h3>Améliorer mes compétences</h3>
+          <p>Optimisez la présentation de vos compétences pour votre CV.</p>
+          <button class="btn btn-primary" data-service="skills">Commencer</button>
+        </div>
+      </div>
+
+      <div class="footer-note">Propulsé par IA · Groq</div>
+    </div>
+
+    <!-- PAGE SERVICE (dynamique) -->
+    <div class="page" id="page-service">
+      <div class="service-page-header">
+        <button class="back-btn" id="backToHomeBtn">←</button>
+        <h2 class="service-title" id="servicePageTitle">Service</h2>
+      </div>
+
+      <!-- Formulaire -->
+      <div class="form-card" id="serviceForm">
+        <div class="form-group">
           <label>Nom complet</label>
-          <input type="text" id="fullName" placeholder="Ex: Fatima Zahra Alaoui" value="Mohamed El Amrani">
+          <input type="text" id="svcFullName" placeholder="Entrez votre nom complet">
         </div>
-        <div class="input-group">
+        <div class="form-group">
           <label>Ville</label>
-          <input type="text" id="city" placeholder="Casablanca" value="Casablanca">
+          <input type="text" id="svcCity" placeholder="Votre ville">
         </div>
-      </div>
-      <div class="row">
-        <div class="input-group">
+        <div class="form-group">
           <label>Diplôme</label>
-          <input type="text" id="degree" placeholder="Master en Marketing" value="Master en Marketing Digital">
+          <input type="text" id="svcDegree" placeholder="Votre diplôme">
         </div>
-        <div class="input-group">
-          <label>Type de poste</label>
-          <input type="text" id="jobType" placeholder="Chef de projet" value="Chef de projet digital">
+        <div class="form-group">
+          <label>Type de poste visé</label>
+          <input type="text" id="svcJobType" placeholder="Poste recherché">
         </div>
-      </div>
-      <div class="input-group">
-        <label>Compétences (séparées par des virgules)</label>
-        <textarea id="skills" rows="3" placeholder="Gestion de projet, SEO, Analyse de données...">Gestion de projet, SEO, Google Analytics, CRM, Relation client</textarea>
-      </div>
-      <div class="style-selector">
-        <label>Style :</label>
-        <div class="radio-group">
-          <label><input type="radio" name="styleOption" value="Formel" checked> Formel</label>
-          <label><input type="radio" name="styleOption" value="Normal"> Normal</label>
-          <label><input type="radio" name="styleOption" value="Très professionnel"> Très professionnel</label>
+        <div class="form-group">
+          <label>Compétences</label>
+          <textarea id="svcSkills" rows="2" placeholder="Vos compétences (séparées par des virgules)"></textarea>
         </div>
+        <div class="style-row">
+          <span>Style :</span>
+          <div class="radio-group">
+            <label><input type="radio" name="svcStyle" value="Formel" checked> Formel</label>
+            <label><input type="radio" name="svcStyle" value="Normal"> Normal</label>
+            <label><input type="radio" name="svcStyle" value="Très professionnel"> Très pro</label>
+          </div>
+        </div>
+        <button class="btn btn-primary btn-full" id="generateServiceBtn">✨ Générer</button>
       </div>
-    </div>
 
-    <button id="generateAllBtn" class="generate-btn">✨ Générer tous les contenus</button>
-    <div id="loadingContainer" style="display: none;" class="loading-spinner">
-      <div class="spinner"></div> Génération par IA en cours...
-    </div>
+      <!-- Loader -->
+      <div id="serviceLoader" class="loader-inline" style="display: none;">
+        <div class="spinner"></div> Génération en cours...
+      </div>
 
-    <!-- Zone résultats -->
-    <div id="resultsContainer" class="results-grid" style="display: none;"></div>
-    <div id="versionButtonContainer" class="version-btn" style="display: none;">
-      <button id="regenerateAllBtn" class="secondary">🔄 Générer une autre version</button>
+      <!-- Résultat -->
+      <div class="result-card" id="resultCard">
+        <div class="result-header">
+          <span class="result-badge" id="resultBadge">Résultat</span>
+        </div>
+        <div class="result-body" id="resultBody"></div>
+        <div class="result-actions">
+          <button class="btn btn-outline" id="copyResultBtn">📋 Copier</button>
+          <button class="btn btn-ghost" id="regenerateResultBtn">🔄 Regénérer</button>
+        </div>
+      </div>
+
+      <!-- Suggestions -->
+      <div class="suggestions" id="suggestionsBox" style="display: none;">
+        <p>💡 Continuez à améliorer votre candidature :</p>
+        <div class="suggestions-grid" id="suggestionsGrid"></div>
+      </div>
     </div>
-    <hr>
-    <div style="font-size: 0.8rem; color: #64748b; text-align: center; margin-top: 0.5rem;">
-      ai.econcours.ma – Contenu généré par IA (Groq - llama-3.3-70b-versatile)
-    </div>
-  </div>
+  </main>
 
   <script>
     (function() {
-      // ⚠️ REMPLACEZ PAR VOTRE CLÉ GROQ (celle fournie est temporaire)
+      // Configuration Groq
       const GROQ_API_KEY = "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";
       const GROQ_URL = "https://api.groq.com/openai/v1/chat/completions";
-      const MODEL = "llama-3.3-70b-versatile"; // ✅ Modèle mis à jour
+      const MODEL = "llama-3.3-70b-versatile";
+
+      // Services disponibles
+      const SERVICES = [
+        { id: 'email', title: 'Email de candidature', icon: '📧', badge: '📧 Email généré' },
+        { id: 'lettre', title: 'Lettre de motivation', icon: '📄', badge: '📄 Lettre de motivation' },
+        { id: 'resume', title: 'Résumé professionnel', icon: '👤', badge: '👤 Résumé CV' },
+        { id: 'skills', title: 'Améliorer mes compétences', icon: '⚡', badge: '⚡ Compétences' },
+      ];
+
+      // État
+      let currentService = null;
+      let lastGeneratedContent = '';
 
       // Éléments DOM
-      const fullNameInput = document.getElementById('fullName');
-      const skillsInput = document.getElementById('skills');
-      const degreeInput = document.getElementById('degree');
-      const cityInput = document.getElementById('city');
-      const jobTypeInput = document.getElementById('jobType');
-      const styleRadios = document.getElementsByName('styleOption');
-      const generateBtn = document.getElementById('generateAllBtn');
-      const loadingContainer = document.getElementById('loadingContainer');
-      const resultsContainer = document.getElementById('resultsContainer');
-      const versionBtnContainer = document.getElementById('versionButtonContainer');
-      const regenerateAllBtn = document.getElementById('regenerateAllBtn');
+      const pageHome = document.getElementById('page-home');
+      const pageService = document.getElementById('page-service');
+      const servicePageTitle = document.getElementById('servicePageTitle');
+      const resultCard = document.getElementById('resultCard');
+      const resultBody = document.getElementById('resultBody');
+      const resultBadge = document.getElementById('resultBadge');
+      const serviceLoader = document.getElementById('serviceLoader');
+      const suggestionsBox = document.getElementById('suggestionsBox');
+      const suggestionsGrid = document.getElementById('suggestionsGrid');
 
-      // Stockage des résultats actuels pour regénération individuelle
-      let currentResults = {
-        email: "",
-        lettre: "",
-        resume: "",
-        competences: "",
-        pourquoi: ""
-      };
+      // Inputs service
+      const svcFullName = document.getElementById('svcFullName');
+      const svcCity = document.getElementById('svcCity');
+      const svcDegree = document.getElementById('svcDegree');
+      const svcJobType = document.getElementById('svcJobType');
+      const svcSkills = document.getElementById('svcSkills');
+      const svcStyleRadios = document.getElementsByName('svcStyle');
 
-      function getSelectedStyle() {
-        for (let radio of styleRadios) {
+      // Navigation
+      function showHome() {
+        pageHome.classList.add('active');
+        pageService.classList.remove('active');
+        resetServicePage();
+      }
+
+      function showService(serviceId) {
+        const service = SERVICES.find(s => s.id === serviceId);
+        if (!service) return;
+        currentService = service;
+        servicePageTitle.textContent = `${service.icon} ${service.title}`;
+        pageHome.classList.remove('active');
+        pageService.classList.add('active');
+        resetServicePage();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      function resetServicePage() {
+        // Vider les champs
+        svcFullName.value = '';
+        svcCity.value = '';
+        svcDegree.value = '';
+        svcJobType.value = '';
+        svcSkills.value = '';
+        // Style par défaut
+        const formelRadio = document.querySelector('input[name="svcStyle"][value="Formel"]');
+        if (formelRadio) formelRadio.checked = true;
+        // Cacher résultat et suggestions
+        resultCard.classList.remove('visible');
+        serviceLoader.style.display = 'none';
+        suggestionsBox.style.display = 'none';
+        lastGeneratedContent = '';
+      }
+
+      // Helpers
+      function getUserServiceInput() {
+        return {
+          fullName: svcFullName.value.trim() || 'Non spécifié',
+          city: svcCity.value.trim() || 'Non spécifiée',
+          degree: svcDegree.value.trim() || 'Non spécifié',
+          jobType: svcJobType.value.trim() || 'Non spécifié',
+          skills: svcSkills.value.trim() || 'Non spécifiées',
+          style: getSelectedServiceStyle()
+        };
+      }
+
+      function getSelectedServiceStyle() {
+        for (let radio of svcStyleRadios) {
           if (radio.checked) return radio.value;
         }
-        return "Formel";
+        return 'Formel';
       }
 
-      function getUserInput() {
-        return {
-          fullName: fullNameInput.value.trim() || "Mohamed El Amrani",
-          skills: skillsInput.value.trim() || "Gestion de projet, SEO",
-          degree: degreeInput.value.trim() || "Master",
-          city: cityInput.value.trim() || "Casablanca",
-          jobType: jobTypeInput.value.trim() || "Chef de projet",
-          style: getSelectedStyle()
-        };
+      function escapeHtml(text) {
+        return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
       }
 
-      // Construction des prompts (en français, variation assurée par température + instructions)
-      function buildPrompt(type, user, variationSeed = "") {
-        const baseInfo = `Candidat: ${user.fullName}. Compétences: ${user.skills}. Diplôme: ${user.degree}. Ville: ${user.city}. Poste visé: ${user.jobType}. Style souhaité: ${user.style}.`;
-        const variationNote = variationSeed ? ` Variation unique n°${variationSeed}.` : "";
-        
-        const prompts = {
-          email: `Rédige un email de candidature professionnel en français. ${baseInfo} L'email doit être formel, avec objet, formule de politesse. Ne répète pas une structure précédente. ${variationNote} Sois concis.`,
-          lettre: `Rédige une lettre de motivation complète en français. ${baseInfo} Inclut en-tête, introduction, développement, conclusion. Style ${user.style}. Varie la structure et le ton. ${variationNote}`,
-          resume: `Rédige un résumé professionnel (profil CV) percutant en français (3-4 lignes). ${baseInfo} Mets en avant la valeur ajoutée. ${variationNote}`,
-          competences: `Améliore et reformule la liste de compétences suivante pour un CV en français : "${user.skills}". Propose une version optimisée, regroupée par catégories si pertinent. ${variationNote}`,
-          pourquoi: `Rédige un paragraphe convaincant "Pourquoi vous êtes un bon candidat" en français. ${baseInfo} Utilise un ton engageant, différent des autres sections. ${variationNote}`
-        };
-        return prompts[type] || "";
-      }
-
-      async function callGroq(messages) {
+      async function callGroq(systemPrompt, userPrompt) {
         const response = await fetch(GROQ_URL, {
           method: "POST",
           headers: {
@@ -411,162 +687,115 @@
           },
           body: JSON.stringify({
             model: MODEL,
-            messages: messages,
+            messages: [
+              { role: "system", content: systemPrompt },
+              { role: "user", content: userPrompt }
+            ],
             temperature: 0.9,
             max_tokens: 800,
           })
         });
 
         if (!response.ok) {
-          const errorText = await response.text();
-          throw new Error(`Erreur API Groq (${response.status}): ${errorText}`);
+          const err = await response.text();
+          throw new Error(`Erreur API (${response.status})`);
         }
-
         const data = await response.json();
         return data.choices[0].message.content.trim();
       }
 
-      // Génère les 5 contenus en parallèle
-      async function generateAllContent(user, variationId = Date.now()) {
-        const types = ["email", "lettre", "resume", "competences", "pourquoi"];
-        const promises = types.map(type => {
-          const promptText = buildPrompt(type, user, variationId);
-          return callGroq([
-            { role: "system", content: "Tu es un assistant expert en recrutement et rédaction professionnelle. Tu replies uniquement en français." },
-            { role: "user", content: promptText }
-          ]).then(content => ({ type, content }))
-          .catch(error => ({ type, content: `❌ Erreur: ${error.message}` }));
-        });
-
-        const resultsArray = await Promise.all(promises);
-        const resultsMap = {};
-        resultsArray.forEach(item => { resultsMap[item.type] = item.content; });
-        return resultsMap;
+      function buildServicePrompt(serviceId, user, variationSeed = "") {
+        const base = `Candidat: ${user.fullName}. Compétences: ${user.skills}. Diplôme: ${user.degree}. Ville: ${user.city}. Poste: ${user.jobType}. Style: ${user.style}.`;
+        const varNote = variationSeed ? ` Variation #${variationSeed}.` : '';
+        
+        const prompts = {
+          email: `Rédige un email de candidature professionnel en français. ${base} Objet, formule de politesse. Concis. ${varNote}`,
+          lettre: `Rédige une lettre de motivation complète en français. ${base} En-tête, intro, développement, conclusion. ${varNote}`,
+          resume: `Rédige un résumé professionnel (profil CV) percutant en français (3-4 lignes). ${base} ${varNote}`,
+          skills: `Améliore et optimise cette liste de compétences pour un CV : "${user.skills}". Regroupe par catégories si pertinent. ${varNote}`
+        };
+        return prompts[serviceId] || "";
       }
 
-      function renderResults(results) {
-        currentResults = { ...results };
-        
-        const cardsData = [
-          { key: "email", title: "📧 Email de candidature" },
-          { key: "lettre", title: "📄 Lettre de motivation" },
-          { key: "resume", title: "👤 Résumé professionnel" },
-          { key: "competences", title: "⚡ Compétences améliorées" },
-          { key: "pourquoi", title: "💬 Pourquoi vous ?" }
-        ];
+      function showSuggestions(excludeServiceId) {
+        const otherServices = SERVICES.filter(s => s.id !== excludeServiceId);
+        suggestionsGrid.innerHTML = otherServices.map(s => `
+          <button class="btn btn-outline btn-small" data-suggest="${s.id}">${s.icon} ${s.title}</button>
+        `).join('');
+        suggestionsBox.style.display = 'flex';
 
-        let html = "";
-        cardsData.forEach(card => {
-          const content = results[card.key] || "Contenu non disponible.";
-          html += `
-            <div class="card" id="card-${card.key}">
-              <div class="card-header">
-                <span class="card-title">${card.title}</span>
-              </div>
-              <div class="card-content">${escapeHtml(content)}</div>
-              <div class="card-actions">
-                <button class="btn-small secondary" onclick="window.copyCardContent('${card.key}')">📋 Copier</button>
-                <button class="btn-small secondary" onclick="window.regenerateSingle('${card.key}')">🔄 Regénérer</button>
-              </div>
-            </div>
-          `;
+        // Ajouter les événements
+        suggestionsGrid.querySelectorAll('button').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const suggestId = btn.dataset.suggest;
+            if (suggestId) showService(suggestId);
+          });
         });
-
-        resultsContainer.innerHTML = html;
-        resultsContainer.style.display = "flex";
-        versionBtnContainer.style.display = "block";
       }
 
-      // Fonctions globales exposées
-      window.copyCardContent = function(key) {
-        const text = currentResults[key] || "";
-        navigator.clipboard.writeText(text).then(() => {
-          alert("✅ Contenu copié dans le presse-papier !");
-        }).catch(() => {
-          alert("⚠️ Copie échouée, veuillez sélectionner manuellement.");
-        });
-      };
-
-      window.regenerateSingle = async function(key) {
-        const user = getUserInput();
-        const variationId = Date.now() + Math.random();
-        const promptText = buildPrompt(key, user, variationId);
+      async function generateContent() {
+        if (!currentService) return;
+        const user = getUserServiceInput();
         
-        // Montrer chargement local sur la carte
-        const cardElement = document.getElementById(`card-${key}`);
-        if (cardElement) {
-          const contentDiv = cardElement.querySelector('.card-content');
-          if (contentDiv) contentDiv.innerHTML = '<div class="loading-spinner"><div class="spinner"></div> Régénération...</div>';
-        }
-        
-        try {
-          const newContent = await callGroq([
-            { role: "system", content: "Tu es un assistant de carrière. Réponds uniquement en français." },
-            { role: "user", content: promptText }
-          ]);
-          currentResults[key] = newContent;
-          if (cardElement) {
-            const contentDiv = cardElement.querySelector('.card-content');
-            if (contentDiv) contentDiv.textContent = newContent;
-          }
-        } catch (err) {
-          if (cardElement) {
-            const contentDiv = cardElement.querySelector('.card-content');
-            if (contentDiv) contentDiv.textContent = "❌ Erreur de génération.";
-          }
-          console.error(err);
-        }
-      };
-
-      window.regenerateAll = async function() {
-        const user = getUserInput();
-        loadingContainer.style.display = "flex";
-        resultsContainer.style.display = "none";
-        versionBtnContainer.style.display = "none";
-        
-        try {
-          const newResults = await generateAllContent(user, Date.now());
-          renderResults(newResults);
-        } catch (e) {
-          alert("Une erreur est survenue lors de la génération.");
-          console.error(e);
-        } finally {
-          loadingContainer.style.display = "none";
-        }
-      };
-
-      function escapeHtml(text) {
-        return text
-          .replace(/&/g, "&amp;")
-          .replace(/</g, "&lt;")
-          .replace(/>/g, "&gt;")
-          .replace(/"/g, "&quot;")
-          .replace(/'/g, "&#039;");
-      }
-
-      // Événements principaux
-      generateBtn.addEventListener('click', async () => {
-        const user = getUserInput();
-        loadingContainer.style.display = "flex";
-        resultsContainer.style.display = "none";
-        versionBtnContainer.style.display = "none";
+        // Afficher loader
+        serviceLoader.style.display = 'flex';
+        resultCard.classList.remove('visible');
+        suggestionsBox.style.display = 'none';
 
         try {
-          const results = await generateAllContent(user, Date.now());
-          renderResults(results);
+          const content = await callGroq(
+            "Tu es un assistant expert en recrutement et rédaction professionnelle. Réponds uniquement en français.",
+            buildServicePrompt(currentService.id, user, Date.now())
+          );
+          
+          lastGeneratedContent = content;
+          resultBadge.textContent = currentService.badge || 'Résultat';
+          resultBody.textContent = content;
+          resultCard.classList.add('visible');
+          showSuggestions(currentService.id);
+          
         } catch (error) {
-          alert("Erreur lors de la génération. Vérifiez la clé API ou votre connexion.");
+          resultBadge.textContent = '❌ Erreur';
+          resultBody.textContent = "Une erreur est survenue lors de la génération. Vérifiez votre connexion ou la clé API.";
+          resultCard.classList.add('visible');
           console.error(error);
         } finally {
-          loadingContainer.style.display = "none";
+          serviceLoader.style.display = 'none';
+        }
+      }
+
+      // Événements
+      document.getElementById('homeLink').addEventListener('click', (e) => {
+        e.preventDefault();
+        showHome();
+      });
+
+      document.getElementById('navHomeBtn').addEventListener('click', showHome);
+      document.getElementById('backToHomeBtn').addEventListener('click', showHome);
+
+      // Clic sur les cartes de service
+      document.querySelectorAll('[data-service]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const serviceId = btn.dataset.service;
+          showService(serviceId);
+        });
+      });
+
+      // Bouton générer
+      document.getElementById('generateServiceBtn').addEventListener('click', generateContent);
+
+      // Copier
+      document.getElementById('copyResultBtn').addEventListener('click', () => {
+        if (lastGeneratedContent) {
+          navigator.clipboard.writeText(lastGeneratedContent).then(() => {
+            alert('✅ Contenu copié dans le presse-papier !');
+          }).catch(() => alert('⚠️ Échec de la copie'));
         }
       });
 
-      regenerateAllBtn.addEventListener('click', window.regenerateAll);
+      // Regénérer
+      document.getElementById('regenerateResultBtn').addEventListener('click', generateContent);
 
-      // Exposition globale pour les boutons inline
-      window.regenerateSingle = window.regenerateSingle;
-      window.copyCardContent = window.copyCardContent;
     })();
   </script>
 </body>
