@@ -3,32 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-  <title>career.econcours.ma — Accélérez votre carrière</title>
+  <title>Career.econcours.ma | Services Professionnels de Carrière au Maroc</title>
+  <meta name="description" content="Services professionnels de carrière au Maroc : CV optimisé, lettre de motivation, simulation d'entretien, profil LinkedIn. Démarquez-vous sur le marché de l'emploi.">
+  <meta name="keywords" content="emploi Maroc, CV professionnel, lettre de motivation, entretien d'embauche, carrière Maroc, recherche emploi, LinkedIn, conseil carrière">
+  <meta name="author" content="career.econcours.ma">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://career.econcours.ma">
+  <meta property="og:title" content="Career.econcours.ma | Services Professionnels de Carrière">
+  <meta property="og:description" content="CV optimisé, lettre de motivation, simulation d'entretien. Services premium pour votre carrière au Maroc.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://career.econcours.ma">
   <style>
     :root {
-      --bg: #fbfbfa;
+      --bg: #fafaf9;
       --surface: #ffffff;
-      --border: #e8e6e3;
+      --border: #e7e5e2;
       --text: #1a1a1a;
       --text-secondary: #6b6b6b;
       --text-muted: #9a9a9a;
-      --primary: #0f0f0f;
+      --primary: #0d0d0d;
       --primary-hover: #1f1f1f;
-      --accent: #d4a853;
-      --accent-hover: #c49640;
-      --accent-light: #fef9f0;
+      --accent: #c8963e;
+      --accent-hover: #b88735;
+      --accent-light: #fef9f2;
       --success: #1a7f4b;
       --error: #cc3333;
-      --radius-sm: 6px;
-      --radius: 10px;
-      --radius-lg: 14px;
-      --radius-xl: 18px;
+      --radius-sm: 8px;
+      --radius: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 20px;
       --shadow-xs: 0 1px 2px rgba(0,0,0,0.03);
-      --shadow-sm: 0 2px 6px rgba(0,0,0,0.04);
-      --shadow-md: 0 6px 20px rgba(0,0,0,0.06);
-      --shadow-lg: 0 12px 32px rgba(0,0,0,0.08);
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
+      --shadow-md: 0 8px 24px rgba(0,0,0,0.06);
+      --shadow-lg: 0 16px 40px rgba(0,0,0,0.08);
       --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      --max-width: 1100px;
+      --max-width: 1120px;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -44,10 +53,9 @@
       flex-direction: column;
     }
 
-    /* Navigation */
     .nav {
-      background: rgba(255,255,255,0.92);
-      backdrop-filter: blur(18px);
+      background: rgba(255,255,255,0.94);
+      backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
       padding: 1rem 2rem;
       display: flex;
@@ -60,18 +68,18 @@
 
     .nav-brand {
       font-weight: 700;
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       letter-spacing: -0.3px;
       color: var(--primary);
       cursor: pointer;
       text-decoration: none;
     }
 
-    .nav-brand span {
+    .nav-brand .dot {
       color: var(--accent);
     }
 
-    .nav-btn {
+    .nav-cta {
       font-size: 0.84rem;
       font-weight: 600;
       background: var(--primary);
@@ -83,12 +91,11 @@
       transition: var(--transition);
     }
 
-    .nav-btn:hover {
+    .nav-cta:hover {
       background: var(--primary-hover);
       box-shadow: var(--shadow-md);
     }
 
-    /* Main */
     .main-container {
       flex: 1;
       max-width: var(--max-width);
@@ -102,16 +109,14 @@
       animation: fadeSlide 0.45s ease;
     }
 
-    .page.active {
-      display: block;
-    }
+    .page.active { display: block; }
 
     @keyframes fadeSlide {
       from { opacity: 0; transform: translateY(14px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* ========== HOMEPAGE ========== */
+    /* Hero */
     .hero {
       display: flex;
       flex-direction: column;
@@ -123,11 +128,11 @@
     }
 
     .hero h1 {
-      font-size: clamp(2rem, 5vw, 3rem);
+      font-size: clamp(2rem, 5vw, 2.8rem);
       font-weight: 700;
       letter-spacing: -0.6px;
       line-height: 1.2;
-      margin-bottom: 1.2rem;
+      margin-bottom: 1rem;
       color: var(--primary);
     }
 
@@ -137,8 +142,8 @@
 
     .hero p {
       color: var(--text-secondary);
-      font-size: 1.1rem;
-      max-width: 520px;
+      font-size: 1.05rem;
+      max-width: 500px;
       margin: 0 auto 2.5rem;
       line-height: 1.7;
     }
@@ -157,16 +162,16 @@
       cursor: pointer;
       transition: var(--transition);
       letter-spacing: -0.2px;
-      box-shadow: 0 6px 22px rgba(15,15,15,0.2);
+      box-shadow: 0 6px 22px rgba(13,13,13,0.2);
     }
 
     .hero-cta:hover {
       background: var(--primary-hover);
       transform: translateY(-2px);
-      box-shadow: 0 12px 30px rgba(15,15,15,0.28);
+      box-shadow: 0 12px 30px rgba(13,13,13,0.28);
     }
 
-    /* ========== SERVICES PAGE ========== */
+    /* Services page */
     .services-header {
       text-align: center;
       padding: 3rem 1rem 2rem;
@@ -211,8 +216,7 @@
     }
 
     .service-icon {
-      width: 40px;
-      height: 40px;
+      width: 40px; height: 40px;
       border-radius: var(--radius-sm);
       background: #f5f4f0;
       display: flex;
@@ -234,23 +238,12 @@
       flex: 1;
     }
 
-    .service-card .svc-arrow {
-      align-self: flex-end;
-      color: var(--text-muted);
-      transition: var(--transition);
-    }
-
-    .service-card:hover .svc-arrow {
-      color: var(--primary);
-      transform: translateX(3px);
-    }
-
     .back-row {
       text-align: center;
       margin-top: 1.5rem;
     }
 
-    /* ========== SERVICE DETAIL PAGE ========== */
+    /* Detail page */
     .detail-header {
       display: flex;
       align-items: center;
@@ -260,8 +253,7 @@
     }
 
     .back-btn {
-      width: 38px;
-      height: 38px;
+      width: 38px; height: 38px;
       border-radius: 50%;
       border: 1px solid var(--border);
       background: var(--surface);
@@ -275,9 +267,7 @@
       color: var(--text);
     }
 
-    .back-btn:hover {
-      background: #f5f4f0;
-    }
+    .back-btn:hover { background: #f5f4f0; }
 
     .detail-title {
       font-size: 1.35rem;
@@ -336,13 +326,10 @@
     .form-group input:focus,
     .form-group textarea:focus {
       border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(15,15,15,0.05);
+      box-shadow: 0 0 0 3px rgba(13,13,13,0.05);
     }
 
-    textarea {
-      resize: vertical;
-      min-height: 80px;
-    }
+    textarea { resize: vertical; min-height: 80px; }
 
     .form-error {
       color: var(--error);
@@ -351,9 +338,7 @@
       display: none;
     }
 
-    .form-error.visible {
-      display: block;
-    }
+    .form-error.visible { display: block; }
 
     .btn {
       display: inline-flex;
@@ -374,12 +359,12 @@
     .btn-primary {
       background: var(--primary);
       color: #fff;
-      box-shadow: 0 4px 12px rgba(15,15,15,0.18);
+      box-shadow: 0 4px 12px rgba(13,13,13,0.18);
     }
 
     .btn-primary:hover:not(:disabled) {
       background: var(--primary-hover);
-      box-shadow: 0 8px 20px rgba(15,15,15,0.26);
+      box-shadow: 0 8px 20px rgba(13,13,13,0.26);
     }
 
     .btn-primary:disabled {
@@ -394,9 +379,7 @@
       border: 1px solid var(--border);
     }
 
-    .btn-outline:hover {
-      background: #f5f4f0;
-    }
+    .btn-outline:hover { background: #f5f4f0; }
 
     .btn-ghost {
       background: transparent;
@@ -405,26 +388,21 @@
       font-size: 0.82rem;
     }
 
-    .btn-ghost:hover {
-      background: #f5f4f0;
-    }
+    .btn-ghost:hover { background: #f5f4f0; }
 
-    .btn-full {
-      width: 100%;
-    }
+    .btn-full { width: 100%; }
 
     .btn-accent {
       background: var(--accent);
       color: #fff;
-      box-shadow: 0 4px 14px rgba(212,168,83,0.3);
+      box-shadow: 0 4px 14px rgba(200,150,62,0.3);
     }
 
     .btn-accent:hover {
       background: var(--accent-hover);
-      box-shadow: 0 8px 22px rgba(212,168,83,0.4);
+      box-shadow: 0 8px 22px rgba(200,150,62,0.4);
     }
 
-    /* Loader */
     .loader-box {
       display: flex;
       align-items: center;
@@ -436,19 +414,15 @@
     }
 
     .spinner {
-      width: 20px;
-      height: 20px;
+      width: 20px; height: 20px;
       border: 2.5px solid #e0ded8;
       border-top: 2.5px solid var(--primary);
       border-radius: 50%;
       animation: spin 0.65s linear infinite;
     }
 
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
+    @keyframes spin { to { transform: rotate(360deg); } }
 
-    /* Result */
     .result-card {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -461,9 +435,7 @@
       max-width: 620px;
     }
 
-    .result-card.visible {
-      display: block;
-    }
+    .result-card.visible { display: block; }
 
     .result-badge {
       background: #f5f4f0;
@@ -487,7 +459,7 @@
       white-space: pre-wrap;
       word-break: break-word;
       font-size: 0.9rem;
-      max-height: 400px;
+      max-height: 420px;
       overflow-y: auto;
     }
 
@@ -498,7 +470,6 @@
       flex-wrap: wrap;
     }
 
-    /* Upgrade card */
     .upgrade-card {
       background: var(--accent-light);
       border: 1px solid #e8dcc4;
@@ -533,7 +504,6 @@
       color: var(--text-secondary);
     }
 
-    /* Footer */
     .footer {
       text-align: center;
       padding: 2rem 1.5rem;
@@ -544,52 +514,39 @@
     }
 
     @media (max-width: 900px) {
-      .services-grid {
-        grid-template-columns: 1fr 1fr;
-      }
+      .services-grid { grid-template-columns: 1fr 1fr; }
     }
 
     @media (max-width: 600px) {
-      .services-grid {
-        grid-template-columns: 1fr;
-      }
-      .form-row {
-        grid-template-columns: 1fr;
-      }
-      .form-card,
-      .result-card {
-        padding: 1.25rem;
-      }
-      .nav {
-        padding: 0.8rem 1rem;
-      }
-      .hero {
-        min-height: 60vh;
-      }
+      .services-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .form-card, .result-card { padding: 1.25rem; }
+      .nav { padding: 0.8rem 1rem; }
+      .hero { min-height: 60vh; }
     }
   </style>
 </head>
 <body>
   <nav class="nav">
-    <a class="nav-brand" id="brandLink">career<span>.</span>econcours<span>.</span>ma</a>
-    <button class="nav-btn" id="navCta">Accéder aux services</button>
+    <a class="nav-brand" id="brandLink" title="Accueil career.econcours.ma">career<span class="dot">.</span>econcours<span class="dot">.</span>ma</a>
+    <button class="nav-cta" id="navCta">Accéder aux services</button>
   </nav>
 
   <main class="main-container">
-    <!-- ========== PAGE ACCUEIL ========== -->
+    <!-- Page Accueil -->
     <div class="page active" id="pageHome">
-      <div class="hero">
+      <section class="hero">
         <h1>Votre <span class="accent">carrière</span> mérite une stratégie professionnelle</h1>
-        <p>Des services de candidature haut de gamme pour vous démarquer sur le marché du travail.</p>
-        <button class="hero-cta" id="heroCta">Découvrir nos services →</button>
-      </div>
+        <p>Des services de candidature haut de gamme pour vous démarquer sur le marché de l'emploi au Maroc.</p>
+        <button class="hero-cta" id="heroCta">Découvrir les services →</button>
+      </section>
     </div>
 
-    <!-- ========== PAGE SERVICES ========== -->
+    <!-- Page Services -->
     <div class="page" id="pageServices">
       <div class="services-header">
-        <h2>Nos services</h2>
-        <p>Choisissez le service adapté à votre objectif professionnel.</p>
+        <h2>Nos services professionnels</h2>
+        <p>Choisissez le service adapté à votre objectif de carrière.</p>
       </div>
       <div class="services-grid" id="servicesGrid"></div>
       <div class="back-row">
@@ -597,10 +554,10 @@
       </div>
     </div>
 
-    <!-- ========== PAGE DÉTAIL SERVICE ========== -->
+    <!-- Page Détail Service -->
     <div class="page" id="pageDetail">
       <div class="detail-header">
-        <button class="back-btn" id="backToServicesBtn">←</button>
+        <button class="back-btn" id="backToServicesBtn" title="Retour aux services">←</button>
         <h2 class="detail-title" id="detailTitle">Service</h2>
       </div>
       <div id="detailContent"></div>
@@ -608,7 +565,7 @@
   </main>
 
   <footer class="footer">
-    © 2025 career.econcours.ma — Tous droits réservés.
+    © 2025 <strong>career.econcours.ma</strong> — Services professionnels de carrière au Maroc. Tous droits réservés.
   </footer>
 
   <script>
@@ -616,13 +573,13 @@
       const GROQ_API_KEY = "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";
       const GROQ_URL = "https://api.groq.com/openai/v1/chat/completions";
       const MODEL = "llama-3.3-70b-versatile";
-      const WHATSAPP = "212644455893";
+      const WHATSAPP_NUMBER = "212644455893";
 
       const SERVICES = [
-        { id: 'cv', title: 'CV professionnel optimisé', desc: 'Un curriculum vitae structuré et percutant, adapté aux standards actuels du recrutement.', icon: '📋' },
+        { id: 'cv', title: 'CV professionnel optimisé', desc: 'Un curriculum vitae structuré et percutant, adapté aux standards du recrutement.', icon: '📋' },
         { id: 'lettre', title: 'Lettre de motivation', desc: 'Une lettre personnalisée qui met en valeur votre parcours et votre valeur ajoutée.', icon: '📝' },
         { id: 'email', title: 'Email de candidature', desc: 'Un message professionnel complet pour accompagner votre dossier de candidature.', icon: '📧' },
-        { id: 'interview', title: 'Simulation d\'entretien', desc: 'Un consultant vous pose des questions de recruteur et évalue vos réponses en détail.', icon: '🎤' },
+        { id: 'interview', title: 'Simulation d\'entretien', desc: 'Un consultant vous pose des questions de recruteur et évalue vos réponses.', icon: '🎤' },
         { id: 'analyse', title: 'Analyse et amélioration de CV', desc: 'Diagnostic complet de votre CV existant avec recommandations ciblées.', icon: '🔍' },
         { id: 'linkedin', title: 'Profil LinkedIn professionnel', desc: 'Optimisation complète de votre profil pour attirer les recruteurs.', icon: '🔗' },
         { id: 'objectif', title: 'Objectif de carrière', desc: 'Définition claire et stratégique de votre projet professionnel.', icon: '🎯' },
@@ -665,12 +622,11 @@
 
       function renderServicesGrid() {
         servicesGrid.innerHTML = SERVICES.map(svc => `
-          <div class="service-card" data-service="${svc.id}">
+          <article class="service-card" data-service="${svc.id}">
             <div class="service-icon">${svc.icon}</div>
             <h3>${svc.title}</h3>
             <p>${svc.desc}</p>
-            <span class="svc-arrow">→</span>
-          </div>
+          </article>
         `).join('');
 
         servicesGrid.querySelectorAll('.service-card').forEach(card => {
@@ -694,7 +650,7 @@
               { role: "system", content: sys },
               { role: "user", content: usr }
             ],
-            temperature: 0.8,
+            temperature: 0.75,
             max_tokens: 900
           })
         });
@@ -703,9 +659,9 @@
         return d.choices[0].message.content.trim();
       }
 
-      function buildWhatsAppLink(serviceTitle, userName) {
-        const msg = `Bonjour, je souhaite activer l'abonnement 50 MAD/an pour le service career.econcours.ma. Voici mes informations: service: ${serviceTitle}, nom: ${userName}`;
-        return `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`;
+      function getWhatsAppLink(serviceTitle, userName) {
+        const msg = `Bonjour, je souhaite activer l'abonnement 50 MAD/an pour career.econcours.ma. Service demandé: ${serviceTitle}. Nom: ${userName}`;
+        return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
       }
 
       function renderDetail(svc) {
@@ -715,8 +671,8 @@
           <div class="form-card">
             <div class="form-grid">
               <div class="form-row">
-                <div class="form-group"><label>Nom complet</label><input type="text" id="fName" placeholder="Votre nom complet"></div>
-                <div class="form-group"><label>Ville</label><input type="text" id="fCity" placeholder="Votre ville"></div>
+                <div class="form-group"><label>Nom complet</label><input type="text" id="fName" placeholder="Votre nom complet" autocomplete="name"></div>
+                <div class="form-group"><label>Ville</label><input type="text" id="fCity" placeholder="Votre ville" autocomplete="address-level2"></div>
               </div>
               <div class="form-row">
                 <div class="form-group"><label>Formation / Diplôme</label><input type="text" id="fDegree" placeholder="Votre plus haut diplôme"></div>
@@ -727,7 +683,7 @@
             <div class="form-error" id="formError">Veuillez remplir tous les champs obligatoires.</div>
             <button class="btn btn-primary btn-full" id="genBtn" style="margin-top:1rem;" disabled>Générer le document</button>
           </div>
-          <div id="loaderBox" class="loader-box" style="display:none;"><div class="spinner"></div> Préparation de votre document...</div>
+          <div id="loaderBox" class="loader-box" style="display:none;"><div class="spinner"></div> Préparation de votre document professionnel...</div>
           <div class="result-card" id="resultCard">
             <div class="result-badge" id="resultBadge">Document généré</div>
             <div class="result-body" id="resultBody"></div>
@@ -739,10 +695,10 @@
             </div>
           </div>
           <div class="upgrade-card" id="upgradeCard" style="display:none;">
-            <h4>🔓 Débloquez l'accès complet</h4>
-            <p>Abonnement annuel pour un usage illimité de tous les services.</p>
+            <h4>Débloquez toutes les fonctionnalités</h4>
+            <p>Abonnement annuel pour un accès illimité à tous les services professionnels.</p>
             <div class="price">50 MAD <span>/ an</span></div>
-            <button class="btn btn-accent btn-full" id="upgradeBtn" style="margin-top:0.8rem;">Activer l'abonnement via WhatsApp</button>
+            <button class="btn btn-accent btn-full" id="upgradeBtn" style="margin-top:0.8rem;">Activer maintenant via WhatsApp</button>
           </div>
         `;
 
@@ -752,12 +708,12 @@
         const upgradeCard = document.getElementById('upgradeCard');
         let lastContent = '';
 
-        function check() {
-          const ok = fName.value.trim() && fCity.value.trim() && fJob.value.trim() && fSkills.value.trim();
-          genBtn.disabled = !ok;
-          if (ok) formError.classList.remove('visible');
+        function checkForm() {
+          const valid = fName.value.trim() && fCity.value.trim() && fJob.value.trim() && fSkills.value.trim();
+          genBtn.disabled = !valid;
+          if (valid) formError.classList.remove('visible');
         }
-        [fName, fCity, fJob, fSkills].forEach(e => e.addEventListener('input', check));
+        [fName, fCity, fJob, fSkills].forEach(el => el.addEventListener('input', checkForm));
 
         genBtn.addEventListener('click', async () => {
           if (!fName.value.trim() || !fCity.value.trim() || !fJob.value.trim() || !fSkills.value.trim()) {
@@ -769,7 +725,7 @@
           resultCard.classList.remove('visible');
           upgradeCard.style.display = 'none';
 
-          const u = {
+          const user = {
             name: fName.value.trim(),
             city: fCity.value.trim(),
             degree: document.getElementById('fDegree').value.trim() || 'Non spécifié',
@@ -777,24 +733,25 @@
             skills: fSkills.value.trim()
           };
 
+          const systemPrompt = "Tu es un expert en recrutement et rédaction professionnelle. Réponds UNIQUEMENT en français. Structure ta réponse avec Titre, Contenu, Points clés, et Conclusion. N'invente aucune information non fournie. Si des données manquent, indique-le sans inventer.";
           const prompts = {
-            cv: `Rédige un CV professionnel complet et structuré. Candidat: ${u.name}, ville: ${u.city}, diplôme: ${u.degree}, poste visé: ${u.job}, compétences: ${u.skills}. Rédaction soignée, mise en page suggérée.`,
-            lettre: `Rédige une lettre de motivation professionnelle de haute qualité. Candidat: ${u.name}, ville: ${u.city}, diplôme: ${u.degree}, poste: ${u.job}, compétences: ${u.skills}. Ton professionnel et convaincant.`,
-            email: `Rédige un email de candidature professionnel avec objet et formule de politesse. ${u.name}, poste: ${u.job}, compétences: ${u.skills}.`,
-            analyse: `Analyse ce profil de CV et donne des recommandations professionnelles détaillées. ${u.name}, compétences: ${u.skills}, poste: ${u.job}, diplôme: ${u.degree}.`,
-            linkedin: `Rédige un profil LinkedIn professionnel complet. ${u.name}, poste: ${u.job}, compétences: ${u.skills}, ville: ${u.city}.`,
-            objectif: `Rédige un objectif de carrière stratégique et professionnel. ${u.name}, poste visé: ${u.job}, compétences: ${u.skills}.`,
+            cv: `Rédige un CV professionnel structuré. Nom: ${user.name}, Ville: ${user.city}, Diplôme: ${user.degree}, Poste visé: ${user.job}, Compétences: ${user.skills}. Format: Titre, Contenu, Points clés, Conclusion.`,
+            lettre: `Rédige une lettre de motivation professionnelle. Candidat: ${user.name}, Ville: ${user.city}, Diplôme: ${user.degree}, Poste: ${user.job}, Compétences: ${user.skills}. Format: Titre, Contenu, Points clés, Conclusion.`,
+            email: `Rédige un email de candidature professionnel. ${user.name}, Poste: ${user.job}, Compétences: ${user.skills}. Format: Titre, Contenu, Points clés, Conclusion.`,
+            analyse: `Analyse ce profil et donne des recommandations. ${user.name}, Compétences: ${user.skills}, Poste: ${user.job}, Diplôme: ${user.degree}. Format: Titre, Contenu, Points clés, Conclusion.`,
+            linkedin: `Rédige un profil LinkedIn professionnel. ${user.name}, Poste: ${user.job}, Compétences: ${user.skills}, Ville: ${user.city}. Format: Titre, Contenu, Points clés, Conclusion.`,
+            objectif: `Rédige un objectif de carrière stratégique. ${user.name}, Poste visé: ${user.job}, Compétences: ${user.skills}. Format: Titre, Contenu, Points clés, Conclusion.`,
           };
 
           try {
-            const content = await callGroq("Expert en recrutement et rédaction professionnelle. Réponds en français soigné.", prompts[svc.id]);
+            const content = await callGroq(systemPrompt, prompts[svc.id]);
             lastContent = content;
             resultBadge.textContent = svc.title;
             resultBody.textContent = content;
             resultCard.classList.add('visible');
             upgradeCard.style.display = 'block';
             document.getElementById('upgradeBtn').addEventListener('click', () => {
-              window.open(buildWhatsAppLink(svc.title, u.name), '_blank');
+              window.open(getWhatsAppLink(svc.title, user.name), '_blank');
             });
           } catch {
             resultBody.textContent = "Une erreur est survenue. Veuillez réessayer.";
@@ -805,31 +762,23 @@
         });
 
         document.getElementById('copyBtn').addEventListener('click', () => {
-          if (lastContent) navigator.clipboard.writeText(lastContent).then(() => alert('Document copié.'));
+          if (lastContent) navigator.clipboard.writeText(lastContent).then(() => alert('Document copié avec succès.'));
         });
         document.getElementById('regenBtn').addEventListener('click', () => genBtn.click());
-        document.getElementById('exportPdf').addEventListener('click', () => {
-          if (lastContent) {
-            const blob = new Blob([lastContent], { type: 'application/pdf' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = `${svc.id}_career_econcours.pdf`;
-            a.click();
-            URL.revokeObjectURL(url);
-          }
-        });
-        document.getElementById('exportDoc').addEventListener('click', () => {
-          if (lastContent) {
-            const blob = new Blob([lastContent], { type: 'application/msword' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = `${svc.id}_career_econcours.doc`;
-            a.click();
-            URL.revokeObjectURL(url);
-          }
-        });
+        document.getElementById('exportPdf').addEventListener('click', () => exportFile(lastContent, svc.id, 'pdf'));
+        document.getElementById('exportDoc').addEventListener('click', () => exportFile(lastContent, svc.id, 'doc'));
+      }
+
+      function exportFile(content, name, ext) {
+        if (!content) return;
+        const mime = ext === 'pdf' ? 'application/pdf' : 'application/msword';
+        const blob = new Blob([content], { type: mime });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `${name}_career_econcours.${ext}`;
+        a.click();
+        URL.revokeObjectURL(url);
       }
 
       function renderInterview() {
@@ -850,10 +799,10 @@
             <button class="btn btn-outline btn-full" id="ivRestart" style="display:none;margin-top:0.7rem;">Nouvelle simulation</button>
           </div>
           <div class="upgrade-card" id="ivUpgrade" style="display:none;">
-            <h4>🔓 Débloquez l'accès complet</h4>
-            <p>Abonnement annuel pour un usage illimité.</p>
+            <h4>Débloquez toutes les fonctionnalités</h4>
+            <p>Abonnement annuel pour un accès illimité.</p>
             <div class="price">50 MAD <span>/ an</span></div>
-            <button class="btn btn-accent btn-full" id="ivUpgradeBtn" style="margin-top:0.8rem;">Activer l'abonnement via WhatsApp</button>
+            <button class="btn btn-accent btn-full" id="ivUpgradeBtn" style="margin-top:0.8rem;">Activer maintenant via WhatsApp</button>
           </div>
         `;
 
@@ -862,60 +811,77 @@
         const ansI = document.getElementById('ivAnswer'), send = document.getElementById('ivSend'), score = document.getElementById('ivScore'), restart = document.getElementById('ivRestart');
         const upgradeCard = document.getElementById('ivUpgrade');
         let qs = [], ans = [], idx = 0;
-        const T = 4;
+        const TOTAL = 4;
 
-        jobI.addEventListener('input', () => { start.disabled = !jobI.value.trim(); if (jobI.value.trim()) err.classList.remove('visible'); });
+        jobI.addEventListener('input', () => {
+          start.disabled = !jobI.value.trim();
+          if (jobI.value.trim()) err.classList.remove('visible');
+        });
 
         start.addEventListener('click', async () => {
           if (!jobI.value.trim()) { err.classList.add('visible'); return; }
           err.classList.remove('visible');
           card.style.display = 'block';
           upgradeCard.style.display = 'none';
-          chat.innerHTML = '<div class="loader-box"><div class="spinner"></div> Préparation...</div>';
+          chat.innerHTML = '<div class="loader-box"><div class="spinner"></div> Préparation de votre simulation...</div>';
           inpRow.style.display = 'none';
           score.style.display = 'none';
           restart.style.display = 'none';
           ans = [];
           idx = 0;
           try {
-            const qText = await callGroq("Recruteur professionnel. Réponds en français.", `Génère ${T} questions d'entretien pour ${jobI.value.trim()} chez ${compI.value.trim() || 'une entreprise'}.`);
-            qs = qText.split('\n').filter(l => l.trim() && /\d/.test(l)).map(l => l.replace(/^\d+[\.\)]\s*/, '')).slice(0, T);
-            if (qs.length < 2) qs = ["Parlez-moi de votre parcours.", "Pourquoi ce poste ?", "Quelles sont vos forces ?", "Comment gérez-vous la pression ?"];
+            const qText = await callGroq(
+              "Recruteur professionnel. Réponds uniquement en français. Génère des questions numérotées.",
+              `Génère exactement ${TOTAL} questions d'entretien pour le poste de ${jobI.value.trim()} chez ${compI.value.trim() || 'une entreprise'}.`
+            );
+            qs = qText.split('\n').filter(l => l.trim() && /\d/.test(l)).map(l => l.replace(/^\d+[\.\)]\s*/, '')).slice(0, TOTAL);
+            if (qs.length < 2) qs = ["Parlez-moi de votre parcours professionnel.", "Pourquoi ce poste vous intéresse-t-il ?", "Quelles sont vos principales forces ?", "Comment gérez-vous les situations sous pression ?"];
             chat.innerHTML = '';
-            bubble('consultant', `Bonjour. Simulation pour <strong>${jobI.value.trim()}</strong>.`);
-            setTimeout(() => { bubble('consultant', `Question 1/${qs.length} : ${qs[0]}`); inpRow.style.display = 'flex'; ansI.focus(); }, 800);
-          } catch { chat.innerHTML = '<p>Erreur.</p>'; }
+            addBubble('consultant', `Bonjour. Simulation d'entretien pour le poste de <strong>${jobI.value.trim()}</strong>.`);
+            setTimeout(() => { addBubble('consultant', `Question 1/${qs.length} : ${qs[0]}`); inpRow.style.display = 'flex'; ansI.focus(); }, 800);
+          } catch {
+            chat.innerHTML = '<p>Erreur lors de la préparation. Veuillez réessayer.</p>';
+          }
         });
 
         send.addEventListener('click', async () => {
           const a = ansI.value.trim();
           if (!a) return;
-          bubble('client', a);
+          addBubble('client', a);
           ans.push({ q: qs[idx], a });
           ansI.value = '';
           idx++;
-          if (idx < qs.length) { bubble('consultant', `Question ${idx + 1}/${qs.length} : ${qs[idx]}`); } else {
+          if (idx < qs.length) {
+            addBubble('consultant', `Question ${idx + 1}/${qs.length} : ${qs[idx]}`);
+          } else {
             inpRow.style.display = 'none';
-            bubble('consultant', 'Évaluation en cours...');
+            addBubble('consultant', 'Évaluation de vos réponses en cours...');
             try {
-              const fb = await callGroq("Coach en entretien. Réponds en français.", `Évalue ces réponses sur 10 avec feedback : ${JSON.stringify(ans)}`);
-              score.innerHTML = `📊 Résultat :<br><br>${fb}`;
+              const fb = await callGroq(
+                "Coach en entretien professionnel. Réponds en français. Structure : Titre, Analyse, Points forts, Axes d'amélioration, Score/10.",
+                `Évalue ces réponses d'entretien : ${JSON.stringify(ans)}`
+              );
+              score.innerHTML = `📊 Résultat de l'évaluation :<br><br>${fb}`;
               score.style.display = 'block';
-            } catch { score.innerHTML = 'Évaluation indisponible.'; score.style.display = 'block'; }
+            } catch {
+              score.innerHTML = 'Évaluation indisponible.';
+              score.style.display = 'block';
+            }
             restart.style.display = 'block';
             upgradeCard.style.display = 'block';
             document.getElementById('ivUpgradeBtn').addEventListener('click', () => {
-              window.open(buildWhatsAppLink('Simulation d\'entretien', jobI.value.trim()), '_blank');
+              window.open(getWhatsAppLink('Simulation d\'entretien', jobI.value.trim()), '_blank');
             });
           }
           chat.scrollTop = chat.scrollHeight;
         });
+
         ansI.addEventListener('keypress', e => { if (e.key === 'Enter') send.click(); });
         restart.addEventListener('click', () => { card.style.display = 'none'; start.click(); });
 
-        function bubble(type, text) {
+        function addBubble(type, text) {
           const d = document.createElement('div');
-          d.style.cssText = `padding:0.65rem 1rem;border-radius:1rem;max-width:82%;line-height:1.5;font-size:0.88rem;`;
+          d.style.cssText = 'padding:0.65rem 1rem;border-radius:1rem;max-width:82%;line-height:1.5;font-size:0.88rem;';
           d.style.background = type === 'consultant' ? '#f5f4f0' : '#e8e6e0';
           d.style.alignSelf = type === 'consultant' ? 'flex-start' : 'flex-end';
           d.innerHTML = text;
@@ -924,7 +890,6 @@
         }
       }
 
-      // Events
       document.getElementById('brandLink').addEventListener('click', e => { e.preventDefault(); showHome(); });
       document.getElementById('navCta').addEventListener('click', showServices);
       document.getElementById('heroCta').addEventListener('click', showServices);
