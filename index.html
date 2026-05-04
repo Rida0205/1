@@ -3,31 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-  <title>ai.econcours.ma | Services de candidature IA</title>
+  <title>ai.econcours.ma | Assistant de candidature IA</title>
   <style>
     :root {
-      --bg: #f5f7fa;
+      --bg: #f8fafc;
       --surface: #ffffff;
-      --border: #e8ecf1;
-      --text: #1a1f36;
-      --text-secondary: #5b6170;
+      --border: #e2e8f0;
+      --text: #0f172a;
+      --text-secondary: #64748b;
       --primary: #4f46e5;
       --primary-hover: #4338ca;
       --primary-light: #eef2ff;
-      --success: #059669;
-      --warning: #d97706;
+      --error: #ef4444;
+      --error-bg: #fef2f2;
+      --success: #10b981;
       --radius-sm: 0.75rem;
       --radius: 1rem;
       --radius-lg: 1.5rem;
       --radius-xl: 2rem;
-      --shadow-xs: 0 1px 2px rgba(0,0,0,0.04);
-      --shadow-sm: 0 4px 12px rgba(0,0,0,0.04);
-      --shadow-md: 0 12px 30px rgba(0,0,0,0.06);
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
+      --shadow-md: 0 8px 30px rgba(0,0,0,0.06);
       --shadow-lg: 0 20px 50px rgba(0,0,0,0.08);
       --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      --max-width: 1100px;
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
     body {
       background: var(--bg);
@@ -35,23 +40,21 @@
       min-height: 100vh;
       color: var(--text);
       -webkit-font-smoothing: antialiased;
-      display: flex;
-      flex-direction: column;
+      line-height: 1.5;
     }
 
     /* Navigation */
     .nav {
-      background: var(--surface);
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
-      padding: 1rem 2rem;
+      padding: 0.9rem 1.5rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
       position: sticky;
       top: 0;
       z-index: 100;
-      backdrop-filter: blur(12px);
-      background: rgba(255,255,255,0.9);
     }
 
     .nav-logo {
@@ -59,73 +62,73 @@
       align-items: center;
       gap: 0.5rem;
       font-weight: 700;
-      font-size: 1.3rem;
+      font-size: 1.25rem;
       letter-spacing: -0.3px;
       color: var(--text);
       text-decoration: none;
+      cursor: pointer;
     }
 
     .nav-logo .dot {
-      width: 8px; height: 8px;
+      width: 8px;
+      height: 8px;
       background: var(--primary);
       border-radius: 50%;
+      display: inline-block;
     }
 
-    .nav-link {
+    .nav-btn {
       font-size: 0.85rem;
       font-weight: 500;
       color: var(--text-secondary);
-      cursor: pointer;
-      background: none;
+      background: var(--surface);
       border: 1px solid var(--border);
       padding: 0.5rem 1.2rem;
       border-radius: 2rem;
+      cursor: pointer;
       transition: var(--transition);
     }
 
-    .nav-link:hover {
+    .nav-btn:hover {
       background: var(--primary-light);
       color: var(--primary);
       border-color: var(--primary);
     }
 
-    /* Conteneur principal */
-    .main {
-      flex: 1;
-      max-width: 1100px;
-      width: 100%;
+    /* Main container */
+    .main-container {
+      max-width: var(--max-width);
       margin: 0 auto;
-      padding: 2rem 1.5rem 4rem;
+      padding: 2rem 1.5rem 3rem;
     }
 
     /* Pages */
     .page {
       display: none;
-      animation: fadeSlide 0.35s ease;
+      animation: fadeIn 0.3s ease;
     }
 
     .page.active {
       display: block;
     }
 
-    @keyframes fadeSlide {
-      from { opacity: 0; transform: translateY(10px); }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Hero section */
+    /* Hero */
     .hero {
       text-align: center;
-      margin-bottom: 3rem;
+      margin-bottom: 2.5rem;
     }
 
     .hero h1 {
-      font-size: 2.5rem;
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
       font-weight: 800;
-      letter-spacing: -1px;
-      line-height: 1.15;
+      letter-spacing: -0.8px;
+      line-height: 1.2;
       margin-bottom: 0.75rem;
-      color: var(--text);
     }
 
     .hero .highlight {
@@ -137,30 +140,28 @@
 
     .hero p {
       color: var(--text-secondary);
-      font-size: 1.1rem;
-      max-width: 550px;
+      font-size: 1.05rem;
+      max-width: 500px;
       margin: 0 auto;
-      line-height: 1.5;
     }
 
-    /* Grille de services */
+    /* Grille services */
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
     }
 
     .service-card {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius-lg);
-      padding: 2rem 1.5rem;
-      box-shadow: var(--shadow-xs);
+      padding: 1.75rem;
+      box-shadow: var(--shadow-sm);
       transition: var(--transition);
       display: flex;
       flex-direction: column;
       gap: 1rem;
-      cursor: default;
     }
 
     .service-card:hover {
@@ -170,18 +171,18 @@
     }
 
     .service-icon {
-      width: 50px; height: 50px;
+      width: 48px;
+      height: 48px;
       border-radius: var(--radius);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.6rem;
+      font-size: 1.5rem;
       background: var(--primary-light);
-      color: var(--primary);
     }
 
     .service-card h3 {
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       font-weight: 700;
       letter-spacing: -0.2px;
     }
@@ -189,10 +190,10 @@
     .service-card p {
       color: var(--text-secondary);
       font-size: 0.9rem;
-      line-height: 1.5;
       flex: 1;
     }
 
+    /* Boutons */
     .btn {
       display: inline-flex;
       align-items: center;
@@ -207,17 +208,24 @@
       border: none;
       letter-spacing: -0.2px;
       text-decoration: none;
+      white-space: nowrap;
     }
 
     .btn-primary {
       background: var(--primary);
       color: #fff;
-      box-shadow: 0 4px 14px rgba(79,70,229,0.3);
+      box-shadow: 0 4px 14px rgba(79,70,229,0.25);
     }
 
-    .btn-primary:hover {
+    .btn-primary:hover:not(:disabled) {
       background: var(--primary-hover);
       box-shadow: 0 8px 22px rgba(79,70,229,0.35);
+    }
+
+    .btn-primary:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      box-shadow: none;
     }
 
     .btn-outline {
@@ -245,16 +253,22 @@
       width: 100%;
     }
 
-    /* Page service (formulaire + résultat) */
-    .service-page-header {
+    .btn-small {
+      padding: 0.5rem 1.1rem;
+      font-size: 0.82rem;
+    }
+
+    /* Page service */
+    .service-header {
       display: flex;
       align-items: center;
       gap: 1rem;
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
     }
 
     .back-btn {
-      width: 40px; height: 40px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
       border: 1px solid var(--border);
       background: var(--surface);
@@ -264,6 +278,7 @@
       cursor: pointer;
       font-size: 1.2rem;
       transition: var(--transition);
+      flex-shrink: 0;
     }
 
     .back-btn:hover {
@@ -271,20 +286,23 @@
     }
 
     .service-title {
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       font-weight: 700;
     }
 
+    /* Formulaire */
     .form-card {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius-xl);
       padding: 2rem;
       box-shadow: var(--shadow-sm);
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
-      max-width: 600px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
     }
 
     .form-group {
@@ -293,31 +311,41 @@
       gap: 0.4rem;
     }
 
+    .form-group.full {
+      grid-column: 1 / -1;
+    }
+
     .form-group label {
       font-size: 0.8rem;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.04em;
       color: var(--text-secondary);
     }
 
     .form-group input,
     .form-group textarea {
-      background: var(--bg);
+      background: #fff;
       border: 1px solid var(--border);
       border-radius: var(--radius-sm);
-      padding: 0.8rem 1rem;
+      padding: 0.75rem 1rem;
       font-size: 0.95rem;
       font-family: inherit;
       transition: var(--transition);
       outline: none;
-      background: #fff;
+      width: 100%;
     }
 
     .form-group input:focus,
     .form-group textarea:focus {
       border-color: var(--primary);
       box-shadow: 0 0 0 3px rgba(79,70,229,0.1);
+    }
+
+    .form-group input.error,
+    .form-group textarea.error {
+      border-color: var(--error);
+      background: var(--error-bg);
     }
 
     textarea {
@@ -330,16 +358,19 @@
       align-items: center;
       gap: 1rem;
       flex-wrap: wrap;
+      margin-top: 0.25rem;
     }
 
     .style-row span {
       font-weight: 600;
       font-size: 0.85rem;
+      color: var(--text);
     }
 
     .radio-group {
       display: flex;
       gap: 1.25rem;
+      flex-wrap: wrap;
     }
 
     .radio-group label {
@@ -352,16 +383,52 @@
       cursor: pointer;
     }
 
+    .error-message {
+      color: var(--error);
+      font-size: 0.85rem;
+      font-weight: 500;
+      display: none;
+      margin-top: 0.5rem;
+    }
+
+    .error-message.visible {
+      display: block;
+    }
+
+    /* Loader */
+    .loader-inline {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      padding: 2.5rem;
+      color: var(--primary);
+      font-weight: 500;
+    }
+
+    .spinner {
+      width: 22px;
+      height: 22px;
+      border: 2.5px solid #e2e8f0;
+      border-top: 2.5px solid var(--primary);
+      border-radius: 50%;
+      animation: spin 0.6s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
     /* Résultat */
     .result-card {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius-xl);
-      padding: 2rem;
+      padding: 1.75rem;
       box-shadow: var(--shadow-sm);
       margin-top: 1.5rem;
       display: none;
-      animation: fadeSlide 0.4s ease;
+      animation: fadeIn 0.35s ease;
     }
 
     .result-card.visible {
@@ -372,20 +439,20 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 1rem;
       flex-wrap: wrap;
       gap: 0.75rem;
+      margin-bottom: 1rem;
     }
 
     .result-badge {
       background: var(--primary-light);
       color: var(--primary);
       font-weight: 700;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       padding: 0.3rem 1rem;
       border-radius: 2rem;
       text-transform: uppercase;
-      letter-spacing: 0.02em;
+      letter-spacing: 0.03em;
     }
 
     .result-body {
@@ -397,7 +464,7 @@
       white-space: pre-wrap;
       word-break: break-word;
       font-size: 0.95rem;
-      max-height: 350px;
+      max-height: 400px;
       overflow-y: auto;
     }
 
@@ -408,80 +475,82 @@
       flex-wrap: wrap;
     }
 
+    /* Suggestions */
     .suggestions {
-      margin-top: 2rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
+      margin-top: 1.75rem;
     }
 
     .suggestions p {
       font-weight: 600;
       color: var(--text-secondary);
       font-size: 0.9rem;
+      margin-bottom: 0.75rem;
     }
 
     .suggestions-grid {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.75rem;
+      gap: 0.65rem;
     }
 
-    .loader-inline {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.7rem;
-      padding: 2.5rem;
-      color: var(--primary);
-      font-weight: 500;
-    }
-
-    .spinner {
-      width: 22px; height: 22px;
-      border: 2.5px solid #e2e8f0;
-      border-top: 2.5px solid var(--primary);
-      border-radius: 50%;
-      animation: spin 0.6s linear infinite;
-    }
-
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-
+    /* Footer */
     .footer-note {
       text-align: center;
       color: #94a3b8;
       font-size: 0.8rem;
-      margin-top: 3rem;
+      margin-top: 2.5rem;
     }
 
-    @media (max-width: 640px) {
-      .hero h1 { font-size: 1.8rem; }
-      .services-grid { grid-template-columns: 1fr; }
-      .form-card { padding: 1.25rem; }
-      .nav { padding: 0.75rem 1rem; }
+    /* Responsive */
+    @media (max-width: 768px) {
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form-card {
+        padding: 1.25rem;
+      }
+
+      .nav {
+        padding: 0.7rem 1rem;
+      }
+
+      .hero h1 {
+        font-size: 1.6rem;
+      }
+
+      .service-card {
+        padding: 1.25rem;
+      }
+
+      .result-card {
+        padding: 1.25rem;
+      }
     }
   </style>
 </head>
 <body>
   <!-- Navigation -->
   <nav class="nav">
-    <a class="nav-logo" id="homeLink">ai.econcours.ma<span class="dot"></span></a>
-    <button class="nav-link" id="navHomeBtn">🏠 Accueil</button>
+    <a class="nav-logo" id="homeLogo">ai.econcours.ma<span class="dot"></span></a>
+    <button class="nav-btn" id="navHome">🏠 Accueil</button>
   </nav>
 
   <!-- Contenu principal -->
-  <main class="main">
-    <!-- PAGE ACCUEIL (services) -->
-    <div class="page active" id="page-home">
+  <div class="main-container">
+    <!-- PAGE ACCUEIL -->
+    <div class="page active" id="pageHome">
       <div class="hero">
         <h1>Votre <span class="highlight">carrière</span> mérite les meilleurs mots</h1>
         <p>Générez des contenus de candidature professionnels en français, un service à la fois.</p>
       </div>
 
-      <div class="services-grid">
-        <!-- Service 1 : Email -->
+      <div class="services-grid" id="servicesGrid">
+        <!-- Service 1 -->
         <div class="service-card">
           <div class="service-icon">📧</div>
           <h3>Email de candidature</h3>
@@ -489,7 +558,7 @@
           <button class="btn btn-primary" data-service="email">Commencer</button>
         </div>
 
-        <!-- Service 2 : Lettre de motivation -->
+        <!-- Service 2 -->
         <div class="service-card">
           <div class="service-icon">📄</div>
           <h3>Lettre de motivation</h3>
@@ -497,7 +566,7 @@
           <button class="btn btn-primary" data-service="lettre">Commencer</button>
         </div>
 
-        <!-- Service 3 : Résumé CV -->
+        <!-- Service 3 -->
         <div class="service-card">
           <div class="service-icon">👤</div>
           <h3>Résumé professionnel</h3>
@@ -505,7 +574,7 @@
           <button class="btn btn-primary" data-service="resume">Commencer</button>
         </div>
 
-        <!-- Service 4 : Compétences -->
+        <!-- Service 4 -->
         <div class="service-card">
           <div class="service-icon">⚡</div>
           <h3>Améliorer mes compétences</h3>
@@ -517,35 +586,38 @@
       <div class="footer-note">Propulsé par IA · Groq</div>
     </div>
 
-    <!-- PAGE SERVICE (dynamique) -->
-    <div class="page" id="page-service">
-      <div class="service-page-header">
-        <button class="back-btn" id="backToHomeBtn">←</button>
-        <h2 class="service-title" id="servicePageTitle">Service</h2>
+    <!-- PAGE SERVICE -->
+    <div class="page" id="pageService">
+      <div class="service-header">
+        <button class="back-btn" id="backBtn">←</button>
+        <h2 class="service-title" id="serviceTitle">Service</h2>
       </div>
 
       <!-- Formulaire -->
       <div class="form-card" id="serviceForm">
-        <div class="form-group">
-          <label>Nom complet</label>
-          <input type="text" id="svcFullName" placeholder="Entrez votre nom complet">
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Nom complet *</label>
+            <input type="text" id="inputName" placeholder="Entrez votre nom complet">
+          </div>
+          <div class="form-group">
+            <label>Ville *</label>
+            <input type="text" id="inputCity" placeholder="Votre ville">
+          </div>
+          <div class="form-group">
+            <label>Diplôme</label>
+            <input type="text" id="inputDegree" placeholder="Votre diplôme (optionnel)">
+          </div>
+          <div class="form-group">
+            <label>Type de poste *</label>
+            <input type="text" id="inputJob" placeholder="Poste recherché">
+          </div>
+          <div class="form-group full">
+            <label>Compétences *</label>
+            <textarea id="inputSkills" rows="2" placeholder="Vos compétences (séparées par des virgules)"></textarea>
+          </div>
         </div>
-        <div class="form-group">
-          <label>Ville</label>
-          <input type="text" id="svcCity" placeholder="Votre ville">
-        </div>
-        <div class="form-group">
-          <label>Diplôme</label>
-          <input type="text" id="svcDegree" placeholder="Votre diplôme">
-        </div>
-        <div class="form-group">
-          <label>Type de poste visé</label>
-          <input type="text" id="svcJobType" placeholder="Poste recherché">
-        </div>
-        <div class="form-group">
-          <label>Compétences</label>
-          <textarea id="svcSkills" rows="2" placeholder="Vos compétences (séparées par des virgules)"></textarea>
-        </div>
+
         <div class="style-row">
           <span>Style :</span>
           <div class="radio-group">
@@ -554,7 +626,10 @@
             <label><input type="radio" name="svcStyle" value="Très professionnel"> Très pro</label>
           </div>
         </div>
-        <button class="btn btn-primary btn-full" id="generateServiceBtn">✨ Générer</button>
+
+        <div class="error-message" id="errorMessage">⚠️ Veuillez remplir tous les champs obligatoires</div>
+
+        <button class="btn btn-primary btn-full" id="generateBtn" style="margin-top: 1rem;">✨ Générer</button>
       </div>
 
       <!-- Loader -->
@@ -569,8 +644,8 @@
         </div>
         <div class="result-body" id="resultBody"></div>
         <div class="result-actions">
-          <button class="btn btn-outline" id="copyResultBtn">📋 Copier</button>
-          <button class="btn btn-ghost" id="regenerateResultBtn">🔄 Regénérer</button>
+          <button class="btn btn-outline" id="copyBtn">📋 Copier</button>
+          <button class="btn btn-ghost" id="regenerateBtn">🔄 Regénérer</button>
         </div>
       </div>
 
@@ -580,16 +655,16 @@
         <div class="suggestions-grid" id="suggestionsGrid"></div>
       </div>
     </div>
-  </main>
+  </div>
 
   <script>
     (function() {
-      // Configuration Groq
+      // Configuration
       const GROQ_API_KEY = "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";
       const GROQ_URL = "https://api.groq.com/openai/v1/chat/completions";
       const MODEL = "llama-3.3-70b-versatile";
 
-      // Services disponibles
+      // Services
       const SERVICES = [
         { id: 'email', title: 'Email de candidature', icon: '📧', badge: '📧 Email généré' },
         { id: 'lettre', title: 'Lettre de motivation', icon: '📄', badge: '📄 Lettre de motivation' },
@@ -599,39 +674,42 @@
 
       // État
       let currentService = null;
-      let lastGeneratedContent = '';
+      let lastContent = '';
 
-      // Éléments DOM
-      const pageHome = document.getElementById('page-home');
-      const pageService = document.getElementById('page-service');
-      const servicePageTitle = document.getElementById('servicePageTitle');
+      // DOM
+      const pageHome = document.getElementById('pageHome');
+      const pageService = document.getElementById('pageService');
+      const serviceTitle = document.getElementById('serviceTitle');
       const resultCard = document.getElementById('resultCard');
       const resultBody = document.getElementById('resultBody');
       const resultBadge = document.getElementById('resultBadge');
       const serviceLoader = document.getElementById('serviceLoader');
       const suggestionsBox = document.getElementById('suggestionsBox');
       const suggestionsGrid = document.getElementById('suggestionsGrid');
+      const errorMessage = document.getElementById('errorMessage');
+      const generateBtn = document.getElementById('generateBtn');
 
-      // Inputs service
-      const svcFullName = document.getElementById('svcFullName');
-      const svcCity = document.getElementById('svcCity');
-      const svcDegree = document.getElementById('svcDegree');
-      const svcJobType = document.getElementById('svcJobType');
-      const svcSkills = document.getElementById('svcSkills');
-      const svcStyleRadios = document.getElementsByName('svcStyle');
+      // Inputs
+      const inputName = document.getElementById('inputName');
+      const inputCity = document.getElementById('inputCity');
+      const inputDegree = document.getElementById('inputDegree');
+      const inputJob = document.getElementById('inputJob');
+      const inputSkills = document.getElementById('inputSkills');
+      const styleRadios = document.getElementsByName('svcStyle');
 
       // Navigation
       function showHome() {
         pageHome.classList.add('active');
         pageService.classList.remove('active');
         resetServicePage();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       }
 
       function showService(serviceId) {
         const service = SERVICES.find(s => s.id === serviceId);
         if (!service) return;
         currentService = service;
-        servicePageTitle.textContent = `${service.icon} ${service.title}`;
+        serviceTitle.textContent = `${service.icon} ${service.title}`;
         pageHome.classList.remove('active');
         pageService.classList.add('active');
         resetServicePage();
@@ -639,43 +717,91 @@
       }
 
       function resetServicePage() {
-        // Vider les champs
-        svcFullName.value = '';
-        svcCity.value = '';
-        svcDegree.value = '';
-        svcJobType.value = '';
-        svcSkills.value = '';
-        // Style par défaut
-        const formelRadio = document.querySelector('input[name="svcStyle"][value="Formel"]');
-        if (formelRadio) formelRadio.checked = true;
-        // Cacher résultat et suggestions
+        inputName.value = '';
+        inputCity.value = '';
+        inputDegree.value = '';
+        inputJob.value = '';
+        inputSkills.value = '';
+        document.querySelector('input[name="svcStyle"][value="Formel"]').checked = true;
         resultCard.classList.remove('visible');
         serviceLoader.style.display = 'none';
         suggestionsBox.style.display = 'none';
-        lastGeneratedContent = '';
+        errorMessage.classList.remove('visible');
+        lastContent = '';
+        clearInputErrors();
+        generateBtn.disabled = true;
       }
 
+      function clearInputErrors() {
+        [inputName, inputCity, inputJob, inputSkills].forEach(el => el.classList.remove('error'));
+      }
+
+      // Validation
+      function validateForm() {
+        const required = [
+          { el: inputName, value: inputName.value.trim() },
+          { el: inputCity, value: inputCity.value.trim() },
+          { el: inputJob, value: inputJob.value.trim() },
+          { el: inputSkills, value: inputSkills.value.trim() },
+        ];
+
+        let valid = true;
+        clearInputErrors();
+
+        required.forEach(item => {
+          if (!item.value) {
+            item.el.classList.add('error');
+            valid = false;
+          }
+        });
+
+        if (!valid) {
+          errorMessage.classList.add('visible');
+        } else {
+          errorMessage.classList.remove('visible');
+        }
+
+        return valid;
+      }
+
+      // Activer/désactiver le bouton
+      function checkFormCompletion() {
+        const name = inputName.value.trim();
+        const city = inputCity.value.trim();
+        const job = inputJob.value.trim();
+        const skills = inputSkills.value.trim();
+
+        if (name && city && job && skills) {
+          generateBtn.disabled = false;
+          errorMessage.classList.remove('visible');
+          clearInputErrors();
+        } else {
+          generateBtn.disabled = true;
+        }
+      }
+
+      // Écouteurs de saisie
+      [inputName, inputCity, inputJob, inputSkills].forEach(el => {
+        el.addEventListener('input', checkFormCompletion);
+      });
+
       // Helpers
-      function getUserServiceInput() {
+      function getUserInput() {
         return {
-          fullName: svcFullName.value.trim() || 'Non spécifié',
-          city: svcCity.value.trim() || 'Non spécifiée',
-          degree: svcDegree.value.trim() || 'Non spécifié',
-          jobType: svcJobType.value.trim() || 'Non spécifié',
-          skills: svcSkills.value.trim() || 'Non spécifiées',
-          style: getSelectedServiceStyle()
+          fullName: inputName.value.trim(),
+          city: inputCity.value.trim(),
+          degree: inputDegree.value.trim() || 'Non spécifié',
+          jobType: inputJob.value.trim(),
+          skills: inputSkills.value.trim(),
+          style: getSelectedStyle()
         };
       }
 
-      function getSelectedServiceStyle() {
-        for (let radio of svcStyleRadios) {
+      function getSelectedStyle() {
+        for (let radio of styleRadios) {
           if (radio.checked) return radio.value;
         }
         return 'Formel';
-      }
-
-      function escapeHtml(text) {
-        return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
       }
 
       async function callGroq(systemPrompt, userPrompt) {
@@ -697,17 +823,16 @@
         });
 
         if (!response.ok) {
-          const err = await response.text();
           throw new Error(`Erreur API (${response.status})`);
         }
         const data = await response.json();
         return data.choices[0].message.content.trim();
       }
 
-      function buildServicePrompt(serviceId, user, variationSeed = "") {
+      function buildPrompt(serviceId, user, variationSeed = "") {
         const base = `Candidat: ${user.fullName}. Compétences: ${user.skills}. Diplôme: ${user.degree}. Ville: ${user.city}. Poste: ${user.jobType}. Style: ${user.style}.`;
         const varNote = variationSeed ? ` Variation #${variationSeed}.` : '';
-        
+
         const prompts = {
           email: `Rédige un email de candidature professionnel en français. ${base} Objet, formule de politesse. Concis. ${varNote}`,
           lettre: `Rédige une lettre de motivation complète en français. ${base} En-tête, intro, développement, conclusion. ${varNote}`,
@@ -717,46 +842,46 @@
         return prompts[serviceId] || "";
       }
 
-      function showSuggestions(excludeServiceId) {
-        const otherServices = SERVICES.filter(s => s.id !== excludeServiceId);
-        suggestionsGrid.innerHTML = otherServices.map(s => `
-          <button class="btn btn-outline btn-small" data-suggest="${s.id}">${s.icon} ${s.title}</button>
+      function showSuggestions(excludeId) {
+        const others = SERVICES.filter(s => s.id !== excludeId);
+        suggestionsGrid.innerHTML = others.map(s => `
+          <button class="btn btn-outline btn-small suggest-btn" data-service="${s.id}">${s.icon} ${s.title}</button>
         `).join('');
-        suggestionsBox.style.display = 'flex';
+        suggestionsBox.style.display = 'block';
 
-        // Ajouter les événements
-        suggestionsGrid.querySelectorAll('button').forEach(btn => {
+        suggestionsGrid.querySelectorAll('.suggest-btn').forEach(btn => {
           btn.addEventListener('click', () => {
-            const suggestId = btn.dataset.suggest;
-            if (suggestId) showService(suggestId);
+            const id = btn.dataset.service;
+            if (id) showService(id);
           });
         });
       }
 
       async function generateContent() {
-        if (!currentService) return;
-        const user = getUserServiceInput();
-        
-        // Afficher loader
+        if (!validateForm()) return;
+
         serviceLoader.style.display = 'flex';
         resultCard.classList.remove('visible');
         suggestionsBox.style.display = 'none';
+        errorMessage.classList.remove('visible');
+
+        const user = getUserInput();
 
         try {
           const content = await callGroq(
-            "Tu es un assistant expert en recrutement et rédaction professionnelle. Réponds uniquement en français.",
-            buildServicePrompt(currentService.id, user, Date.now())
+            "Tu es un assistant expert en recrutement. Réponds uniquement en français.",
+            buildPrompt(currentService.id, user, Date.now())
           );
-          
-          lastGeneratedContent = content;
-          resultBadge.textContent = currentService.badge || 'Résultat';
+
+          lastContent = content;
+          resultBadge.textContent = currentService.badge;
           resultBody.textContent = content;
           resultCard.classList.add('visible');
           showSuggestions(currentService.id);
-          
+
         } catch (error) {
           resultBadge.textContent = '❌ Erreur';
-          resultBody.textContent = "Une erreur est survenue lors de la génération. Vérifiez votre connexion ou la clé API.";
+          resultBody.textContent = "Une erreur est survenue. Vérifiez votre connexion ou la clé API.";
           resultCard.classList.add('visible');
           console.error(error);
         } finally {
@@ -765,36 +890,38 @@
       }
 
       // Événements
-      document.getElementById('homeLink').addEventListener('click', (e) => {
+      document.getElementById('homeLogo').addEventListener('click', (e) => {
         e.preventDefault();
         showHome();
       });
 
-      document.getElementById('navHomeBtn').addEventListener('click', showHome);
-      document.getElementById('backToHomeBtn').addEventListener('click', showHome);
+      document.getElementById('navHome').addEventListener('click', showHome);
+      document.getElementById('backBtn').addEventListener('click', showHome);
 
-      // Clic sur les cartes de service
+      // Cartes de service
       document.querySelectorAll('[data-service]').forEach(btn => {
         btn.addEventListener('click', () => {
-          const serviceId = btn.dataset.service;
-          showService(serviceId);
+          showService(btn.dataset.service);
         });
       });
 
-      // Bouton générer
-      document.getElementById('generateServiceBtn').addEventListener('click', generateContent);
+      // Générer
+      generateBtn.addEventListener('click', generateContent);
 
       // Copier
-      document.getElementById('copyResultBtn').addEventListener('click', () => {
-        if (lastGeneratedContent) {
-          navigator.clipboard.writeText(lastGeneratedContent).then(() => {
-            alert('✅ Contenu copié dans le presse-papier !');
+      document.getElementById('copyBtn').addEventListener('click', () => {
+        if (lastContent) {
+          navigator.clipboard.writeText(lastContent).then(() => {
+            alert('✅ Contenu copié !');
           }).catch(() => alert('⚠️ Échec de la copie'));
         }
       });
 
       // Regénérer
-      document.getElementById('regenerateResultBtn').addEventListener('click', generateContent);
+      document.getElementById('regenerateBtn').addEventListener('click', generateContent);
+
+      // Initialisation
+      generateBtn.disabled = true;
 
     })();
   </script>
