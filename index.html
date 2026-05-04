@@ -3,35 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-  <title>career.econcours.ma | Conseil en Carrière Professionnelle</title>
+  <title>career.econcours.ma — Accélérez votre carrière</title>
   <style>
     :root {
-      --bg: #fafbfc;
+      --bg: #fbfbfa;
       --surface: #ffffff;
-      --border: #e8ecf1;
-      --text: #1a1f36;
-      --text-secondary: #5f6778;
-      --text-muted: #8b92a3;
-      --primary: #1e3a5f;
-      --primary-hover: #152e4d;
-      --primary-light: #e8f0fe;
-      --accent: #c8a45a;
-      --accent-hover: #b8944a;
-      --accent-light: #fdf6e8;
-      --success: #2d6a4f;
-      --error: #c92a2a;
-      --error-bg: #fff5f5;
-      --radius-sm: 8px;
-      --radius: 12px;
-      --radius-lg: 16px;
-      --radius-xl: 20px;
+      --border: #e8e6e3;
+      --text: #1a1a1a;
+      --text-secondary: #6b6b6b;
+      --text-muted: #9a9a9a;
+      --primary: #0f0f0f;
+      --primary-hover: #1f1f1f;
+      --accent: #d4a853;
+      --accent-hover: #c49640;
+      --accent-light: #fef9f0;
+      --success: #1a7f4b;
+      --error: #cc3333;
+      --radius-sm: 6px;
+      --radius: 10px;
+      --radius-lg: 14px;
+      --radius-xl: 18px;
       --shadow-xs: 0 1px 2px rgba(0,0,0,0.03);
-      --shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
-      --shadow-md: 0 8px 24px rgba(0,0,0,0.06);
-      --shadow-lg: 0 16px 40px rgba(0,0,0,0.08);
+      --shadow-sm: 0 2px 6px rgba(0,0,0,0.04);
+      --shadow-md: 0 6px 20px rgba(0,0,0,0.06);
+      --shadow-lg: 0 12px 32px rgba(0,0,0,0.08);
       --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      --max-width: 1200px;
-      --font-display: 'Georgia', 'Times New Roman', serif;
+      --max-width: 1100px;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -47,10 +44,10 @@
       flex-direction: column;
     }
 
-    /* Navigation premium */
+    /* Navigation */
     .nav {
-      background: rgba(255,255,255,0.95);
-      backdrop-filter: blur(20px);
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(18px);
       border-bottom: 1px solid var(--border);
       padding: 1rem 2rem;
       display: flex;
@@ -62,63 +59,28 @@
     }
 
     .nav-brand {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
       font-weight: 700;
-      font-size: 1.25rem;
-      letter-spacing: -0.4px;
+      font-size: 1.2rem;
+      letter-spacing: -0.3px;
+      color: var(--primary);
       cursor: pointer;
       text-decoration: none;
-      color: var(--primary);
-      font-family: var(--font-display);
     }
 
-    .nav-brand .brand-icon {
-      width: 32px; height: 32px;
-      background: var(--primary);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      font-size: 0.85rem;
-      font-weight: 800;
-    }
-
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .nav-link {
-      font-size: 0.88rem;
-      font-weight: 500;
-      color: var(--text-secondary);
-      cursor: pointer;
-      transition: var(--transition);
-      text-decoration: none;
-      padding: 0.4rem 0;
-      border-bottom: 2px solid transparent;
-    }
-
-    .nav-link:hover {
-      color: var(--primary);
-      border-bottom-color: var(--primary);
+    .nav-brand span {
+      color: var(--accent);
     }
 
     .nav-btn {
-      font-size: 0.85rem;
+      font-size: 0.84rem;
       font-weight: 600;
       background: var(--primary);
       color: #fff;
       border: none;
-      padding: 0.6rem 1.5rem;
+      padding: 0.55rem 1.4rem;
       border-radius: 2rem;
       cursor: pointer;
       transition: var(--transition);
-      letter-spacing: 0.01em;
     }
 
     .nav-btn:hover {
@@ -137,50 +99,47 @@
 
     .page {
       display: none;
-      animation: fadeIn 0.4s ease;
+      animation: fadeSlide 0.45s ease;
     }
 
-    .page.active { display: block; }
+    .page.active {
+      display: block;
+    }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(12px); }
+    @keyframes fadeSlide {
+      from { opacity: 0; transform: translateY(14px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* ========== HOMEPAGE HERO ========== */
+    /* ========== HOMEPAGE ========== */
     .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       text-align: center;
-      padding: 4rem 1rem 3rem;
-    }
-
-    .hero-badge {
-      display: inline-block;
-      background: var(--accent-light);
-      color: var(--accent);
-      font-weight: 600;
-      font-size: 0.82rem;
-      padding: 0.4rem 1.2rem;
-      border-radius: 2rem;
-      margin-bottom: 1.5rem;
-      letter-spacing: 0.03em;
-      text-transform: uppercase;
+      min-height: 70vh;
+      padding: 2rem 1rem;
     }
 
     .hero h1 {
       font-size: clamp(2rem, 5vw, 3rem);
       font-weight: 700;
-      letter-spacing: -0.8px;
+      letter-spacing: -0.6px;
       line-height: 1.2;
-      margin-bottom: 1rem;
+      margin-bottom: 1.2rem;
       color: var(--primary);
-      font-family: var(--font-display);
+    }
+
+    .hero h1 .accent {
+      color: var(--accent);
     }
 
     .hero p {
       color: var(--text-secondary);
       font-size: 1.1rem;
-      max-width: 600px;
-      margin: 0 auto 2rem;
+      max-width: 520px;
+      margin: 0 auto 2.5rem;
       line-height: 1.7;
     }
 
@@ -191,94 +150,45 @@
       background: var(--primary);
       color: #fff;
       border: none;
-      padding: 0.9rem 2.2rem;
+      padding: 0.9rem 2.4rem;
       border-radius: 2.5rem;
       font-weight: 600;
       font-size: 1rem;
       cursor: pointer;
       transition: var(--transition);
       letter-spacing: -0.2px;
-      box-shadow: 0 8px 28px rgba(30,58,95,0.25);
+      box-shadow: 0 6px 22px rgba(15,15,15,0.2);
     }
 
     .hero-cta:hover {
       background: var(--primary-hover);
       transform: translateY(-2px);
-      box-shadow: 0 14px 36px rgba(30,58,95,0.32);
+      box-shadow: 0 12px 30px rgba(15,15,15,0.28);
     }
 
-    .hero-stats {
-      display: flex;
-      justify-content: center;
-      gap: 3rem;
-      margin-top: 3rem;
-      flex-wrap: wrap;
-    }
-
-    .stat-item {
+    /* ========== SERVICES PAGE ========== */
+    .services-header {
       text-align: center;
+      padding: 3rem 1rem 2rem;
     }
 
-    .stat-number {
-      font-size: 2rem;
-      font-weight: 800;
-      color: var(--primary);
-      font-family: var(--font-display);
-    }
-
-    .stat-label {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin-top: 0.2rem;
-    }
-
-    /* ========== CATEGORIES & SERVICES ========== */
-    .section-header {
-      text-align: center;
-      margin-bottom: 2.5rem;
-    }
-
-    .section-header h2 {
+    .services-header h2 {
       font-size: 1.8rem;
       font-weight: 700;
       color: var(--primary);
-      font-family: var(--font-display);
       margin-bottom: 0.5rem;
     }
 
-    .section-header p {
+    .services-header p {
       color: var(--text-secondary);
       font-size: 0.95rem;
     }
 
-    .category-block {
-      margin-bottom: 2.5rem;
-    }
-
-    .category-title {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-
-    .category-icon {
-      width: 36px; height: 36px;
-      border-radius: var(--radius-sm);
-      background: var(--primary-light);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.1rem;
-    }
-
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-      gap: 1rem;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      margin-bottom: 2rem;
     }
 
     .service-card {
@@ -288,33 +198,33 @@
       padding: 1.5rem;
       box-shadow: var(--shadow-xs);
       transition: var(--transition);
+      cursor: pointer;
       display: flex;
       flex-direction: column;
       gap: 0.75rem;
-      cursor: pointer;
     }
 
     .service-card:hover {
       box-shadow: var(--shadow-md);
       transform: translateY(-2px);
-      border-color: #d0d5e0;
+      border-color: #d8d5ce;
     }
 
-    .service-card .svc-icon {
-      font-size: 1.5rem;
-      width: 42px; height: 42px;
+    .service-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-sm);
+      background: #f5f4f0;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #f8f9fb;
-      border-radius: var(--radius-sm);
+      font-size: 1.2rem;
     }
 
     .service-card h3 {
       font-size: 0.95rem;
       font-weight: 700;
       letter-spacing: -0.2px;
-      color: var(--text);
     }
 
     .service-card p {
@@ -327,71 +237,21 @@
     .service-card .svc-arrow {
       align-self: flex-end;
       color: var(--text-muted);
-      font-size: 0.9rem;
       transition: var(--transition);
     }
 
     .service-card:hover .svc-arrow {
       color: var(--primary);
-      transform: translateX(4px);
+      transform: translateX(3px);
     }
 
-    /* ========== BUTTONS ========== */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.4rem;
-      padding: 0.7rem 1.5rem;
-      border-radius: 2.5rem;
-      font-weight: 600;
-      font-size: 0.88rem;
-      cursor: pointer;
-      transition: var(--transition);
-      border: none;
-      letter-spacing: -0.2px;
-      white-space: nowrap;
-      font-family: inherit;
+    .back-row {
+      text-align: center;
+      margin-top: 1.5rem;
     }
 
-    .btn-primary {
-      background: var(--primary);
-      color: #fff;
-      box-shadow: 0 4px 14px rgba(30,58,95,0.2);
-    }
-
-    .btn-primary:hover:not(:disabled) {
-      background: var(--primary-hover);
-      box-shadow: 0 8px 22px rgba(30,58,95,0.3);
-    }
-
-    .btn-primary:disabled {
-      opacity: 0.45;
-      cursor: not-allowed;
-      box-shadow: none;
-    }
-
-    .btn-outline {
-      background: var(--surface);
-      color: var(--text);
-      border: 1px solid var(--border);
-    }
-
-    .btn-outline:hover { background: #f5f6f8; }
-
-    .btn-ghost {
-      background: transparent;
-      color: var(--primary);
-      padding: 0.45rem 0.9rem;
-      font-size: 0.84rem;
-    }
-
-    .btn-ghost:hover { background: var(--primary-light); }
-
-    .btn-full { width: 100%; }
-
-    /* ========== SERVICE PAGE ========== */
-    .service-header {
+    /* ========== SERVICE DETAIL PAGE ========== */
+    .detail-header {
       display: flex;
       align-items: center;
       gap: 1rem;
@@ -400,7 +260,8 @@
     }
 
     .back-btn {
-      width: 40px; height: 40px;
+      width: 38px;
+      height: 38px;
       border-radius: 50%;
       border: 1px solid var(--border);
       background: var(--surface);
@@ -414,13 +275,14 @@
       color: var(--text);
     }
 
-    .back-btn:hover { background: #f5f6f8; }
+    .back-btn:hover {
+      background: #f5f4f0;
+    }
 
-    .service-page-title {
-      font-size: 1.4rem;
+    .detail-title {
+      font-size: 1.35rem;
       font-weight: 700;
       color: var(--primary);
-      font-family: var(--font-display);
     }
 
     .form-card {
@@ -429,7 +291,7 @@
       border-radius: var(--radius-xl);
       padding: 2rem;
       box-shadow: var(--shadow-sm);
-      max-width: 640px;
+      max-width: 620px;
     }
 
     .form-grid {
@@ -447,11 +309,11 @@
     .form-group {
       display: flex;
       flex-direction: column;
-      gap: 0.35rem;
+      gap: 0.3rem;
     }
 
     .form-group label {
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.05em;
@@ -459,13 +321,12 @@
     }
 
     .form-group input,
-    .form-group textarea,
-    .form-group select {
+    .form-group textarea {
       background: #fff;
       border: 1px solid var(--border);
       border-radius: var(--radius-sm);
-      padding: 0.75rem 1rem;
-      font-size: 0.93rem;
+      padding: 0.7rem 0.9rem;
+      font-size: 0.9rem;
       font-family: inherit;
       transition: var(--transition);
       outline: none;
@@ -475,77 +336,117 @@
     .form-group input:focus,
     .form-group textarea:focus {
       border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(30,58,95,0.06);
+      box-shadow: 0 0 0 3px rgba(15,15,15,0.05);
     }
 
-    .input-error {
-      border-color: var(--error) !important;
-      background: var(--error-bg) !important;
-    }
-
-    textarea { resize: vertical; min-height: 85px; }
-
-    .style-row {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-      margin: 0.25rem 0;
-    }
-
-    .style-label {
-      font-weight: 600;
-      font-size: 0.85rem;
-    }
-
-    .radio-group {
-      display: flex;
-      gap: 1.25rem;
-      flex-wrap: wrap;
-    }
-
-    .radio-group label {
-      display: flex;
-      align-items: center;
-      gap: 0.35rem;
-      font-weight: 500;
-      font-size: 0.88rem;
-      cursor: pointer;
-      text-transform: none;
-      letter-spacing: 0;
-      color: var(--text);
+    textarea {
+      resize: vertical;
+      min-height: 80px;
     }
 
     .form-error {
       color: var(--error);
-      font-size: 0.84rem;
+      font-size: 0.82rem;
       font-weight: 500;
       display: none;
-      margin-top: 0.25rem;
     }
 
-    .form-error.visible { display: block; }
+    .form-error.visible {
+      display: block;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      padding: 0.7rem 1.6rem;
+      border-radius: 2.5rem;
+      font-weight: 600;
+      font-size: 0.88rem;
+      cursor: pointer;
+      transition: var(--transition);
+      border: none;
+      letter-spacing: -0.2px;
+      font-family: inherit;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(15,15,15,0.18);
+    }
+
+    .btn-primary:hover:not(:disabled) {
+      background: var(--primary-hover);
+      box-shadow: 0 8px 20px rgba(15,15,15,0.26);
+    }
+
+    .btn-primary:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+
+    .btn-outline {
+      background: var(--surface);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-outline:hover {
+      background: #f5f4f0;
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--primary);
+      padding: 0.4rem 0.8rem;
+      font-size: 0.82rem;
+    }
+
+    .btn-ghost:hover {
+      background: #f5f4f0;
+    }
+
+    .btn-full {
+      width: 100%;
+    }
+
+    .btn-accent {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(212,168,83,0.3);
+    }
+
+    .btn-accent:hover {
+      background: var(--accent-hover);
+      box-shadow: 0 8px 22px rgba(212,168,83,0.4);
+    }
 
     /* Loader */
     .loader-box {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 0.75rem;
+      gap: 0.7rem;
       padding: 2.5rem;
       color: var(--primary);
       font-weight: 500;
     }
 
     .spinner {
-      width: 22px; height: 22px;
-      border: 2.5px solid #e0e3e8;
+      width: 20px;
+      height: 20px;
+      border: 2.5px solid #e0ded8;
       border-top: 2.5px solid var(--primary);
       border-radius: 50%;
       animation: spin 0.65s linear infinite;
     }
 
-    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
 
     /* Result */
     .result-card {
@@ -556,67 +457,80 @@
       box-shadow: var(--shadow-sm);
       margin-top: 1.75rem;
       display: none;
-      animation: fadeIn 0.35s ease;
-      max-width: 640px;
+      animation: fadeSlide 0.35s ease;
+      max-width: 620px;
     }
 
-    .result-card.visible { display: block; }
-
-    .result-header {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-bottom: 1rem;
+    .result-card.visible {
+      display: block;
     }
 
     .result-badge {
-      background: var(--primary-light);
+      background: #f5f4f0;
       color: var(--primary);
       font-weight: 700;
-      font-size: 0.78rem;
-      padding: 0.3rem 1rem;
+      font-size: 0.76rem;
+      padding: 0.3rem 0.9rem;
       border-radius: 2rem;
       text-transform: uppercase;
       letter-spacing: 0.04em;
+      display: inline-block;
+      margin-bottom: 1rem;
     }
 
     .result-body {
-      background: #f8f9fb;
-      border: 1px solid #f1f3f6;
+      background: #fafaf8;
+      border: 1px solid #f0efeb;
       border-radius: var(--radius);
       padding: 1.25rem;
       line-height: 1.7;
       white-space: pre-wrap;
       word-break: break-word;
-      font-size: 0.93rem;
-      max-height: 420px;
+      font-size: 0.9rem;
+      max-height: 400px;
       overflow-y: auto;
     }
 
     .result-actions {
       display: flex;
-      gap: 0.75rem;
-      margin-top: 1.25rem;
+      gap: 0.7rem;
+      margin-top: 1.2rem;
       flex-wrap: wrap;
     }
 
-    /* Suggestions */
-    .suggestions {
-      margin-top: 2rem;
-      max-width: 640px;
+    /* Upgrade card */
+    .upgrade-card {
+      background: var(--accent-light);
+      border: 1px solid #e8dcc4;
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      margin-top: 1.5rem;
+      max-width: 620px;
+      text-align: center;
     }
 
-    .suggestions p {
-      font-weight: 600;
+    .upgrade-card h4 {
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+    }
+
+    .upgrade-card p {
       color: var(--text-secondary);
       font-size: 0.88rem;
-      margin-bottom: 0.75rem;
+      margin-bottom: 1rem;
     }
 
-    .suggestions-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
+    .price {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--accent);
+    }
+
+    .price span {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-secondary);
     }
 
     /* Footer */
@@ -625,106 +539,76 @@
       padding: 2rem 1.5rem;
       border-top: 1px solid var(--border);
       color: var(--text-muted);
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       margin-top: auto;
     }
 
-    .footer span {
-      color: var(--primary);
-      font-weight: 600;
+    @media (max-width: 900px) {
+      .services-grid {
+        grid-template-columns: 1fr 1fr;
+      }
     }
 
-    /* Interview chat */
-    .chat-container {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-      max-height: 350px;
-      overflow-y: auto;
-      margin-bottom: 1rem;
-    }
-
-    .chat-bubble {
-      padding: 0.75rem 1.1rem;
-      border-radius: var(--radius-lg);
-      max-width: 82%;
-      line-height: 1.55;
-      font-size: 0.9rem;
-    }
-
-    .chat-bubble.consultant {
-      background: var(--primary-light);
-      align-self: flex-start;
-    }
-
-    .chat-bubble.client {
-      background: #eef0f3;
-      align-self: flex-end;
-    }
-
-    @media (max-width: 768px) {
-      .nav { padding: 0.8rem 1rem; }
-      .main-container { padding: 0 1rem 3rem; }
-      .form-row { grid-template-columns: 1fr; }
-      .form-card, .result-card { padding: 1.25rem; }
-      .hero { padding: 2.5rem 0.5rem 2rem; }
-      .hero-stats { gap: 1.5rem; }
-    }
-
-    @media (max-width: 480px) {
-      .services-grid { grid-template-columns: 1fr; }
-      .hero h1 { font-size: 1.6rem; }
+    @media (max-width: 600px) {
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+      .form-card,
+      .result-card {
+        padding: 1.25rem;
+      }
+      .nav {
+        padding: 0.8rem 1rem;
+      }
+      .hero {
+        min-height: 60vh;
+      }
     }
   </style>
 </head>
 <body>
   <nav class="nav">
-    <a class="nav-brand" id="brandLink">
-      <span class="brand-icon">e</span>
-      career.econcours.ma
-    </a>
-    <div class="nav-actions">
-      <span class="nav-link" id="navServices">Services</span>
-      <button class="nav-btn" id="navCta">Découvrir nos services</button>
-    </div>
+    <a class="nav-brand" id="brandLink">career<span>.</span>econcours<span>.</span>ma</a>
+    <button class="nav-btn" id="navCta">Accéder aux services</button>
   </nav>
 
   <main class="main-container">
-    <!-- ==================== PAGE ACCUEIL ==================== -->
+    <!-- ========== PAGE ACCUEIL ========== -->
     <div class="page active" id="pageHome">
       <div class="hero">
-        <div class="hero-badge">● Cabinet de Conseil en Carrière</div>
-        <h1>Nous vous accompagnons dans la construction de votre carrière professionnelle</h1>
-        <p>Des services personnalisés pour chaque étape de votre parcours : candidature, préparation aux entretiens, optimisation de profil et développement professionnel.</p>
-        <button class="hero-cta" id="heroCta">Découvrir nos services ↓</button>
-        <div class="hero-stats">
-          <div class="stat-item"><div class="stat-number">12</div><div class="stat-label">Services professionnels</div></div>
-          <div class="stat-item"><div class="stat-number">100%</div><div class="stat-label">Personnalisé</div></div>
-          <div class="stat-item"><div class="stat-number">24/7</div><div class="stat-label">Disponible</div></div>
-        </div>
-      </div>
-
-      <div id="servicesSection">
-        <div class="section-header">
-          <h2>Nos services professionnels</h2>
-          <p>Choisissez le service adapté à vos besoins du moment.</p>
-        </div>
-        <div id="categoriesContainer"></div>
+        <h1>Votre <span class="accent">carrière</span> mérite une stratégie professionnelle</h1>
+        <p>Des services de candidature haut de gamme pour vous démarquer sur le marché du travail.</p>
+        <button class="hero-cta" id="heroCta">Découvrir nos services →</button>
       </div>
     </div>
 
-    <!-- ==================== PAGE SERVICE ==================== -->
-    <div class="page" id="pageService">
-      <div class="service-header">
-        <button class="back-btn" id="backBtn">←</button>
-        <h2 class="service-page-title" id="serviceTitle">Service</h2>
+    <!-- ========== PAGE SERVICES ========== -->
+    <div class="page" id="pageServices">
+      <div class="services-header">
+        <h2>Nos services</h2>
+        <p>Choisissez le service adapté à votre objectif professionnel.</p>
       </div>
-      <div id="serviceContent"></div>
+      <div class="services-grid" id="servicesGrid"></div>
+      <div class="back-row">
+        <button class="btn btn-outline" id="backToHomeFromServices">← Retour à l'accueil</button>
+      </div>
+    </div>
+
+    <!-- ========== PAGE DÉTAIL SERVICE ========== -->
+    <div class="page" id="pageDetail">
+      <div class="detail-header">
+        <button class="back-btn" id="backToServicesBtn">←</button>
+        <h2 class="detail-title" id="detailTitle">Service</h2>
+      </div>
+      <div id="detailContent"></div>
     </div>
   </main>
 
   <footer class="footer">
-    © 2025 <span>career.econcours.ma</span> — Cabinet de conseil en carrière professionnelle. Tous droits réservés.
+    © 2025 career.econcours.ma — Tous droits réservés.
   </footer>
 
   <script>
@@ -732,99 +616,67 @@
       const GROQ_API_KEY = "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";
       const GROQ_URL = "https://api.groq.com/openai/v1/chat/completions";
       const MODEL = "llama-3.3-70b-versatile";
+      const WHATSAPP = "212644455893";
 
-      const CATEGORIES = [
-        {
-          id: 'candidature', title: 'Candidature', icon: '💼',
-          services: [
-            { id: 'cv', title: 'Génération de CV professionnel', desc: 'Un curriculum vitae complet et structuré, adapté à votre secteur.', icon: '📋' },
-            { id: 'lettre', title: 'Lettre de motivation', desc: 'Une lettre personnalisée qui capte l\'attention des recruteurs.', icon: '📝' },
-            { id: 'email', title: 'Email de candidature', desc: 'Un message professionnel pour accompagner votre dossier.', icon: '📧' },
-            { id: 'optimize_cv', title: 'Optimisation de CV', desc: 'Améliorez votre CV existant avec des recommandations ciblées.', icon: '🔍' },
-          ]
-        },
-        {
-          id: 'preparation', title: 'Préparation aux entretiens', icon: '🎤',
-          services: [
-            { id: 'interview', title: 'Simulation d\'entretien', desc: 'Un consultant virtuel vous pose des questions et évalue vos réponses.', icon: '🎯' },
-            { id: 'answers', title: 'Générateur de réponses', desc: 'Des réponses professionnelles aux questions les plus fréquentes.', icon: '💬' },
-            { id: 'feedback', title: 'Feedback d\'entretien', desc: 'Analyse détaillée de vos réponses avec axes d\'amélioration.', icon: '📊' },
-          ]
-        },
-        {
-          id: 'profil', title: 'Profil professionnel', icon: '🧠',
-          services: [
-            { id: 'linkedin', title: 'Optimisation LinkedIn', desc: 'Un profil LinkedIn complet et attractif pour les recruteurs.', icon: '🔗' },
-            { id: 'resume_pro', title: 'Résumé professionnel', desc: 'Un paragraphe de synthèse percutant pour votre CV.', icon: '✨' },
-            { id: 'objective', title: 'Objectif de carrière', desc: 'Définissez clairement votre projet professionnel.', icon: '🎯' },
-          ]
-        },
-        {
-          id: 'analyse', title: 'Analyse', icon: '📊',
-          services: [
-            { id: 'analyse_cv', title: 'Analyse de CV', desc: 'Diagnostic complet de votre CV avec suggestions.', icon: '📈' },
-            { id: 'analyse_profil', title: 'Analyse de profil', desc: 'Évaluation de votre profil professionnel global.', icon: '🔬' },
-            { id: 'suggestions', title: 'Suggestions d\'amélioration', desc: 'Recommandations personnalisées pour progresser.', icon: '💡' },
-          ]
-        },
-        {
-          id: 'bonus', title: 'Services complémentaires', icon: '🚀',
-          services: [
-            { id: 'portfolio', title: 'Générateur de portfolio', desc: 'Créez un descriptif de portfolio professionnel.', icon: '📁' },
-            { id: 'conseils', title: 'Conseils carrière personnalisés', desc: 'Des recommandations sur mesure pour votre parcours.', icon: '🧭' },
-            { id: 'roadmap', title: 'Plan de carrière', desc: 'Une feuille de route pour atteindre vos objectifs.', icon: '🗺️' },
-            { id: 'rewrite', title: 'Rewriting professionnel', desc: 'Correction et amélioration de vos textes.', icon: '✍️' },
-          ]
-        }
+      const SERVICES = [
+        { id: 'cv', title: 'CV professionnel optimisé', desc: 'Un curriculum vitae structuré et percutant, adapté aux standards actuels du recrutement.', icon: '📋' },
+        { id: 'lettre', title: 'Lettre de motivation', desc: 'Une lettre personnalisée qui met en valeur votre parcours et votre valeur ajoutée.', icon: '📝' },
+        { id: 'email', title: 'Email de candidature', desc: 'Un message professionnel complet pour accompagner votre dossier de candidature.', icon: '📧' },
+        { id: 'interview', title: 'Simulation d\'entretien', desc: 'Un consultant vous pose des questions de recruteur et évalue vos réponses en détail.', icon: '🎤' },
+        { id: 'analyse', title: 'Analyse et amélioration de CV', desc: 'Diagnostic complet de votre CV existant avec recommandations ciblées.', icon: '🔍' },
+        { id: 'linkedin', title: 'Profil LinkedIn professionnel', desc: 'Optimisation complète de votre profil pour attirer les recruteurs.', icon: '🔗' },
+        { id: 'objectif', title: 'Objectif de carrière', desc: 'Définition claire et stratégique de votre projet professionnel.', icon: '🎯' },
       ];
 
-      const ALL_SERVICES = CATEGORIES.flatMap(c => c.services);
       let currentService = null;
 
       const pageHome = document.getElementById('pageHome');
-      const pageService = document.getElementById('pageService');
-      const serviceTitle = document.getElementById('serviceTitle');
-      const serviceContent = document.getElementById('serviceContent');
-      const categoriesContainer = document.getElementById('categoriesContainer');
+      const pageServices = document.getElementById('pageServices');
+      const pageDetail = document.getElementById('pageDetail');
+      const servicesGrid = document.getElementById('servicesGrid');
+      const detailTitle = document.getElementById('detailTitle');
+      const detailContent = document.getElementById('detailContent');
 
       function showHome() {
         pageHome.classList.add('active');
-        pageService.classList.remove('active');
+        pageServices.classList.remove('active');
+        pageDetail.classList.remove('active');
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
 
-      function showService(serviceId) {
-        const svc = ALL_SERVICES.find(s => s.id === serviceId);
+      function showServices() {
+        pageHome.classList.remove('active');
+        pageServices.classList.add('active');
+        pageDetail.classList.remove('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      function showDetail(serviceId) {
+        const svc = SERVICES.find(s => s.id === serviceId);
         if (!svc) return;
         currentService = svc;
-        serviceTitle.textContent = `${svc.icon} ${svc.title}`;
+        detailTitle.textContent = `${svc.icon} ${svc.title}`;
         pageHome.classList.remove('active');
-        pageService.classList.add('active');
-        renderServicePage(svc);
+        pageServices.classList.remove('active');
+        pageDetail.classList.add('active');
+        renderDetail(svc);
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
 
-      function renderHome() {
-        categoriesContainer.innerHTML = CATEGORIES.map(cat => `
-          <div class="category-block">
-            <div class="category-title"><span class="category-icon">${cat.icon}</span>${cat.title}</div>
-            <div class="services-grid">
-              ${cat.services.map(svc => `
-                <div class="service-card" data-service="${svc.id}">
-                  <div class="svc-icon">${svc.icon}</div>
-                  <h3>${svc.title}</h3>
-                  <p>${svc.desc}</p>
-                  <span class="svc-arrow">→</span>
-                </div>
-              `).join('')}
-            </div>
+      function renderServicesGrid() {
+        servicesGrid.innerHTML = SERVICES.map(svc => `
+          <div class="service-card" data-service="${svc.id}">
+            <div class="service-icon">${svc.icon}</div>
+            <h3>${svc.title}</h3>
+            <p>${svc.desc}</p>
+            <span class="svc-arrow">→</span>
           </div>
         `).join('');
 
-        categoriesContainer.querySelectorAll('.service-card').forEach(card => {
+        servicesGrid.querySelectorAll('.service-card').forEach(card => {
           card.addEventListener('click', () => {
             const id = card.dataset.service;
-            if (id) showService(id);
+            if (id) showDetail(id);
           });
         });
       }
@@ -832,25 +684,34 @@
       async function callGroq(sys, usr) {
         const r = await fetch(GROQ_URL, {
           method: "POST",
-          headers: { "Content-Type": "application/json", "Authorization": `Bearer ${GROQ_API_KEY}` },
-          body: JSON.stringify({ model: MODEL, messages: [{ role: "system", content: sys }, { role: "user", content: usr }], temperature: 0.85, max_tokens: 900 })
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${GROQ_API_KEY}`
+          },
+          body: JSON.stringify({
+            model: MODEL,
+            messages: [
+              { role: "system", content: sys },
+              { role: "user", content: usr }
+            ],
+            temperature: 0.8,
+            max_tokens: 900
+          })
         });
         if (!r.ok) throw new Error(`API ${r.status}`);
         const d = await r.json();
         return d.choices[0].message.content.trim();
       }
 
-      function renderServicePage(svc) {
-        if (svc.id === 'interview') { renderInterview(); return; }
-        if (svc.id === 'rewrite') { renderRewrite(); return; }
-        if (svc.id === 'answers' || svc.id === 'feedback') { renderAnswers(svc.id); return; }
-        if (svc.id === 'conseils' || svc.id === 'suggestions') { renderConseils(svc); return; }
-        if (svc.id === 'roadmap') { renderRoadmap(); return; }
-        renderStandard(svc);
+      function buildWhatsAppLink(serviceTitle, userName) {
+        const msg = `Bonjour, je souhaite activer l'abonnement 50 MAD/an pour le service career.econcours.ma. Voici mes informations: service: ${serviceTitle}, nom: ${userName}`;
+        return `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`;
       }
 
-      function renderStandard(svc) {
-        serviceContent.innerHTML = `
+      function renderDetail(svc) {
+        if (svc.id === 'interview') { renderInterview(); return; }
+
+        detailContent.innerHTML = `
           <div class="form-card">
             <div class="form-grid">
               <div class="form-row">
@@ -863,34 +724,33 @@
               </div>
               <div class="form-group"><label>Compétences</label><textarea id="fSkills" rows="2" placeholder="Vos compétences principales (séparées par des virgules)"></textarea></div>
             </div>
-            <div class="style-row">
-              <span class="style-label">Niveau de formalité :</span>
-              <div class="radio-group">
-                <label><input type="radio" name="styleOpt" value="Formel" checked> Formel</label>
-                <label><input type="radio" name="styleOpt" value="Normal"> Normal</label>
-                <label><input type="radio" name="styleOpt" value="Très professionnel"> Très pro</label>
-              </div>
-            </div>
             <div class="form-error" id="formError">Veuillez remplir tous les champs obligatoires.</div>
             <button class="btn btn-primary btn-full" id="genBtn" style="margin-top:1rem;" disabled>Générer le document</button>
           </div>
           <div id="loaderBox" class="loader-box" style="display:none;"><div class="spinner"></div> Préparation de votre document...</div>
           <div class="result-card" id="resultCard">
-            <div class="result-header"><span class="result-badge" id="resultBadge">Document généré</span></div>
+            <div class="result-badge" id="resultBadge">Document généré</div>
             <div class="result-body" id="resultBody"></div>
             <div class="result-actions">
               <button class="btn btn-outline" id="copyBtn">Copier</button>
               <button class="btn btn-ghost" id="regenBtn">Regénérer</button>
+              <button class="btn btn-outline" id="exportPdf">PDF</button>
+              <button class="btn btn-outline" id="exportDoc">Word</button>
             </div>
           </div>
-          <div class="suggestions" id="suggestBox" style="display:none;"><p>Continuer avec un autre service :</p><div class="suggestions-row" id="suggestRow"></div></div>
+          <div class="upgrade-card" id="upgradeCard" style="display:none;">
+            <h4>🔓 Débloquez l'accès complet</h4>
+            <p>Abonnement annuel pour un usage illimité de tous les services.</p>
+            <div class="price">50 MAD <span>/ an</span></div>
+            <button class="btn btn-accent btn-full" id="upgradeBtn" style="margin-top:0.8rem;">Activer l'abonnement via WhatsApp</button>
+          </div>
         `;
 
         const fName = document.getElementById('fName'), fCity = document.getElementById('fCity'), fJob = document.getElementById('fJob'), fSkills = document.getElementById('fSkills');
         const genBtn = document.getElementById('genBtn'), formError = document.getElementById('formError');
         const loaderBox = document.getElementById('loaderBox'), resultCard = document.getElementById('resultCard'), resultBody = document.getElementById('resultBody'), resultBadge = document.getElementById('resultBadge');
-        const suggestBox = document.getElementById('suggestBox'), suggestRow = document.getElementById('suggestRow');
-        let last = '';
+        const upgradeCard = document.getElementById('upgradeCard');
+        let lastContent = '';
 
         function check() {
           const ok = fName.value.trim() && fCity.value.trim() && fJob.value.trim() && fSkills.value.trim();
@@ -900,160 +760,80 @@
         [fName, fCity, fJob, fSkills].forEach(e => e.addEventListener('input', check));
 
         genBtn.addEventListener('click', async () => {
-          if (!fName.value.trim() || !fCity.value.trim() || !fJob.value.trim() || !fSkills.value.trim()) { formError.classList.add('visible'); return; }
+          if (!fName.value.trim() || !fCity.value.trim() || !fJob.value.trim() || !fSkills.value.trim()) {
+            formError.classList.add('visible');
+            return;
+          }
           formError.classList.remove('visible');
-          loaderBox.style.display = 'flex'; resultCard.classList.remove('visible'); suggestBox.style.display = 'none';
-          const style = document.querySelector('input[name="styleOpt"]:checked')?.value || 'Formel';
-          const u = { name: fName.value.trim(), city: fCity.value.trim(), degree: document.getElementById('fDegree').value.trim() || 'Non spécifié', job: fJob.value.trim(), skills: fSkills.value.trim(), style };
-          const prompts = {
-            cv: `Rédige un CV professionnel complet en français. Nom: ${u.name}, ville: ${u.city}, diplôme: ${u.degree}, poste visé: ${u.job}, compétences: ${u.skills}. Style: ${u.style}.`,
-            lettre: `Rédige une lettre de motivation. Candidat: ${u.name}, ville: ${u.city}, diplôme: ${u.degree}, poste: ${u.job}, compétences: ${u.skills}. Style: ${u.style}.`,
-            email: `Rédige un email de candidature. ${u.name}, poste: ${u.job}, compétences: ${u.skills}. Style: ${u.style}.`,
-            optimize_cv: `Optimise ce profil de CV. ${u.name}, compétences: ${u.skills}, poste: ${u.job}. Donne des recommandations.`,
-            linkedin: `Rédige un profil LinkedIn. ${u.name}, poste: ${u.job}, compétences: ${u.skills}, ville: ${u.city}. Style: ${u.style}.`,
-            resume_pro: `Rédige un résumé professionnel (3-4 lignes). ${u.name}, poste: ${u.job}, compétences: ${u.skills}.`,
-            objective: `Rédige un objectif de carrière. ${u.name}, poste visé: ${u.job}, compétences: ${u.skills}.`,
-            analyse_cv: `Analyse ce profil de CV et donne des suggestions. ${u.name}, compétences: ${u.skills}, poste: ${u.job}.`,
-            analyse_profil: `Analyse ce profil professionnel. ${u.name}, compétences: ${u.skills}, poste: ${u.job}.`,
-            portfolio: `Rédige un descriptif de portfolio professionnel. ${u.name}, poste: ${u.job}, compétences: ${u.skills}.`,
+          loaderBox.style.display = 'flex';
+          resultCard.classList.remove('visible');
+          upgradeCard.style.display = 'none';
+
+          const u = {
+            name: fName.value.trim(),
+            city: fCity.value.trim(),
+            degree: document.getElementById('fDegree').value.trim() || 'Non spécifié',
+            job: fJob.value.trim(),
+            skills: fSkills.value.trim()
           };
+
+          const prompts = {
+            cv: `Rédige un CV professionnel complet et structuré. Candidat: ${u.name}, ville: ${u.city}, diplôme: ${u.degree}, poste visé: ${u.job}, compétences: ${u.skills}. Rédaction soignée, mise en page suggérée.`,
+            lettre: `Rédige une lettre de motivation professionnelle de haute qualité. Candidat: ${u.name}, ville: ${u.city}, diplôme: ${u.degree}, poste: ${u.job}, compétences: ${u.skills}. Ton professionnel et convaincant.`,
+            email: `Rédige un email de candidature professionnel avec objet et formule de politesse. ${u.name}, poste: ${u.job}, compétences: ${u.skills}.`,
+            analyse: `Analyse ce profil de CV et donne des recommandations professionnelles détaillées. ${u.name}, compétences: ${u.skills}, poste: ${u.job}, diplôme: ${u.degree}.`,
+            linkedin: `Rédige un profil LinkedIn professionnel complet. ${u.name}, poste: ${u.job}, compétences: ${u.skills}, ville: ${u.city}.`,
+            objectif: `Rédige un objectif de carrière stratégique et professionnel. ${u.name}, poste visé: ${u.job}, compétences: ${u.skills}.`,
+          };
+
           try {
-            const content = await callGroq("Expert en recrutement et conseil de carrière. Réponds en français formel.", prompts[svc.id] || `Génère un document pour: ${svc.title}. Candidat: ${u.name}, poste: ${u.job}.`);
-            last = content;
+            const content = await callGroq("Expert en recrutement et rédaction professionnelle. Réponds en français soigné.", prompts[svc.id]);
+            lastContent = content;
             resultBadge.textContent = svc.title;
             resultBody.textContent = content;
             resultCard.classList.add('visible');
-            showSuggestions(svc.id, suggestRow, suggestBox);
-          } catch { resultBody.textContent = "Une erreur est survenue. Veuillez réessayer."; resultCard.classList.add('visible'); }
-          finally { loaderBox.style.display = 'none'; }
+            upgradeCard.style.display = 'block';
+            document.getElementById('upgradeBtn').addEventListener('click', () => {
+              window.open(buildWhatsAppLink(svc.title, u.name), '_blank');
+            });
+          } catch {
+            resultBody.textContent = "Une erreur est survenue. Veuillez réessayer.";
+            resultCard.classList.add('visible');
+          } finally {
+            loaderBox.style.display = 'none';
+          }
         });
 
-        document.getElementById('copyBtn').addEventListener('click', () => { if (last) navigator.clipboard.writeText(last).then(() => alert('Document copié avec succès.')); });
+        document.getElementById('copyBtn').addEventListener('click', () => {
+          if (lastContent) navigator.clipboard.writeText(lastContent).then(() => alert('Document copié.'));
+        });
         document.getElementById('regenBtn').addEventListener('click', () => genBtn.click());
-      }
-
-      function renderRewrite() {
-        serviceContent.innerHTML = `
-          <div class="form-card">
-            <div class="form-group"><label>Texte à améliorer</label><textarea id="rwInput" rows="5" placeholder="Collez le texte que vous souhaitez faire corriger et améliorer..."></textarea></div>
-            <div class="style-row"><span class="style-label">Niveau :</span><div class="radio-group">
-              <label><input type="radio" name="rwStyle" value="Formel" checked> Formel</label>
-              <label><input type="radio" name="rwStyle" value="Normal"> Normal</label>
-            </div></div>
-            <div class="form-error" id="rwError">Veuillez entrer un texte.</div>
-            <button class="btn btn-primary btn-full" id="rwBtn" style="margin-top:1rem;" disabled>Améliorer le texte</button>
-          </div>
-          <div id="rwLoader" class="loader-box" style="display:none;"><div class="spinner"></div> Amélioration en cours...</div>
-          <div class="result-card" id="rwResult"><div class="result-header"><span class="result-badge">Texte amélioré</span></div><div class="result-body" id="rwBody"></div><div class="result-actions"><button class="btn btn-outline" id="rwCopy">Copier</button><button class="btn btn-ghost" id="rwRegen">Regénérer</button></div></div>
-        `;
-        const inp = document.getElementById('rwInput'), btn = document.getElementById('rwBtn'), err = document.getElementById('rwError'), loader = document.getElementById('rwLoader'), res = document.getElementById('rwResult'), body = document.getElementById('rwBody');
-        let t = '';
-        inp.addEventListener('input', () => { btn.disabled = !inp.value.trim(); if (inp.value.trim()) err.classList.remove('visible'); });
-        btn.addEventListener('click', async () => {
-          if (!inp.value.trim()) { err.classList.add('visible'); return; }
-          err.classList.remove('visible'); loader.style.display = 'flex'; res.classList.remove('visible');
-          try {
-            t = await callGroq("Expert en rédaction professionnelle. Réponds en français.", `Corrige et améliore ce texte : "${inp.value.trim()}"`);
-            body.textContent = t; res.classList.add('visible');
-          } catch { body.textContent = 'Erreur.'; res.classList.add('visible'); }
-          finally { loader.style.display = 'none'; }
+        document.getElementById('exportPdf').addEventListener('click', () => {
+          if (lastContent) {
+            const blob = new Blob([lastContent], { type: 'application/pdf' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${svc.id}_career_econcours.pdf`;
+            a.click();
+            URL.revokeObjectURL(url);
+          }
         });
-        document.getElementById('rwCopy').addEventListener('click', () => { if (t) navigator.clipboard.writeText(t).then(() => alert('Copié.')); });
-        document.getElementById('rwRegen').addEventListener('click', () => btn.click());
-      }
-
-      function renderAnswers(type) {
-        const isFeedback = type === 'feedback';
-        serviceContent.innerHTML = `
-          <div class="form-card">
-            <div class="form-group"><label>${isFeedback ? 'Votre réponse à analyser' : 'Question d\'entretien'}</label><input type="text" id="qInput" placeholder="${isFeedback ? 'Collez votre réponse ici...' : 'Ex: Pourquoi souhaitez-vous rejoindre notre entreprise ?'}"></div>
-            <div class="form-group"><label>Contexte</label><textarea id="ctxInput" rows="2" placeholder="Poste visé, entreprise, vos atouts..."></textarea></div>
-            <div class="form-error" id="qError">Veuillez remplir le champ obligatoire.</div>
-            <button class="btn btn-primary btn-full" id="qBtn" style="margin-top:1rem;" disabled>${isFeedback ? 'Analyser la réponse' : 'Générer une réponse'}</button>
-          </div>
-          <div id="qLoader" class="loader-box" style="display:none;"><div class="spinner"></div> Traitement...</div>
-          <div class="result-card" id="qResult"><div class="result-header"><span class="result-badge">${isFeedback ? 'Feedback' : 'Réponse'}</span></div><div class="result-body" id="qBody"></div><div class="result-actions"><button class="btn btn-outline" id="qCopy">Copier</button><button class="btn btn-ghost" id="qRegen">${isFeedback ? 'Nouvelle analyse' : 'Autre réponse'}</button></div></div>
-        `;
-        const qInp = document.getElementById('qInput'), ctx = document.getElementById('ctxInput'), btn = document.getElementById('qBtn'), err = document.getElementById('qError'), loader = document.getElementById('qLoader'), res = document.getElementById('qResult'), body = document.getElementById('qBody');
-        let txt = '';
-        qInp.addEventListener('input', () => { btn.disabled = !qInp.value.trim(); if (qInp.value.trim()) err.classList.remove('visible'); });
-        btn.addEventListener('click', async () => {
-          if (!qInp.value.trim()) { err.classList.add('visible'); return; }
-          err.classList.remove('visible'); loader.style.display = 'flex'; res.classList.remove('visible');
-          const prompt = isFeedback
-            ? `Analyse cette réponse d'entretien et donne un feedback détaillé : "${qInp.value.trim()}". Contexte: "${ctx.value.trim() || 'Non spécifié'}".`
-            : `Question d'entretien: "${qInp.value.trim()}". Contexte: "${ctx.value.trim() || 'Non spécifié'}". Rédige une réponse professionnelle.`;
-          try {
-            txt = await callGroq("Coach en entretien professionnel. Réponds en français.", prompt);
-            body.textContent = txt; res.classList.add('visible');
-          } catch { body.textContent = 'Erreur.'; res.classList.add('visible'); }
-          finally { loader.style.display = 'none'; }
+        document.getElementById('exportDoc').addEventListener('click', () => {
+          if (lastContent) {
+            const blob = new Blob([lastContent], { type: 'application/msword' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${svc.id}_career_econcours.doc`;
+            a.click();
+            URL.revokeObjectURL(url);
+          }
         });
-        document.getElementById('qCopy').addEventListener('click', () => { if (txt) navigator.clipboard.writeText(txt).then(() => alert('Copié.')); });
-        document.getElementById('qRegen').addEventListener('click', () => btn.click());
-      }
-
-      function renderConseils(svc) {
-        serviceContent.innerHTML = `
-          <div class="form-card">
-            <div class="form-group"><label>Secteur d'activité</label><input type="text" id="cSector" placeholder="Votre secteur (ex: Marketing, IT, Finance...)"></div>
-            <div class="form-group"><label>Poste actuel ou visé</label><input type="text" id="cJob" placeholder="Poste recherché"></div>
-            <div class="form-group"><label>Années d'expérience</label><input type="text" id="cExp" placeholder="Ex: 3 ans"></div>
-            <div class="form-group"><label>Objectif</label><textarea id="cGoal" rows="2" placeholder="Que souhaitez-vous accomplir ?"></textarea></div>
-            <div class="form-error" id="cError">Veuillez remplir les champs obligatoires.</div>
-            <button class="btn btn-primary btn-full" id="cBtn" style="margin-top:1rem;" disabled>Obtenir des conseils</button>
-          </div>
-          <div id="cLoader" class="loader-box" style="display:none;"><div class="spinner"></div> Analyse de votre profil...</div>
-          <div class="result-card" id="cResult"><div class="result-header"><span class="result-badge">${svc.title}</span></div><div class="result-body" id="cBody"></div><div class="result-actions"><button class="btn btn-outline" id="cCopy">Copier</button><button class="btn btn-ghost" id="cRegen">Regénérer</button></div></div>
-        `;
-        const sec = document.getElementById('cSector'), job = document.getElementById('cJob'), exp = document.getElementById('cExp'), goal = document.getElementById('cGoal'), btn = document.getElementById('cBtn'), err = document.getElementById('cError'), loader = document.getElementById('cLoader'), res = document.getElementById('cResult'), body = document.getElementById('cBody');
-        let t = '';
-        function chk() { const ok = sec.value.trim() && job.value.trim(); btn.disabled = !ok; if (ok) err.classList.remove('visible'); }
-        [sec, job, exp, goal].forEach(e => e.addEventListener('input', chk));
-        btn.addEventListener('click', async () => {
-          if (!sec.value.trim() || !job.value.trim()) { err.classList.add('visible'); return; }
-          err.classList.remove('visible'); loader.style.display = 'flex'; res.classList.remove('visible');
-          try {
-            t = await callGroq("Conseiller en carrière. Réponds en français.", `Donne des ${svc.id === 'suggestions' ? 'suggestions d\'amélioration' : 'conseils de carrière personnalisés'} pour: secteur ${sec.value.trim()}, poste ${job.value.trim()}, ${exp.value.trim() || 'expérience non précisée'} ans, objectif: ${goal.value.trim() || 'non précisé'}.`);
-            body.textContent = t; res.classList.add('visible');
-          } catch { body.textContent = 'Erreur.'; res.classList.add('visible'); }
-          finally { loader.style.display = 'none'; }
-        });
-        document.getElementById('cCopy').addEventListener('click', () => { if (t) navigator.clipboard.writeText(t).then(() => alert('Copié.')); });
-        document.getElementById('cRegen').addEventListener('click', () => btn.click());
-      }
-
-      function renderRoadmap() {
-        serviceContent.innerHTML = `
-          <div class="form-card">
-            <div class="form-group"><label>Poste actuel</label><input type="text" id="rCurrent" placeholder="Votre poste actuel"></div>
-            <div class="form-group"><label>Poste cible</label><input type="text" id="rTarget" placeholder="Poste que vous visez"></div>
-            <div class="form-group"><label>Compétences actuelles</label><textarea id="rSkills" rows="2" placeholder="Vos compétences principales"></textarea></div>
-            <div class="form-error" id="rError">Veuillez remplir les champs obligatoires.</div>
-            <button class="btn btn-primary btn-full" id="rBtn" style="margin-top:1rem;" disabled>Générer le plan de carrière</button>
-          </div>
-          <div id="rLoader" class="loader-box" style="display:none;"><div class="spinner"></div> Élaboration du plan...</div>
-          <div class="result-card" id="rResult"><div class="result-header"><span class="result-badge">Plan de carrière</span></div><div class="result-body" id="rBody"></div><div class="result-actions"><button class="btn btn-outline" id="rCopy">Copier</button><button class="btn btn-ghost" id="rRegen">Regénérer</button></div></div>
-        `;
-        const cur = document.getElementById('rCurrent'), tgt = document.getElementById('rTarget'), sk = document.getElementById('rSkills'), btn = document.getElementById('rBtn'), err = document.getElementById('rError'), loader = document.getElementById('rLoader'), res = document.getElementById('rResult'), body = document.getElementById('rBody');
-        let txt = '';
-        function chk() { const ok = cur.value.trim() && tgt.value.trim(); btn.disabled = !ok; if (ok) err.classList.remove('visible'); }
-        [cur, tgt, sk].forEach(e => e.addEventListener('input', chk));
-        btn.addEventListener('click', async () => {
-          if (!cur.value.trim() || !tgt.value.trim()) { err.classList.add('visible'); return; }
-          err.classList.remove('visible'); loader.style.display = 'flex'; res.classList.remove('visible');
-          try {
-            txt = await callGroq("Coach de carrière. Réponds en français.", `Crée un plan de carrière (roadmap) de ${cur.value.trim()} vers ${tgt.value.trim()}. Compétences: ${sk.value.trim() || 'non précisées'}.`);
-            body.textContent = txt; res.classList.add('visible');
-          } catch { body.textContent = 'Erreur.'; res.classList.add('visible'); }
-          finally { loader.style.display = 'none'; }
-        });
-        document.getElementById('rCopy').addEventListener('click', () => { if (txt) navigator.clipboard.writeText(txt).then(() => alert('Copié.')); });
-        document.getElementById('rRegen').addEventListener('click', () => btn.click());
       }
 
       function renderInterview() {
-        serviceContent.innerHTML = `
+        detailContent.innerHTML = `
           <div class="form-card">
             <div class="form-row">
               <div class="form-group"><label>Poste visé</label><input type="text" id="ivJob" placeholder="Poste pour l'entretien"></div>
@@ -1063,45 +843,70 @@
             <button class="btn btn-primary btn-full" id="ivStart" style="margin-top:1rem;" disabled>Démarrer la simulation</button>
           </div>
           <div class="result-card" id="ivCard" style="display:none;">
-            <div class="result-header"><span class="result-badge">Simulation d'entretien</span></div>
-            <div class="chat-container" id="ivChat"></div>
+            <div class="result-badge">Simulation d'entretien</div>
+            <div id="ivChat" style="display:flex;flex-direction:column;gap:0.7rem;max-height:340px;overflow-y:auto;margin-bottom:1rem;"></div>
             <div id="ivInputRow" style="display:flex;gap:0.5rem;"><input type="text" id="ivAnswer" placeholder="Votre réponse..." style="flex:1;"><button class="btn btn-primary" id="ivSend">Envoyer</button></div>
-            <div id="ivScore" style="display:none;background:var(--primary-light);padding:1rem;border-radius:var(--radius);text-align:center;font-weight:600;margin-top:1rem;"></div>
-            <button class="btn btn-outline btn-full" id="ivRestart" style="display:none;margin-top:0.75rem;">Nouvelle simulation</button>
+            <div id="ivScore" style="display:none;background:#f5f4f0;padding:1rem;border-radius:var(--radius);text-align:center;font-weight:600;margin-top:1rem;"></div>
+            <button class="btn btn-outline btn-full" id="ivRestart" style="display:none;margin-top:0.7rem;">Nouvelle simulation</button>
+          </div>
+          <div class="upgrade-card" id="ivUpgrade" style="display:none;">
+            <h4>🔓 Débloquez l'accès complet</h4>
+            <p>Abonnement annuel pour un usage illimité.</p>
+            <div class="price">50 MAD <span>/ an</span></div>
+            <button class="btn btn-accent btn-full" id="ivUpgradeBtn" style="margin-top:0.8rem;">Activer l'abonnement via WhatsApp</button>
           </div>
         `;
+
         const jobI = document.getElementById('ivJob'), compI = document.getElementById('ivCompany'), start = document.getElementById('ivStart'), err = document.getElementById('ivError');
         const card = document.getElementById('ivCard'), chat = document.getElementById('ivChat'), inpRow = document.getElementById('ivInputRow');
         const ansI = document.getElementById('ivAnswer'), send = document.getElementById('ivSend'), score = document.getElementById('ivScore'), restart = document.getElementById('ivRestart');
+        const upgradeCard = document.getElementById('ivUpgrade');
         let qs = [], ans = [], idx = 0;
         const T = 4;
 
         jobI.addEventListener('input', () => { start.disabled = !jobI.value.trim(); if (jobI.value.trim()) err.classList.remove('visible'); });
+
         start.addEventListener('click', async () => {
           if (!jobI.value.trim()) { err.classList.add('visible'); return; }
-          err.classList.remove('visible'); card.style.display = 'block'; chat.innerHTML = '<div class="loader-box"><div class="spinner"></div> Préparation...</div>';
-          inpRow.style.display = 'none'; score.style.display = 'none'; restart.style.display = 'none'; ans = []; idx = 0;
+          err.classList.remove('visible');
+          card.style.display = 'block';
+          upgradeCard.style.display = 'none';
+          chat.innerHTML = '<div class="loader-box"><div class="spinner"></div> Préparation...</div>';
+          inpRow.style.display = 'none';
+          score.style.display = 'none';
+          restart.style.display = 'none';
+          ans = [];
+          idx = 0;
           try {
-            const qText = await callGroq("Recruteur professionnel. Réponds en français.", `Génère ${T} questions d'entretien pour ${jobI.value.trim()} chez ${compI.value.trim() || 'une entreprise'}. Numérote.`);
+            const qText = await callGroq("Recruteur professionnel. Réponds en français.", `Génère ${T} questions d'entretien pour ${jobI.value.trim()} chez ${compI.value.trim() || 'une entreprise'}.`);
             qs = qText.split('\n').filter(l => l.trim() && /\d/.test(l)).map(l => l.replace(/^\d+[\.\)]\s*/, '')).slice(0, T);
-            if (qs.length < 2) qs = ["Parlez-moi de votre parcours.", "Pourquoi ce poste vous intéresse-t-il ?", "Quelles sont vos principales qualités professionnelles ?", "Comment gérez-vous les situations difficiles ?"];
+            if (qs.length < 2) qs = ["Parlez-moi de votre parcours.", "Pourquoi ce poste ?", "Quelles sont vos forces ?", "Comment gérez-vous la pression ?"];
             chat.innerHTML = '';
-            bubble('consultant', `Bonjour. Je vais vous poser ${qs.length} questions pour le poste de <strong>${jobI.value.trim()}</strong>.`);
+            bubble('consultant', `Bonjour. Simulation pour <strong>${jobI.value.trim()}</strong>.`);
             setTimeout(() => { bubble('consultant', `Question 1/${qs.length} : ${qs[0]}`); inpRow.style.display = 'flex'; ansI.focus(); }, 800);
-          } catch { chat.innerHTML = '<p>Erreur lors de la préparation.</p>'; }
+          } catch { chat.innerHTML = '<p>Erreur.</p>'; }
         });
 
         send.addEventListener('click', async () => {
-          const a = ansI.value.trim(); if (!a) return;
-          bubble('client', a); ans.push({ q: qs[idx], a }); ansI.value = ''; idx++;
-          if (idx < qs.length) { bubble('consultant', `Question ${idx + 1}/${qs.length} : ${qs[idx]}`); }
-          else {
-            inpRow.style.display = 'none'; bubble('consultant', 'Je procède à l\'évaluation de vos réponses...');
+          const a = ansI.value.trim();
+          if (!a) return;
+          bubble('client', a);
+          ans.push({ q: qs[idx], a });
+          ansI.value = '';
+          idx++;
+          if (idx < qs.length) { bubble('consultant', `Question ${idx + 1}/${qs.length} : ${qs[idx]}`); } else {
+            inpRow.style.display = 'none';
+            bubble('consultant', 'Évaluation en cours...');
             try {
-              const fb = await callGroq("Coach en entretien. Réponds en français.", `Évalue ces réponses sur 10 avec feedback constructif : ${JSON.stringify(ans)}`);
-              score.innerHTML = `📊 Résultat de l'évaluation :<br><br>${fb}`; score.style.display = 'block';
+              const fb = await callGroq("Coach en entretien. Réponds en français.", `Évalue ces réponses sur 10 avec feedback : ${JSON.stringify(ans)}`);
+              score.innerHTML = `📊 Résultat :<br><br>${fb}`;
+              score.style.display = 'block';
             } catch { score.innerHTML = 'Évaluation indisponible.'; score.style.display = 'block'; }
             restart.style.display = 'block';
+            upgradeCard.style.display = 'block';
+            document.getElementById('ivUpgradeBtn').addEventListener('click', () => {
+              window.open(buildWhatsAppLink('Simulation d\'entretien', jobI.value.trim()), '_blank');
+            });
           }
           chat.scrollTop = chat.scrollHeight;
         });
@@ -1110,36 +915,23 @@
 
         function bubble(type, text) {
           const d = document.createElement('div');
-          d.className = `chat-bubble ${type}`;
+          d.style.cssText = `padding:0.65rem 1rem;border-radius:1rem;max-width:82%;line-height:1.5;font-size:0.88rem;`;
+          d.style.background = type === 'consultant' ? '#f5f4f0' : '#e8e6e0';
+          d.style.alignSelf = type === 'consultant' ? 'flex-start' : 'flex-end';
           d.innerHTML = text;
           chat.appendChild(d);
           chat.scrollTop = chat.scrollHeight;
         }
       }
 
-      function showSuggestions(excludeId, row, box) {
-        const others = ALL_SERVICES.filter(s => s.id !== excludeId).slice(0, 4);
-        row.innerHTML = others.map(s => `<button class="btn btn-outline sug-btn" data-sid="${s.id}">${s.icon} ${s.title}</button>`).join('');
-        box.style.display = 'block';
-        row.querySelectorAll('.sug-btn').forEach(b => b.addEventListener('click', () => showService(b.dataset.sid)));
-      }
-
       // Events
       document.getElementById('brandLink').addEventListener('click', e => { e.preventDefault(); showHome(); });
-      document.getElementById('navServices').addEventListener('click', () => {
-        showHome();
-        setTimeout(() => document.getElementById('servicesSection')?.scrollIntoView({ behavior: 'smooth' }), 200);
-      });
-      document.getElementById('navCta').addEventListener('click', () => {
-        showHome();
-        setTimeout(() => document.getElementById('servicesSection')?.scrollIntoView({ behavior: 'smooth' }), 200);
-      });
-      document.getElementById('heroCta').addEventListener('click', () => {
-        document.getElementById('servicesSection')?.scrollIntoView({ behavior: 'smooth' });
-      });
-      document.getElementById('backBtn').addEventListener('click', showHome);
+      document.getElementById('navCta').addEventListener('click', showServices);
+      document.getElementById('heroCta').addEventListener('click', showServices);
+      document.getElementById('backToHomeFromServices').addEventListener('click', showHome);
+      document.getElementById('backToServicesBtn').addEventListener('click', showServices);
 
-      renderHome();
+      renderServicesGrid();
     })();
   </script>
 </body>
