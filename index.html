@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>AI Smart Job Matcher | Econcours.ma</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>ai.econcours.ma | Assistant de candidature IA</title>
   <style>
     * {
       margin: 0;
@@ -12,877 +12,562 @@
     }
 
     body {
-      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Tahoma, sans-serif;
-      background: linear-gradient(135deg, #f0f4f8 0%, #e9eef4 100%);
-      color: #1a2c3e;
-      line-height: 1.5;
-      min-height: 100vh;
-    }
-
-    .container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
-
-    .navbar {
-      background: rgba(255, 255, 255, 0.96);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      padding: 0.8rem 0;
-    }
-
-    .nav-inner {
+      background: #f5f7fb;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       display: flex;
-      justify-content: space-between;
+      flex-direction: column;
       align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 1.5rem;
+      margin: 0;
+      color: #0f172a;
+    }
+
+    .main-container {
+      max-width: 1000px;
+      width: 100%;
+      background: #ffffff;
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.08);
+      border-radius: 2.5rem;
+      padding: 2rem 2rem 2.5rem;
+      border: 1px solid rgba(203, 213, 225, 0.4);
+      transition: all 0.2s ease;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 600;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.25rem;
+      color: #0f172a;
+    }
+
+    .subtitle {
+      color: #475569;
+      margin-bottom: 2rem;
+      font-size: 1rem;
+      border-left: 4px solid #3b82f6;
+      padding-left: 1rem;
+      font-weight: 400;
+    }
+
+    .form-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .row {
+      display: flex;
       flex-wrap: wrap;
       gap: 1rem;
     }
 
-    .logo h1 {
-      font-size: 1.6rem;
-      font-weight: 800;
-      background: linear-gradient(135deg, #0f2b3d, #1d6f9c);
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
-    }
-
-    .logo span {
-      font-size: 0.7rem;
-      font-weight: 500;
-      color: #5a6e7c;
-      display: block;
-    }
-
-    .lang-switch {
-      display: flex;
-      gap: 0.4rem;
-      background: #f0f3f8;
-      padding: 0.3rem;
-      border-radius: 3rem;
-    }
-
-    .lang-btn {
-      background: transparent;
-      border: none;
-      padding: 0.4rem 1rem;
-      border-radius: 2rem;
-      font-weight: 600;
-      font-size: 0.8rem;
-      cursor: pointer;
-      transition: all 0.2s;
-      color: #435564;
-    }
-
-    .lang-btn.active {
-      background: white;
-      color: #1d6f9c;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-    }
-
-    .hero {
-      text-align: center;
-      padding: 2rem 0 1.5rem;
-    }
-
-    .hero-badge {
-      display: inline-block;
-      background: linear-gradient(135deg, #1d6f9c20, #1d6f9c10);
-      padding: 0.25rem 1.2rem;
-      border-radius: 2rem;
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: #1d6f9c;
-      margin-bottom: 0.8rem;
-    }
-
-    .hero-title {
-      font-size: 2.2rem;
-      font-weight: 800;
-      background: linear-gradient(145deg, #0f2b3d, #1d6f9c);
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
-      max-width: 700px;
-      margin: 0 auto 0.5rem;
-    }
-
-    .hero-desc {
-      font-size: 1rem;
-      color: #4c5a68;
-      max-width: 550px;
-      margin: 0 auto;
-    }
-
-    .form-card {
-      background: white;
-      border-radius: 1.5rem;
-      box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.1);
-      padding: 2rem;
-      margin-bottom: 2rem;
-    }
-
-    .form-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.2rem;
-      margin-bottom: 1.5rem;
-    }
-
     .input-group {
+      flex: 1 1 200px;
       display: flex;
       flex-direction: column;
-      gap: 0.5rem;
+      gap: 0.4rem;
     }
 
-    .input-group label {
+    label {
+      font-size: 0.85rem;
       font-weight: 600;
-      font-size: 0.8rem;
-      color: #2c3f55;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: #334155;
     }
 
-    input, textarea {
-      padding: 0.8rem 1rem;
+    input, textarea, select {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
       border-radius: 1rem;
-      border: 1.5px solid #e2edf2;
+      padding: 0.8rem 1rem;
       font-size: 0.95rem;
-      transition: all 0.2s;
       font-family: inherit;
-      background: white;
-    }
-
-    input:focus, textarea:focus {
+      transition: 0.2s;
       outline: none;
-      border-color: #1d6f9c;
-      box-shadow: 0 0 0 3px rgba(29,111,156,0.1);
-    }
-
-    textarea {
+      box-shadow: 0 1px 2px rgba(0,0,0,0.02);
       resize: vertical;
-      min-height: 80px;
     }
 
-    .btn-primary {
-      background: linear-gradient(105deg, #1d6f9c, #155a7e);
+    input:focus, textarea:focus, select:focus {
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 3px rgba(59,130,246,0.15);
+    }
+
+    .style-selector {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .radio-group {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .radio-group label {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-weight: 500;
+      text-transform: none;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+
+    button {
+      background: #1e293b;
       color: white;
       border: none;
       padding: 0.9rem 2rem;
-      border-radius: 3rem;
+      border-radius: 2.5rem;
       font-weight: 600;
       font-size: 1rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
       cursor: pointer;
       transition: all 0.25s;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      letter-spacing: -0.2px;
+      border: 1px solid #1e293b;
+    }
+
+    button:hover {
+      background: #0f172a;
+      box-shadow: 0 10px 20px -8px rgba(15,23,42,0.3);
+      transform: translateY(-1px);
+    }
+
+    button.secondary {
+      background: white;
+      color: #1e293b;
+      border: 1px solid #cbd5e1;
+      box-shadow: none;
+    }
+
+    button.secondary:hover {
+      background: #f1f5f9;
+      border-color: #94a3b8;
+    }
+
+    .generate-btn {
       width: 100%;
+      margin: 0.5rem 0 1.5rem;
+      background: #2563eb;
+      border: 1px solid #2563eb;
+      font-size: 1.1rem;
+      padding: 1rem;
+    }
+
+    .generate-btn:hover {
+      background: #1d4ed8;
+    }
+
+    .loading-spinner {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 0.6rem;
+      gap: 0.7rem;
+      padding: 2rem;
+      color: #2563eb;
+      font-weight: 500;
     }
 
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 20px -8px rgba(29,111,156,0.4);
+    .spinner {
+      width: 20px;
+      height: 20px;
+      border: 2px solid #cbd5e1;
+      border-top: 2px solid #2563eb;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
     }
 
-    .btn-primary:disabled {
-      opacity: 0.7;
-      cursor: wait;
-      transform: none;
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
 
-    .loading-container {
+    .results-grid {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 3rem 2rem;
-      background: white;
-      border-radius: 1.5rem;
-      margin: 1rem 0;
-      animation: fadeIn 0.3s ease;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .pulse-loader {
-      width: 60px;
-      height: 60px;
-      background: linear-gradient(135deg, #1d6f9c, #0f4b6e);
-      border-radius: 50%;
-      animation: pulse 1.2s ease-in-out infinite;
-      margin-bottom: 1.2rem;
-      box-shadow: 0 0 20px rgba(29,111,156,0.3);
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(0.8); opacity: 0.6; }
-      50% { transform: scale(1); opacity: 1; }
-      100% { transform: scale(0.8); opacity: 0.6; }
-    }
-
-    .loading-text {
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: #1d6f9c;
-      margin-bottom: 0.5rem;
-    }
-
-    .loading-sub {
-      font-size: 0.85rem;
-      color: #7a8e9e;
-    }
-
-    .loading-time {
-      font-size: 0.75rem;
-      color: #9aabbb;
-      margin-top: 0.8rem;
-    }
-
-    .results-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      flex-wrap: wrap;
-      margin: 1.5rem 0 1rem;
-    }
-
-    .results-title {
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: #1a2c3e;
-    }
-
-    .results-count {
-      background: #e9f0f5;
-      padding: 0.2rem 1rem;
-      border-radius: 2rem;
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: #1d6f9c;
-    }
-
-    .cards-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
       gap: 1.5rem;
-      animation: fadeUp 0.4s ease;
+      margin-top: 1.5rem;
     }
 
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(15px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .company-card {
-      background: white;
-      border-radius: 1.3rem;
-      padding: 1.3rem;
-      transition: all 0.25s ease;
-      border: 1px solid #ecf3f8;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
-    }
-
-    .company-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 16px 28px -12px rgba(0, 0, 0, 0.12);
-    }
-
-    .best-match {
-      border-right: 4px solid #f5b042;
-      background: linear-gradient(115deg, #ffffff, #fffbf0);
+    .card {
+      background: #ffffff;
+      border: 1px solid #e9eef3;
+      border-radius: 1.5rem;
+      padding: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+      transition: 0.2s;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
     }
 
     .card-header {
       display: flex;
+      align-items: center;
       justify-content: space-between;
-      align-items: baseline;
-      flex-wrap: wrap;
-      margin-bottom: 0.6rem;
-    }
-
-    .company-name {
-      font-size: 1.25rem;
-      font-weight: 800;
-      color: #1a2c3e;
-    }
-
-    .match-score {
-      background: #dff1ff;
-      padding: 0.2rem 0.7rem;
-      border-radius: 2rem;
-      font-weight: 700;
-      font-size: 0.75rem;
-      color: #1d6f9c;
-    }
-
-    .company-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-      margin: 0.6rem 0;
-      font-size: 0.75rem;
-      color: #4f6579;
-    }
-
-    .reason-card {
-      background: #f9fbfd;
-      padding: 0.6rem 0.8rem;
-      border-radius: 1rem;
-      margin: 0.7rem 0;
-      font-size: 0.75rem;
-      border-right: 3px solid #1d6f9c;
-    }
-
-    .contact-buttons {
-      display: flex;
       flex-wrap: wrap;
       gap: 0.5rem;
-      margin: 0.7rem 0;
     }
 
-    .contact-link {
-      background: #f0f4f9;
-      padding: 0.35rem 0.7rem;
+    .card-title {
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      color: #2563eb;
+      background: #eff6ff;
+      padding: 0.25rem 1rem;
       border-radius: 2rem;
-      text-decoration: none;
-      font-size: 0.7rem;
-      font-weight: 500;
-      color: #1e4a6e;
-      transition: 0.2s;
     }
 
-    .action-group {
-      display: flex;
-      gap: 0.6rem;
-      margin-top: 0.8rem;
-    }
-
-    .btn-solid, .btn-outline {
-      flex: 1;
-      padding: 0.5rem;
-      border-radius: 2rem;
-      font-weight: 600;
-      font-size: 0.7rem;
-      cursor: pointer;
-      transition: 0.2s;
-      text-align: center;
-      border: none;
-    }
-
-    .btn-solid {
-      background: #22668d;
-      color: white;
-    }
-
-    .btn-solid:hover {
-      background: #0f4b6e;
-    }
-
-    .btn-outline {
-      background: white;
-      border: 1px solid #cbdde9;
-      color: #2c5a77;
-    }
-
-    .generated-message {
-      margin-top: 0.8rem;
-      background: #fef7e0;
-      padding: 0.7rem;
-      border-radius: 1rem;
-      font-size: 0.7rem;
-      line-height: 1.4;
-      border: 1px solid #fbe5b9;
-    }
-
-    .error-message {
-      background: #fee2e2;
-      border-right: 4px solid #ef4444;
+    .card-content {
+      background: #f8fafc;
       padding: 1rem;
       border-radius: 1rem;
-      margin: 1rem 0;
-      color: #991b1b;
-      font-size: 0.85rem;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      white-space: pre-wrap;
+      word-break: break-word;
+      color: #1e293b;
+      border: 1px solid #f1f5f9;
+      max-height: 300px;
+      overflow-y: auto;
     }
 
-    footer {
-      margin-top: 2.5rem;
-      padding: 1.2rem 0;
-      border-top: 1px solid #e4edf2;
+    .card-actions {
+      display: flex;
+      gap: 0.7rem;
+      flex-wrap: wrap;
+      margin-top: 0.3rem;
+    }
+
+    .btn-small {
+      padding: 0.5rem 1.2rem;
+      font-size: 0.8rem;
+      border-radius: 2rem;
+    }
+
+    hr {
+      margin: 1.5rem 0 0.5rem;
+      border: 0.5px solid #e2e8f0;
+    }
+
+    .version-btn {
       text-align: center;
-      font-size: 0.7rem;
-      color: #6c7c8b;
+      margin-top: 1rem;
     }
 
-    @media (max-width: 640px) {
-      .container { padding: 0 1rem; }
-      .hero-title { font-size: 1.6rem; }
-      .form-card { padding: 1.2rem; }
+    @media (max-width: 600px) {
+      body {
+        padding: 0.8rem;
+      }
+      .main-container {
+        padding: 1.5rem;
+      }
     }
   </style>
 </head>
 <body>
-<nav class="navbar">
-  <div class="container nav-inner">
-    <div class="logo">
-      <h1>Econcours.ma</h1>
-      <span>AI Smart Job Matcher</span>
-    </div>
-    <div class="lang-switch">
-      <button class="lang-btn active" data-lang="ar">🇲🇦 العربية</button>
-      <button class="lang-btn" data-lang="fr">🇫🇷 Français</button>
-    </div>
-  </div>
-</nav>
+  <div class="main-container">
+    <h1>🤖 ai.econcours.ma</h1>
+    <div class="subtitle">Assistant de carrière · Générez des candidatures professionnelles en français</div>
 
-<div class="container">
-  <div class="hero">
-    <div class="hero-badge">🧠 DeepSeek AI · Real Companies · Real-Time Extraction</div>
-    <h1 class="hero-title" id="mainTitle">اعثر على وظيفة أحلامك باستخدام الذكاء الاصطناعي</h1>
-    <p class="hero-desc" id="mainDesc">DeepSeek AI يحلل ملفك ويستخرج شركات حقيقية من المغرب تناسب مهاراتك فوراً</p>
-  </div>
-
-  <div class="form-card">
-    <form id="matchForm">
-      <div class="form-grid">
+    <!-- Formulaire -->
+    <div class="form-grid">
+      <div class="row">
         <div class="input-group">
-          <label id="labelName">👤 الاسم الكامل</label>
-          <input type="text" id="fullName" placeholder="أحمد العلوي" required>
+          <label>Nom complet</label>
+          <input type="text" id="fullName" placeholder="Ex: Fatima Zahra Alaoui" value="Mohamed El Amrani">
         </div>
         <div class="input-group">
-          <label id="labelDiploma">🎓 الشهادة / المؤهل</label>
-          <input type="text" id="diploma" placeholder="ماجستير في علوم الحاسوب" required>
-        </div>
-        <div class="input-group">
-          <label id="labelCity">📍 المدينة</label>
-          <input type="text" id="city" placeholder="الدار البيضاء، الرباط، طنجة" required>
-        </div>
-        <div class="input-group">
-          <label id="labelSkills">🧠 المهارات (مفصولة بفواصل)</label>
-          <textarea id="skills" placeholder="JavaScript, Python, React, Node.js" required></textarea>
+          <label>Ville</label>
+          <input type="text" id="city" placeholder="Casablanca" value="Casablanca">
         </div>
       </div>
-      <button type="submit" class="btn-primary" id="matchBtn">
-        <span>🤖</span> ابدأ البحث بالذكاء الاصطناعي
-      </button>
-    </form>
-  </div>
-
-  <div id="resultsSection" style="display: none;">
-    <div id="cardsContainer"></div>
-  </div>
-  <footer>
-    <p>🧠 يعمل بالكامل بواسطة DeepSeek AI · استخراج شركات حقيقية في الوقت الفعلي · © Econcours.ma</p>
-  </footer>
-</div>
-
-<script>
-  // -------------------- DeepSeek API Configuration --------------------
-  const DEEPSEEK_API_KEY = "sk-a31a908e429b4d9a9b45d919e25ec291";
-  const DEEPSEEK_API_URL = "https://api.deepseek.com/v1/chat/completions";
-  
-  let currentLang = 'ar';
-  let loadingInterval = null;
-  let startTime = null;
-
-  const translations = {
-    ar: {
-      mainTitle: "اعثر على وظيفة أحلامك باستخدام الذكاء الاصطناعي",
-      mainDesc: "DeepSeek AI يحلل ملفك ويستخرج شركات حقيقية من المغرب تناسب مهاراتك فوراً",
-      labelName: "👤 الاسم الكامل",
-      labelDiploma: "🎓 الشهادة / المؤهل",
-      labelCity: "📍 المدينة",
-      labelSkills: "🧠 المهارات (مفصولة بفواصل)",
-      generate: "✉️ إنشاء بريد إلكتروني",
-      copy: "📋 نسخ",
-      copied: "✅ تم النسخ!",
-      loadingEmail: "جاري الإنشاء...",
-      matchPercent: "% تطابق",
-      sector: "القطاع",
-      cityLabel: "المدينة",
-      whyMatch: "سبب التطابق",
-      noMatch: "⚠️ لم يتم العثور على شركات. حاول مرة أخرى",
-      fillFields: "يرجى ملء جميع الحقول",
-      analyzing: "🧠 جارٍ تحليل ملفك الشخصي بواسطة DeepSeek AI...",
-      searching: "🔍 جارٍ استخراج الشركات المناسبة من المغرب...",
-      ranking: "📊 جارٍ تقييم وترتيب النتائج...",
-      aiWorking: "DeepSeek AI يعمل على استخراج أفضل الفرص",
-      timeout: "⚠️ استغرق البحث وقتاً طويلاً. يرجى المحاولة مرة أخرى",
-      errorApi: "حدث خطأ في الاتصال بـ DeepSeek AI"
-    },
-    fr: {
-      mainTitle: "Trouvez votre emploi idéal avec l'IA",
-      mainDesc: "DeepSeek AI analyse votre profil et extrait des entreprises réelles au Maroc",
-      labelName: "👤 Nom complet",
-      labelDiploma: "🎓 Diplôme",
-      labelCity: "📍 Ville",
-      labelSkills: "🧠 Compétences (séparées par des virgules)",
-      generate: "✉️ Générer l'email",
-      copy: "📋 Copier",
-      copied: "✅ Copié !",
-      loadingEmail: "Génération...",
-      matchPercent: "% match",
-      sector: "Secteur",
-      cityLabel: "Ville",
-      whyMatch: "Raison du match",
-      noMatch: "⚠️ Aucune entreprise trouvée. Réessayez",
-      fillFields: "Veuillez remplir tous les champs",
-      analyzing: "🧠 Analyse de votre profil par DeepSeek AI...",
-      searching: "🔍 Extraction des entreprises pertinentes au Maroc...",
-      ranking: "📊 Évaluation et classement...",
-      aiWorking: "DeepSeek AI travaille à extraire les meilleures opportunités",
-      timeout: "⚠️ La recherche a pris trop de temps. Réessayez",
-      errorApi: "Erreur de connexion à DeepSeek AI"
-    }
-  };
-
-  function applyLanguage() {
-    const t = translations[currentLang];
-    document.getElementById('mainTitle').innerHTML = t.mainTitle;
-    document.getElementById('mainDesc').innerHTML = t.mainDesc;
-    document.getElementById('labelName').innerHTML = t.labelName;
-    document.getElementById('labelDiploma').innerHTML = t.labelDiploma;
-    document.getElementById('labelCity').innerHTML = t.labelCity;
-    document.getElementById('labelSkills').innerHTML = t.labelSkills;
-    document.getElementById('matchBtn').innerHTML = `<span>🤖</span> ${currentLang === 'ar' ? 'ابدأ البحث بالذكاء الاصطناعي' : 'Recherche IA'}`;
-    
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-      if (btn.getAttribute('data-lang') === currentLang) btn.classList.add('active');
-      else btn.classList.remove('active');
-    });
-  }
-
-  function showLoadingScreen(step = 1) {
-    const t = translations[currentLang];
-    
-    const resultsSection = document.getElementById('resultsSection');
-    resultsSection.style.display = 'block';
-    
-    let subText = "";
-    if (step === 1) subText = t.analyzing;
-    else if (step === 2) subText = t.searching;
-    else subText = t.ranking;
-    
-    const container = document.getElementById('cardsContainer');
-    container.innerHTML = `
-      <div class="loading-container">
-        <div class="pulse-loader"></div>
-        <div class="loading-text">${t.aiWorking}</div>
-        <div class="loading-sub" id="loadingSubText">${subText}</div>
-        <div class="loading-time" id="loadingTime">⏱️ 0 ${currentLang === 'ar' ? 'ثانية' : 'secondes'}</div>
-      </div>
-    `;
-    
-    if (loadingInterval) clearInterval(loadingInterval);
-    startTime = Date.now();
-    loadingInterval = setInterval(() => {
-      const elapsed = Math.floor((Date.now() - startTime) / 1000);
-      const timeEl = document.getElementById('loadingTime');
-      if (timeEl) {
-        timeEl.innerHTML = `⏱️ ${elapsed} ${currentLang === 'ar' ? 'ثانية' : 'secondes'}`;
-      }
-      if (elapsed > 30) {
-        clearInterval(loadingInterval);
-        const subEl = document.getElementById('loadingSubText');
-        if (subEl) subEl.innerHTML = t.timeout;
-      }
-    }, 1000);
-  }
-
-  function hideLoadingScreen() {
-    if (loadingInterval) clearInterval(loadingInterval);
-  }
-
-  async function callDeepSeekAPI(prompt, systemMsg, timeoutMs = 20000) {
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
-    
-    try {
-      const response = await fetch(DEEPSEEK_API_URL, {
-        method: "POST",
-        headers: {
-          "Authorization": `Bearer ${DEEPSEEK_API_KEY}`,
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          model: "deepseek-chat",
-          messages: [
-            { role: "system", content: systemMsg || "You are a job matching expert. Return ONLY valid JSON. No extra text." },
-            { role: "user", content: prompt }
-          ],
-          temperature: 0.2,
-          max_tokens: 2000
-        }),
-        signal: controller.signal
-      });
-      
-      clearTimeout(timeoutId);
-      
-      if (!response.ok) {
-        const errorText = await response.text();
-        throw new Error(`HTTP ${response.status}: ${errorText.substring(0, 100)}`);
-      }
-      
-      const data = await response.json();
-      return data.choices[0].message.content;
-    } catch (err) {
-      clearTimeout(timeoutId);
-      if (err.name === 'AbortError') {
-        throw new Error('Request timeout');
-      }
-      throw err;
-    }
-  }
-
-  async function extractCompaniesWithAI(userProfile) {
-    const skillsStr = userProfile.skillsArray.join(", ");
-    const langCode = currentLang === 'ar' ? 'Arabic' : 'French';
-    
-    const prompt = `You are a job matching AI. Based on the candidate profile below, list 6 REAL Moroccan companies that would hire them.
-
-Candidate Profile:
-- Skills: ${skillsStr}
-- Diploma: ${userProfile.diploma}
-- City: ${userProfile.city}
-
-IMPORTANT: Return ONLY valid JSON array. Use this exact format:
-[
-  {
-    "name": "Company Name",
-    "sector": "Sector in ${langCode}",
-    "city": "City in Morocco",
-    "email": "recrutement@company.ma",
-    "phone": "0522XXXXXX",
-    "required_skills": ["skill1", "skill2", "skill3"],
-    "match_score": 85,
-    "reason_short": "Brief reason in ${langCode} (max 50 chars)"
-  }
-]
-
-Use REAL Moroccan companies like: Attijariwafa bank, BMCE Bank, Maroc Telecom, OCP Group, CGI Maroc, HPS, Disway, Deloitte Maroc, PwC Maroc, Capgemini Maroc, Inwi, LabelVie, Lesieur Cristal, Promamec, etc.
-
-Make sure match_score is between 60-100 based on how well the candidate fits. Return exactly 6 companies.`;
-    
-    const response = await callDeepSeekAPI(prompt, "You return ONLY valid JSON array. No markdown. No explanation.", 25000);
-    
-    // Clean the response
-    let clean = response.trim();
-    clean = clean.replace(/```json\n?/gi, '');
-    clean = clean.replace(/```\n?/gi, '');
-    clean = clean.replace(/^[^{[]*/, '');
-    clean = clean.replace(/[^}\]]*$/, '');
-    clean = clean.trim();
-    
-    const companies = JSON.parse(clean);
-    
-    if (!Array.isArray(companies) || companies.length === 0) {
-      throw new Error("No companies extracted");
-    }
-    
-    companies.sort((a, b) => b.match_score - a.match_score);
-    return companies.slice(0, 6);
-  }
-
-  async function generateEmailWithAI(company, userProfile) {
-    const langInstruction = currentLang === 'ar' ? 'Arabic (professional, formal)' : 'French (professional, formal)';
-    
-    const prompt = `Write a short professional job application email in ${langInstruction}.
-
-Candidate: ${userProfile.fullName}
-Diploma: ${userProfile.diploma}
-Skills: ${userProfile.skillsArray.join(", ")}
-City: ${userProfile.city}
-
-Company: ${company.name} (${company.sector})
-
-Keep it concise (max 120 words), polite, include subject line.`;
-    
-    const email = await callDeepSeekAPI(prompt, "You write professional job application emails.", 15000);
-    return email;
-  }
-
-  function escapeHtml(str) {
-    if (!str) return '';
-    return str.replace(/[&<>]/g, function(m) {
-      if (m === '&') return '&amp;';
-      if (m === '<') return '&lt;';
-      if (m === '>') return '&gt;';
-      return m;
-    });
-  }
-
-  function renderResults(companies, userProfile) {
-    const t = translations[currentLang];
-    const container = document.getElementById('cardsContainer');
-    
-    if (!companies || companies.length === 0) {
-      container.innerHTML = `<div class="error-message">${t.noMatch}</div>`;
-      return;
-    }
-    
-    const resultsHeader = document.createElement('div');
-    resultsHeader.className = 'results-header';
-    resultsHeader.innerHTML = `
-      <div class="results-title">✨ ${currentLang === 'ar' ? 'الشركات المستخرجة بواسطة DeepSeek AI' : 'Entreprises extraites par DeepSeek AI'}</div>
-      <div class="results-count">(${companies.length})</div>
-    `;
-    
-    let cardsHtml = '<div class="cards-grid">';
-    
-    companies.forEach((co, idx) => {
-      const isBest = idx === 0;
-      cardsHtml += `
-        <div class="company-card ${isBest ? 'best-match' : ''}">
-          <div class="card-header">
-            <div class="company-name">${escapeHtml(co.name)}</div>
-            <div class="match-score">🎯 ${co.match_score}${t.matchPercent}</div>
-          </div>
-          <div class="company-meta">
-            <span>📁 ${t.sector}: ${escapeHtml(co.sector)}</span>
-            <span>📍 ${t.cityLabel}: ${escapeHtml(co.city)}</span>
-          </div>
-          <div class="reason-card"><strong>${t.whyMatch}</strong><br>${escapeHtml(co.reason_short)}</div>
-          <div class="contact-buttons">
-            <a href="mailto:${escapeHtml(co.email)}" class="contact-link">📧 ${escapeHtml(co.email)}</a>
-            <a href="tel:${escapeHtml(co.phone)}" class="contact-link">📞 ${escapeHtml(co.phone)}</a>
-          </div>
-          <div class="action-group">
-            <button class="btn-solid gen-email-btn" data-company='${JSON.stringify(co)}'>${t.generate}</button>
-            <button class="btn-outline copy-btn" data-email-message="">${t.copy}</button>
-          </div>
-          <div class="generated-message" id="msg-${idx}" style="display:none;"></div>
+      <div class="row">
+        <div class="input-group">
+          <label>Diplôme</label>
+          <input type="text" id="degree" placeholder="Master en Marketing" value="Master en Marketing Digital">
         </div>
-      `;
-    });
-    
-    cardsHtml += '</div>';
-    container.innerHTML = '';
-    container.appendChild(resultsHeader);
-    container.insertAdjacentHTML('beforeend', cardsHtml);
-    
-    // Email generation
-    document.querySelectorAll('.gen-email-btn').forEach(btn => {
-      btn.addEventListener('click', async () => {
-        const company = JSON.parse(btn.getAttribute('data-company'));
-        const card = btn.closest('.company-card');
-        const msgDiv = card.querySelector('.generated-message');
-        const original = btn.innerHTML;
+        <div class="input-group">
+          <label>Type de poste</label>
+          <input type="text" id="jobType" placeholder="Chef de projet" value="Chef de projet digital">
+        </div>
+      </div>
+      <div class="input-group">
+        <label>Compétences (séparées par des virgules)</label>
+        <textarea id="skills" rows="3" placeholder="Gestion de projet, SEO, Analyse de données...">Gestion de projet, SEO, Google Analytics, CRM, Relation client</textarea>
+      </div>
+      <div class="style-selector">
+        <label>Style :</label>
+        <div class="radio-group">
+          <label><input type="radio" name="styleOption" value="Formel" checked> Formel</label>
+          <label><input type="radio" name="styleOption" value="Normal"> Normal</label>
+          <label><input type="radio" name="styleOption" value="Très professionnel"> Très professionnel</label>
+        </div>
+      </div>
+    </div>
+
+    <button id="generateAllBtn" class="generate-btn">✨ Générer tous les contenus</button>
+    <div id="loadingContainer" style="display: none;" class="loading-spinner">
+      <div class="spinner"></div> Génération par IA en cours...
+    </div>
+
+    <!-- Zone résultats -->
+    <div id="resultsContainer" class="results-grid" style="display: none;"></div>
+    <div id="versionButtonContainer" class="version-btn" style="display: none;">
+      <button id="regenerateAllBtn" class="secondary">🔄 Générer une autre version</button>
+    </div>
+    <hr>
+    <div style="font-size: 0.8rem; color: #64748b; text-align: center; margin-top: 0.5rem;">
+      ai.econcours.ma – Contenu généré par IA (Groq - llama-3.3-70b-versatile)
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      // ⚠️ REMPLACEZ PAR VOTRE CLÉ GROQ (celle fournie est temporaire)
+      const GROQ_API_KEY = "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";
+      const GROQ_URL = "https://api.groq.com/openai/v1/chat/completions";
+      const MODEL = "llama-3.3-70b-versatile"; // ✅ Modèle mis à jour
+
+      // Éléments DOM
+      const fullNameInput = document.getElementById('fullName');
+      const skillsInput = document.getElementById('skills');
+      const degreeInput = document.getElementById('degree');
+      const cityInput = document.getElementById('city');
+      const jobTypeInput = document.getElementById('jobType');
+      const styleRadios = document.getElementsByName('styleOption');
+      const generateBtn = document.getElementById('generateAllBtn');
+      const loadingContainer = document.getElementById('loadingContainer');
+      const resultsContainer = document.getElementById('resultsContainer');
+      const versionBtnContainer = document.getElementById('versionButtonContainer');
+      const regenerateAllBtn = document.getElementById('regenerateAllBtn');
+
+      // Stockage des résultats actuels pour regénération individuelle
+      let currentResults = {
+        email: "",
+        lettre: "",
+        resume: "",
+        competences: "",
+        pourquoi: ""
+      };
+
+      function getSelectedStyle() {
+        for (let radio of styleRadios) {
+          if (radio.checked) return radio.value;
+        }
+        return "Formel";
+      }
+
+      function getUserInput() {
+        return {
+          fullName: fullNameInput.value.trim() || "Mohamed El Amrani",
+          skills: skillsInput.value.trim() || "Gestion de projet, SEO",
+          degree: degreeInput.value.trim() || "Master",
+          city: cityInput.value.trim() || "Casablanca",
+          jobType: jobTypeInput.value.trim() || "Chef de projet",
+          style: getSelectedStyle()
+        };
+      }
+
+      // Construction des prompts (en français, variation assurée par température + instructions)
+      function buildPrompt(type, user, variationSeed = "") {
+        const baseInfo = `Candidat: ${user.fullName}. Compétences: ${user.skills}. Diplôme: ${user.degree}. Ville: ${user.city}. Poste visé: ${user.jobType}. Style souhaité: ${user.style}.`;
+        const variationNote = variationSeed ? ` Variation unique n°${variationSeed}.` : "";
         
-        btn.innerHTML = `<span style="display:inline-block; width:12px; height:12px; border:2px solid white; border-top-color:transparent; border-radius:50%; animation:spin 0.6s linear infinite; margin-left:5px;"></span> ${t.loadingEmail}`;
-        btn.disabled = true;
+        const prompts = {
+          email: `Rédige un email de candidature professionnel en français. ${baseInfo} L'email doit être formel, avec objet, formule de politesse. Ne répète pas une structure précédente. ${variationNote} Sois concis.`,
+          lettre: `Rédige une lettre de motivation complète en français. ${baseInfo} Inclut en-tête, introduction, développement, conclusion. Style ${user.style}. Varie la structure et le ton. ${variationNote}`,
+          resume: `Rédige un résumé professionnel (profil CV) percutant en français (3-4 lignes). ${baseInfo} Mets en avant la valeur ajoutée. ${variationNote}`,
+          competences: `Améliore et reformule la liste de compétences suivante pour un CV en français : "${user.skills}". Propose une version optimisée, regroupée par catégories si pertinent. ${variationNote}`,
+          pourquoi: `Rédige un paragraphe convaincant "Pourquoi vous êtes un bon candidat" en français. ${baseInfo} Utilise un ton engageant, différent des autres sections. ${variationNote}`
+        };
+        return prompts[type] || "";
+      }
+
+      async function callGroq(messages) {
+        const response = await fetch(GROQ_URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${GROQ_API_KEY}`
+          },
+          body: JSON.stringify({
+            model: MODEL,
+            messages: messages,
+            temperature: 0.9,
+            max_tokens: 800,
+          })
+        });
+
+        if (!response.ok) {
+          const errorText = await response.text();
+          throw new Error(`Erreur API Groq (${response.status}): ${errorText}`);
+        }
+
+        const data = await response.json();
+        return data.choices[0].message.content.trim();
+      }
+
+      // Génère les 5 contenus en parallèle
+      async function generateAllContent(user, variationId = Date.now()) {
+        const types = ["email", "lettre", "resume", "competences", "pourquoi"];
+        const promises = types.map(type => {
+          const promptText = buildPrompt(type, user, variationId);
+          return callGroq([
+            { role: "system", content: "Tu es un assistant expert en recrutement et rédaction professionnelle. Tu replies uniquement en français." },
+            { role: "user", content: promptText }
+          ]).then(content => ({ type, content }))
+          .catch(error => ({ type, content: `❌ Erreur: ${error.message}` }));
+        });
+
+        const resultsArray = await Promise.all(promises);
+        const resultsMap = {};
+        resultsArray.forEach(item => { resultsMap[item.type] = item.content; });
+        return resultsMap;
+      }
+
+      function renderResults(results) {
+        currentResults = { ...results };
+        
+        const cardsData = [
+          { key: "email", title: "📧 Email de candidature" },
+          { key: "lettre", title: "📄 Lettre de motivation" },
+          { key: "resume", title: "👤 Résumé professionnel" },
+          { key: "competences", title: "⚡ Compétences améliorées" },
+          { key: "pourquoi", title: "💬 Pourquoi vous ?" }
+        ];
+
+        let html = "";
+        cardsData.forEach(card => {
+          const content = results[card.key] || "Contenu non disponible.";
+          html += `
+            <div class="card" id="card-${card.key}">
+              <div class="card-header">
+                <span class="card-title">${card.title}</span>
+              </div>
+              <div class="card-content">${escapeHtml(content)}</div>
+              <div class="card-actions">
+                <button class="btn-small secondary" onclick="window.copyCardContent('${card.key}')">📋 Copier</button>
+                <button class="btn-small secondary" onclick="window.regenerateSingle('${card.key}')">🔄 Regénérer</button>
+              </div>
+            </div>
+          `;
+        });
+
+        resultsContainer.innerHTML = html;
+        resultsContainer.style.display = "flex";
+        versionBtnContainer.style.display = "block";
+      }
+
+      // Fonctions globales exposées
+      window.copyCardContent = function(key) {
+        const text = currentResults[key] || "";
+        navigator.clipboard.writeText(text).then(() => {
+          alert("✅ Contenu copié dans le presse-papier !");
+        }).catch(() => {
+          alert("⚠️ Copie échouée, veuillez sélectionner manuellement.");
+        });
+      };
+
+      window.regenerateSingle = async function(key) {
+        const user = getUserInput();
+        const variationId = Date.now() + Math.random();
+        const promptText = buildPrompt(key, user, variationId);
+        
+        // Montrer chargement local sur la carte
+        const cardElement = document.getElementById(`card-${key}`);
+        if (cardElement) {
+          const contentDiv = cardElement.querySelector('.card-content');
+          if (contentDiv) contentDiv.innerHTML = '<div class="loading-spinner"><div class="spinner"></div> Régénération...</div>';
+        }
         
         try {
-          const emailContent = await generateEmailWithAI(company, userProfile);
-          msgDiv.style.display = 'block';
-          msgDiv.innerHTML = `<strong>✉️ ${currentLang === 'ar' ? 'البريد الإلكتروني جاهز' : 'Email prêt'}</strong><br><br>${escapeHtml(emailContent).replace(/\n/g, '<br>')}`;
-          const copyBtn = card.querySelector('.copy-btn');
-          if (copyBtn) copyBtn.setAttribute('data-email-message', emailContent);
-        } catch (err) {
-          msgDiv.style.display = 'block';
-          msgDiv.innerHTML = `<span style="color:red;">⚠️ ${err.message}</span>`;
-        } finally {
-          btn.innerHTML = original;
-          btn.disabled = false;
-        }
-      });
-    });
-    
-    // Copy buttons
-    document.querySelectorAll('.copy-btn').forEach(btn => {
-      btn.addEventListener('click', async () => {
-        let message = btn.getAttribute('data-email-message');
-        if (!message) {
-          const card = btn.closest('.company-card');
-          const msgDiv = card.querySelector('.generated-message');
-          if (msgDiv && msgDiv.innerText) {
-            message = msgDiv.innerText.replace(/✉️.*:/, '').trim();
+          const newContent = await callGroq([
+            { role: "system", content: "Tu es un assistant de carrière. Réponds uniquement en français." },
+            { role: "user", content: promptText }
+          ]);
+          currentResults[key] = newContent;
+          if (cardElement) {
+            const contentDiv = cardElement.querySelector('.card-content');
+            if (contentDiv) contentDiv.textContent = newContent;
           }
+        } catch (err) {
+          if (cardElement) {
+            const contentDiv = cardElement.querySelector('.card-content');
+            if (contentDiv) contentDiv.textContent = "❌ Erreur de génération.";
+          }
+          console.error(err);
         }
-        if (!message) {
-          alert(currentLang === 'ar' ? "يرجى إنشاء البريد الإلكتروني أولاً" : "Veuillez d'abord générer l'email");
-          return;
+      };
+
+      window.regenerateAll = async function() {
+        const user = getUserInput();
+        loadingContainer.style.display = "flex";
+        resultsContainer.style.display = "none";
+        versionBtnContainer.style.display = "none";
+        
+        try {
+          const newResults = await generateAllContent(user, Date.now());
+          renderResults(newResults);
+        } catch (e) {
+          alert("Une erreur est survenue lors de la génération.");
+          console.error(e);
+        } finally {
+          loadingContainer.style.display = "none";
         }
-        await navigator.clipboard.writeText(message);
-        const orig = btn.innerHTML;
-        btn.innerHTML = t.copied;
-        setTimeout(() => btn.innerHTML = orig, 1500);
+      };
+
+      function escapeHtml(text) {
+        return text
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#039;");
+      }
+
+      // Événements principaux
+      generateBtn.addEventListener('click', async () => {
+        const user = getUserInput();
+        loadingContainer.style.display = "flex";
+        resultsContainer.style.display = "none";
+        versionBtnContainer.style.display = "none";
+
+        try {
+          const results = await generateAllContent(user, Date.now());
+          renderResults(results);
+        } catch (error) {
+          alert("Erreur lors de la génération. Vérifiez la clé API ou votre connexion.");
+          console.error(error);
+        } finally {
+          loadingContainer.style.display = "none";
+        }
       });
-    });
-  }
 
-  async function handleMatch(e) {
-    e.preventDefault();
-    const t = translations[currentLang];
-    
-    const fullName = document.getElementById('fullName').value.trim();
-    const diploma = document.getElementById('diploma').value.trim();
-    const city = document.getElementById('city').value.trim();
-    const skillsRaw = document.getElementById('skills').value.trim();
-    
-    if (!fullName || !diploma || !city || !skillsRaw) {
-      alert(t.fillFields);
-      return;
-    }
-    
-    const skillsArray = skillsRaw.split(',').map(s => s.trim()).filter(s => s);
-    if (skillsArray.length === 0) {
-      alert(currentLang === 'ar' ? "يرجى إدخال مهارة واحدة على الأقل" : "Veuillez entrer au moins une compétence");
-      return;
-    }
-    
-    const userProfile = { fullName, diploma, city, skillsArray };
-    
-    const btn = document.getElementById('matchBtn');
-    btn.disabled = true;
-    
-    try {
-      showLoadingScreen(1);
-      setTimeout(() => showLoadingScreen(2), 2000);
-      setTimeout(() => showLoadingScreen(3), 5000);
-      
-      const companies = await extractCompaniesWithAI(userProfile);
-      hideLoadingScreen();
-      renderResults(companies, userProfile);
-      
-      const resultsSection = document.getElementById('resultsSection');
-      resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    } catch (err) {
-      hideLoadingScreen();
-      console.error("Error:", err);
-      
-      const container = document.getElementById('cardsContainer');
-      container.innerHTML = `
-        <div class="error-message">
-          ❌ ${t.errorApi}<br>
-          ${err.message}<br><br>
-          ${currentLang === 'ar' ? 'يرجى المحاولة مرة أخرى بعد بضع ثوان' : 'Veuillez réessayer dans quelques secondes'}
-        </div>
-      `;
-      document.getElementById('resultsSection').style.display = 'block';
-    } finally {
-      btn.disabled = false;
-      btn.innerHTML = `<span>🤖</span> ${currentLang === 'ar' ? 'ابدأ البحث بالذكاء الاصطناعي' : 'Recherche IA'}`;
-    }
-  }
+      regenerateAllBtn.addEventListener('click', window.regenerateAll);
 
-  document.querySelectorAll('.lang-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const lang = btn.getAttribute('data-lang');
-      if (lang === currentLang) return;
-      currentLang = lang;
-      applyLanguage();
-    });
-  });
-  
-  document.getElementById('matchForm').addEventListener('submit', handleMatch);
-  applyLanguage();
-</script>
+      // Exposition globale pour les boutons inline
+      window.regenerateSingle = window.regenerateSingle;
+      window.copyCardContent = window.copyCardContent;
+    })();
+  </script>
 </body>
 </html>
